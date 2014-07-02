@@ -56,6 +56,27 @@ CREATE TABLE IF NOT EXISTS `resetcodes` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `events`
+--
+
+CREATE TABLE IF NOT EXISTS `events` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `theme` varchar(16) NOT NULL,
+  `participants` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`id`, `theme`, `participants`, `price`, `start`, `end`) VALUES
+(1, 'UNKNOWN', 335, 1, '2014-09-26 18:00:00', '2014-09-28 12:00:00');
+
+--
 -- Tabellstruktur for tabell `users`
 --
 
