@@ -64,6 +64,8 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+INSERT INTO `infecrjn_tickets`.`tickets` (`id`, `event`, `owner`, `type`, `seat`, `user`, `seater`) VALUES ('1', '1', '2', '1', '0', '1', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -75,6 +77,8 @@ CREATE TABLE IF NOT EXISTS `tickettypes` (
   `humanName` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+INSERT INTO `infecrjn_tickets`.`tickettypes` (`id`, `humanName`) VALUES ('1', 'Normal');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
