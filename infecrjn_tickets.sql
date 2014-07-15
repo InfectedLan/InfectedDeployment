@@ -59,12 +59,11 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   `owner` int(11) NOT NULL COMMENT 'ID of user who purchased',
   `type` int(11) NOT NULL COMMENT 'Ticket type. See infecrjn_tickets.types',
   `seat` int(11) NOT NULL COMMENT 'ID of seat the ticket is seated at',
-  `user` int(11) NOT NULL COMMENT 'ID of user who will be using this ticket',
   `seater` int(11) NOT NULL COMMENT 'ID of user who will be seating this ticket',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `infecrjn_tickets`.`tickets` (`id`, `event`, `owner`, `type`, `seat`, `user`, `seater`) VALUES ('1', '1', '2', '1', '0', '1', '1');
+INSERT INTO `infecrjn_tickets`.`tickets` (`id`, `event`, `owner`, `type`, `seat`, `user`, `seater`) VALUES ('1', '1', '2', '1', '0', '1');
 
 -- --------------------------------------------------------
 
