@@ -76,6 +76,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `price` int(11) NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL,
+  `location` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -83,10 +84,10 @@ CREATE TABLE IF NOT EXISTS `events` (
 -- Dataark for tabell `events`
 --
 
-INSERT INTO `events` (`id`, `theme`, `participants`, `price`, `start`, `end`) VALUES
-(1, 'Arcade', 322, 275, '2013-09-27 18:00:00', '2013-09-29 12:00:00'),
-(2, '', 335, 350, '2014-02-14 18:00:00', '2014-02-16 12:00:00'),
-(3, '', 0, 0, '2014-09-26 18:00:00', '2014-09-28 12:00:00');
+INSERT INTO `events` (`id`, `theme`, `participants`, `price`, `start`, `end`, `location`) VALUES
+(1, 'Arcade', 322, 275, '2013-09-27 18:00:00', '2013-09-29 12:00:00', 'Asker kulturhus'),
+(2, '', 335, 350, '2014-02-14 18:00:00', '2014-02-16 12:00:00', 'Asker kulturhus',
+(3, '', 0, 0, '2014-09-26 18:00:00', '2014-09-28 12:00:00', 'Asker kulturhus');
 
 -- --------------------------------------------------------
 
