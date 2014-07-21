@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO `infecrjn_tickets`.`tickets` (`id`, `event`, `owner`, `type`, `seat`, `user`, `seater`) VALUES ('1', '1', '2', '1', '0', '1');
+INSERT INTO `infecrjn_tickets`.`tickets` (`id`, `event`, `owner`, `type`, `seat`, `seater`) VALUES ('1', '1', '2', '1', '0', '1');
 
 -- --------------------------------------------------------
 
