@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 23. Jul, 2014 00:55 AM
+-- Generert den: 24. Jul, 2014 01:15 AM
 -- Tjenerversjon: 5.5.38-0ubuntu0.14.04.1
 -- PHP-Versjon: 5.5.9-1ubuntu4.3
 
@@ -29,22 +29,22 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `theme` varchar(16) NOT NULL,
-  `participants` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
   `start` datetime NOT NULL,
   `end` datetime NOT NULL,
-  `location` varchar(32) NOT NULL,
+  `location` int(11) NOT NULL,
+  `participants` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dataark for tabell `events`
 --
 
-INSERT INTO `events` (`id`, `theme`, `participants`, `price`, `start`, `end`, `location`) VALUES
-(1, 'Arcade', 322, 275, '2013-09-27 18:00:00', '2013-09-29 12:00:00', 'Kulturhuset'),
-(2, '', 335, 350, '2014-02-14 18:00:00', '2014-02-16 12:00:00', 'Kulturhuset'),
-(3, '', 0, 0, '2014-09-26 18:00:00', '2014-09-28 12:00:00', 'Kulturhuset');
+INSERT INTO `events` (`id`, `theme`, `start`, `end`, `location`, `participants`, `price`) VALUES
+(1, 'Arcade', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 322, 275),
+(2, 'Modern Warfare', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 1, 335, 350),
+(3, 'Odyssey', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -55,6 +55,7 @@ INSERT INTO `events` (`id`, `theme`, `participants`, `price`, `start`, `end`, `l
 CREATE TABLE IF NOT EXISTS `locations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
+  `title` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -62,8 +63,8 @@ CREATE TABLE IF NOT EXISTS `locations` (
 -- Dataark for tabell `locations`
 --
 
-INSERT INTO `locations` (`id`, `name`) VALUES
-(1, 'Kulturhuset');
+INSERT INTO `locations` (`id`, `name`, `title`) VALUES
+(1, 'kulturhuset', 'Kulturhuset');
 
 -- --------------------------------------------------------
 
