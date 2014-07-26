@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 24. Jul, 2014 01:15 AM
+-- Generert den: 26. Jul, 2014 20:46 PM
 -- Tjenerversjon: 5.5.38-0ubuntu0.14.04.1
 -- PHP-Versjon: 5.5.9-1ubuntu4.3
 
@@ -42,10 +42,10 @@ CREATE TABLE IF NOT EXISTS `events` (
 -- Dataark for tabell `events`
 --
 
-INSERT INTO `events` (`id`, `theme`, `start`, `end`, `location`, `participants`, `price`) VALUES
-(1, 'Arcade', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 322, 275),
-(2, 'Modern Warfare', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 1, 335, 350),
-(3, 'Odyssey', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 1, 0, 0);
+INSERT INTO `events` (`id`, `theme`, `start`, `end`, `location`, `participants`, `price`, `seatmap`) VALUES
+(1, 'Arcade', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 322, 275, 0),
+(2, 'Modern Warfare', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 1, 335, 350, 0),
+(3, 'Odyssey', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4870,15 +4870,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `postalcode` int(4) NOT NULL,
   `nickname` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dataark for tabell `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `nickname`) VALUES
-(1, 'Halvor', 'Lyche Strandvoll', 'halvors', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors'),
-(2, 'Liam', 'Svanåsbakken Crouch', 'petterroea', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'me@petterroea.com', '1998-04-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea');
+(1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'me@petterroea.com', '1998-04-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea'),
+(2, 'Halvor', 'Lyche Strandvoll', 'halvors', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors'),
+(3, 'Fredrik', 'Warbo', 'warbo', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'fredrik@warbo.com', '1990-04-16', 1, 12345678, 'gokk', 1234, 'wrb');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
