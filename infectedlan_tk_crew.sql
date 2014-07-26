@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 23. Jul, 2014 00:55 AM
+-- Generert den: 29. Jul, 2014 00:47 AM
 -- Tjenerversjon: 5.5.38-0ubuntu0.14.04.1
 -- PHP-Versjon: 5.5.9-1ubuntu4.3
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `applications` (
 CREATE TABLE IF NOT EXISTS `avatars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  `relativeUrl` varchar(64) NOT NULL,
+  `file` varchar(64) NOT NULL,
   `state` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=84 ;
@@ -55,9 +55,8 @@ CREATE TABLE IF NOT EXISTS `avatars` (
 -- Dataark for tabell `avatars`
 --
 
-INSERT INTO `avatars` (`id`, `userId`, `relativeUrl`, `state`) VALUES
+INSERT INTO `avatars` (`id`, `userId`, `file`, `state`) VALUES
 (1, 302, 'd2d3dcdc31f16894523390351d4349a5joaknu.jpg', 2),
-(2, 234, '578c8d9c79e43939bd8a7c5d0de5b925Haaky3.jpg', 3),
 (3, 237, '2bebe7c0b89984e9cb7d2c4cd8f3077bcatti12345.jpg', 2),
 (4, 547, 'b0f469e9df6466805a572ebb88cf05ddskyline.jpg', 2),
 (5, 188, 'a4cfa6d804d0b837d31fbd94f6542507Pimpslic.jpg', 2),
@@ -75,7 +74,6 @@ INSERT INTO `avatars` (`id`, `userId`, `relativeUrl`, `state`) VALUES
 (17, 564, '74eaa80e11ee9c2b916fc7612dbdd76fxxjensxx.jpg', 2),
 (18, 342, 'da2a0ad825cac4d9520adfee836460f9narren.jpg', 2),
 (19, 370, '7cc248506e306101906f2f6a28d9f05eDOFIwaffe.jpg', 2),
-(20, 277, 'e3ee0c71188bf1f86c030b2ada6d5e1cDanielJohan.jpg', 3),
 (21, 578, '64d4f4a0a3339bb1b22f3b36718c9209SweenyMee.jpg', 2),
 (22, 395, 'fd68ffb94207c163e5f9b37f53e6e067kaimet.jpg', 2),
 (23, 384, '7aad37aa21884dc5c59dab02e71b9d2dOddern96.jpg', 2),
@@ -90,7 +88,7 @@ INSERT INTO `avatars` (`id`, `userId`, `relativeUrl`, `state`) VALUES
 (32, 592, '0c820957a3a2eb551b60bb0ae9b741dfdavid.jpg', 2),
 (33, 417, '564a83b13ec17de2af3c27f183bb09bbAtirion.jpg', 2),
 (34, 105, 'd05a7a7b90b64f95aba372059ff3141bHaxzer.jpg', 2),
-(35, 2, '6f836b0f77d06ef59bf7a19be2b17110halvors.jpg', 2),
+(35, 2, '6f836b0f77d06ef59bf7a19be2b17110halvors.jpg', 1),
 (36, 235, '73f9f2dd48ebde79e31402c84fb43636SkukkeTrudd.jpg', 2),
 (37, 595, '66ef164433aea176a679bf4872ccce53patryknorge.jpg', 2),
 (38, 585, '4b31d79dd78472306c7ae8f6959ce543nano.jpg', 2),
@@ -99,7 +97,6 @@ INSERT INTO `avatars` (`id`, `userId`, `relativeUrl`, `state`) VALUES
 (41, 597, '21520e73e1674adb7cafc81aebb190d5LouisaMorales.jpg', 2),
 (42, 561, '7de9d643368a94b4ee6beefc4d9a6714Aikida.jpg', 2),
 (43, 599, '9e29c3355d9b30742603e9f583ba13ccNachoDawg.jpg', 2),
-(44, 52, '512e7cf7af3bfbdcbc8fe3921657277ekennarn.jpg', 3),
 (45, 400, '15245d8ac2bc7e1ad1cdb3feb69bd18cverri.awesome.jpg', 2),
 (46, 602, '3977fc37d4f78f0637dc0286476f54e6HenrietteMelien.jpg', 2),
 (47, 604, 'c6047fc211678bccf4b28a15785c2d63Wunderbu.jpg', 2),
@@ -108,7 +105,6 @@ INSERT INTO `avatars` (`id`, `userId`, `relativeUrl`, `state`) VALUES
 (50, 424, 'aa561073f919e332c4e1e05152395e88Jokke.jpg', 2),
 (51, 483, '416c1b05c2d7cfa6252b3d650dccafb2Killerquo.jpg', 2),
 (52, 72, '6bd5900a1d66d20a51b573d648fcb11fzenoy.jpg', 2),
-(53, 263, 'c7f0124961572b619606d5598b9628e3lolwind.jpg', 3),
 (54, 257, 'c77ae0981cf7739fbfa50b5b185f1918johanne marie.jpg', 2),
 (55, 583, '8f3a3edaeeb1d8c8b10c577df071feccKKB.jpg', 2),
 (56, 477, '54ebec24f596be0f4bdac081032b4967Magnus Harsheim.jpg', 2),
@@ -151,15 +147,15 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `name` varchar(64) NOT NULL,
   `title` varchar(64) NOT NULL,
   `description` text NOT NULL,
-  `chief` int(11) NOT NULL,
+  `leader` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dataark for tabell `groups`
 --
 
-INSERT INTO `groups` (`id`, `name`, `title`, `description`, `chief`) VALUES
+INSERT INTO `groups` (`id`, `name`, `title`, `description`, `leader`) VALUES
 (1, 'core', 'Core', 'Tar seg av administrative oppgaver samt oppgaver som ikke faller naturlig under noe annet crew.  Du må være glad i utfordringer, kunne jobbe selvstendig og i team, se løsninger, få med seg andre på fellesoppgaver og organisering. Eksempler her er: sponsor arbeid, booking, økonomi, problemløsning, forefallende oppgaver.', 0),
 (2, 'security', 'Security', '', 0),
 (3, 'tech', 'Tech', 'Er de som planlegger, setter opp samt drifter nettverket og alle tjenester rundt nettverket på Infected. Her er oppgavene alt fra å konfiugerere switcher, routere, brannmurer og servere (applikasjoner) til kabling og testing av tjenester. Du bør ha gode kunnskaper om nettverk, servere (linux), koding eller være generelt interessert i IT. (Gamere teller ikke). ', 0),
@@ -215,12 +211,11 @@ INSERT INTO `pages` (`id`, `name`, `title`, `content`, `groupId`, `teamId`) VALU
 (1, 'home', 'Infected Vinter 2014!', '<p>Obligatorisk fellesm&oslash;te for ALLE crew i multisalen Fredag den 14. Februar klokken 16.00<br />\r\nObligatorisk fellesm&oslash;te for Security crew i 2 etg. Torsdag den 13. Februar klokken 15.30</p>\r\n', 0, 0),
 (8, 'core', 'Core', '', 16, 0),
 (9, 'info', 'Info', '<p>Er ansvarlig for alle informasjonssystemer som webside og facebook siden. Under arrangementet driver Info en egen info desk som er &aring;pen for deltagerne 24/7.</p>\r\n\r\n<p>TeamViewer til podiet:<br>\r\nYour ID: 863 698 737<br>\r\nPassword: 2676</p>\r\n\r\n', 15, 0),
-(10, 'tech', 'Tech', '', 14, 0),
-(11, 'net', 'Tech:Net', '', 14, 0),
-(12, 'server', 'Tech:Server', '', 14, 0),
-(13, 'support', 'Tech:Support', '', 14, 0),
+(10, 'tech', 'Tech', '', 3, 0),
+(11, 'net', 'Tech:Net', '', 3, 0),
+(12, 'server', 'Tech:Server', '', 3, 0),
+(13, 'support', 'Tech:Support', '', 3, 0),
 (14, 'security', 'Security', '', 17, 0),
-(15, '', '', '', 19, 0),
 (16, 'backstage', 'Backstage', '', 21, 0),
 (17, 'event', 'Event', '', 22, 0),
 (18, 'game', 'Game', '<p>Let the Games begin!</p>\r\n\r\n<p>&nbsp;</p>\r\n', 26, 0),
@@ -240,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
   `description` text NOT NULL,
-  `chief` int(11) NOT NULL,
+  `leader` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
@@ -248,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `teams` (
 -- Dataark for tabell `teams`
 --
 
-INSERT INTO `teams` (`id`, `groupId`, `name`, `title`, `description`, `chief`) VALUES
+INSERT INTO `teams` (`id`, `groupId`, `name`, `title`, `description`, `leader`) VALUES
 (1, 2, 'lag1', 'Lag 1', 'Lag 1', 0),
 (2, 2, 'lag2', 'Lag 2', 'Lag 2', 0),
 (3, 2, 'lag3', 'Lag 3', 'Lag 3', 0),
