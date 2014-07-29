@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 29. Jul, 2014 16:31 PM
+-- Generert den: 30. Jul, 2014 00:52 AM
 -- Tjenerversjon: 5.5.38-0ubuntu0.14.04.1
 -- PHP-Versjon: 5.5.9-1ubuntu4.3
 
@@ -4846,6 +4846,29 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Tabellstruktur for tabell `registrationcodes`
+--
+
+CREATE TABLE IF NOT EXISTS `registrationcodes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `code` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dataark for tabell `registrationcodes`
+--
+
+INSERT INTO `registrationcodes` (`id`, `userId`, `code`) VALUES
+(1, 4, '22961340bba522c4e67c643caf498758'),
+(2, 5, '165b4f866cfd7544c484e3d70aeb699c'),
+(3, 6, '2ab56a1590a1b22e3b36760cd80490ed'),
+(4, 7, 'd853ec5bf1c7af6982099600da16c892');
+
+-- --------------------------------------------------------
+
+--
 -- Tabellstruktur for tabell `resetcodes`
 --
 
@@ -4875,7 +4898,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `postalcode` int(4) NOT NULL,
   `nickname` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dataark for tabell `users`
@@ -4885,7 +4908,10 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `ema
 (1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'me@petterroea.com', '1998-04-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea'),
 (2, 'Halvor', 'Lyche Strandvoll', 'halvors', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors'),
 (3, 'Fredrik', 'Warbo', 'warbo', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'fredrik@warbo.com', '1990-04-16', 1, 12345678, 'gokk', 1234, 'wrb'),
-(4, 'Test', 'Test', 'Test', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'Test@halvors.org', '0000-00-00', 127, 99999999, 'Fiolveien 20', 1395, 'halal');
+(4, 'haha', 'haha', 'haha', '2bc3189d8d6516d2e86f55670998be96a060963ab915ce76bd9bc616fb318199', 'haha@halvors.org', '0000-00-00', 127, 99999999, 'Okolo 0', 1, 'haha'),
+(5, 'haha', 'haha', 'haha5', '2bc3189d8d6516d2e86f55670998be96a060963ab915ce76bd9bc616fb318199', 'haha5@halvors.org', '0000-00-00', 127, 99999999, 'Okolo 0', 1, 'haha'),
+(6, 'lol33', 'lol33', 'hahagfhfgh', 'bde5cf2cbc9a55cb8e36bbf59b377155f436e65ce5ca1e3ab4e48caba81480d9', 'hahalol9@halvors.org', '0000-00-00', 127, 66667777, 'Fiollol2', 1396, 'halgal'),
+(7, 'lol33', 'lol33', 'hahagfhfgh7', 'bde5cf2cbc9a55cb8e36bbf59b377155f436e65ce5ca1e3ab4e48caba81480d9', 'hahalol97@halvors.org', '0000-00-00', 127, 66667777, 'Fiollol2', 1396, 'halgal');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
