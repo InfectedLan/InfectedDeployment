@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Vert: localhost
--- Generert den: 23. Jul, 2014 00:55 AM
--- Tjenerversjon: 5.5.38-0ubuntu0.14.04.1
--- PHP-Versjon: 5.5.9-1ubuntu4.3
+-- Host: 127.0.0.1
+-- Generation Time: Aug 01, 2014 at 02:46 AM
+-- Server version: 5.6.17
+-- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,21 +23,49 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `rows`
+-- Table structure for table `rows`
 --
 
 CREATE TABLE IF NOT EXISTS `rows` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `x` int(11) NOT NULL,
   `y` int(11) NOT NULL,
   `row` int(11) NOT NULL,
-  `seatmap` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `seatmap` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `rows`
+--
+
+INSERT INTO `rows` (`id`, `x`, `y`, `row`, `seatmap`) VALUES
+(1, 1, 1, 1, 1),
+(2, 57, 1, 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `seats`
+-- Table structure for table `seatmaps`
+--
+
+CREATE TABLE IF NOT EXISTS `seatmaps` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID of seatmap',
+  `humanName` varchar(64) NOT NULL COMMENT 'Human name of seatmap',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `seatmaps`
+--
+
+INSERT INTO `seatmaps` (`id`, `humanName`) VALUES
+(1, 'sweg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seats`
 --
 
 CREATE TABLE IF NOT EXISTS `seats` (
@@ -45,12 +73,26 @@ CREATE TABLE IF NOT EXISTS `seats` (
   `section` int(11) NOT NULL COMMENT 'Id of section the seat is part of',
   `number` int(11) NOT NULL COMMENT 'Seat number relative to section',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `seats`
+--
+
+INSERT INTO `seats` (`id`, `section`, `number`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 1, 3),
+(4, 2, 1),
+(5, 2, 2),
+(6, 2, 3),
+(7, 2, 4),
+(8, 2, 5);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `tickets`
+-- Table structure for table `tickets`
 --
 
 CREATE TABLE IF NOT EXISTS `tickets` (
@@ -65,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dataark for tabell `tickets`
+-- Dumping data for table `tickets`
 --
 
 INSERT INTO `tickets` (`id`, `event`, `owner`, `type`, `seat`, `user`, `seater`) VALUES
@@ -74,10 +116,10 @@ INSERT INTO `tickets` (`id`, `event`, `owner`, `type`, `seat`, `user`, `seater`)
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `ticketTypes`
+-- Table structure for table `tickettypes`
 --
 
-CREATE TABLE IF NOT EXISTS `ticketTypes` (
+CREATE TABLE IF NOT EXISTS `tickettypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `humanName` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
@@ -86,9 +128,3 @@ CREATE TABLE IF NOT EXISTS `ticketTypes` (
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-CREATE TABLE IF NOT EXISTS `seatmaps` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID of seatmap',
-  `humanName` varchar(64) NOT NULL COMMENT 'Human name of seatmap',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
