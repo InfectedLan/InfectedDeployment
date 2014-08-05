@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2014 at 02:46 AM
--- Server version: 5.6.17
+-- Generation Time: 05. Aug, 2014 09:41 
+-- Server-versjon: 5.6.17
 -- PHP Version: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rows`
+-- Tabellstruktur for tabell `rows`
 --
 
 CREATE TABLE IF NOT EXISTS `rows` (
@@ -33,39 +33,41 @@ CREATE TABLE IF NOT EXISTS `rows` (
   `row` int(11) NOT NULL,
   `seatmap` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `rows`
+-- Dataark for tabell `rows`
 --
 
 INSERT INTO `rows` (`id`, `x`, `y`, `row`, `seatmap`) VALUES
 (1, 1, 1, 1, 1),
-(2, 57, 1, 2, 1);
+(2, 54, 1, 2, 1),
+(3, 108, 1, 3, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seatmaps`
+-- Tabellstruktur for tabell `seatmaps`
 --
 
 CREATE TABLE IF NOT EXISTS `seatmaps` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID of seatmap',
   `humanName` varchar(64) NOT NULL COMMENT 'Human name of seatmap',
+  `backgroundImage` varchar(64) NOT NULL COMMENT 'File name of background image. Does not contain path',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `seatmaps`
+-- Dataark for tabell `seatmaps`
 --
 
-INSERT INTO `seatmaps` (`id`, `humanName`) VALUES
-(1, 'sweg');
+INSERT INTO `seatmaps` (`id`, `humanName`, `backgroundImage`) VALUES
+(1, 'sweg', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seats`
+-- Tabellstruktur for tabell `seats`
 --
 
 CREATE TABLE IF NOT EXISTS `seats` (
@@ -73,10 +75,10 @@ CREATE TABLE IF NOT EXISTS `seats` (
   `section` int(11) NOT NULL COMMENT 'Id of section the seat is part of',
   `number` int(11) NOT NULL COMMENT 'Seat number relative to section',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
--- Dumping data for table `seats`
+-- Dataark for tabell `seats`
 --
 
 INSERT INTO `seats` (`id`, `section`, `number`) VALUES
@@ -87,12 +89,22 @@ INSERT INTO `seats` (`id`, `section`, `number`) VALUES
 (5, 2, 2),
 (6, 2, 3),
 (7, 2, 4),
-(8, 2, 5);
+(8, 2, 5),
+(9, 3, 1),
+(10, 3, 2),
+(11, 3, 3),
+(12, 3, 4),
+(13, 3, 5),
+(14, 3, 6),
+(15, 3, 7),
+(16, 3, 8),
+(17, 3, 9),
+(18, 3, 10);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickets`
+-- Tabellstruktur for tabell `tickets`
 --
 
 CREATE TABLE IF NOT EXISTS `tickets` (
@@ -107,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `tickets`
+-- Dataark for tabell `tickets`
 --
 
 INSERT INTO `tickets` (`id`, `event`, `owner`, `type`, `seat`, `user`, `seater`) VALUES
@@ -116,7 +128,7 @@ INSERT INTO `tickets` (`id`, `event`, `owner`, `type`, `seat`, `user`, `seater`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickettypes`
+-- Tabellstruktur for tabell `tickettypes`
 --
 
 CREATE TABLE IF NOT EXISTS `tickettypes` (
