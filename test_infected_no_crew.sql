@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 29. Jul, 2014 00:47 AM
+-- Generert den: 08. Aug, 2014 13:16 PM
 -- Tjenerversjon: 5.5.38-0ubuntu0.14.04.1
 -- PHP-Versjon: 5.5.9-1ubuntu4.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `infectedlan_tk_crew`
+-- Database: `test_infected_no_crew`
 --
 
 -- --------------------------------------------------------
@@ -88,7 +88,7 @@ INSERT INTO `avatars` (`id`, `userId`, `file`, `state`) VALUES
 (32, 592, '0c820957a3a2eb551b60bb0ae9b741dfdavid.jpg', 2),
 (33, 417, '564a83b13ec17de2af3c27f183bb09bbAtirion.jpg', 2),
 (34, 105, 'd05a7a7b90b64f95aba372059ff3141bHaxzer.jpg', 2),
-(35, 2, '6f836b0f77d06ef59bf7a19be2b17110halvors.jpg', 1),
+(35, 2, '6f836b0f77d06ef59bf7a19be2b17110halvors.jpg', 2),
 (36, 235, '73f9f2dd48ebde79e31402c84fb43636SkukkeTrudd.jpg', 2),
 (37, 595, '66ef164433aea176a679bf4872ccce53patryknorge.jpg', 2),
 (38, 585, '4b31d79dd78472306c7ae8f6959ce543nano.jpg', 2),
@@ -184,8 +184,8 @@ CREATE TABLE IF NOT EXISTS `memberof` (
 --
 
 INSERT INTO `memberof` (`id`, `userId`, `groupId`, `teamId`) VALUES
-(1, 1, 3, 0),
-(2, 2, 3, 0);
+(1, 1, 3, 6),
+(2, 2, 3, 6);
 
 -- --------------------------------------------------------
 
@@ -200,6 +200,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `content` text NOT NULL,
   `groupId` int(11) NOT NULL,
   `teamId` int(11) NOT NULL,
+  `private` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
 
@@ -207,21 +208,21 @@ CREATE TABLE IF NOT EXISTS `pages` (
 -- Dataark for tabell `pages`
 --
 
-INSERT INTO `pages` (`id`, `name`, `title`, `content`, `groupId`, `teamId`) VALUES
-(1, 'home', 'Infected Vinter 2014!', '<p>Obligatorisk fellesm&oslash;te for ALLE crew i multisalen Fredag den 14. Februar klokken 16.00<br />\r\nObligatorisk fellesm&oslash;te for Security crew i 2 etg. Torsdag den 13. Februar klokken 15.30</p>\r\n', 0, 0),
-(8, 'core', 'Core', '', 16, 0),
-(9, 'info', 'Info', '<p>Er ansvarlig for alle informasjonssystemer som webside og facebook siden. Under arrangementet driver Info en egen info desk som er &aring;pen for deltagerne 24/7.</p>\r\n\r\n<p>TeamViewer til podiet:<br>\r\nYour ID: 863 698 737<br>\r\nPassword: 2676</p>\r\n\r\n', 15, 0),
-(10, 'tech', 'Tech', '', 3, 0),
-(11, 'net', 'Tech:Net', '', 3, 0),
-(12, 'server', 'Tech:Server', '', 3, 0),
-(13, 'support', 'Tech:Support', '', 3, 0),
-(14, 'security', 'Security', '', 17, 0),
-(16, 'backstage', 'Backstage', '', 21, 0),
-(17, 'event', 'Event', '', 22, 0),
-(18, 'game', 'Game', '<p>Let the Games begin!</p>\r\n\r\n<p>&nbsp;</p>\r\n', 26, 0),
-(64, 'vaktliste-info', '<table border="0" cellpadding="2', '', 15, 0),
-(66, 'vaktliste-tech', 'Vaktliste', '<table border="0" cellpadding="2" cellspacing="2" style="width:350px">\r\n	<tbody>\r\n		<tr>\r\n			<td><strong>Fredag 14. Feb</strong></td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>18:00 - 21:00</td>\r\n			<td>Alle er p&aring;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>21:00 - 02:00</td>\r\n			<td>Markus og Sofie&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>L&oslash;rdag 15. Feb</strong></td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>02:00 - 06:00</td>\r\n			<td>Christian, Brage og Patryk</td>\r\n		</tr>\r\n		<tr>\r\n			<td>06:00 - 11:00</td>\r\n			<td>Otto og Kevin</td>\r\n		</tr>\r\n		<tr>\r\n			<td>11:00 - 17:00</td>\r\n			<td>Thomas og Eirik</td>\r\n		</tr>\r\n		<tr>\r\n			<td>17:00 - 22:00</td>\r\n			<td>Markus og Sofie&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>22:00 - 03:00</td>\r\n			<td>Christian, Brage og Patryk</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>S&oslash;ndag 16. Feb</strong></td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>03:00 - 08:00</td>\r\n			<td>Otto og Kevin</td>\r\n		</tr>\r\n		<tr>\r\n			<td>08:00 - 11:00</td>\r\n			<td>Thomas og Eirik</td>\r\n		</tr>\r\n		<tr>\r\n			<td>11:00 - Nedrigg er ferdig</td>\r\n			<td>Alle er p&aring;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 14, 0),
-(74, 'vaktliste-cafe', 'Vaktliste', '<p>18:00-23:00:Marius2&amp;Harepus</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>23:00-04:00:Bull&amp;Joakim</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>04:00-09:00:Johannes&amp;Veronica</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>09:00-14:00:Marius&amp;Magnus</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>14:00-19:00:Harepus&amp;Marius2</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>19:00-00:00:Johannes&amp;Veronica</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>00:00-05:00:Bull&amp;Joakim</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>05:00-10:00:Marius&amp;Magnus</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>10:00-12:00:Johannes&amp;Veronica</p>\r\n', 19, 0);
+INSERT INTO `pages` (`id`, `name`, `title`, `content`, `groupId`, `teamId`, `private`) VALUES
+(1, 'home', 'Infected Vinter 2014!', '<p>Obligatorisk fellesm&oslash;te for ALLE crew i multisalen Fredag den 14. Februar klokken 16.00<br />\r\nObligatorisk fellesm&oslash;te for Security crew i 2 etg. Torsdag den 13. Februar klokken 15.30</p>\r\n', 0, 0, 0),
+(8, 'core', 'Core', '', 16, 0, 1),
+(9, 'info', 'Info', '<p>Er ansvarlig for alle informasjonssystemer som webside og facebook siden. Under arrangementet driver Info en egen info desk som er &aring;pen for deltagerne 24/7.</p>\r\n\r\n<p>TeamViewer til podiet:<br>\r\nYour ID: 863 698 737<br>\r\nPassword: 2676</p>\r\n\r\n', 15, 0, 1),
+(10, 'tech', 'Tech', '', 3, 0, 1),
+(11, 'net', 'Tech:Net', '', 3, 0, 1),
+(12, 'server', 'Tech:Server', '', 3, 0, 1),
+(13, 'support', 'Tech:Support', '', 3, 0, 1),
+(14, 'security', 'Security', '', 17, 0, 1),
+(16, 'backstage', 'Backstage', '', 21, 0, 1),
+(17, 'event', 'Event', '', 22, 0, 1),
+(18, 'game', 'Game', '<p>Let the Games begin!</p>\r\n\r\n<p>&nbsp;</p>\r\n', 26, 0, 1),
+(64, 'vaktliste-info', '<table border="0" cellpadding="2', '', 15, 0, 1),
+(66, 'vaktliste-tech', 'Vaktliste', '<table border="0" cellpadding="2" cellspacing="2" style="width:350px">\r\n	<tbody>\r\n		<tr>\r\n			<td><strong>Fredag 14. Feb</strong></td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>18:00 - 21:00</td>\r\n			<td>Alle er p&aring;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>21:00 - 02:00</td>\r\n			<td>Markus og Sofie&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>L&oslash;rdag 15. Feb</strong></td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>02:00 - 06:00</td>\r\n			<td>Christian, Brage og Patryk</td>\r\n		</tr>\r\n		<tr>\r\n			<td>06:00 - 11:00</td>\r\n			<td>Otto og Kevin</td>\r\n		</tr>\r\n		<tr>\r\n			<td>11:00 - 17:00</td>\r\n			<td>Thomas og Eirik</td>\r\n		</tr>\r\n		<tr>\r\n			<td>17:00 - 22:00</td>\r\n			<td>Markus og Sofie&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>22:00 - 03:00</td>\r\n			<td>Christian, Brage og Patryk</td>\r\n		</tr>\r\n		<tr>\r\n			<td><strong>S&oslash;ndag 16. Feb</strong></td>\r\n			<td>&nbsp;</td>\r\n		</tr>\r\n		<tr>\r\n			<td>03:00 - 08:00</td>\r\n			<td>Otto og Kevin</td>\r\n		</tr>\r\n		<tr>\r\n			<td>08:00 - 11:00</td>\r\n			<td>Thomas og Eirik</td>\r\n		</tr>\r\n		<tr>\r\n			<td>11:00 - Nedrigg er ferdig</td>\r\n			<td>Alle er p&aring;</td>\r\n		</tr>\r\n	</tbody>\r\n</table>\r\n', 14, 0, 1),
+(74, 'vaktliste-cafe', 'Vaktliste', '<p>18:00-23:00:Marius2&amp;Harepus</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>23:00-04:00:Bull&amp;Joakim</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>04:00-09:00:Johannes&amp;Veronica</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>09:00-14:00:Marius&amp;Magnus</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>14:00-19:00:Harepus&amp;Marius2</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>19:00-00:00:Johannes&amp;Veronica</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>00:00-05:00:Bull&amp;Joakim</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>05:00-10:00:Marius&amp;Magnus</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>10:00-12:00:Johannes&amp;Veronica</p>\r\n', 19, 0, 1);
 
 -- --------------------------------------------------------
 
