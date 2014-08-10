@@ -124,15 +124,17 @@ INSERT INTO `tickets` (`id`, `eventId`, `ownerId`, `typeId`, `seatId`, `seaterId
 CREATE TABLE IF NOT EXISTS `tickettypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `humanName` varchar(32) NOT NULL,
+  `price` int(11) NOT NULL COMMENT 'Price of ticket',
+  `internalName` varchar(64) NOT NULL COMMENT 'Internal name. F.ex "Infected 2014 ticket"',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Dataark for tabell `tickettypes`
 --
 
-INSERT INTO `tickettypes` (`id`, `humanName`) VALUES
-(1, 'Test');
+INSERT INTO `tickettypes` (`id`, `humanName`, `price`, `internalName`) VALUES
+(1, 'Test', 1337, 'Testbilett');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -147,5 +149,7 @@ CREATE TABLE IF NOT EXISTS `storesessions` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `userId` int(12) NOT NULL,
   `timeCreated` int(12) NOT NULL,
+  `ticketType` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
