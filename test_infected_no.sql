@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `events` (
   `end` datetime NOT NULL,
   `location` int(11) NOT NULL,
   `participants` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
   `seatmap` int(11) NOT NULL,
+  `ticketType` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
@@ -62,10 +62,10 @@ CREATE TABLE IF NOT EXISTS `events` (
 -- Dataark for tabell `events`
 --
 
-INSERT INTO `events` (`id`, `theme`, `start`, `end`, `location`, `participants`, `price`, `seatmap`) VALUES
-(1, 'Arcade', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 322, 275, 0),
-(2, 'Modern Warfare', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 1, 335, 350, 0),
-(3, 'Odyssey', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 1, 335, 350, 0);
+INSERT INTO `events` (`id`, `theme`, `start`, `end`, `location`, `participants`, `seatmap`, `ticketType`) VALUES
+(1, 'Arcade', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 322, 0, 0),
+(2, 'Modern Warfare', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 1, 335, 0, 0),
+(3, 'Odyssey', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 1, 335, 0, 0);
 
 -- --------------------------------------------------------
 
