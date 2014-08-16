@@ -53,6 +53,7 @@ INSERT INTO `rows` (`id`, `x`, `y`, `row`, `seatmap`) VALUES
 CREATE TABLE IF NOT EXISTS `seatmaps` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `humanName` varchar(64) NOT NULL,
+  `backgroundImage` varchar(64) NOT NULL COMMENT 'File name of background image. Does not contain path',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -60,8 +61,8 @@ CREATE TABLE IF NOT EXISTS `seatmaps` (
 -- Dataark for tabell `seatmaps`
 --
 
-INSERT INTO `seatmaps` (`id`, `humanName`) VALUES
-(1, 'sweg');
+INSERT INTO `seatmaps` (`id`, `humanName`, `backgroundImage`) VALUES
+(1, 'sweg', '');
 
 -- --------------------------------------------------------
 
