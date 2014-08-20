@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `storesessions` (
   `timeCreated` int(12) NOT NULL,
   `ticketType` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
-  `key` varchar(32) NOT NULL,
+  `code` varchar(32) NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
