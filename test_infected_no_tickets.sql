@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `rows` (
   `row` int(11) NOT NULL,
   `seatmap` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `rows`
@@ -53,9 +53,9 @@ INSERT INTO `rows` (`id`, `x`, `y`, `row`, `seatmap`) VALUES
 CREATE TABLE IF NOT EXISTS `seatmaps` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `humanName` varchar(64) NOT NULL,
-  `backgroundImage` varchar(64) NOT NULL COMMENT 'File name of background image. Does not contain path',
+  `backgroundImage` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `seatmaps`
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `seats` (
   `rowId` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1028 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `seats`
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   `seatId` int(11) NOT NULL,
   `seaterId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `tickets`
@@ -125,10 +125,10 @@ INSERT INTO `tickets` (`id`, `eventId`, `ownerId`, `typeId`, `seatId`, `seaterId
 CREATE TABLE IF NOT EXISTS `tickettypes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `humanName` varchar(32) NOT NULL,
-  `price` int(11) NOT NULL COMMENT 'Price of ticket',
-  `internalName` varchar(64) NOT NULL COMMENT 'Internal name. F.ex "Infected 2014 ticket"',
+  `price` int(11) NOT NULL,
+  `internalName` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `tickettypes`
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `storesessions` (
   `code` varchar(32) NOT NULL,
   `price` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `storesessions` (
 --
 
 CREATE TABLE IF NOT EXISTS `paymentlog` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique ID of log entry',
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `timeLogged` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `ticketType` int(11) NOT NULL,
@@ -172,4 +172,4 @@ CREATE TABLE IF NOT EXISTS `paymentlog` (
   `totalPrice` int(11) NOT NULL,
   `transactionId` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
