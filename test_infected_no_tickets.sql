@@ -166,15 +166,10 @@ CREATE TABLE IF NOT EXISTS `storesessions` (
 CREATE TABLE IF NOT EXISTS `paymentlog` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique ID of log entry',
   `timeLogged` int(11) NOT NULL,
-  `itemName` varchar(32) NOT NULL,
-  `itemNumber` varchar(64) NOT NULL,
-  `paymentStatus` varchar(64) NOT NULL,
-  `paymentAmount` varchar(64) NOT NULL,
-  `paymentCurrency` varchar(64) NOT NULL,
-  `txnId` varchar(64) NOT NULL,
-  `receiverEmail` varchar(64) NOT NULL,
-  `payerEmail` varchar(64) NOT NULL,
-  `quantity` varchar(64) NOT NULL,
   `userId` int(11) NOT NULL,
+  `ticketType` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `totalPrice` int(11) NOT NULL,
+  `transactionId` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
