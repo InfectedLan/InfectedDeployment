@@ -49,23 +49,24 @@ INSERT INTO `emergencycontacts` (`id`, `userId`, `phone`) VALUES
 CREATE TABLE IF NOT EXISTS `events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `theme` varchar(16) NOT NULL,
-  `start` datetime NOT NULL,
-  `end` datetime NOT NULL,
   `location` int(11) NOT NULL,
   `participants` int(11) NOT NULL,
+  `bookingTime` datetime NOT NULL,
+  `startTime` datetime NOT NULL,
+  `endTime` datetime NOT NULL,
   `seatmap` int(11) NOT NULL,
   `ticketType` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `events`
 --
 
-INSERT INTO `events` (`id`, `theme`, `start`, `end`, `location`, `participants`, `seatmap`, `ticketType`) VALUES
-(1, 'Arcade', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 322, 0, 1),
-(2, 'Modern Warfare', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 1, 335, 0, 1),
-(3, 'Odyssey', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 1, 335, 0, 1);
+INSERT INTO `events` (`id`, `theme`, `location`, `participants`, `bookingTime`, `startTime`, `endTime`, `seatmap`, `ticketType`) VALUES
+(1, 'Arcade', 1, 322, '2013-08-27 18:00:00', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 0, 1),
+(2, 'Modern Warfare', 1, 335, '2014-01-14 18:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 0, 1),
+(3, '', 1, 335, '2014-08-01 18:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 2, 1);
 
 -- --------------------------------------------------------
 
