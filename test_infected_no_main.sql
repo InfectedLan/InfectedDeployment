@@ -129,21 +129,20 @@ CREATE TABLE IF NOT EXISTS `games` (
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
   `price` int(11) NOT NULL,
-  `mode` varchar(16) NOT NULL,
+  `mode` varchar(8) NOT NULL,
   `description` text NOT NULL,
-  `deadline` datetime NOT NULL,
+  `deadlineTime` datetime NOT NULL,
   `published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `games`
 --
 
-INSERT INTO `games` (`id`, `name`, `title`, `price`, `mode`, `description`, `deadline`, `published`) VALUES
-(1, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 3000, '3on3', '', '2014-02-15 11:30:00', 1),
-(2, 'league-of-legends', 'League of Legends', 7000, '5on5', '(West) 1.plass 5000,-   2.plass 2000,-', '2014-02-14 20:30:00', 1),
-(3, 'starcraft-2', 'Starcraft 2', 1000, '', '', '2014-02-12 00:00:00', 0);
+INSERT INTO `games` (`id`, `name`, `title`, `price`, `mode`, `description`, `deadlineTime`, `published`) VALUES
+(1, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 3000, '3on3', '', '2014-12-16 11:30:00', 1),
+(2, 'league-of-legends', 'League of Legends', 7000, '5on5', '(West) 1.plass 5000,-   2.plass 2000,-', '2014-02-14 20:30:00', 1);
 
 -- --------------------------------------------------------
 
