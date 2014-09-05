@@ -35,15 +35,6 @@ CREATE TABLE IF NOT EXISTS `rows` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
---
--- Dataark for tabell `rows`
---
-
-INSERT INTO `rows` (`id`, `x`, `y`, `row`, `seatmap`) VALUES
-(1, 1, 1, 1, 1),
-(2, 52, 1, 2, 1),
-(5, 112, 3, 3, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -57,13 +48,6 @@ CREATE TABLE IF NOT EXISTS `seatmaps` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
---
--- Dataark for tabell `seatmaps`
---
-
-INSERT INTO `seatmaps` (`id`, `humanName`, `backgroundImage`) VALUES
-(1, 'sweg', '');
-
 -- --------------------------------------------------------
 
 --
@@ -76,22 +60,6 @@ CREATE TABLE IF NOT EXISTS `seats` (
   `number` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
-
---
--- Dataark for tabell `seats`
---
-
-INSERT INTO `seats` (`id`, `rowId`, `number`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
-(4, 2, 1),
-(5, 2, 2),
-(13, 2, 3),
-(14, 2, 4),
-(15, 2, 5),
-(16, 2, 6),
-(17, 2, 7);
 
 -- --------------------------------------------------------
 
@@ -108,13 +76,6 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   `seaterId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
-
---
--- Dataark for tabell `tickets`
---
-
-INSERT INTO `tickets` (`id`, `eventId`, `ownerId`, `typeId`, `seatId`, `seaterId`) VALUES
-(1, 3, 2, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -135,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `tickettypes` (
 --
 
 INSERT INTO `tickettypes` (`id`, `humanName`, `price`, `internalName`) VALUES
-(1, 'Test', 1337, 'Testbilett');
+(1, 'Deltaker', 350, 'deltaker');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

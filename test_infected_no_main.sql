@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `agenda` (
   `description` text NOT NULL,
   `start` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `agenda`
@@ -81,42 +81,7 @@ CREATE TABLE IF NOT EXISTS `gameapplications` (
   `phone` int(8) NOT NULL,
   `email` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
-
---
--- Dataark for tabell `gameapplications`
---
-
-INSERT INTO `gameapplications` (`id`, `game`, `name`, `tag`, `contactname`, `contactnick`, `phone`, `email`) VALUES
-(1, 1, 'AZZiP', 'AZZiP', 'Aksel Slettemark', 'maroni', 45867497, 'akselslettemark@gmail.com'),
-(2, 1, 'Fister sisters', '=FS=', 'Liam Svanåsbakken Crouch', 'petterroea', 94132789, 'spam@petterroea.com'),
-(4, 1, 'Tøffeste toget i byen', 'TTIB', 'Snorre Helno', 'sailatlas', 98068020, 'snorrehe99@hotmail.com'),
-(5, 1, 'I like cats <3', 'ILC', 'Jon Ø Granviken', 'GRANVIK', 95861103, 'jogranv@hotmail.com'),
-(6, 2, 'Schpæder Inc.', 'SPINC', 'Fredrik Hanevold', 'Sjaven', 91704906, 'fredrik.hanevold@gmail.com'),
-(7, 2, 'Ralph Lauren Gaming', 'PoloRL', 'Baste Øxseth', 'Based God', 97044386, 'xboxliver.96@gmail.com'),
-(8, 1, 'GuttaSloppy', 'sloppy', 'Fredrik Warbo', 'wrb', 99767745, 'fredrik@warbo.org'),
-(10, 2, 'FpZ Clan', 'FpZ', 'Kasper Lundsbakken', 'RazorClawz', 94899889, 'kasper@lundsbakken.net'),
-(11, 2, 'eXire eSports', 'eXire', 'Erlend Ousdal', 'Donomegi', 94839045, 'er_lendo@hotmail.com'),
-(12, 1, 'SkillLess', 'Skill<', 'Jonas Nordgaren', 'bÅTeN', 95232627, 'jonas@nordgaren.no'),
-(13, 1, 'Girl-Power', 'The Power', 'Nikolai Engh', 'SirNick', 45413362, 'Nikolaiengh@hotmail.no'),
-(14, 2, 'Team Kjus', 'TMK', 'Jørgen Kjos', 'Lord Kjus', 97660890, 'jorgizkjoz@gmail.com'),
-(15, 2, 'Disguesting Greatness', 'DGG Gudene', 'Martin Yu Nilsen', 'CrabKlNG', 48101696, 'martinyunilsen3@hotmail.com'),
-(16, 2, 'BlingBlong Rep', 'BBP', 'Jesper Midtskogen', 'Zeppx', 90818127, 'jesper@scangolf.no'),
-(17, 2, 'The Urf Squad', 'Durf', 'Sindre Warhuus', 'DucheNozzle69', 99406247, 'Sindru5@hotmail.com'),
-(18, 2, 'the-mushrooms-addicits', 'TMA', 'Markus', 'Mustisi', 91685898, 'bmarkusv@gmail.com'),
-(19, 1, 'Eat Sleep Game', 'ESG eSports', 'Andreas Løyning Vu', 'Yukizo', 98005345, 'superwaffel98@gmail.com'),
-(20, 2, 'Fart Away', 'Fartay', 'Emil Stakkeland Torstad', 'Aep98', 98846490, 'emilstakkeland@gmail.com'),
-(23, 2, 'Fake Fakers', 'FaFak', 'Thomas Vangen', 'Vanginator', 99107006, 'thomas.b.vangen@gmail.com'),
-(24, 2, 'Infected Poros', 'InfPor', 'Andreas Solheim', 'Icemyst', 94188964, 'asolheim789@gmail.com'),
-(25, 3, 'The Dream Team', 'TDREAM', 'Per Kristian Sagholen', 'TBO', 97690761, 'Kebab_96@hotmail.no'),
-(28, 2, 'Rægge boyz', 'RBSD', 'Olav Olin', 'Mulastekar', 41692004, 'Old.1222@hotmail.com'),
-(30, 2, 'Ræggeboys', 'Rægg', 'David', 'Dayweed Johnsen', 46446366, 'david@1337.no'),
-(34, 2, 'ScrubbyDubbyGaming', 'ScrubG', 'Anders Opstad', 'ASociopath', 47244564, 'andersog96@gmail.com'),
-(36, 2, 'Thunder Ducks', 'TD', 'Simen Selvik Nordang', 'Nemis Simen', 91531939, 'simenselvik@hotmail.com'),
-(37, 2, 'Toast Gaming', 'TG', 'Nils Kvilekval', 'Found', 98891671, 'kvile_98@hotmail.com'),
-(38, 2, 'Fister Sisters', '[FS]', 'Niels-Henrik Guthe', 'jamba408', 95367020, 'nigu_98@hotmail.com'),
-(41, 1, 'Look At The Noobs', 'LATN', 'Christoffer', 'LookInMyEye', 47706788, 'christoffersveen14@hotmail.com'),
-(43, 1, 'Fairly Attractive Players', '¨FAP¨', 'Henrik Hermansen', 'Spearman', 98086206, 'spearman_cs@hotmail.com');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -131,7 +96,8 @@ CREATE TABLE IF NOT EXISTS `games` (
   `price` int(11) NOT NULL,
   `mode` varchar(8) NOT NULL,
   `description` text NOT NULL,
-  `deadlineTime` datetime NOT NULL,
+  `startTime` datetime NOT NULL,
+  `endTime` datetime NOT NULL,
   `published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
@@ -141,8 +107,8 @@ CREATE TABLE IF NOT EXISTS `games` (
 --
 
 INSERT INTO `games` (`id`, `name`, `title`, `price`, `mode`, `description`, `deadlineTime`, `published`) VALUES
-(1, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 3000, '3on3', '', '2014-12-16 11:30:00', 1),
-(2, 'league-of-legends', 'League of Legends', 7000, '5on5', '(West) 1.plass 5000,-   2.plass 2000,-', '2014-02-14 20:30:00', 1);
+(1, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 3000, '3on3', '', '2014-12-16 11:30:00', '2014-12-16 11:30:00', 1),
+(2, 'league-of-legends', 'League of Legends', 7000, '5on5', '(West) 1.plass 5000,-   2.plass 2000,-', '2014-02-14 20:30:00', '2014-12-16 11:30:00', 1);
 
 -- --------------------------------------------------------
 
@@ -156,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `title` varchar(32) NOT NULL,
   `content` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `pages`
@@ -188,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `slides` (
   `content` text NOT NULL,
   `published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `slides`

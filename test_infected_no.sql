@@ -31,14 +31,7 @@ CREATE TABLE IF NOT EXISTS `emergencycontacts` (
   `userId` int(11) NOT NULL,
   `phone` int(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dataark for tabell `emergencycontacts`
---
-
-INSERT INTO `emergencycontacts` (`id`, `userId`, `phone`) VALUES
-(1, 2, 91792933);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -79,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `locations`
@@ -99,14 +92,7 @@ CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
   `userId` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dataark for tabell `passwordresetcodes`
---
-
-INSERT INTO `passwordresetcodes` (`id`, `userId`, `code`) VALUES
-(2, 2, '01fcd1cada386035dbc565394aa0686d');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -126,9 +112,9 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `userId`, `value`) VALUES
-(1, 1, 'admin'),
-(2, 2, 'admin'),
-(3, 3, 'admin');
+(1, 1, '*'),
+(2, 2, '*'),
+(3, 3, '*');
 
 -- --------------------------------------------------------
 
@@ -141,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `postalcodes` (
   `code` int(4) NOT NULL,
   `city` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4735 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4735;
 
 --
 -- Dataark for tabell `postalcodes`
@@ -4896,36 +4882,7 @@ CREATE TABLE IF NOT EXISTS `registrationcodes` (
   `userId` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
-
---
--- Dataark for tabell `registrationcodes`
---
-
-INSERT INTO `registrationcodes` (`id`, `userId`, `code`) VALUES
-(7, 10, 'c48e8a4f340b15a3dd6bc7c5de7c021e'),
-(8, 11, 'cd4d5294059fe526e3409fc7dd775ce0'),
-(9, 12, '9bbe6c3178c3fdf34f9c0380ea08dba2'),
-(10, 13, '6471d822ddf6d6237b22fe96ba5f8938'),
-(11, 14, '8d3c8a4fb66a9512428f06843a94851c'),
-(12, 15, '312d3b9de6db61718129d510cc888440'),
-(13, 4, '38187677ee541c75beea7112f6a9d86b'),
-(14, 5, '76a86324d600734e129e7ee12efee56d'),
-(15, 6, '86fbc6b6a90d67733307db8f3e17dfee'),
-(16, 7, 'd10f178ae11d041e1f2bde30163f09db'),
-(17, 4, '48154c6b2bddeab1d6c2dc9115d781a5'),
-(18, 5, '6b5921e42e3cb5e3071de4b0155f016e'),
-(19, 6, 'cd27b372d6adedc848bf9ccfef09973b'),
-(20, 7, 'c0f5edec50153e61d154dcf6e38c7a04'),
-(21, 8, '8911c6a240935fa47d8931232422dc9a'),
-(22, 9, 'f63fcb8286dc2be3f143c8adcd565c5a'),
-(23, 10, '9bd90dec572819d311a15d182741a04b'),
-(24, 11, '30feccab12b4ed093ed1e4481988113c'),
-(25, 12, '69bb600bd30276183836e6fcb2fc1d9c'),
-(26, 13, 'b525340194aaf1ea132309ac8bab87c1'),
-(27, 14, '9704133314298f6be34ecb3977cedcc4'),
-(28, 15, 'ee7ed0b5e19b63c5e32d272b6028b0db'),
-(29, 16, '95cdc541bb2253b79e7135b7bbf9ddac');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -4947,7 +4904,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `postalcode` int(4) NOT NULL,
   `nickname` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `users`
@@ -4956,8 +4913,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `nickname`) VALUES
 (1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'me@petterroea.com', '1998-04-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea'),
 (2, 'Halvor', 'Lyche Strandvoll', 'halvors', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors'),
-(3, 'Fredrik', 'Warbo', 'warbo', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'fredrik@warbo.com', '0000-00-00', 0, 99767745, 'Søndre vei 68', 1397, 'wrb'),
-(16, 'test', 'test', 'test', 'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 'test@halvors.org', '1983-11-10', 0, 66667777, 'gggggg', 1395, 'lol');
+(3, 'Fredrik', 'Warbo', 'warbo', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'fredrik@warbo.com', '0000-00-00', 0, 99767745, 'Søndre vei 68', 1397, 'wrb');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
