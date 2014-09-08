@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Vert: localhost
--- Generert den: 08. Aug, 2014 13:16 PM
+-- Generert den: 08. Sep, 2014 21:56 PM
 -- Tjenerversjon: 5.5.38-0ubuntu0.14.04.1
 -- PHP-Versjon: 5.5.9-1ubuntu4.3
 
@@ -58,8 +58,10 @@ CREATE TABLE IF NOT EXISTS `events` (
 
 INSERT INTO `events` (`id`, `theme`, `location`, `participants`, `bookingTime`, `startTime`, `endTime`, `seatmap`, `ticketType`) VALUES
 (1, 'Arcade', 1, 322, '2013-08-27 18:00:00', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 0, 1),
-(2, 'Modern Warfare', 1, 335, '2014-01-14 18:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 0, 1),
-(3, '', 1, 335, '2014-08-01 18:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 2, 1);
+(2, '', 1, 335, '2014-01-14 18:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 0, 1),
+(3, '', 1, 335, '2014-08-28 18:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 1, 1),
+(4, '', 1, 335, '2015-01-13 18:00:00', '2015-02-13 18:00:00', '2015-02-15 12:00:00', 2, 1),
+(5, '', 1, 335, '2015-09-02 18:00:00', '2015-10-02 18:00:00', '2015-10-04 12:00:00', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -102,19 +104,33 @@ CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
 
 CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) NOT NULL,
-  `value` varchar(64) NOT NULL,
+  `value` varchar(32) NOT NULL,
+  `description` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dataark for tabell `permissions`
 --
 
-INSERT INTO `permissions` (`id`, `userId`, `value`) VALUES
-(1, 1, '*'),
-(2, 2, '*'),
-(3, 3, '*');
+INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
+(1, '*', 'Gir tilgang til absolutt alt, du er nå en udødelig administrator.'),
+(2, 'functions.search-users', 'Søk etter brukere i databasen.'),
+(3, 'functions.my-crew', 'Endre sider under "My Crew".'),
+(4, 'functions.info', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
+(5, 'functions.site-list-games', 'Administrer spill, settes opp compo i nye spill og moderer påmeldinger.'),
+(6, 'functions.site-list-pages', 'Endre innholdet på nettsiden.'),
+(7, 'chief.home', 'Endre "home" siden.'),
+(8, 'chief.groups', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
+(9, 'chief.teams', 'Administrer lagene for ditt crew, hvem som er medlem av hvilke lag og lederene i lagene.'),
+(10, 'chief.avatars', 'Administrer profilbilder, alle nye profilbilder vil dukke opp her og du kan godjkenne dem eller avise.'),
+(11, 'chief.applications', 'Godta eller avvis crew-søknader.'),
+(12, 'admin.events', 'Administrer arrangementer, informasjon er blir automatisk endret på hovedsiden og ticketsiden.'),
+(13, 'admin.permissions', 'Velg hvilke bruker som skal ha tilgang til hva, dette er et tilgangsystem, men husk at brukere har standard tilganger utenom dette, ettersom de er medlem av crewet eller ikke.'),
+(14, 'admin.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
+(15, 'admin.seatmap', 'Endre seatmappet, her kan du flytte, legg til, og fjerne seter og rader.'),
+(16, 'functions.seatmap', 'Se seatmappet'),
+(17, 'chief.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere');
 
 -- --------------------------------------------------------
 
@@ -4887,23 +4903,51 @@ CREATE TABLE IF NOT EXISTS `registrationcodes` (
 -- --------------------------------------------------------
 
 --
+-- Tabellstruktur for tabell `userpermissions`
+--
+
+CREATE TABLE IF NOT EXISTS `userpermissions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `value` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
+--
+-- Dataark for tabell `userpermissions`
+--
+
+INSERT INTO `userpermissions` (`id`, `userId`, `value`) VALUES
+(1, 1, '*'),
+(2, 2, '*'),
+(3, 3, '*');
+
+-- --------------------------------------------------------
+
+--
 -- Tabellstruktur for tabell `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(64) NOT NULL,
-  `lastname` varchar(64) NOT NULL,
+  `firstname` varchar(32) NOT NULL,
+  `lastname` varchar(32) NOT NULL,
   `username` varchar(32) NOT NULL,
   `password` varchar(256) NOT NULL,
   `email` varchar(64) NOT NULL,
   `birthdate` date NOT NULL,
   `gender` tinyint(1) NOT NULL,
   `phone` int(8) NOT NULL,
-  `address` varchar(64) NOT NULL,
+  `address` varchar(32) NOT NULL,
   `postalcode` int(4) NOT NULL,
   `nickname` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `firstname` (`firstname`),
+  KEY `lastname` (`lastname`),
+  KEY `username` (`username`),
+  KEY `email` (`email`),
+  KEY `phone` (`phone`),
+  KEY `nickname` (`nickname`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
@@ -4911,9 +4955,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `nickname`) VALUES
-(1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'me@petterroea.com', '1998-04-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea'),
-(2, 'Halvor', 'Lyche Strandvoll', 'halvors', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors'),
-(3, 'Fredrik', 'Warbo', 'warbo', 'b4004f0aa8ee170259ce168a3c4a5af34aacb9e066c1845c229aa991479f29ce', 'fredrik@warbo.com', '0000-00-00', 0, 99767745, 'Søndre vei 68', 1397, 'wrb');
+(1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', '71018ed33afadf79ec8e5d222c41031cc02ede969629c1340dedbfe8d31030cb', 'me@petterroea.com', '1998-03-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea'),
+(2, 'Halvor', 'Lyche Strandvoll', 'halvors', 'c38900668741dc4655253ee1fd0b6a700cbece969bb7af14b69c309d55b91e12', 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors'),
+(3, 'Fredrik', 'Warbo', 'warbo', 'b68878cc67def52956088d845724bbab804c68900e7e2f89a8a12d2ae4e54359', 'fredrik@warbo.no', '1988-04-10', 0, 99767745, 'Søndre vei 68', 1397, 'wrb');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
