@@ -119,7 +119,7 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (3, 'functions.my-crew', 'Endre sider under "My Crew".'),
 (4, 'functions.info', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
 (5, 'functions.site-list-games', 'Administrer spill, settes opp compo i nye spill og moderer påmeldinger.'),
-(6, 'functions.site-list-pages', 'Endre innholdet på nettsiden.'),
+(6, 'functions.site-pages', 'Endre innholdet på nettsiden.'),
 (7, 'chief.home', 'Endre "home" siden.'),
 (8, 'chief.groups', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
 (9, 'chief.teams', 'Administrer lagene for ditt crew, hvem som er medlem av hvilke lag og lederene i lagene.'),
