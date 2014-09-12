@@ -59,7 +59,6 @@ CREATE TABLE IF NOT EXISTS `invites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
   `clanId` int(11) NOT NULL,
-  `inviteCode` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
