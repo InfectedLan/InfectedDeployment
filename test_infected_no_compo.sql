@@ -23,6 +23,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `readyHandlers`
+--
+
+CREATE TABLE IF NOT EXISTS `readyHandlers` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`compoId` int(11) NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
 -- Table structure for table `clans`
 --
 
