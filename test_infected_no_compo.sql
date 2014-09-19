@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `registrationDeadline` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `desc` varchar(500) NOT NULL,
+  `event` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
