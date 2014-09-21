@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `desc` varchar(500) NOT NULL,
   `event` int(11) NOT NULL,
   `teamSize` int(11) NOT NULL,
+  `tag` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
