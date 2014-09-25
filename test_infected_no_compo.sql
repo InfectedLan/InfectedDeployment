@@ -129,6 +129,36 @@ CREATE TABLE IF NOT EXISTS `votes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `matches`
+--
+
+CREATE TABLE IF NOT EXISTS `matches` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`scheduledTime` int(11) NOT NULL,
+`connectDetails` varchar(32) NOT NULL,
+`winner` int(11) NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `participantOfMatch`
+--
+
+CREATE TABLE IF NOT EXISTS `participantOfMatch` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`type` int(11) NOT NULL,
+`participantId` int(11) NOT NULL,
+`matchId` int(11) NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- ---------------------------------------------------------
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
