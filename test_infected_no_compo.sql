@@ -139,6 +139,7 @@ CREATE TABLE IF NOT EXISTS `matches` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `scheduledTime` int(11) NOT NULL,
 `connectDetails` varchar(32) NOT NULL,
+`state` int(11) NOT NULL,
 `winner` int(11) NOT NULL,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -153,6 +154,19 @@ CREATE TABLE IF NOT EXISTS `participantOfMatch` (
 `id` int(11) NOT NULL AUTO_INCREMENT,
 `type` int(11) NOT NULL,
 `participantId` int(11) NOT NULL,
+`matchId` int(11) NOT NULL,
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- ---------------------------------------------------------
+
+--
+-- Table structure for table `readyUsers`
+--
+
+CREATE TABLE IF NOT EXISTS `readyUsers` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`userId` int(11) NOT NULL,
 `matchId` int(11) NOT NULL,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
