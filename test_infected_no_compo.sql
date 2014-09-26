@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `voteOptions` (
 
 CREATE TABLE IF NOT EXISTS `votes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) NOT NULL,
+  `consumerId` int(11) NOT NULL,
   `voteOptionId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -141,6 +141,7 @@ CREATE TABLE IF NOT EXISTS `matches` (
 `connectDetails` varchar(32) NOT NULL,
 `state` int(11) NOT NULL,
 `winner` int(11) NOT NULL,
+`compoId` int(11) NOT NULL,
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
