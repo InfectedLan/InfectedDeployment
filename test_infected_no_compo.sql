@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `memberof` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
   `clanId` int(11) NOT NULL,
-  `stepin` Tinyint(1) NOT NULL,
+  `stepin` Tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
