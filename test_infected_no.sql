@@ -2,10 +2,10 @@
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Vert: localhost
--- Generert den: 08. Sep, 2014 21:56 PM
--- Tjenerversjon: 5.5.38-0ubuntu0.14.04.1
--- PHP-Versjon: 5.5.9-1ubuntu4.3
+-- Host: localhost
+-- Generation Time: Jan 28, 2015 at 10:34 PM
+-- Server version: 5.6.19-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `emergencycontacts`
+-- Table structure for table `emergencycontacts`
 --
 
 CREATE TABLE IF NOT EXISTS `emergencycontacts` (
@@ -31,12 +31,12 @@ CREATE TABLE IF NOT EXISTS `emergencycontacts` (
   `userId` int(11) NOT NULL,
   `phone` int(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `events`
+-- Table structure for table `events`
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
@@ -50,23 +50,28 @@ CREATE TABLE IF NOT EXISTS `events` (
   `seatmap` int(11) NOT NULL,
   `ticketType` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
--- Dataark for tabell `events`
+-- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`id`, `theme`, `location`, `participants`, `bookingTime`, `startTime`, `endTime`, `seatmap`, `ticketType`) VALUES
-(1, 'Arcade', 1, 322, '2013-08-27 18:00:00', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 0, 1),
-(2, '', 1, 335, '2014-01-14 18:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 0, 1),
-(3, '', 1, 335, '2014-08-28 18:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 1, 1),
-(4, '', 1, 335, '2015-01-13 18:00:00', '2015-02-13 18:00:00', '2015-02-15 12:00:00', 2, 1),
-(5, '', 1, 335, '2015-09-02 18:00:00', '2015-10-02 18:00:00', '2015-10-04 12:00:00', 3, 1);
+(1, 'Arcade', 1, 322, '2013-08-27 18:00:00', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 1),
+(2, '', 1, 335, '2014-01-14 18:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 2, 1),
+(3, '', 1, 370, '2014-08-28 18:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 3, 1),
+(4, '', 1, 368, '2015-01-14 18:00:00', '2015-02-13 18:00:00', '2015-02-15 12:00:00', 4, 1),
+(5, '', 1, 335, '2015-08-25 18:00:00', '2015-09-25 18:00:00', '2015-09-27 12:00:00', 5, 1),
+(6, '', 1, 335, '2016-01-19 18:00:00', '2016-02-19 18:00:00', '2016-02-21 12:00:00', 6, 1),
+(7, '', 1, 335, '2016-08-30 18:00:00', '2016-09-30 18:00:00', '2016-10-02 12:00:00', 7, 1),
+(8, '', 1, 335, '2017-01-17 18:00:00', '2017-02-17 18:00:00', '2017-02-19 12:00:00', 8, 1),
+(9, '', 1, 335, '2017-08-29 18:00:00', '2017-09-29 18:00:00', '2017-10-01 12:00:00', 9, 1),
+(10, '', 1, 335, '2018-01-16 18:00:00', '2018-02-16 18:00:00', '2018-02-18 12:00:00', 10, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `locations`
+-- Table structure for table `locations`
 --
 
 CREATE TABLE IF NOT EXISTS `locations` (
@@ -74,10 +79,10 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dataark for tabell `locations`
+-- Dumping data for table `locations`
 --
 
 INSERT INTO `locations` (`id`, `name`, `title`) VALUES
@@ -86,7 +91,7 @@ INSERT INTO `locations` (`id`, `name`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `passwordresetcodes`
+-- Table structure for table `passwordresetcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
@@ -94,12 +99,12 @@ CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
   `userId` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `permissions`
+-- Table structure for table `permissions`
 --
 
 CREATE TABLE IF NOT EXISTS `permissions` (
@@ -107,35 +112,39 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `value` varchar(32) NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
--- Dataark for tabell `permissions`
+-- Dumping data for table `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (1, '*', 'Gir tilgang til absolutt alt, du er nå en udødelig administrator.'),
-(2, 'functions.search-users', 'Søk etter brukere i databasen.'),
-(3, 'functions.my-crew', 'Endre sider under "My Crew".'),
-(4, 'functions.info', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
-(5, 'functions.site-list-games', 'Administrer spill, settes opp compo i nye spill og moderer påmeldinger.'),
-(6, 'functions.site-pages', 'Endre innholdet på nettsiden.'),
-(7, 'chief.home', 'Endre "home" siden.'),
+(2, 'search.users', 'Søk etter brukere i databasen.'),
+(3, 'chief.my-crew', 'Endre sider under "My Crew".'),
+(4, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
+(6, 'admin.website', 'Endre innholdet på nettsiden.'),
+(7, 'chief.email', 'Send e-post til noen eller alle medlemmer.'),
 (8, 'chief.groups', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
 (9, 'chief.teams', 'Administrer lagene for ditt crew, hvem som er medlem av hvilke lag og lederene i lagene.'),
 (10, 'chief.avatars', 'Administrer profilbilder, alle nye profilbilder vil dukke opp her og du kan godjkenne dem eller avise.'),
 (11, 'chief.applications', 'Godta eller avvis crew-søknader.'),
 (12, 'admin.events', 'Administrer arrangementer, informasjon er blir automatisk endret på hovedsiden og ticketsiden.'),
 (13, 'admin.permissions', 'Velg hvilke bruker som skal ha tilgang til hva, dette er et tilgangsystem, men husk at brukere har standard tilganger utenom dette, ettersom de er medlem av crewet eller ikke.'),
-(14, 'admin.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
+(14, 'developer.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
 (15, 'admin.seatmap', 'Endre seatmappet, her kan du flytte, legg til, og fjerne seter og rader.'),
-(16, 'functions.seatmap', 'Se seatmappet'),
-(17, 'chief.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere');
+(16, 'event.seatmap', 'Se seatmappet'),
+(17, 'chief.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere'),
+(18, 'event.compo', 'Lar deg administrere compoer'),
+(19, 'event.print-ticket-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
+(20, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
+(21, 'developer.console', 'Gir deg tilgang til vedlikeholdskonsollen brukt av utviklere med over gjennomsnittlig forståelse for systemet.'),
+(22, 'chief.email', 'Send e-post til noen eller alle medlemmer.');
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `postalcodes`
+-- Table structure for table `postalcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `postalcodes` (
@@ -143,10 +152,10 @@ CREATE TABLE IF NOT EXISTS `postalcodes` (
   `code` int(4) NOT NULL,
   `city` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4735;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4735 ;
 
 --
--- Dataark for tabell `postalcodes`
+-- Dumping data for table `postalcodes`
 --
 
 INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
@@ -4890,7 +4899,7 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `registrationcodes`
+-- Table structure for table `registrationcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `registrationcodes` (
@@ -4898,34 +4907,47 @@ CREATE TABLE IF NOT EXISTS `registrationcodes` (
   `userId` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `userpermissions`
+-- Table structure for table `useroptions`
+--
+
+CREATE TABLE IF NOT EXISTS `useroptions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NOT NULL,
+  `hidePhone` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userpermissions`
 --
 
 CREATE TABLE IF NOT EXISTS `userpermissions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userId` int(11) NOT NULL,
-  `value` varchar(64) NOT NULL,
+  `permissionId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dataark for tabell `userpermissions`
+-- Dumping data for table `userpermissions`
 --
 
-INSERT INTO `userpermissions` (`id`, `userId`, `value`) VALUES
-(1, 1, '*'),
-(2, 2, '*'),
-(3, 3, '*');
+INSERT INTO `userpermissions` (`id`, `userId`, `permissionId`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -4941,23 +4963,37 @@ CREATE TABLE IF NOT EXISTS `users` (
   `address` varchar(32) NOT NULL,
   `postalcode` int(4) NOT NULL,
   `nickname` varchar(32) NOT NULL,
+  `registereddate` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `firstname` (`firstname`),
-  KEY `lastname` (`lastname`),
-  KEY `username` (`username`),
-  KEY `email` (`email`),
-  KEY `phone` (`phone`),
-  KEY `nickname` (`nickname`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
--- Dataark for tabell `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `nickname`) VALUES
-(1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', '71018ed33afadf79ec8e5d222c41031cc02ede969629c1340dedbfe8d31030cb', 'me@petterroea.com', '1998-03-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea'),
-(2, 'Halvor', 'Lyche Strandvoll', 'halvors', 'c38900668741dc4655253ee1fd0b6a700cbece969bb7af14b69c309d55b91e12', 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors'),
-(3, 'Fredrik', 'Warbo', 'warbo', 'b68878cc67def52956088d845724bbab804c68900e7e2f89a8a12d2ae4e54359', 'fredrik@warbo.no', '1988-04-10', 0, 99767745, 'Søndre vei 68', 1397, 'wrb');
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `nickname`, `registereddate`) VALUES
+(1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', '71018ed33afadf79ec8e5d222c41031cc02ede969629c1340dedbfe8d31030cb', 'me@petterroea.com', '1998-03-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea', '2014-08-28 18:00:00'),
+(2, 'Halvor', 'Lyche Strandvoll', 'halvors', 'c38900668741dc4655253ee1fd0b6a700cbece969bb7af14b69c309d55b91e12', 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors', '2014-08-28 18:00:00'),
+(3, 'Fredrik', 'Warbo', 'warbo', 'b68878cc67def52956088d845724bbab804c68900e7e2f89a8a12d2ae4e54359', 'fredrik@warbo.org', '1988-04-10', 0, 99767745, 'Søndre vei 68', 1397, 'wrb', '2014-08-28 18:00:00'),
+(5, 'lois', 'williams', 'test1', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(6, 'lois', 'williams', 'test2', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(7, 'kylie', 'warren', 'test3', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(8, 'marc', 'morrison', 'test4', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(9, 'lucas', 'anderson', 'test5', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(10, 'william', 'walters', 'test6', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(11, 'riley', 'carroll', 'test7', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(12, 'brittany', 'davis', 'test8', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(13, 'terry', 'obrien', 'test9', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(14, 'nellie', 'oliver', 'test10', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(15, 'sherri', 'lowe', 'test11', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(16, 'anthony', 'riley', 'test12', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(17, 'danny', 'martin', 'test13', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(18, 'eileen', 'powell', 'test14', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(19, 'isaac', 'smith', 'test15', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(20, 'anthony', 'stephens', 'test16', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(21, 'wade', 'beck', 'test17', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(22, 'vickie', 'sanchez', 'test18', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
