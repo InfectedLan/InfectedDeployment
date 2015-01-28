@@ -4965,7 +4965,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `nickname` varchar(32) NOT NULL,
   `registereddate` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`)
+  FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`,`nickname`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
