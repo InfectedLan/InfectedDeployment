@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `agenda` (
   `title` varchar(64) NOT NULL,
   `description` text NOT NULL,
   `startTime` datetime NOT NULL,
+  `published` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
