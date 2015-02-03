@@ -139,7 +139,8 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (18, 'event.compo', 'Lar deg administrere compoer'),
 (19, 'event.print-ticket-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
 (20, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
-(21, 'developer.console', 'Gir deg tilgang til vedlikeholdskonsollen brukt av utviklere med over gjennomsnittlig forståelse for systemet.');
+(21, 'developer.console', 'Gir deg tilgang til vedlikeholdskonsollen brukt av utviklere med over gjennomsnittlig forståelse for systemet.'),
+(22, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.');
 
 -- --------------------------------------------------------
 
