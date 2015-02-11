@@ -137,10 +137,11 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (16, 'event.seatmap', 'Se seatmappet'),
 (17, 'chief.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere'),
 (18, 'event.compo', 'Lar deg administrere compoer'),
-(19, 'event.print-ticket-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
+(19, 'event.table-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
 (20, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
 (21, 'developer.console', 'Gir deg tilgang til vedlikeholdskonsollen brukt av utviklere med over gjennomsnittlig forståelse for systemet.'),
-(22, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.');
+(22, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.'),
+(23, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.');
 
 -- --------------------------------------------------------
 
