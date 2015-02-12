@@ -53,8 +53,8 @@ CREATE TABLE IF NOT EXISTS `chats` (
 
 CREATE TABLE IF NOT EXISTS `matchrelationships` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `from` int(11) NOT NULL,
-  `to` int(11) NOT NULL,
+  `fromCompo` int(11) NOT NULL,
+  `toCompo` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
