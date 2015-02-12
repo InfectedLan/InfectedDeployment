@@ -128,6 +128,8 @@ CREATE TABLE IF NOT EXISTS `matches` (
   `winner` int(11) NOT NULL,
   `compoId` int(11) NOT NULL,
   `bracketOffset` int(8) NOT NULL,
+  `chat` int(11) NOT NULL,
+  `bracket` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
