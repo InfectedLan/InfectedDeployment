@@ -237,7 +237,7 @@ INSERT INTO `voteoptions` (`id`, `compoId`, `thumbnailUrl`, `name`) VALUES
 (4, 3, 'csgo_maps/mirage', 'Mirage'),
 (5, 3, 'csgo_maps/nuke', 'Nuke'),
 (6, 3, 'csgo_maps/overpass', 'Overpass'),
-(7, 3, 'csgo_maps/train', 'Train');
+(7, 3, 'csgo_maps/season', 'Season');
 
 -- --------------------------------------------------------
 
