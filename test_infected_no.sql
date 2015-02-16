@@ -119,35 +119,35 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
-(1, '*', 'Gir tilgang til absolutt alt, du er n? en ud?delig administrator.'),
+(1, '*', 'Gir tilgang til absolutt alt, du er nå en udødelig administrator.'),
 (2, 'admin.*', 'Gir tilgang til alt under admin.'),
-(3, 'admin.events', 'Administrer arrangementer, informasjon er blir automatisk endret p? hovedsiden og ticketsiden.'),
+(3, 'admin.events', 'Administrer arrangementer, informasjon er blir automatisk endret på hovedsiden og ticketsiden.'),
 (4, 'admin.permissions', 'Velg hvilke bruker som skal ha tilgang til hva, dette er et tilgangsystem, men husk at brukere har standard tilganger utenom dette, ettersom de er medlem av crewet eller ikke.'),
 (5, 'admin.seatmap', 'Endre seatmappet, her kan du flytte, legg til, og fjerne seter og rader.'),
-(6, 'admin.website', 'Endre innholdet p? nettsiden.'),
+(6, 'admin.website', 'Endre innholdet på nettsiden.'),
 (7, 'chief.*', 'Gir tilgang til alt under chief.'),
-(8, 'chief.applications', 'Godta eller avvis crew-s?knader.'),
+(8, 'chief.applications', 'Godta eller avvis crew-søknader.'),
 (9, 'chief.avatars', 'Administrer profilbilder, alle nye profilbilder vil dukke opp her og du kan godjkenne dem eller avise.'),
 (10, 'chief.email', 'Send e-post til noen eller alle medlemmer.'),
 (11, 'chief.groups', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
 (12, 'chief.my-crew', 'Endre sider under "My Crew".'),
 (13, 'chief.teams', 'Administrer lagene for ditt crew, hvem som er medlem av hvilke lag og lederene i lagene.'),
-(14, 'chief.tickets', 'Gj?re ting relatert til tickets-siden, slik som flytting av brukere'),
+(14, 'chief.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere'),
 (15, 'compo.*', 'Gir tilgang til alt under compo.'),
-(16, 'compo.chat', 'Lar deg chatte i alle chatter p? compo siden.'),
+(16, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.'),
 (17, 'developer.*', 'Gir tilgang til alt under developer.'),
-(18, 'developer.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feils?king.'),
-(19, 'developer.console', 'Gir deg tilgang til vedlikeholdskonsollen brukt av utviklere med over gjennomsnittlig forst?else for systemet.'),
+(18, 'developer.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
+(19, 'developer.console', 'Gir deg tilgang til vedlikeholdskonsollen brukt av utviklere med over gjennomsnittlig forståelse for systemet.'),
 (20, 'event.*', 'Gir tilgang til alt under event.'),
-(21, 'event.agenda', 'Endre agendaen, denne vises p? hovedsiden og infoskjermen under arrangementet.'),
+(21, 'event.agenda', 'Endre agendaen, denne vises på hovedsiden og infoskjermen under arrangementet.'),
 (22, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
 (23, 'event.compo', 'Lar deg administrere compoer'),
-(24, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var p? Infected det ?ret.'),
-(25, 'event.print-ticket-labels', 'Gir deg tilgang til ? printe lappene som legges p? bord under infected.'),
-(26, 'event.screen', 'Post informasjon p? infoskjermen som vil vises under arrangementet.'),
+(24, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.'),
+(25, 'event.print-ticket-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
+(26, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
 (27, 'event.seatmap', 'Se seatmappet'),
 (28, 'search.*', 'Gir tilgang til alt under search.'),
-(29, 'search.users', 'S?k etter brukere i databasen.');
+(29, 'search.users', 'Søk etter brukere i databasen.');
 
 -- --------------------------------------------------------
 
