@@ -67,40 +67,40 @@ CREATE TABLE IF NOT EXISTS `matchrelationships` (
 
 CREATE TABLE IF NOT EXISTS `clans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `chief` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `tag` varchar(32) NOT NULL,
-  `event` int(11) NOT NULL,
+  `chiefId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `compos`
+-- Tabellstruktur for tabell `compos`
 --
 
 CREATE TABLE IF NOT EXISTS `compos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `eventId` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `tag` varchar(32) NOT NULL,
+  `desciption` text NOT NULL,
   `startTime` int(11) NOT NULL,
   `registrationDeadline` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL,
-  `desc` varchar(500) NOT NULL,
-  `event` int(11) NOT NULL,
   `teamSize` int(11) NOT NULL,
-  `tag` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `compos`
+-- Dataark for tabell `compos`
 --
 
-INSERT INTO `compos` (`id`, `startTime`, `registrationDeadline`, `name`, `desc`, `event`, `teamSize`, `tag`) VALUES
-(1, 1411754400, 1411754400, 'Counter-Strike: Global Offensive', '5on5', 3, 5, 'CS:GO'),
-(2, 1411754400, 1411754400, 'League of Legends', '', 3, 5, 'LoL'),
-(3, 1423936800, 1423936800, 'Counter:Strike Global offensive', 'Placeholder for registrering :)', 4, 5, 'CS:GO'),
-(4, 1423936800, 1423936800, 'League of Legends', '', 4, 5, 'LoL');
+INSERT INTO `compos` (`id`, `eventId`, `name`, `tag`, `desciption`, `startTime`, `registrationDeadline`, `teamSize`) VALUES
+(1, 3, 'Counter-Strike: Global Offensive', 'CS:GO', '5on5', 1411754400, 1411754400, 5),
+(2, 3, 'League of Legends', 'LoL', '', 1411754400, 1411754400, 5),
+(3, 4, 'Counter:Strike Global offensive', 'CS:GO', 'Placeholder for registrering :)', 1423936800, 1423936800, 1),
+(4, 4, 'League of Legends', 'LoL', '', 1423936800, 1423936800, 5);
 
 -- --------------------------------------------------------
 

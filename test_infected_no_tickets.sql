@@ -82,8 +82,8 @@ CREATE TABLE IF NOT EXISTS `rows` (
   `number` int(11) NOT NULL,
   `x` int(11) NOT NULL,
   `y` int(11) NOT NULL,
-  `entrance` int(11) NOT NULL,
-  `seatmap` int(11) NOT NULL,
+  `entranceId` int(11) NOT NULL,
+  `seatmapId` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `rows` (
 -- Dumping data for table `rows`
 --
 
-INSERT INTO `rows` (`id`, `number`, `x`, `y`, `entrance`, `seatmap`) VALUES
+INSERT INTO `rows` (`id`, `number`, `x`, `y`, `entranceId`, `seatmapId`) VALUES
 (1, 1, 5, 641, 1, 3),
 (2, 2, 42, 641, 1, 3),
 (3, 3, 87, 641, 1, 3),
