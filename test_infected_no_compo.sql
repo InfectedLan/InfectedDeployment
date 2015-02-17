@@ -47,6 +47,17 @@ CREATE TABLE IF NOT EXISTS `chats` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
+--
+-- Table structure for table `matchrelationships`
+--
+
+CREATE TABLE IF NOT EXISTS `matchrelationships` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fromCompo` int(11) NOT NULL,
+  `toCompo` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +129,7 @@ CREATE TABLE IF NOT EXISTS `matches` (
   `compoId` int(11) NOT NULL,
   `bracketOffset` int(8) NOT NULL,
   `chat` int(11) NOT NULL,
+  `bracket` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
@@ -225,7 +237,7 @@ INSERT INTO `voteoptions` (`id`, `compoId`, `thumbnailUrl`, `name`) VALUES
 (4, 3, 'csgo_maps/mirage', 'Mirage'),
 (5, 3, 'csgo_maps/nuke', 'Nuke'),
 (6, 3, 'csgo_maps/overpass', 'Overpass'),
-(7, 3, 'csgo_maps/train', 'Train');
+(7, 3, 'csgo_maps/season', 'Season');
 
 -- --------------------------------------------------------
 

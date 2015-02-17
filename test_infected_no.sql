@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `emergencycontacts` (
   `userId` int(11) NOT NULL,
   `phone` int(8) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `seatmap` int(11) NOT NULL,
   `ticketType` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `events`
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `locations`
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
   `userId` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `value` varchar(32) NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Dumping data for table `permissions`
@@ -123,6 +123,7 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (2, 'search.users', 'Søk etter brukere i databasen.'),
 (3, 'chief.my-crew', 'Endre sider under "My Crew".'),
 (4, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
+(5, 'event.agenda', 'Endre agendaen, denne vises på hovedsiden og infoskjermen under arrangementet.'),
 (6, 'admin.website', 'Endre innholdet på nettsiden.'),
 (7, 'chief.email', 'Send e-post til noen eller alle medlemmer.'),
 (8, 'chief.groups', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
@@ -136,10 +137,11 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (16, 'event.seatmap', 'Se seatmappet'),
 (17, 'chief.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere'),
 (18, 'event.compo', 'Lar deg administrere compoer'),
-(19, 'event.print-ticket-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
+(19, 'event.table-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
 (20, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
 (21, 'developer.console', 'Gir deg tilgang til vedlikeholdskonsollen brukt av utviklere med over gjennomsnittlig forståelse for systemet.'),
-(22, 'chief.email', 'Send e-post til noen eller alle medlemmer.');
+(22, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.'),
+(23, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.');
 
 -- --------------------------------------------------------
 
