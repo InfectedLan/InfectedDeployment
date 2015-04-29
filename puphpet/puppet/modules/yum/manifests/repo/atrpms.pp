@@ -2,13 +2,11 @@
 #
 # This class installs the atrpms repo
 #
-class yum::repo::atrpms (
-  $baseurl = 'http://dl.atrpms.net/el$releasever-$basearch/atrpms/stable',
-) {
+class yum::repo::atrpms {
 
   yum::managed_yumrepo { 'centos5-atrpms':
     descr          => 'CentOS $releasever - $basearch - ATrpms',
-    baseurl        => $baseurl,
+    baseurl        => 'http://dl.atrpms.net/el$releasever-$basearch/atrpms/stable',
     enabled        => 1,
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY.atrpms',

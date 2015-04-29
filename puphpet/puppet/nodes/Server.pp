@@ -1,5 +1,4 @@
 if $server_values == undef { $server_values = hiera_hash('server', false) }
-if $locales_values == undef { $locales_values = hiera_hash('locales', {}) }
 
 include ntp
 include swap_file
@@ -7,14 +6,9 @@ include puphpet
 include puphpet::params
 
 Exec { path => [ '/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/' ] }
-
-each( ['puppet', 'www-data', 'www-user'] ) |$group| {
-  if ! defined(Group[$group]) {
-    group { $group:
-      ensure => present
-    }
-  }
-}
+group { 'puppet':   ensure => present }
+group { 'www-data': ensure => present }
+group { 'www-user': ensure => present }
 
 case $::ssh_username {
   'root': {
@@ -27,22 +21,20 @@ case $::ssh_username {
   }
 }
 
-@user { $::ssh_username:
-  ensure     => present,
+user { $::ssh_username:
   shell      => '/bin/bash',
   home       => $user_home,
   managehome => $manage_home,
+  ensure     => present,
   groups     => ['www-data', 'www-user'],
   require    => [Group['www-data'], Group['www-user']],
 }
 
-User[$::ssh_username]
-
-each( ['apache', 'nginx', 'httpd', 'www-data', 'www-user'] ) |$key| {
+each( ['apache', 'nginx', 'httpd', 'www-data'] ) |$key| {
   if ! defined(User[$key]) {
     user { $key:
-      ensure  => present,
       shell   => '/bin/bash',
+      ensure  => present,
       groups  => 'www-data',
       require => Group['www-data']
     }
@@ -96,10 +88,7 @@ case $::osfamily {
       }
     }
 
-    puphpet::server::link_dotfiles { $user_home: }
-  }
-  default: {
-    error('PuPHPet currently only works with Debian and RHEL families')
+    link_dot_files { 'do': }
   }
 }
 
@@ -107,17 +96,7 @@ case $::operatingsystem {
   'debian': {
     include apt::backports
 
-    if ! defined(Apt::Source['packages.dotdeb.org-repo.puphpet']) {
-      apt::source { 'packages.dotdeb.org-repo.puphpet':
-        location          => 'http://repo.puphpet.com/dotdeb/',
-        release           => $::lsbdistcodename,
-        repos             => 'all',
-        required_packages => 'debian-keyring debian-archive-keyring',
-        key               => '89DF5277',
-        key_server        => 'hkp://keyserver.ubuntu.com:80',
-        include_src       => true
-      }
-    }
+    add_dotdeb { 'packages.dotdeb.org': release => $::lsbdistcodename }
 
     $server_lsbdistcodename = downcase($::lsbdistcodename)
 
@@ -128,65 +107,72 @@ case $::operatingsystem {
   }
   'ubuntu': {
     if ! defined(Apt::Key['4F4EA0AAE5267A6C']){
-      apt::key { '4F4EA0AAE5267A6C':
-        key_server => 'hkp://keyserver.ubuntu.com:80'
-      }
+      apt::key { '4F4EA0AAE5267A6C': key_server => 'hkp://keyserver.ubuntu.com:80' }
     }
     if ! defined(Apt::Key['4CBEDD5A']){
       apt::key { '4CBEDD5A': key_server => 'hkp://keyserver.ubuntu.com:80' }
     }
 
     if $::lsbdistcodename in ['lucid', 'precise'] {
-      apt::ppa { 'ppa:pdoes/ppa':
-        require => Apt::Key['4CBEDD5A'],
-        options => ''
-      }
+      apt::ppa { 'ppa:pdoes/ppa': require => Apt::Key['4CBEDD5A'], options => '' }
     } else {
       apt::ppa { 'ppa:pdoes/ppa': require => Apt::Key['4CBEDD5A'] }
     }
   }
   'redhat', 'centos': {
   }
-  default: {
-    error('PuPHPet supports Debian, Ubuntu, CentOS and RHEL only')
-  }
 }
 
-each( $server_values['packages'] ) |$package| {
-  if ! defined(Package[$package]) {
-    package { $package:
-      ensure => present,
+if is_array($server_values['packages']) and count($server_values['packages']) > 0 {
+  each( $server_values['packages'] ) |$package| {
+    if ! defined(Package[$package]) {
+      package { $package:
+        ensure => present,
+      }
     }
   }
 }
 
-if $::osfamily == 'debian' {
-  $locales_default_value = array_true($locales_values, 'default_value') ? {
-    true    => $locales_values['default_value'],
-    default => 'en_US.UTF-8'
+define add_dotdeb ($release){
+   apt::source { "${name}-repo.puphpet":
+    location          => 'http://repo.puphpet.com/dotdeb/',
+    release           => $release,
+    repos             => 'all',
+    required_packages => 'debian-keyring debian-archive-keyring',
+    key               => '89DF5277',
+    key_server        => 'hkp://keyserver.ubuntu.com:80',
+    include_src       => true
   }
-
-  $locales_available = array_true($locales_values, 'available') ? {
-    true    => $locales_values['default_value'],
-    default => ['en_US.UTF-8 UTF-8', 'en_GB.UTF-8 UTF-8']
-  }
-
-  $locales_settings_merged = merge($locales_values, {
-    'default_value' => $locales_default_value,
-    'available'     => $locales_available,
-  })
-
-  create_resources('class', { 'locales' => $locales_settings_merged })
 }
 
-# Set to Google's DNS
-if $::operatingsystem == 'ubuntu' {
-  $resolve_conf_file = '/run/resolvconf/resolv.conf'
-} else {
-  $resolve_conf_file = '/etc/resolv.conf'
-}
+define link_dot_files {
+  file_line { 'link ~/.bash_git':
+    ensure  => present,
+    line    => 'if [ -f ~/.bash_git ] ; then source ~/.bash_git; fi',
+    path    => "${user_home}/.bash_profile",
+    require => Exec['dotfiles'],
+  }
 
-resolvconf::file { $resolve_conf_file:
-  header     => 'This file is managed by Puppet, do not edit',
-  nameserver => [ '8.8.8.8', '8.8.4.4' ],
+  file_line { 'link ~/.bash_aliases':
+    ensure  => present,
+    line    => 'if [ -f ~/.bash_aliases ] ; then source ~/.bash_aliases; fi',
+    path    => "${user_home}/.bash_profile",
+    require => Exec['dotfiles'],
+  }
+
+  if $::ssh_username != 'root' {
+    file_line { 'link ~/.bash_git for root':
+      ensure  => present,
+      line    => 'if [ -f ~/.bash_git ] ; then source ~/.bash_git; fi',
+      path    => '/root/.bashrc',
+      require => Exec['dotfiles'],
+    }
+
+    file_line { 'link ~/.bash_aliases for root':
+      ensure  => present,
+      line    => 'if [ -f ~/.bash_aliases ] ; then source ~/.bash_aliases; fi',
+      path    => '/root/.bashrc',
+      require => Exec['dotfiles'],
+    }
+  }
 }

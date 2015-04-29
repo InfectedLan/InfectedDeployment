@@ -2,12 +2,10 @@
 #
 # This class installs the 10gen repo for MongoDB
 #
-class yum::repo::10gen (
-  $baseurl = "http://downloads-distro.mongodb.org/repo/redhat/os/${::architecture}",
-) {
+class yum::repo::10gen {
   yum::managed_yumrepo { '10gen':
     descr       => '10gen Repository',
-    baseurl     => $baseurl,
+    baseurl     => "http://downloads-distro.mongodb.org/repo/redhat/os/${::architecture}",
     enabled     => 1,
     gpgcheck    => 0,
   }

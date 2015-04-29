@@ -8,8 +8,6 @@ describe 'postgresql::server::plperl', :type => :class do
       :operatingsystemrelease => '6.0',
       :kernel => 'Linux',
       :concat_basedir => tmpfilename('plperl'),
-      :id => 'root',
-      :path => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
     }
   end
 
@@ -18,9 +16,9 @@ describe 'postgresql::server::plperl', :type => :class do
   end
 
   describe 'with no parameters' do
-    it { is_expected.to contain_class("postgresql::server::plperl") }
+    it { should contain_class("postgresql::server::plperl") }
     it 'should create package' do
-      is_expected.to contain_package('postgresql-plperl').with({
+      should contain_package('postgresql-plperl').with({
         :ensure => 'present',
         :tag => 'postgresql',
       })
@@ -35,9 +33,9 @@ describe 'postgresql::server::plperl', :type => :class do
       }
     end
 
-    it { is_expected.to contain_class("postgresql::server::plperl") }
+    it { should contain_class("postgresql::server::plperl") }
     it 'should create package with correct params' do
-      is_expected.to contain_package('postgresql-plperl').with({
+      should contain_package('postgresql-plperl').with({
         :ensure => 'absent',
         :name => 'mypackage',
         :tag => 'postgresql',

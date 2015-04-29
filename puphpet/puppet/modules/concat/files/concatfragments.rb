@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 # Script to concat files to a config file.
 #
 # Given a directory like this:
@@ -45,8 +44,7 @@ settings = {
   :test    => false,
   :force   => false,
   :warn    => "",
-  :sortarg => "",
-  :newline => false
+  :sortarg => ""
 }
 
 OptionParser.new do |opts|
@@ -77,10 +75,6 @@ OptionParser.new do |opts|
 
   opts.on("-n", "--sort", "Sort the output numerically rather than the default alpha sort") do
     settings[:sortarg] = "-n"
-  end
-
-  opts.on("-l", "--line", "Append a newline") do
-    settings[:newline] = true
   end
 end.parse!
 
@@ -124,15 +118,8 @@ end
 # find all the files in the fragments directory, sort them numerically and concat to fragments.concat in the working dir
 open('fragments.concat', 'a') do |f|
   Dir.entries("fragments").sort.each{ |entry|
-
     if File.file?(File.join("fragments", entry))
-      f << File.read(File.join("fragments", entry))
-
-      # append a newline if we were asked to (invoked with -l)
-      if settings[:newline]
-        f << "\n"
-      end
-
+	  f << File.read(File.join("fragments", entry))
     end
   }
 end

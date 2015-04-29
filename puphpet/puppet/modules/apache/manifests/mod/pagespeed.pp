@@ -3,7 +3,7 @@ class apache::mod::pagespeed (
   $filter_xhtml                  = false,
   $cache_path                    = '/var/cache/mod_pagespeed/',
   $log_dir                       = '/var/log/pagespeed',
-  $memcache_servers              = [],
+  $memache_servers               = [],
   $rewrite_level                 = 'CoreFilters',
   $disable_filters               = [],
   $enable_filters                = [],
@@ -50,6 +50,6 @@ class apache::mod::pagespeed (
     content => template('apache/mod/pagespeed.conf.erb'),
     require => Exec["mkdir ${::apache::mod_dir}"],
     before  => File[$::apache::mod_dir],
-    notify  => Class['apache::service'],
+    notify  => Service['httpd'],
   }
 }

@@ -1,17 +1,17 @@
-vagrantfile:
-    target: local
+---
+vagrantfile-local:
     vm:
         box: puphpet/ubuntu1404-x64
         box_url: puphpet/ubuntu1404-x64
-        hostname: infected.puphpet
-        memory: '511'
+        hostname: ''
+        memory: '512'
         cpus: '1'
         chosen_provider: virtualbox
         network:
             private_network: 192.168.56.101
             forwarded_port:
-                vflnp_34qdbdk4b5mg:
-                    host: '6361'
+                MsiViJedfzEA:
+                    host: '8586'
                     guest: '22'
         post_up_message: ''
         provider:
@@ -32,9 +32,11 @@ vagrantfile:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            vflsf_66a42js3ij0z:
+            uxFo3cbH2Wng:
+                owner: www-data
+                group: www-data
                 source: ./../InfectedAPI
-                target: /home/test.infected.no/www/api
+                target: /var/www/api
                 sync_type: default
                 rsync:
                     args:
@@ -43,115 +45,63 @@ vagrantfile:
                         - '-z'
                     exclude:
                         - .vagrant/
-                        - .git/
-                    auto: 'true'
+                    auto: 'false'
+            yY6XRJIuCGRn:
                 owner: www-data
                 group: www-data
-            vflsf_2tfp3yt2pwg9:
-                source: ./../InfectedCompo
-                target: /home/test.infected.no/www/compo
-                sync_type: default
-                rsync:
-                    args:
-                        - '--verbose'
-                        - '--archive'
-                        - '-z'
-                    exclude:
-                        - .vagrant/
-                        - .git/
-                    auto: 'true'
-                owner: www-data
-                group: www-data
-            vflsf_5mgel4njzilq:
-                source: ./../InfectedCrew
-                target: /home/test.infected.no/www/crew
-                sync_type: default
-                rsync:
-                    args:
-                        - '--verbose'
-                        - '--archive'
-                        - '-z'
-                    exclude:
-                        - .vagrant/
-                        - .git/
-                    auto: 'true'
-                owner: www-data
-                group: www-data
-            vflsf_brdnaomzhikq:
-                source: ./../InfectedDeployment
-                target: /home/test.infected.no/deployment
-                sync_type: default
-                rsync:
-                    args:
-                        - '--verbose'
-                        - '--archive'
-                        - '-z'
-                    exclude:
-                        - .vagrant/
-                        - .git/
-                    auto: 'true'
-                owner: www-data
-                group: www-data
-            vflsf_3scrg3ackfov:
-                source: ./../InfectedInfo
-                target: /home/test.infected.no/www/info
-                sync_type: default
-                rsync:
-                    args:
-                        - '--verbose'
-                        - '--archive'
-                        - '-z'
-                    exclude:
-                        - .vagrant/
-                        - .git/
-                    auto: 'true'
-                owner: www-data
-                group: www-data
-            vflsf_gdrrrhd65zfh:
                 source: ./../InfectedMain
-                target: /home/test.infected.no/www/main
+                target: /var/www/main
                 sync_type: default
                 rsync:
-                    args:
-                        - '--verbose'
-                        - '--archive'
-                        - '-z'
-                    exclude:
-                        - .vagrant/
-                        - .git/
-                    auto: 'true'
+                    auto: 'false'
+            0xwyoFZq4o2b:
                 owner: www-data
                 group: www-data
-            vflsf_gxzidp6fuzvj:
-                source: ./../InfectedTest
-                target: /home/test.infected.no/www/test
+                source: ./../InfectedCompo
+                target: /var/www/compo
                 sync_type: default
                 rsync:
-                    args:
-                        - '--verbose'
-                        - '--archive'
-                        - '-z'
-                    exclude:
-                        - .vagrant/
-                        - .git/
-                    auto: 'true'
+                    auto: 'false'
+            MwO6oM759fww:
                 owner: www-data
                 group: www-data
-            vflsf_ivdb1p72q01k:
+                source: ./../InfectedCrew
+                target: /var/www/crew
+                sync_type: default
+                rsync:
+                    auto: 'false'
+            FXBU46CH68iI:
+                owner: www-data
+                group: www-data
+                source: ./../InfectedInfo
+                target: /var/www/info
+                sync_type: default
+                rsync:
+                    auto: 'false'
+            LjsvZlOdGn5B:
+                owner: www-data
+                group: www-data
                 source: ./../InfectedTickets
-                target: /home/test.infected.no/www/tickets
+                target: /var/www/tickets
                 sync_type: default
                 rsync:
-                    args:
-                        - '--verbose'
-                        - '--archive'
-                        - '-z'
-                    exclude:
-                        - .vagrant/
-                        - .git/
-                    auto: 'true'
+                    auto: 'false'
+            l2mFSoMC1OGN:
                 owner: www-data
                 group: www-data
+                source: ./../InfectedTest
+                target: /var/www/test
+                sync_type: default
+                rsync:
+                    auto: 'false'
+            ncdSU9fiRatR:
+                owner: www-data
+                group: www-data
+                source: ./
+                target: /home/infected/deployment
+                sync_type: default
+                rsync:
+                    auto: 'false'
         usable_port_range:
             start: 10200
             stop: 10500
@@ -174,63 +124,13 @@ users_groups:
     install: '1'
     groups: {  }
     users:
-        - test.infected.no
-firewall:
-    install: '1'
-    rules: {  }
+        - infected
 cron:
     install: '1'
     jobs: {  }
-nginx:
-    install: '0'
-    settings:
-        default_vhost: 1
-        proxy_buffer_size: 128k
-        proxy_buffers: '4 256k'
-    upstreams: {  }
-    vhosts:
-        nxv_pi696hsj725r:
-            server_name: awesome.dev
-            server_aliases:
-                - www.awesome.dev
-            www_root: /var/www/awesome
-            listen_port: '80'
-            index_files:
-                - index.html
-                - index.htm
-                - index.php
-            client_max_body_size: 1m
-            ssl: '0'
-            ssl_cert: ''
-            ssl_key: ''
-            ssl_port: '443'
-            rewrite_to_https: '1'
-            spdy: '1'
-            locations:
-                nxvl_ruie2wl2gkp1:
-                    location: /
-                    autoindex: off
-                    try_files:
-                        - $uri
-                        - $uri/
-                        - /index.php$is_args$args
-                    fastcgi: ''
-                    fastcgi_index: ''
-                    fastcgi_split_path: ''
-                nxvl_cmkqhhxtnfao:
-                    location: '~ \.php$'
-                    autoindex: off
-                    try_files:
-                        - $uri
-                        - $uri/
-                        - /index.php$is_args$args
-                    fastcgi: '127.0.0.1:9000'
-                    fastcgi_index: index.php
-                    fastcgi_split_path: '^(.+\.php)(/.*)$'
-                    fast_cgi_params_extra:
-                        - 'SCRIPT_FILENAME $request_filename'
-                        - 'APP_ENV dev'
-    proxies: {  }
+firewall:
+    install: '1'
+    rules: null
 apache:
     install: '1'
     settings:
@@ -241,82 +141,188 @@ apache:
         manage_group: false
         sendfile: 0
     modules:
-        - proxy_fcgi
         - rewrite
     vhosts:
-        av_k6fc3xfdhnw4:
+        jij4ozq6htbw:
             servername: infected.dev
             serveraliases:
                 - www.infected.dev
-            docroot: /home/test.infected.no/www/main
+            docroot: /var/www/main
             port: '80'
             setenv:
                 - 'APP_ENV dev'
-                - 'Alias /api /home/test.infected.no/www/api'
+            directories:
+                ljusveiuzde9:
+                    provider: directory
+                    path: /var/www/main
+                    options:
+                        - Indexes
+                        - FollowSymlinks
+                        - MultiViews
+                    allow_override:
+                        - All
+                    require:
+                        - all
+                        - granted
+                    custom_fragment: ''
+            engine: php
             custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        av_pxrhi8t8cvf1:
+        c35jqw7ey7xk:
             servername: compo.infected.dev
-            docroot: /home/test.infected.no/www/compo
+            docroot: /var/www/compo
             port: '80'
-            setenv:
-                - 'Alias /api /home/test.infected.no/www/api'
+            directories:
+                f49ad8e7seym:
+                    provider: directory
+                    path: ''
+                    options:
+                        - Indexes
+                        - FollowSymlinks
+                        - MultiViews
+                    allow_override:
+                        - All
+                    require:
+                        - all
+                        - granted
+                    custom_fragment: ''
+            engine: php
             custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        av_177hcwpdv0yl:
+        l7yfy3pj1orw:
             servername: crew.infected.dev
-            docroot: /home/test.infected.no/www/crew
+            docroot: /var/www/crew
             port: '80'
-            setenv:
-                - 'Alias /api /home/test.infected.no/www/api'
+            directories:
+                ljjcj0wqfhyi:
+                    provider: directory
+                    path: ''
+                    options:
+                        - Indexes
+                        - FollowSymlinks
+                        - MultiViews
+                    allow_override:
+                        - All
+                    require:
+                        - all
+                        - granted
+                    custom_fragment: ''
+            engine: php
             custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        av_dnpz4ijhf77c:
+        ovuwzrhbq2bs:
             servername: info.infected.dev
-            docroot: /home/test.infected.no/www/info
+            docroot: /var/www/info
             port: '80'
-            setenv:
-                - 'Alias /api /home/test.infected.no/www/api'
+            directories:
+                zuda0kzegihk:
+                    provider: directory
+                    path: ''
+                    options:
+                        - Indexes
+                        - FollowSymlinks
+                        - MultiViews
+                    allow_override:
+                        - All
+                    require:
+                        - all
+                        - granted
+                    custom_fragment: ''
+            engine: php
             custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
-        av_sy1ughqdsxek:
-            servername: tickets.infected.dev
-            docroot: /home/test.infected.no/www/tickets
-            port: '80'
-            setenv:
-                - 'Alias /api /home/test.infected.no/www/api'
-            custom_fragment: ''
-            ssl_cert: ''
-            ssl_key: ''
-            ssl_chain: ''
-            ssl_certs_dir: ''
-        av_32cku7zes31q:
+        vtuhgpomazhu:
             servername: test.infected.dev
-            docroot: /home/test.infected.no/www/test
+            docroot: /var/www/test
             port: '80'
-            setenv:
-                - 'Alias /api /home/test.infected.no/www/api'
+            directories:
+                5f3s4enmvyd4:
+                    provider: directory
+                    path: ''
+                    options:
+                        - Indexes
+                        - FollowSymlinks
+                        - MultiViews
+                    allow_override:
+                        - All
+                    require:
+                        - all
+                        - granted
+                    custom_fragment: ''
+            engine: php
             custom_fragment: ''
             ssl_cert: ''
             ssl_key: ''
             ssl_chain: ''
             ssl_certs_dir: ''
+        wrhpxkmpt6wk:
+            servername: tickets.infected.dev
+            docroot: /var/www/tickets
+            port: '80'
+            directories:
+                ubedgygv3eiq:
+                    provider: directory
+                    path: ''
+                    options:
+                        - Indexes
+                        - FollowSymlinks
+                        - MultiViews
+                    allow_override:
+                        - All
+                    require:
+                        - all
+                        - granted
+                    custom_fragment: ''
+            engine: php
+            custom_fragment: ''
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+    mod_pagespeed: 0
+nginx:
+    install: '0'
+    settings:
+        default_vhost: 1
+        proxy_buffer_size: 128k
+        proxy_buffers: '4 256k'
+    upstreams: {  }
+    vhosts:
+        nvntajnbqqua:
+            proxy: ''
+            server_name: awesome.dev
+            server_aliases:
+                - www.awesome.dev
+            www_root: /var/www/awesome
+            listen_port: '80'
+            location: \.php$
+            index_files:
+                - index.html
+                - index.htm
+                - index.php
+            envvars:
+                - 'APP_ENV dev'
+            engine: php
+            client_max_body_size: 1m
+            ssl_cert: ''
+            ssl_key: ''
 php:
     install: '1'
-    settings:
-        version: '56'
+    version: '56'
+    composer: '1'
+    composer_home: ''
     modules:
         php:
             - cli
@@ -329,19 +335,20 @@ php:
         display_errors: On
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
-        date.timezone: UTC
-    fpm_ini:
-        error_log: /var/log/php-fpm.log
-    fpm_pools:
-        phpfp_0j6yu8xhosuk:
-            ini:
-                prefix: www
-                listen: '127.0.0.1:9000'
-                security.limit_extensions: .php
-                user: www-user
-                group: www-data
+    timezone: America/Chicago
+    mod_php: 0
+hhvm:
+    install: '0'
+    nightly: 0
     composer: '1'
     composer_home: ''
+    settings:
+        host: 127.0.0.1
+        port: '9000'
+    ini:
+        display_errors: On
+        error_reporting: '-1'
+    timezone: null
 xdebug:
     install: '1'
     settings:
@@ -355,98 +362,68 @@ xhprof:
     install: '0'
 wpcli:
     install: '0'
-    version: v0.19.0
+    version: v0.17.1
 drush:
     install: '0'
     version: 6.3.0
 ruby:
     install: '1'
-    versions: {  }
-python:
-    install: '1'
-    packages: {  }
-    versions: {  }
+    versions:
+        XQMu5fdm3saX:
+            version: ''
 nodejs:
     install: '0'
     npm_packages: {  }
-hhvm:
-    install: '0'
-    nightly: 0
-    composer: '1'
-    composer_home: ''
-    settings: {  }
-    server_ini:
-        hhvm.server.host: 127.0.0.1
-        hhvm.server.port: '9000'
-        hhvm.log.use_log_file: '1'
-        hhvm.log.file: /var/log/hhvm/error.log
-    php_ini:
-        display_errors: On
-        error_reporting: '-1'
-        date.timezone: UTC
+python:
+    install: '1'
+    packages: {  }
+    versions:
+        9x5Zd67wKWEO:
+            version: ''
 mysql:
     install: '1'
-    settings:
-        version: '5.6'
-        root_password: julebrus
-        override_options: {  }
+    override_options: {  }
+    root_password: julebrus
     adminer: 0
-    users:
-        mysqlnu_dn37owves7ba:
-            name: test.infected.no
-            password: julebrus
     databases:
-        mysqlnd_0hrgdo57uou8:
-            name: test_infected_no
-            sql: test_infected_no.sql
-        mysqlnd_vaxl839x3glc:
-            name: test_infected_no_compo
-            sql: test_infected_no_compo.sql
-        mysqlnd_mf0jgegfsu1d:
-            name: test_infected_no_crew
-            sql: test_infected_no_crew.sql
-        mysqlnd_ic3k3ikw9br1:
-            name: test_infected_no_info
-            sql: test_infected_no_info.sql
-        mysqlnd_lbwfetcs3ciu:
-            name: test_infected_no_main
-            sql: test_infected_no_main.sql
-        mysqlnd_rtn04y0n0r0k:
-            name: test_infected_no_tickets
-            sql: test_infected_no_tickets.sql
-    grants:
-        mysqlng_bztrlldqkawo:
-            user: test.infected.no
-            table: test/_infected/_no%.*
-            privileges:
+        TRHdnI94eG6c:
+            grant:
                 - ALL
+            name: test_infected_no
+            host: localhost
+            user: test_infected_no
+            password: julebrus
+            sql_file: /home/infected/deployment/test_infected_no.sql
 postgresql:
     install: '0'
     settings:
-        global:
-            encoding: UTF8
-            version: '9.3'
-        server:
-            postgres_password: '123'
+        root_password: '123'
+        user_group: postgres
+        encoding: UTF8
+        version: '9.3'
     databases: {  }
-    users: {  }
-    grants: {  }
     adminer: 0
+mariadb:
+    install: '0'
+    override_options: {  }
+    root_password: '123'
+    adminer: 0
+    databases: {  }
+    version: '10.0'
+sqlite:
+    install: '0'
+    adminer: 0
+    databases: {  }
 mongodb:
     install: '0'
     settings:
         auth: 1
-        bind_ip: 127.0.0.1
         port: '27017'
     databases: {  }
 redis:
     install: '0'
     settings:
         conf_port: '6379'
-sqlite:
-    install: '0'
-    adminer: 0
-    databases: {  }
 mailcatcher:
     install: '0'
     settings:
@@ -472,9 +449,6 @@ rabbitmq:
     install: '0'
     settings:
         port: '5672'
-    users: {  }
-    vhosts: {  }
-    plugins: {  }
 elastic_search:
     install: '0'
     settings:

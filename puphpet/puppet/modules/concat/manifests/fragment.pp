@@ -28,7 +28,7 @@ define concat::fragment(
     $target,
     $content = undef,
     $source  = undef,
-    $order   = '10',
+    $order   = 10,
     $ensure  = undef,
     $mode    = undef,
     $owner   = undef,
@@ -40,9 +40,7 @@ define concat::fragment(
   if !(is_string($source) or is_array($source)) {
     fail('$source is not a string or an Array.')
   }
-  if !(is_string($order) or is_integer($order)) {
-    fail('$order is not a string or integer.')
-  }
+  validate_string($order)
   if $mode {
     warning('The $mode parameter to concat::fragment is deprecated and has no effect')
   }
@@ -56,12 +54,12 @@ define concat::fragment(
     warning('The $backup parameter to concat::fragment is deprecated and has no effect')
   }
   if $ensure == undef {
-    $my_ensure = concat_getparam(Concat[$target], 'ensure')
+    $_ensure = getparam(Concat[$target], 'ensure')
   } else {
     if ! ($ensure in [ 'present', 'absent' ]) {
       warning('Passing a value other than \'present\' or \'absent\' as the $ensure parameter to concat::fragment is deprecated.  If you want to use the content of a file as a fragment please use the $source parameter.')
     }
-    $my_ensure = $ensure
+    $_ensure = $ensure
   }
 
   include concat::setup
@@ -80,18 +78,18 @@ define concat::fragment(
 
   # be paranoid and only allow the fragment's file resource's ensure param to
   # be file, absent, or a file target
-  $safe_ensure = $my_ensure ? {
+  $safe_ensure = $_ensure ? {
     ''        => 'file',
     undef     => 'file',
     'file'    => 'file',
     'present' => 'file',
     'absent'  => 'absent',
-    default   => $my_ensure,
+    default   => $_ensure,
   }
 
   # if it looks line ensure => /target syntax was used, fish that out
-  if ! ($my_ensure in ['', 'present', 'absent', 'file' ]) {
-    $ensure_target = $my_ensure
+  if ! ($_ensure in ['', 'present', 'absent', 'file' ]) {
+    $ensure_target = $_ensure
   } else {
     $ensure_target = undef
   }
@@ -117,7 +115,6 @@ define concat::fragment(
     source  => $source,
     content => $content,
     backup  => false,
-    replace => true,
     alias   => "concat_fragment_${name}",
     notify  => Exec["concat_${target}"]
   }

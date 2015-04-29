@@ -14,11 +14,9 @@ describe 'apache::fastcgi::server', :type => :define do
           :osfamily               => 'RedHat',
           :operatingsystem        => 'CentOS',
           :operatingsystemrelease => '6',
-          :kernel                 => 'Linux',
           :id                     => 'root',
           :concat_basedir         => '/dne',
           :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-          :is_pe                  => false,
         }
       end
       let :facts do default_facts end
@@ -36,11 +34,9 @@ describe 'apache::fastcgi::server', :type => :define do
           :operatingsystem        => 'Debian',
           :operatingsystemrelease => '6',
           :lsbdistcodename        => 'squeeze',
-          :kernel                 => 'Linux',
           :id                     => 'root',
           :concat_basedir         => '/dne',
           :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-          :is_pe                  => false,
         }
       end
       let :facts do default_facts end
@@ -57,11 +53,9 @@ describe 'apache::fastcgi::server', :type => :define do
           :osfamily               => 'FreeBSD',
           :operatingsystem        => 'FreeBSD',
           :operatingsystemrelease => '9',
-          :kernel                 => 'FreeBSD',
           :id                     => 'root',
           :concat_basedir         => '/dne',
           :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-          :is_pe                  => false,
         }
       end
       let :facts do default_facts end
@@ -69,28 +63,7 @@ describe 'apache::fastcgi::server', :type => :define do
       it { should contain_class("apache::mod::fastcgi") }
       it { should contain_file("fastcgi-pool-#{title}.conf").with(
         :ensure => 'present',
-        :path   => "/usr/local/etc/apache24/Includes/fastcgi-pool-#{title}.conf"
-      ) }
-    end
-    context "on Gentoo systems" do
-      let :default_facts do
-        {
-          :osfamily               => 'Gentoo',
-          :operatingsystem        => 'Gentoo',
-          :operatingsystemrelease => '3.16.1-gentoo',
-          :concat_basedir         => '/dne',
-          :kernel                 => 'Linux',
-          :id                     => 'root',
-          :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin',
-          :is_pe                  => false,
-        }
-      end
-      let :facts do default_facts end
-      it { should contain_class("apache") }
-      it { should contain_class("apache::mod::fastcgi") }
-      it { should contain_file("fastcgi-pool-#{title}.conf").with(
-        :ensure => 'present',
-        :path   => "/etc/apache2/conf.d/fastcgi-pool-#{title}.conf"
+        :path   => "/usr/local/etc/apache22/Includes/fastcgi-pool-#{title}.conf"
       ) }
     end
   end
@@ -101,11 +74,9 @@ describe 'apache::fastcgi::server', :type => :define do
         :operatingsystem        => 'Debian',
         :operatingsystemrelease => '6',
         :lsbdistcodename        => 'squeeze',
-        :kernel                 => 'Linux',
         :id                     => 'root',
         :concat_basedir         => '/dne',
         :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-        :is_pe                  => false,
       }
     end
     describe ".conf content" do

@@ -1,6 +1,3 @@
-dir = File.dirname(File.expand_path(__FILE__))
-require "#{dir}/to_bool.rb"
-
 #
 # value_true.rb
 #
@@ -18,7 +15,31 @@ module Puppet::Parser::Functions
 
     value = args[0]
 
-    return value.to_bool
+    if value.nil?
+      return false
+    end
+
+    if value == false
+      return false
+    end
+
+    if value == 0
+      return false
+    end
+
+    if value == '0'
+      return false
+    end
+
+    if value == 'false'
+      return false
+    end
+
+    if value.empty?
+      return false
+    end
+
+    return true
 
   end
 end

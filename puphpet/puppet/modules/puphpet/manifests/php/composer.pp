@@ -1,5 +1,5 @@
 class puphpet::php::composer (
-  $php_package,
+  $php_package   = 'php',
   $composer_home = false
 ){
 

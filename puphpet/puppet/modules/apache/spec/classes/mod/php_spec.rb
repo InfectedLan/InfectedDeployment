@@ -12,7 +12,6 @@ describe 'apache::mod::php', :type => :class do
         :id                     => 'root',
         :kernel                 => 'Linux',
         :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-        :is_pe                  => false,
       }
     end
     context "with mpm_module => prefork" do
@@ -20,24 +19,19 @@ describe 'apache::mod::php', :type => :class do
         'class { "apache": mpm_module => prefork, }'
       end
       it { is_expected.to contain_class("apache::params") }
-      it { is_expected.to contain_class("apache::mod::prefork") }
       it { is_expected.to contain_apache__mod('php5') }
       it { is_expected.to contain_package("libapache2-mod-php5") }
       it { is_expected.to contain_file("php5.load").with(
         :content => "LoadModule php5_module /usr/lib/apache2/modules/libphp5.so\n"
       ) }
     end
-    context "with mpm_module => itk" do
+    context 'with mpm_module => worker' do
       let :pre_condition do
-        'class { "apache": mpm_module => itk, }'
+        'class { "apache": mpm_module => worker, }'
       end
-      it { is_expected.to contain_class("apache::params") }
-      it { is_expected.to contain_class("apache::mod::itk") }
-      it { is_expected.to contain_apache__mod('php5') }
-      it { is_expected.to contain_package("libapache2-mod-php5") }
-      it { is_expected.to contain_file("php5.load").with(
-        :content => "LoadModule php5_module /usr/lib/apache2/modules/libphp5.so\n"
-      ) }
+      it 'should raise an error' do
+        expect { subject }.to raise_error Puppet::Error, /mpm_module => 'prefork'/
+      end
     end
   end
   describe "on a RedHat OS" do
@@ -50,7 +44,6 @@ describe 'apache::mod::php', :type => :class do
         :id                     => 'root',
         :kernel                 => 'Linux',
         :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-        :is_pe                  => false,
       }
     end
     context "with default params" do
@@ -106,33 +99,23 @@ describe 'apache::mod::php', :type => :class do
         'class { "apache": mpm_module => prefork, }'
       end
       it { is_expected.to contain_class("apache::params") }
-      it { is_expected.to contain_class("apache::mod::prefork") }
       it { is_expected.to contain_apache__mod('php5') }
       it { is_expected.to contain_package("php") }
       it { is_expected.to contain_file("php5.load").with(
         :content => "LoadModule php5_module modules/libphp5.so\n"
       ) }
     end
-    context "with mpm_module => itk" do
-      let :pre_condition do
-        'class { "apache": mpm_module => itk, }'
-      end
-      it 'should raise an error' do
-        expect { expect(subject).to contain_class("apache::mod::itk") }.to raise_error Puppet::Error, /Unsupported osfamily RedHat/
-      end
-    end
   end
   describe "on a FreeBSD OS" do
     let :facts do
       {
         :osfamily               => 'FreeBSD',
-        :operatingsystemrelease => '10',
+        :operatingsystemrelease => '9',
         :concat_basedir         => '/dne',
         :operatingsystem        => 'FreeBSD',
         :id                     => 'root',
         :kernel                 => 'FreeBSD',
         :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-        :is_pe                  => false,
       }
     end
     context "with mpm_module => prefork" do
@@ -141,51 +124,17 @@ describe 'apache::mod::php', :type => :class do
       end
       it { is_expected.to contain_class('apache::params') }
       it { is_expected.to contain_apache__mod('php5') }
-      it { is_expected.to contain_package("www/mod_php5") }
+      it { is_expected.to contain_package("lang/php5") }
       it { is_expected.to contain_file('php5.load') }
     end
-    context "with mpm_module => itk" do
+    # FIXME: not sure about the following context
+    context 'with mpm_module => worker' do
       let :pre_condition do
-        'class { "apache": mpm_module => itk, }'
+        'class { "apache": mpm_module => worker, }'
       end
-      it { is_expected.to contain_class('apache::params') }
-      it { is_expected.to contain_class('apache::mod::itk') }
-      it { is_expected.to contain_apache__mod('php5') }
-      it { is_expected.to contain_package("www/mod_php5") }
-      it { is_expected.to contain_file('php5.load') }
-    end
-  end
-  describe "on a Gentoo OS" do
-    let :facts do
-      {
-        :osfamily               => 'Gentoo',
-        :operatingsystem        => 'Gentoo',
-        :operatingsystemrelease => '3.16.1-gentoo',
-        :concat_basedir         => '/dne',
-        :id                     => 'root',
-        :kernel                 => 'Linux',
-        :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin',
-        :is_pe                  => false,
-      }
-    end
-    context "with mpm_module => prefork" do
-      let :pre_condition do
-        'class { "apache": mpm_module => prefork, }'
+      it 'should raise an error' do
+        expect { expect(subject).to contain_apache__mod('php5') }.to raise_error Puppet::Error, /mpm_module => 'prefork'/
       end
-      it { is_expected.to contain_class('apache::params') }
-      it { is_expected.to contain_apache__mod('php5') }
-      it { is_expected.to contain_package("dev-lang/php") }
-      it { is_expected.to contain_file('php5.load') }
-    end
-    context "with mpm_module => itk" do
-      let :pre_condition do
-        'class { "apache": mpm_module => itk, }'
-      end
-      it { is_expected.to contain_class('apache::params') }
-      it { is_expected.to contain_class('apache::mod::itk') }
-      it { is_expected.to contain_apache__mod('php5') }
-      it { is_expected.to contain_package("dev-lang/php") }
-      it { is_expected.to contain_file('php5.load') }
     end
   end
   describe "OS independent tests" do
@@ -194,12 +143,10 @@ describe 'apache::mod::php', :type => :class do
         :osfamily               => 'Debian',
         :operatingsystem        => 'Debian',
         :operatingsystemrelease => '6',
-        :kernel                 => 'Linux',
         :lsbdistcodename        => 'squeeze',
         :concat_basedir         => '/dne',
         :id                     => 'root',
         :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-        :is_pe                  => false,
       }
     end
     context 'with content param' do
@@ -276,14 +223,6 @@ describe 'apache::mod::php', :type => :class do
       it { should contain_file('php5.conf').with(
         :source => 'some-path'
       ) }
-    end
-    context 'with mpm_module => worker' do
-      let :pre_condition do
-        'class { "apache": mpm_module => worker, }'
-      end
-      it 'should raise an error' do
-        expect { expect(subject).to contain_apache__mod('php5') }.to raise_error Puppet::Error, /mpm_module => 'prefork' or mpm_module => 'itk'/
-      end
     end
   end
 end

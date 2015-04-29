@@ -4,7 +4,7 @@ case fact('osfamily')
 when 'Debian'
   service_name = 'apache2'
 when 'FreeBSD'
-  service_name = 'apache24'
+  service_name = 'apache22'
 else
   # Not implemented yet
   service_name = :skip

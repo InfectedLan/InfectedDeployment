@@ -1,5 +1,3 @@
-### MANAGED BY PUPPET ###
-
 <% @options.sort.map do |k,v| -%>
 <%   if v.is_a?(Hash) -%>
 [<%=   k %>]
@@ -12,13 +10,11 @@
 <%         vi.each do |vii| -%>
 <%=          ki %> = <%= vii %>
 <%         end -%>
-<%       elsif ![nil, '', :undef].include?(vi) -%>
+<%       elsif vi != :undef -%>
 <%=        ki %> = <%= vi %>
 <%       end -%>
 <%     end -%>
 <%   end %>
 <% end -%>
 
-<% if @includedir and @includedir != '' %>
-!includedir <%= @includedir %>
-<% end %>
+!includedir /etc/mysql/conf.d/

@@ -41,7 +41,7 @@ class apache::mod::worker (
     content => template('apache/mod/worker.conf.erb'),
     require => Exec["mkdir ${::apache::mod_dir}"],
     before  => File[$::apache::mod_dir],
-    notify  => Class['apache::service'],
+    notify  => Service['httpd'],
   }
 
   case $::osfamily {
@@ -58,18 +58,13 @@ class apache::mod::worker (
           line    => 'HTTPD=/usr/sbin/httpd.worker',
           match   => '#?HTTPD=/usr/sbin/httpd.worker',
           require => Package['httpd'],
-          notify  => Class['apache::service'],
+          notify  => Service['httpd'],
         }
       }
     }
     'debian', 'freebsd': {
       ::apache::mpm{ 'worker':
         apache_version => $apache_version,
-      }
-    }
-    'gentoo': {
-      ::portage::makeconf { 'apache2_mpms':
-        content => 'worker',
       }
     }
     default: {

@@ -28,10 +28,8 @@ define puphpet::php::pecl (
 
   $pecl_beta = $::osfamily ? {
     'Debian' => {
-      'augeas'        => 'augeas',
-      'mcrypt_filter' => 'mcrypt_filter',
-      'pdo_user'      => 'pdo_user',
-      'zendopcache'   => $::operatingsystem ? {
+      'augeas'      => 'augeas',
+      'zendopcache' => $::operatingsystem ? {
         'debian' => false,
         'ubuntu' => 'ZendOpcache',
       },
@@ -108,9 +106,7 @@ define puphpet::php::pecl (
     $package_name = false
   }
 
-  if $pecl_name and ! defined(::Php::Pecl::Module[$pecl_name])
-    and $puphpet::php::settings::enable_pecl
-  {
+  if $pecl_name and ! defined(::Php::Pecl::Module[$pecl_name]) {
     ::php::pecl::module { $pecl_name:
       use_package         => false,
       preferred_state     => $preferred_state,
@@ -118,9 +114,7 @@ define puphpet::php::pecl (
       service_autorestart => $service_autorestart,
     }
   }
-  elsif $package_name and ! defined(Package[$package_name])
-    and $puphpet::php::settings::enable_pecl
-  {
+  elsif $package_name and ! defined(Package[$package_name]) {
     package { $package_name:
       ensure  => present,
       require => Class['Php::Devel'],

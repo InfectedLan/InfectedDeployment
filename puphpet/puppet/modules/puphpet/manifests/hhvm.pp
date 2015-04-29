@@ -5,7 +5,20 @@
 
 class puphpet::hhvm(
   $nightly = false,
+  $webserver
 ) {
+
+  $real_webserver = $webserver ? {
+    'apache'  => 'apache2',
+    'httpd'   => 'apache2',
+    'apache2' => 'apache2',
+    'nginx'   => 'nginx',
+    'fpm'     => 'fpm',
+    'cgi'     => 'cgi',
+    'fcgi'    => 'cgi',
+    'fcgid'   => 'cgi',
+    undef     => undef,
+  }
 
   if $nightly == true {
     $package_name_base = $puphpet::params::hhvm_package_name_nightly
@@ -37,8 +50,8 @@ class puphpet::hhvm(
       }
     }
     'centos': {
-      $require = defined(Class['puphpet::firewall::post']) ? {
-        true    => Class['puphpet::firewall::post'],
+      $require = defined(Class['my_fw::post']) ? {
+        true    => Class['my_fw::post'],
         default => [],
       }
 
@@ -56,6 +69,9 @@ class puphpet::hhvm(
         priority => 1,
       }
     }
+  }
+  if $real_webserver == 'apache2' {
+    include ::puphpet::apache::fpm
   }
 
   $os = downcase($::operatingsystem)

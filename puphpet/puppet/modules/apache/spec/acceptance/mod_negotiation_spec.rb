@@ -11,25 +11,21 @@ describe 'apache::mod::negotiation class', :unless => UNSUPPORTED_PLATFORMS.incl
     mod_dir      = '/etc/httpd/conf.d'
     service_name = 'httpd'
   when 'FreeBSD'
-    vhost_dir    = '/usr/local/etc/apache24/Vhosts'
-    mod_dir      = '/usr/local/etc/apache24/Modules'
-    service_name = 'apache24'
-  when 'Gentoo'
-    vhost_dir    = '/etc/apache2/vhosts.d'
-    mod_dir      = '/etc/apache2/modules.d'
-    service_name = 'apache2'
+    vhost_dir    = '/usr/local/etc/apache22/Vhosts'
+    mod_dir      = '/usr/local/etc/apache22/Modules'
+    service_name = 'apache22'
   end
 
   context "default negotiation config" do
     it 'succeeds in puppeting negotiation' do
       pp= <<-EOS
-        class { '::apache': default_mods => false }
+        class { '::apache': }
         class { '::apache::mod::negotiation': }
       EOS
       apply_manifest(pp, :catch_failures => true)
     end
 
-    describe file("#{mod_dir}/negotiation.conf") do
+    describe file("#{$mod_dir}/negotiation.conf") do
       it { should contain "LanguagePriority en ca cs da de el eo es et fr he hr it ja ko ltz nl nn no pl pt pt-BR ru sv zh-CN zh-TW
 ForceLanguagePriority Prefer Fallback" }
     end
@@ -43,7 +39,7 @@ ForceLanguagePriority Prefer Fallback" }
   context "with alternative force_language_priority" do
     it 'succeeds in puppeting negotiation' do
       pp= <<-EOS
-        class { '::apache': default_mods => false }
+        class { '::apache': }
         class { '::apache::mod::negotiation':
           force_language_priority => 'Prefer',
         }
@@ -51,7 +47,7 @@ ForceLanguagePriority Prefer Fallback" }
       apply_manifest(pp, :catch_failures => true)
     end
 
-    describe file("#{mod_dir}/negotiation.conf") do
+    describe file("#{$mod_dir}/negotiation.conf") do
       it { should contain "ForceLanguagePriority Prefer" }
     end
 
@@ -64,7 +60,7 @@ ForceLanguagePriority Prefer Fallback" }
   context "with alternative language_priority" do
     it 'succeeds in puppeting negotiation' do
       pp= <<-EOS
-        class { '::apache': default_mods => false }
+        class { '::apache': }
         class { '::apache::mod::negotiation':
           language_priority => [ 'en', 'es' ],
         }
@@ -72,7 +68,7 @@ ForceLanguagePriority Prefer Fallback" }
       apply_manifest(pp, :catch_failures => true)
     end
 
-    describe file("#{mod_dir}/negotiation.conf") do
+    describe file("#{$mod_dir}/negotiation.conf") do
       it { should contain "LanguagePriority en es" }
     end
 

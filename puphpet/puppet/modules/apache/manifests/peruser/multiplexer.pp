@@ -12,6 +12,6 @@ define apache::peruser::multiplexer (
     ensure  => file,
     content => "Multiplexer ${user} ${group}\n",
     require => File["${::apache::mod_dir}/peruser/multiplexers"],
-    notify  => Class['apache::service'],
+    notify  => Service['httpd'],
   }
 }

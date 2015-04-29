@@ -15,7 +15,6 @@ describe 'apache::mod::itk', :type => :class do
         :id                     => 'root',
         :kernel                 => 'Linux',
         :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-        :is_pe                  => false,
       }
     end
     it { is_expected.to contain_class("apache::params") }
@@ -55,19 +54,16 @@ describe 'apache::mod::itk', :type => :class do
     let :facts do
       {
         :osfamily               => 'FreeBSD',
-        :operatingsystemrelease => '10',
+        :operatingsystemrelease => '9',
         :concat_basedir         => '/dne',
         :operatingsystem        => 'FreeBSD',
         :id                     => 'root',
         :kernel                 => 'FreeBSD',
         :path                   => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-        :is_pe                  => false,
-        :mpm_module             => 'itk',
       }
     end
     it { is_expected.to contain_class("apache::params") }
     it { is_expected.not_to contain_apache__mod('itk') }
-    it { is_expected.to contain_file("/usr/local/etc/apache24/Modules/itk.conf").with_ensure('file') }
-    it { is_expected.to contain_package("www/mod_mpm_itk") }
+    it { is_expected.to contain_file("/usr/local/etc/apache22/Modules/itk.conf").with_ensure('file') }
   end
 end

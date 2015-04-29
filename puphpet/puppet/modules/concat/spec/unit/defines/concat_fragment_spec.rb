@@ -152,7 +152,7 @@ describe 'concat::fragment', :type => :define do
       let(:params) {{ :order => false, :target => '/etc/motd' }}
 
       it 'should fail' do
-        expect { should }.to raise_error(Puppet::Error, /is not a string or integer/)
+        expect { should }.to raise_error(Puppet::Error, /is not a string/)
       end
     end
   end # order =>

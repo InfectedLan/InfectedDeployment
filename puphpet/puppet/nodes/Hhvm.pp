@@ -1,34 +1,50 @@
 if $hhvm_values == undef { $hhvm_values = hiera_hash('hhvm', false) }
+if $apache_values == undef { $apache_values = hiera_hash('apache', false) }
+if $nginx_values == undef { $nginx_values = hiera_hash('nginx', false) }
 
 include puphpet::params
+include puphpet::supervisord
 
 if hash_key_equals($hhvm_values, 'install', 1) {
-  class { 'puphpet::hhvm':
-    nightly => $hhvm_values['nightly'],
+  if hash_key_equals($apache_values, 'install', 1) {
+    $hhvm_webserver         = 'httpd'
+    $hhvm_webserver_restart = true
+  } elsif hash_key_equals($nginx_values, 'install', 1) {
+    $hhvm_webserver         = 'nginx'
+    $hhvm_webserver_restart = true
+  } else {
+    $hhvm_webserver         = undef
+    $hhvm_webserver_restart = true
   }
 
-  if ! defined(Group['hhvm']) {
-    group { 'hhvm':
-      ensure => present,
-    }
+  class { 'puphpet::hhvm':
+    nightly   => $hhvm_values['nightly'],
+    webserver => $hhvm_webserver
   }
 
   if ! defined(User['hhvm']) {
     user { 'hhvm':
-      ensure     => present,
       home       => '/home/hhvm',
-      groups     => ['hhvm', 'www-data'],
+      groups     => 'www-data',
+      ensure     => present,
       managehome => true,
-      require    => [
-        Group['hhvm'],
-        Group['www-data']
-      ]
+      require    => Group['www-data']
     }
   }
 
-  User <| title == 'www-data' |> {
-    groups  +> 'hhvm',
-    require +> Group['hhvm'],
+  $supervisord_hhvm_cmd = "hhvm --mode server -vServer.Type=fastcgi -vServer.Port=${hhvm_values['settings']['port']}"
+
+  supervisord::program { 'hhvm':
+    command     => $supervisord_hhvm_cmd,
+    priority    => '100',
+    user        => 'hhvm',
+    autostart   => true,
+    autorestart => 'true',
+    environment => { 'PATH' => '/bin:/sbin:/usr/bin:/usr/sbin' },
+    require     => [
+      User['hhvm'],
+      Package['hhvm']
+    ]
   }
 
   file { '/usr/bin/php':
@@ -37,53 +53,28 @@ if hash_key_equals($hhvm_values, 'install', 1) {
     require => Package['hhvm']
   }
 
-  service { 'hhvm':
-    ensure  => 'running',
-    require => [
-      User['hhvm'],
-      Package['hhvm'],
-    ],
-  }
+  if count($hhvm_values['ini']) > 0 {
+    $hhvm_inis = merge({
+      'date.timezone' => $hhvm_values['timezone'],
+    }, $hhvm_values['ini'])
 
-  $hhvm_server_ini_file = '/etc/hhvm/php.ini'
+    $hhvm_ini = '/etc/hhvm/php.ini'
 
-  # config file could contain no server_ini key
-  $hhvm_server_inis = array_true($hhvm_values, 'server_ini') ? {
-    true    => $hhvm_values['server_ini'],
-    default => { }
-  }
-
-  each( $hhvm_server_inis ) |$key, $value| {
-    $changes = [ "set '${key}' '${value}'" ]
-
-    augeas { "${key}: ${value}":
-      lens    => 'PHP.lns',
-      incl    => $hhvm_server_ini_file,
-      context => "/files${hhvm_server_ini_file}/.anon",
-      changes => $changes,
-      notify  => Service['hhvm'],
-      require => Package['hhvm'],
+    each( $hhvm_inis ) |$key, $value| {
+      exec { "hhvm-php.ini@${key}/${value}":
+        command => "perl -p -i -e 's#${key} = .*#${key} = ${value}#gi' ${hhvm_ini}",
+        onlyif  => "test -f ${hhvm_ini}",
+        unless  => "grep -x '${key} = ${value}' ${hhvm_ini}",
+        path    => [ '/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/' ],
+        require => Package['hhvm'],
+        notify  => Supervisord::Supervisorctl['restart_hhvm'],
+      }
     }
-  }
 
-  $hhvm_php_ini_file = '/etc/hhvm/php.ini'
-
-  # config file could contain no php_ini key
-  $hhvm_php_inis = array_true($hhvm_values, 'php_ini') ? {
-    true    => $hhvm_values['php_ini'],
-    default => { }
-  }
-
-  each( $hhvm_php_inis ) |$key, $value| {
-    $changes = [ "set '${key}' '${value}'" ]
-
-    augeas { "${key}: ${value}":
-      lens    => 'PHP.lns',
-      incl    => $hhvm_php_ini_file,
-      context => "/files${hhvm_php_ini_file}/.anon",
-      changes => $changes,
-      notify  => Service['hhvm'],
-      require => Package['hhvm'],
+    supervisord::supervisorctl { 'restart_hhvm':
+      command     => 'restart',
+      process     => 'hhvm',
+      refreshonly => true,
     }
   }
 

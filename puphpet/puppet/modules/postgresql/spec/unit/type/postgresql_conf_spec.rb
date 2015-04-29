@@ -4,13 +4,13 @@ require 'spec_helper'
 describe Puppet::Type.type(:postgresql_conf) do
   before do
     @provider_class = described_class.provide(:simple) { mk_resource_methods }
-    @provider_class.stub(:suitable?).and_return true
-    described_class.stub(:defaultprovider).and_return @provider_class
+    @provider_class.stubs(:suitable?).returns true
+    described_class.stubs(:defaultprovider).returns @provider_class
   end
 
   describe "namevar validation" do
     it "should have :name as its namevar" do
-      expect(described_class.key_attributes).to eq([:name])
+      described_class.key_attributes.should == [:name]
     end
     it "should not invalid names" do
       expect { described_class.new(:name => 'foo bar') }.to raise_error(Puppet::Error, /Invalid value/)
@@ -23,13 +23,13 @@ describe Puppet::Type.type(:postgresql_conf) do
   describe "when validating attributes" do
     [:name, :provider].each do |param|
       it "should have a #{param} parameter" do
-        expect(described_class.attrtype(param)).to eq(:param)
+        described_class.attrtype(param).should == :param
       end
     end
 
     [:value, :target].each do |property|
       it "should have a #{property} property" do
-        expect(described_class.attrtype(property)).to eq(:property)
+        described_class.attrtype(property).should == :property
       end
     end
   end

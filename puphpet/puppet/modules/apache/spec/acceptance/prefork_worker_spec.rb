@@ -6,9 +6,7 @@ when 'RedHat'
 when 'Debian'
   servicename = 'apache2'
 when 'FreeBSD'
-  servicename = 'apache24'
-when 'Gentoo'
-  servicename = 'apache2'
+  servicename = 'apache22'
 end
 
 case fact('osfamily')

@@ -7,9 +7,7 @@ describe 'apache::mod::proxy_html class', :unless => UNSUPPORTED_PLATFORMS.inclu
   when 'RedHat'
     service_name = 'httpd'
   when 'FreeBSD'
-    service_name = 'apache24'
-  when 'Gentoo'
-    service_name = 'apache2'
+    service_name = 'apache22'
   end
 
   context "default proxy_html config" do

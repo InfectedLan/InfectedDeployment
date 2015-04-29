@@ -11,13 +11,9 @@ describe 'apache::mod::pagespeed class', :unless => UNSUPPORTED_PLATFORMS.includ
     mod_dir      = '/etc/httpd/conf.d'
     service_name = 'httpd'
   when 'FreeBSD'
-    vhost_dir    = '/usr/local/etc/apache24/Vhosts'
-    mod_dir      = '/usr/local/etc/apache24/Modules'
-    service_name = 'apache24'
-  when 'Gentoo'
-    vhost_dir    = '/etc/apache2/vhosts.d'
-    mod_dir      = '/etc/apache2/modules.d'
-    service_name = 'apache2'
+    vhost_dir    = '/usr/local/etc/apache22/Vhosts'
+    mod_dir      = '/usr/local/etc/apache22/Modules'
+    service_name = 'apache22'
   end
 
   context "default pagespeed config" do
@@ -34,7 +30,7 @@ describe 'apache::mod::pagespeed class', :unless => UNSUPPORTED_PLATFORMS.includ
             repos       => 'main',
             include_src => false,
             before      => Class['apache'],
-          }
+          } 
         } elsif $::osfamily == 'RedHat' {
          yumrepo { 'mod-pagespeed':
           baseurl  => "http://dl.google.com/linux/mod-pagespeed/rpm/stable/$::architecture",

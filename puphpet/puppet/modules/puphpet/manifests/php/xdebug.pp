@@ -11,41 +11,34 @@ class puphpet::php::xdebug (
     $notify_service = []
   }
 
-  if !$compile and ! defined(Package[$puphpet::params::xdebug_package])
-    and $puphpet::php::settings::enable_xdebug
-  {
+  if !$compile and ! defined(Package[$puphpet::params::xdebug_package]) {
     package { 'xdebug':
       name    => $puphpet::params::xdebug_package,
       ensure  => installed,
       require => Package['php'],
       notify  => $notify_service,
     }
-  } elsif $puphpet::php::settings::enable_xdebug {
+  } else {
     # php 5.6 requires xdebug be compiled, for now
     case $::operatingsystem {
-      # Debian and Ubuntu slightly differ
-      'debian', 'ubuntu': {
-        if is_dir('/usr/lib/php5/20131226-zts') {
-          $mod_dir = '/usr/lib/php5/20131226-zts'
-        } else {
-          $mod_dir = '/usr/lib/php5/20131226'
-        }
-      }
+      'debian': {$mod_dir = '/usr/lib/php5/20131226-zts'}
+      'ubuntu': {$mod_dir = '/usr/lib/php5/20131226'}
       'redhat', 'centos': {$mod_dir = '/usr/lib64/php/modules'}
     }
 
-    vcsrepo { '/.puphpet-stuff/xdebug':
-      ensure   => present,
-      provider => git,
-      source   => 'https://github.com/xdebug/xdebug.git',
-      revision => 'XDEBUG_2_3_1',
-      require  => Class['Php::Devel']
+    exec { 'git clone https://github.com/xdebug/xdebug.git /.puphpet-stuff/xdebug':
+      creates => '/.puphpet-stuff/xdebug',
+      require => Class['Php::Devel'],
     }
     -> exec { 'phpize && ./configure --enable-xdebug && make':
       creates => '/.puphpet-stuff/xdebug/configure',
       cwd     => '/.puphpet-stuff/xdebug',
     }
-    -> exec { "cp /.puphpet-stuff/xdebug/modules/xdebug.so ${mod_dir}/xdebug.so":
+    -> exec { "mkdir -p ${mod_dir}":
+      creates => $mod_dir,
+    }
+    -> exec { 'copy xdebug to target dir':
+      command => "cp /.puphpet-stuff/xdebug/modules/xdebug.so ${mod_dir}/xdebug.so",
       creates => "${mod_dir}/xdebug.so",
     }
 
@@ -54,14 +47,12 @@ class puphpet::php::xdebug (
       value       => "${mod_dir}/xdebug.so",
       php_version => '5.6',
       webserver   => $webserver,
-      require     => Exec["cp /.puphpet-stuff/xdebug/modules/xdebug.so ${mod_dir}/xdebug.so"],
+      require     => Exec['copy xdebug to target dir'],
     }
   }
 
   # shortcut for xdebug CLI debugging
-  if $install_cli and defined(File['/usr/bin/xdebug']) == false
-    and $puphpet::php::settings::enable_xdebug
-  {
+  if $install_cli and defined(File['/usr/bin/xdebug']) == false {
     file { '/usr/bin/xdebug':
       ensure  => present,
       mode    => '+X',

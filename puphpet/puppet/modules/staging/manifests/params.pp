@@ -17,17 +17,10 @@ class staging::params {
     }
     'windows': {
       $path      = $::staging_windir
-      $owner     = 'S-1-5-32-544' # Adminstrators
-      $group     = 'S-1-5-18'     # SYSTEM
-      $mode      = '0660'
-      $exec_path = $::path
-    }
-    'FreeBSD': {
-      $path      = '/var/tmp/staging'
-      $owner     = '0'
-      $group     = '0'
+      $owner     = undef
+      $group     = undef
       $mode      = '0755'
-      $exec_path = '/usr/local/bin:/usr/bin:/bin'
+      $exec_path = $::path
     }
   }
 }

@@ -2,13 +2,11 @@
 #
 # This class installs the postgresql 9.1 repo
 #
-class yum::repo::pgdg91 (
-  $baseurl = 'http://yum.postgresql.org/9.1/redhat/rhel-$releasever-$basearch',
-) {
+class yum::repo::pgdg91 {
 
   yum::managed_yumrepo { 'pgdg91':
     descr          => 'PostgreSQL 9.1 $releasever - $basearch',
-    baseurl        => $baseurl,
+    baseurl        => 'http://yum.postgresql.org/9.1/redhat/rhel-$releasever-$basearch',
     enabled        => 1,
     gpgcheck       => 1,
     gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-PGDG',

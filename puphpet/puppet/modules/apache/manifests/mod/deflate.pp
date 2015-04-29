@@ -19,6 +19,6 @@ class apache::mod::deflate (
     content => template('apache/mod/deflate.conf.erb'),
     require => Exec["mkdir ${::apache::mod_dir}"],
     before  => File[$::apache::mod_dir],
-    notify  => Class['apache::service'],
+    notify  => Service['httpd'],
   }
 }

@@ -20,6 +20,6 @@ class apache::mod::negotiation (
     content => template('apache/mod/negotiation.conf.erb'),
     require => Exec["mkdir ${::apache::mod_dir}"],
     before  => File[$::apache::mod_dir],
-    notify  => Class['apache::service'],
+    notify  => Service['httpd'],
   }
 }

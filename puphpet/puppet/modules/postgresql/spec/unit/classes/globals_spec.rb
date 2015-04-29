@@ -7,13 +7,12 @@ describe 'postgresql::globals', :type => :class do
       :operatingsystem        => 'Debian',
       :operatingsystemrelease => '6.0',
       :lsbdistid              => 'Debian',
-      :lsbdistcodename        => 'squeeze',
     }
   end
 
   describe 'with no parameters' do
     it 'should work' do
-      is_expected.to contain_class("postgresql::globals")
+      should contain_class("postgresql::globals")
     end
   end
 
@@ -24,7 +23,7 @@ describe 'postgresql::globals', :type => :class do
       }
     end
     it 'should pull in class postgresql::repo' do
-      is_expected.to contain_class("postgresql::repo")
+      should contain_class("postgresql::repo")
     end
   end
 end

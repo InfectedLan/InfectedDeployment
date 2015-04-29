@@ -12,6 +12,6 @@ define apache::peruser::processor (
     ensure  => file,
     content => "Processor ${user} ${group}\n",
     require => File["${::apache::mod_dir}/peruser/processors"],
-    notify  => Class['apache::service'],
+    notify  => Service['httpd'],
   }
 }

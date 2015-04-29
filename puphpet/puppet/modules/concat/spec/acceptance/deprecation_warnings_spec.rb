@@ -1,7 +1,6 @@
 require 'spec_helper_acceptance'
 
 describe 'deprecation warnings' do
-  basedir = default.tmpdir('concat')
 
   shared_examples 'has_warning'do |pp, w|
     it 'applies the manifest twice with a stderr regex' do
@@ -12,11 +11,11 @@ describe 'deprecation warnings' do
 
   context 'concat gnu parameter' do
     pp = <<-EOS
-      concat { '#{basedir}/file':
+      concat { '/tmp/concat/file':
         gnu => 'foo',
       }
       concat::fragment { 'foo':
-        target  => '#{basedir}/file',
+        target  => '/tmp/concat/file',
         content => 'bar',
       }
     EOS
@@ -29,11 +28,11 @@ describe 'deprecation warnings' do
     ['true', 'yes', 'on'].each do |warn|
       context warn do
         pp = <<-EOS
-          concat { '#{basedir}/file':
+          concat { '/tmp/concat/file':
             warn => '#{warn}',
           }
           concat::fragment { 'foo':
-            target  => '#{basedir}/file',
+            target  => '/tmp/concat/file',
             content => 'bar',
           }
         EOS
@@ -41,7 +40,7 @@ describe 'deprecation warnings' do
 
         it_behaves_like 'has_warning', pp, w
 
-        describe file("#{basedir}/file") do
+        describe file('/tmp/concat/file') do
           it { should be_file }
           it { should contain '# This file is managed by Puppet. DO NOT EDIT.' }
           it { should contain 'bar' }
@@ -52,11 +51,11 @@ describe 'deprecation warnings' do
     ['false', 'no', 'off'].each do |warn|
       context warn do
         pp = <<-EOS
-          concat { '#{basedir}/file':
+          concat { '/tmp/concat/file':
             warn => '#{warn}',
           }
           concat::fragment { 'foo':
-            target  => '#{basedir}/file',
+            target  => '/tmp/concat/file',
             content => 'bar',
           }
         EOS
@@ -64,7 +63,7 @@ describe 'deprecation warnings' do
 
         it_behaves_like 'has_warning', pp, w
 
-        describe file("#{basedir}/file") do
+        describe file('/tmp/concat/file') do
           it { should be_file }
           it { should_not contain '# This file is managed by Puppet. DO NOT EDIT.' }
           it { should contain 'bar' }
@@ -76,49 +75,47 @@ describe 'deprecation warnings' do
   context 'concat::fragment ensure parameter' do
     context 'target file exists' do
       before(:all) do
-        shell("/bin/echo 'file1 contents' > #{basedir}/file1")
-        pp = <<-EOS
-          file { '#{basedir}':
-            ensure => directory,
-          }
-          file { '#{basedir}/file1':
-            content => "file1 contents\n",
-          }
-        EOS
-        apply_manifest(pp)
+        shell("/bin/echo 'file1 contents' > /tmp/concat/file1")
+      end
+      after(:all) do
+        # XXX this test may leave behind a symlink in the fragment directory
+        # which could cause warnings and/or breakage from the subsequent tests
+        # unless we clean it up. 
+        shell('rm -rf /tmp/concat /var/lib/puppet/concat')
+        shell('mkdir -p /tmp/concat')
       end
 
       pp = <<-EOS
-        concat { '#{basedir}/file': }
+        concat { '/tmp/concat/file': }
         concat::fragment { 'foo':
-          target => '#{basedir}/file',
-          ensure => '#{basedir}/file1',
+          target => '/tmp/concat/file',
+          ensure => '/tmp/concat/file1',
         }
       EOS
       w = 'Passing a value other than \'present\' or \'absent\' as the $ensure parameter to concat::fragment is deprecated.  If you want to use the content of a file as a fragment please use the $source parameter.'
 
       it_behaves_like 'has_warning', pp, w
 
-      describe file("#{basedir}/file") do
+      describe file('/tmp/concat/file') do
         it { should be_file }
         it { should contain 'file1 contents' }
       end
 
-      describe 'the fragment can be changed from a symlink to a plain file', :unless => (fact("osfamily") == "windows") do
+      describe 'the fragment can be changed from a symlink to a plain file' do
         pp = <<-EOS
-          concat { '#{basedir}/file': }
+          concat { '/tmp/concat/file': }
           concat::fragment { 'foo':
-            target  => '#{basedir}/file',
+            target  => '/tmp/concat/file',
             content => 'new content',
           }
         EOS
 
         it 'applies the manifest twice with no stderr' do
-          apply_manifest(pp, :catch_failures => true)
-          apply_manifest(pp, :catch_changes => true)
+          expect(apply_manifest(pp, :catch_failures => true).stderr).to eq("")
+          expect(apply_manifest(pp, :catch_changes => true).stderr).to eq("")
         end
 
-        describe file("#{basedir}/file") do
+        describe file('/tmp/concat/file') do
           it { should be_file }
           it { should contain 'new content' }
           it { should_not contain 'file1 contents' }
@@ -128,35 +125,35 @@ describe 'deprecation warnings' do
 
     context 'target does not exist' do
       pp = <<-EOS
-        concat { '#{basedir}/file': }
+        concat { '/tmp/concat/file': }
         concat::fragment { 'foo':
-          target => '#{basedir}/file',
-          ensure => '#{basedir}/file1',
+          target => '/tmp/concat/file',
+          ensure => '/tmp/concat/file1',
         }
       EOS
       w = 'Passing a value other than \'present\' or \'absent\' as the $ensure parameter to concat::fragment is deprecated.  If you want to use the content of a file as a fragment please use the $source parameter.'
 
       it_behaves_like 'has_warning', pp, w
 
-      describe file("#{basedir}/file") do
+      describe file('/tmp/concat/file') do
         it { should be_file }
       end
 
-      describe 'the fragment can be changed from a symlink to a plain file', :unless => (fact('osfamily') == 'windows') do
+      describe 'the fragment can be changed from a symlink to a plain file' do
         pp = <<-EOS
-          concat { '#{basedir}/file': }
+          concat { '/tmp/concat/file': }
           concat::fragment { 'foo':
-            target  => '#{basedir}/file',
+            target  => '/tmp/concat/file',
             content => 'new content',
           }
         EOS
 
         it 'applies the manifest twice with no stderr' do
-          apply_manifest(pp, :catch_failures => true)
-          apply_manifest(pp, :catch_changes => true)
+          expect(apply_manifest(pp, :catch_failures => true).stderr).to eq("")
+          expect(apply_manifest(pp, :catch_changes => true).stderr).to eq("")
         end
 
-        describe file("#{basedir}/file") do
+        describe file('/tmp/concat/file') do
           it { should be_file }
           it { should contain 'new content' }
         end
@@ -167,9 +164,9 @@ describe 'deprecation warnings' do
 
   context 'concat::fragment mode parameter' do
     pp = <<-EOS
-      concat { '#{basedir}/file': }
+      concat { '/tmp/concat/file': }
       concat::fragment { 'foo':
-        target  => '#{basedir}/file',
+        target  => '/tmp/concat/file',
         content => 'bar',
         mode    => 'bar',
       }
@@ -181,9 +178,9 @@ describe 'deprecation warnings' do
 
   context 'concat::fragment owner parameter' do
     pp = <<-EOS
-      concat { '#{basedir}/file': }
+      concat { '/tmp/concat/file': }
       concat::fragment { 'foo':
-        target  => '#{basedir}/file',
+        target  => '/tmp/concat/file',
         content => 'bar',
         owner   => 'bar',
       }
@@ -195,9 +192,9 @@ describe 'deprecation warnings' do
 
   context 'concat::fragment group parameter' do
     pp = <<-EOS
-      concat { '#{basedir}/file': }
+      concat { '/tmp/concat/file': }
       concat::fragment { 'foo':
-        target  => '#{basedir}/file',
+        target  => '/tmp/concat/file',
         content => 'bar',
         group   => 'bar',
       }
@@ -209,9 +206,9 @@ describe 'deprecation warnings' do
 
   context 'concat::fragment backup parameter' do
     pp = <<-EOS
-      concat { '#{basedir}/file': }
+      concat { '/tmp/concat/file': }
       concat::fragment { 'foo':
-        target  => '#{basedir}/file',
+        target  => '/tmp/concat/file',
         content => 'bar',
         backup  => 'bar',
       }

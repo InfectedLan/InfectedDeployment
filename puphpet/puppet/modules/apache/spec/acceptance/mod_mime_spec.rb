@@ -9,11 +9,8 @@ describe 'apache::mod::mime class', :unless => UNSUPPORTED_PLATFORMS.include?(fa
     mod_dir      = '/etc/httpd/conf.d'
     service_name = 'httpd'
   when 'FreeBSD'
-    mod_dir      = '/usr/local/etc/apache24/Modules'
-    service_name = 'apache24'
-  when 'Gentoo'
-    mod_dir      = '/etc/apache2/modules.d'
-    service_name = 'apache2'
+    mod_dir      = '/usr/local/etc/apache22/Modules'
+    service_name = 'apache22'
   end
 
   context "default mime config" do
