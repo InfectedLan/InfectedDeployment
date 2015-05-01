@@ -7,6 +7,8 @@ git remote add origin git@github.com:InfectedLan/InfectedTest.git
 git pull origin master
 
 crontab -l > mycron
-echo "0 * * * * $HOME/testing/startTests" >> mycron
+echo "*/5 * * * * $HOME/testing/testingCronjob" >> mycron
 crontab mycron
 rm mycron
+
+chmod +x testingCronjob
