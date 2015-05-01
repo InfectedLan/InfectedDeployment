@@ -1,0 +1,12 @@
+#!/bin/sh
+mkdir ~/testing
+cd ~/testing
+
+git init
+git remote add origin git@github.com:InfectedLan/InfectedTest.git
+git pull origin master
+
+crontab -l > mycron
+echo "0 * * * * $HOME/testing/startTests" >> mycron
+crontab mycron
+rm mycron
