@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.2.12deb2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2015 at 10:35 PM
--- Server version: 5.6.19-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.5
+-- Generation Time: 07. Mai, 2015 09:26 AM
+-- Server-versjon: 5.6.24-0ubuntu2
+-- PHP Version: 5.6.4-4ubuntu6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,28 +23,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `agenda`
+-- Tabellstruktur for tabell `agenda`
 --
 
 CREATE TABLE IF NOT EXISTS `agenda` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `title` varchar(64) NOT NULL,
   `description` text NOT NULL,
   `startTime` datetime NOT NULL,
-  `published` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `published` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `games`
+-- Tabellstruktur for tabell `games`
 --
 
 CREATE TABLE IF NOT EXISTS `games` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
   `price` int(11) NOT NULL,
@@ -52,12 +51,11 @@ CREATE TABLE IF NOT EXISTS `games` (
   `description` text NOT NULL,
   `startTime` datetime NOT NULL,
   `endTime` datetime NOT NULL,
-  `published` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `published` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `games`
+-- Dataark for tabell `games`
 --
 
 INSERT INTO `games` (`id`, `name`, `title`, `price`, `mode`, `description`, `startTime`, `endTime`, `published`) VALUES
@@ -67,19 +65,18 @@ INSERT INTO `games` (`id`, `name`, `title`, `price`, `mode`, `description`, `sta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pages`
+-- Tabellstruktur for tabell `pages`
 --
 
 CREATE TABLE IF NOT EXISTS `pages` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
-  `content` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `content` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pages`
+-- Dataark for tabell `pages`
 --
 
 INSERT INTO `pages` (`id`, `name`, `title`, `content`) VALUES
@@ -93,8 +90,47 @@ INSERT INTO `pages` (`id`, `name`, `title`, `content`) VALUES
 (8, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', '<article class="contentLeftBox">\r\n	<h3>Regler:</h3><br>\r\n	<p>Generelt & Game settings:<p>\r\n	<p>Konkurranse Mode: 5on5<br>\r\n	Maps: Dust2, Cache, Nuke, Mirage, Season, Inferno, Overpass<br>\r\n	Gamemode: Competitive - Defuse<br>\r\n	Vinner: mr15<br>\r\nTickrate: 128 <br>\r\n	Mode: Double Elimination</p>\r\n</article>\r\n<img class="contentRightImageBox" src="images/pages/csgo.png" alt="Counter-Strike: Global Offensive">\r\n<article class="contentBox">\r\n	<p>Map velges av en banning prosess hvor hvert lag har 3 bans av baner.<br>\r\n	Etter valg av bane er det kniv runde for å bestemme side (T / CT).</p>\r\n</article>\r\n<article class="contentBox">\r\n	<p><strong>Generelt:</strong><br>\r\nHver spiller skal ta Demo av matchen ved hjelp av Console kommandoen: record (Navn på record).<br>\r\nTurneringen er i Double Elimination bracket-system. Dette betyr at alle lag kan tape én kamp uten å ryke ut av turneringen.<br>\r\nInfected stiller med server til compoen.<br>\r\nSpesial-filer er ikke tillatt. Spesial-filer er alle filer som forandrer eller erstatter de originale in-game-grafiske elementene, *gfc-filer eller lyder. Dette betyr også forandring av HUD, scoreboard og lyder.<br>\r\nHvis en bug eller ander ting blir misbrukt i spillet, blir dette sett på som regelbrudd og fører til tap av tre runder eller diskvalifisering. Game chief avgjør dette ut fra hvor grov hendelsen er.<br>\r\nBruk av tredjeparts programmer som tukler med spillets funksjoner er forbudt, og kan føre til utestengelse.<br>\r\nEn kamp avsluttes når et lag har vunnet 16 runder.\r\n\r\n</p>\r\n</article>\r\n<article class="contentBox">\r\n	<p><strong>Rates:</strong><br>\r\nAlle må ha riktige verdier i cfg fil, dette kan også gjøres gjennom konsoll.<br>\r\nDette kan du gjøre ved å skrive kommandoene rett inn i konsollen på cs:go.<br>\r\nSlik gjør du det mulig å åpne konsollen<br>\r\n<img src="https://infected.no/v7/images/pages/HvordanFaKonsoll.jpg" style="width:832px"><br>\r\n</article>\r\n<img class="contentLeftImageBox" src="https://infected.no/v7/images/pages/Keyboard.png" alt="Keyboard">\r\n<article class="contentRightBox">\r\n<h3>Rates:</h3><br>\r\n<p>kommandoene du skal skrive inn er:<br>\r\n<br>\r\nrate 128000<br>\r\ncl_cmdrate 128<br>\r\ncl_updaterate 128<br>\r\ncl_interp_ratio 1	\r\n</p>\r\n</article>\r\n<article class="contentBox">\r\n	<p><strong>Disconnect/tekniske problemer:</strong><br>\r\n	Hvis en spiller frakoples servere på grunn av tekniske vanskeligheter eller har andre tekniske problemer, kan dere pause spillet. Dette gjør dere ved å skrive /pause i chaten. For å starte spillet igjen må begge lag skrive /unpause i chaten.<br>\r\n	Problemer med kampen skal rapporteres til administrator via Game-desk, eller chaten på composiden</p>\r\n</article>\r\n<article class="contentBox">\r\n	<p>Game-crew forbeholder seg retten til å endre, legge til eller fjerne regler underveis.</p>\r\n</article>'),
 (9, 'league-of-legends', 'League of Legends', '<article class="contentLeftBox">\r\n	<h3>Regler:</h3><br>\r\n	\r\n	<p>Generelt & game settings:</p><br>\r\n	\r\n	<p>Konkurranse Mode: 5 vs 5<br>\r\n	Map: Summoner’s Rift (summer)<br>\r\n	Mode: Draft Mode<br>\r\n	Vinner: Teamet som helt ødelegger motstanderens nexus<br>\r\n	eller tvinger motstanderen til å surrendere.</p>\r\n</article>\r\n<img class="contentRightImageBox" src="images/pages/lol.png" alt="Leauge of Leagends">\r\n<article class="contentBox">\r\n	<p>Disconnects:<br>\r\n	Hvis en spiller blir disconnectet fra spillet pga nettverksproblemer eller andre uforutsette hendelser,<br>\r\n	skal gamet remakes hvis mindre enn 5 minutter av spillet har gått (ingame timer) eller noen har<br>\r\n	fått firstblood. Har 5 min av spillet gått eller noe har fått firstblood fortsetter gamet som normalt.<br>\r\n	Hvis en spiller disconnecter med vilje uten grunn eller med ugyldig grunnlag, fortsetter gamet som normalt.<br>\r\n	Dersom det ikke opplyses med engang at en spiller disconnectet, fortsetter spillet som normalt.</p><br>\r\n	\r\n	<p>Diverse:<br>\r\n	Følgende oppførsel vil ikke bli tolerert, og vil få konsekvenser avhengig av hvor seriøst tilfellet er.<br>\r\n	1) Bruk av eventuelle cheat programmer og / eller map hacks.<br>\r\n	2) Disconnecting med vilje uten skikkelig grunn<br>\r\n	3) Griefing / flaming / generelt upassende oppførsel<br>\r\n	4) Bruk av bugs eller lignende. Det blir opp til admins å avgjøre hva som er bugs, hvor grove bugsa er,<br>\r\n	og konsekvensene for eventuell abuse av dem.<br>\r\n	5) Bruk av en spiller som ikke opprinnelig er en del av laget («ringer»)</p><br>\r\n6)<p>Felles chat: infectedlan</p>\r\n</article>\r\n<article class="contentBox">\r\n	<p>Ved uklarheter, ta kontakt med compoansvarlig/game crew.<br>\r\n	Husk att generelle regler gjelder i tillegg til disse compospesifikke reglene.</p>\r\n</article>');
 
--- --------------------------------------------------------
+--
+-- Indexes for dumped tables
+--
 
+--
+-- Indexes for table `agenda`
+--
+ALTER TABLE `agenda`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`eventId`);
+
+--
+-- Indexes for table `games`
+--
+ALTER TABLE `games`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `agenda`
+--
+ALTER TABLE `agenda`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `games`
+--
+ALTER TABLE `games`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

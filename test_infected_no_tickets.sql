@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.2.12deb2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2015 at 10:35 PM
--- Server version: 5.6.19-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.5
+-- Generation Time: 07. Mai, 2015 09:27 AM
+-- Server-versjon: 5.6.24-0ubuntu2
+-- PHP Version: 5.6.4-4ubuntu6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,31 +23,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `checkinstates`
+-- Tabellstruktur for tabell `checkedintickets`
 --
 
-CREATE TABLE IF NOT EXISTS `checkinstates` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `checkedintickets` (
+`id` int(11) NOT NULL,
   `ticketId` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `userId` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `checkedintickets`
+--
+
+INSERT INTO `checkedintickets` (`id`, `ticketId`, `userId`) VALUES
+(9, 1, 2),
+(10, 2, 3),
+(11, 3, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `entrances`
+-- Tabellstruktur for tabell `entrances`
 --
 
 CREATE TABLE IF NOT EXISTS `entrances` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `title` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `title` varchar(32) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `entrances`
+-- Dataark for tabell `entrances`
 --
 
 INSERT INTO `entrances` (`id`, `name`, `title`) VALUES
@@ -57,38 +64,46 @@ INSERT INTO `entrances` (`id`, `name`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payments`
+-- Tabellstruktur for tabell `payments`
 --
 
 CREATE TABLE IF NOT EXISTS `payments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `ticketType` int(11) NOT NULL,
+  `ticketTypeId` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `totalPrice` int(11) NOT NULL,
   `transactionId` varchar(64) NOT NULL,
-  `datetime` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `datetime` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `payments`
+--
+
+INSERT INTO `payments` (`id`, `userId`, `ticketTypeId`, `price`, `totalPrice`, `transactionId`, `datetime`) VALUES
+(1, 1, 1, 1, 350, '2FR0683745560705K', '2015-02-03 23:24:35'),
+(2, 1, 1, 1, 350, '1JB27503MS155754P', '2015-02-04 19:14:14'),
+(3, 1, 1, 1, 350, '3CT78292D2684950H', '2015-02-04 19:16:28'),
+(4, 1, 1, 1, 350, '2D315183FA7715535', '2015-02-04 19:42:09');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rows`
+-- Tabellstruktur for tabell `rows`
 --
 
 CREATE TABLE IF NOT EXISTS `rows` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `x` int(11) NOT NULL,
   `y` int(11) NOT NULL,
   `entranceId` int(11) NOT NULL,
-  `seatmapId` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `seatmapId` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rows`
+-- Dataark for tabell `rows`
 --
 
 INSERT INTO `rows` (`id`, `number`, `x`, `y`, `entranceId`, `seatmapId`) VALUES
@@ -156,18 +171,17 @@ INSERT INTO `rows` (`id`, `number`, `x`, `y`, `entranceId`, `seatmapId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seatmaps`
+-- Tabellstruktur for tabell `seatmaps`
 --
 
 CREATE TABLE IF NOT EXISTS `seatmaps` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `humanName` varchar(64) NOT NULL,
-  `backgroundImage` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `backgroundImage` varchar(64) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `seatmaps`
+-- Dataark for tabell `seatmaps`
 --
 
 INSERT INTO `seatmaps` (`id`, `humanName`, `backgroundImage`) VALUES
@@ -185,18 +199,17 @@ INSERT INTO `seatmaps` (`id`, `humanName`, `backgroundImage`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seats`
+-- Tabellstruktur for tabell `seats`
 --
 
 CREATE TABLE IF NOT EXISTS `seats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `rowId` int(11) NOT NULL,
-  `number` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `number` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=737 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `seats`
+-- Dataark for tabell `seats`
 --
 
 INSERT INTO `seats` (`id`, `rowId`, `number`) VALUES
@@ -940,76 +953,225 @@ INSERT INTO `seats` (`id`, `rowId`, `number`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `storesessions`
+-- Tabellstruktur for tabell `storesessions`
 --
 
 CREATE TABLE IF NOT EXISTS `storesessions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `ticketType` int(11) NOT NULL,
+  `ticketTypeId` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   `price` int(11) NOT NULL,
-  `datetime` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `datetime` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `storesessions`
+--
+
+INSERT INTO `storesessions` (`id`, `userId`, `ticketTypeId`, `amount`, `code`, `price`, `datetime`) VALUES
+(1, 1, 1, 1, 'c8339f0fd9a25a4351f618495ade78d7', 350, '2015-02-03 23:23:20'),
+(2, 1, 1, 1, '87d7080c41eee28af768c3d55b3b94d0', 350, '2015-02-04 17:04:20');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickets`
+-- Tabellstruktur for tabell `tickets`
 --
 
 CREATE TABLE IF NOT EXISTS `tickets` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
   `paymentId` int(11) NOT NULL,
   `typeId` int(11) NOT NULL,
   `buyerId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `seatId` int(11) NOT NULL,
-  `seaterId` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `seaterId` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=1338 DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `tickets`
+--
+
+INSERT INTO `tickets` (`id`, `eventId`, `paymentId`, `typeId`, `buyerId`, `userId`, `seatId`, `seaterId`) VALUES
+(3, 5, 0, 1, 0, 2, 0, 0),
+(4, 5, 0, 1, 2, 2, 0, 0),
+(5, 5, 0, 1, 2, 2, 0, 0),
+(1337, 5, 0, 1, 2, 2, 2, 2),
+(6, 5, 0, 1, 3, 3, 0, 0),
+(7, 5, 0, 1, 4, 4, 0, 0),
+(8, 5, 0, 1, 5, 5, 0, 0),
+(9, 5, 0, 1, 6, 6, 0, 0),
+(10, 5, 0, 1, 7, 7, 0, 0),
+(11, 5, 0, 1, 8, 8, 0, 0),
+(12, 5, 0, 1, 9, 9, 0, 0),
+(13, 5, 0, 1, 10, 10, 0, 0),
+(14, 5, 0, 1, 11, 11, 0, 0),
+(15, 5, 0, 1, 12, 12, 0, 0),
+(16, 5, 0, 1, 13, 13, 0, 0),
+(17, 5, 0, 1, 14, 14, 0, 0),
+(18, 5, 0, 1, 15, 15, 0, 0),
+(19, 5, 0, 1, 16, 16, 0, 0),
+(2, 5, 0, 2, 3, 2, 3, 3),
+(20, 5, 1, 3, 1, 1, 0, 0),
+(21, 5, 4, 1, 1, 1, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickettransfers`
+-- Tabellstruktur for tabell `tickettransfers`
 --
 
 CREATE TABLE IF NOT EXISTS `tickettransfers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `ticketId` int(11) NOT NULL,
   `fromId` int(11) NOT NULL,
   `toId` int(11) NOT NULL,
   `datetime` datetime NOT NULL,
-  `revertable` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `revertable` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tickettypes`
+-- Tabellstruktur for tabell `tickettypes`
 --
 
 CREATE TABLE IF NOT EXISTS `tickettypes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `internalName` varchar(64) NOT NULL,
-  `price` int(11) NOT NULL,
-  `humanName` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+`id` int(11) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `title` varchar(32) NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tickettypes`
+-- Dataark for tabell `tickettypes`
 --
 
-INSERT INTO `tickettypes` (`id`, `internalName`, `price`, `humanName`) VALUES
-(1, 'deltaker', 350, 'Deltaker'),
-(2, 'free', 0, 'Gratisbillett');
+INSERT INTO `tickettypes` (`id`, `name`, `title`, `price`) VALUES
+(1, 'participant', 'Deltaker', 350),
+(2, 'free', 'Gratis', 0);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `checkedintickets`
+--
+ALTER TABLE `checkedintickets`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`ticketId`,`userId`);
+
+--
+-- Indexes for table `entrances`
+--
+ALTER TABLE `entrances`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`ticketTypeId`);
+
+--
+-- Indexes for table `rows`
+--
+ALTER TABLE `rows`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`entranceId`,`seatmapId`);
+
+--
+-- Indexes for table `seatmaps`
+--
+ALTER TABLE `seatmaps`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `seats`
+--
+ALTER TABLE `seats`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`rowId`);
+
+--
+-- Indexes for table `storesessions`
+--
+ALTER TABLE `storesessions`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`ticketTypeId`);
+
+--
+-- Indexes for table `tickets`
+--
+ALTER TABLE `tickets`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`eventId`,`paymentId`,`typeId`,`buyerId`,`userId`,`seatId`,`seaterId`);
+
+--
+-- Indexes for table `tickettransfers`
+--
+ALTER TABLE `tickettransfers`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`ticketId`,`fromId`,`toId`);
+
+--
+-- Indexes for table `tickettypes`
+--
+ALTER TABLE `tickettypes`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `checkedintickets`
+--
+ALTER TABLE `checkedintickets`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `entrances`
+--
+ALTER TABLE `entrances`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `rows`
+--
+ALTER TABLE `rows`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+--
+-- AUTO_INCREMENT for table `seatmaps`
+--
+ALTER TABLE `seatmaps`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `seats`
+--
+ALTER TABLE `seats`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=737;
+--
+-- AUTO_INCREMENT for table `storesessions`
+--
+ALTER TABLE `storesessions`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tickets`
+--
+ALTER TABLE `tickets`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1338;
+--
+-- AUTO_INCREMENT for table `tickettransfers`
+--
+ALTER TABLE `tickettransfers`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tickettypes`
+--
+ALTER TABLE `tickettypes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

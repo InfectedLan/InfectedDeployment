@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.2.12deb2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 28, 2015 at 10:34 PM
--- Server version: 5.6.19-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.5
+-- Generation Time: 07. Mai, 2015 09:26 AM
+-- Server-versjon: 5.6.24-0ubuntu2
+-- PHP Version: 5.6.4-4ubuntu6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,66 +23,63 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `emergencycontacts`
+-- Tabellstruktur for tabell `emergencycontacts`
 --
 
 CREATE TABLE IF NOT EXISTS `emergencycontacts` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `phone` int(8) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `phone` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `events`
+-- Tabellstruktur for tabell `events`
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `theme` varchar(16) NOT NULL,
-  `location` int(11) NOT NULL,
+  `locationId` int(11) NOT NULL,
   `participants` int(11) NOT NULL,
   `bookingTime` datetime NOT NULL,
   `startTime` datetime NOT NULL,
   `endTime` datetime NOT NULL,
-  `seatmap` int(11) NOT NULL,
-  `ticketType` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `seatmapId` int(11) NOT NULL,
+  `ticketTypeId` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `events`
+-- Dataark for tabell `events`
 --
 
-INSERT INTO `events` (`id`, `theme`, `location`, `participants`, `bookingTime`, `startTime`, `endTime`, `seatmap`, `ticketType`) VALUES
+INSERT INTO `events` (`id`, `theme`, `locationId`, `participants`, `bookingTime`, `startTime`, `endTime`, `seatmapId`, `ticketTypeId`) VALUES
 (1, 'Arcade', 1, 322, '2013-08-27 18:00:00', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 1),
 (2, '', 1, 335, '2014-01-14 18:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 2, 1),
 (3, '', 1, 370, '2014-08-28 18:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 3, 1),
 (4, '', 1, 368, '2015-01-14 18:00:00', '2015-02-13 18:00:00', '2015-02-15 12:00:00', 4, 1),
-(5, '', 1, 335, '2015-08-25 18:00:00', '2015-09-25 18:00:00', '2015-09-27 12:00:00', 5, 1),
-(6, '', 1, 335, '2016-01-19 18:00:00', '2016-02-19 18:00:00', '2016-02-21 12:00:00', 6, 1),
-(7, '', 1, 335, '2016-08-30 18:00:00', '2016-09-30 18:00:00', '2016-10-02 12:00:00', 7, 1),
-(8, '', 1, 335, '2017-01-17 18:00:00', '2017-02-17 18:00:00', '2017-02-19 12:00:00', 8, 1),
-(9, '', 1, 335, '2017-08-29 18:00:00', '2017-09-29 18:00:00', '2017-10-01 12:00:00', 9, 1),
-(10, '', 1, 335, '2018-01-16 18:00:00', '2018-02-16 18:00:00', '2018-02-18 12:00:00', 10, 1);
+(5, '', 1, 368, '2015-09-25 18:00:00', '2015-09-27 18:00:00', '2015-09-27 12:00:00', 5, 1),
+(6, '', 1, 368, '2016-01-19 18:00:00', '2016-02-19 18:00:00', '2016-02-21 12:00:00', 6, 1),
+(7, '', 1, 368, '2016-08-30 18:00:00', '2016-09-30 18:00:00', '2016-10-02 12:00:00', 7, 1),
+(8, '', 1, 368, '2017-01-17 18:00:00', '2017-02-17 18:00:00', '2017-02-19 12:00:00', 8, 1),
+(9, '', 1, 368, '2017-08-29 18:00:00', '2017-09-29 18:00:00', '2017-10-01 12:00:00', 9, 1),
+(10, '', 1, 368, '2018-01-16 18:00:00', '2018-02-16 18:00:00', '2018-02-18 12:00:00', 10, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `locations`
+-- Tabellstruktur for tabell `locations`
 --
 
 CREATE TABLE IF NOT EXISTS `locations` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `title` varchar(32) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `title` varchar(32) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `locations`
+-- Dataark for tabell `locations`
 --
 
 INSERT INTO `locations` (`id`, `name`, `title`) VALUES
@@ -91,31 +88,29 @@ INSERT INTO `locations` (`id`, `name`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `passwordresetcodes`
+-- Tabellstruktur for tabell `passwordresetcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `code` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `code` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permissions`
+-- Tabellstruktur for tabell `permissions`
 --
 
 CREATE TABLE IF NOT EXISTS `permissions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `value` varchar(32) NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
+  `description` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `permissions`
+-- Dataark for tabell `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
@@ -147,23 +142,23 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (26, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
 (27, 'event.seatmap', 'Se seatmappet'),
 (28, 'search.*', 'Gir tilgang til alt under search.'),
-(29, 'search.users', 'Søk etter brukere i databasen.');
+(29, 'search.users', 'Søk etter brukere i databasen.'),
+(30, 'event.tickets', 'Lar deg se en brukers billett, og detaljer om den.');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `postalcodes`
+-- Tabellstruktur for tabell `postalcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `postalcodes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `code` int(4) NOT NULL,
-  `city` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4735 ;
+  `city` varchar(64) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4735 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `postalcodes`
+-- Dataark for tabell `postalcodes`
 --
 
 INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
@@ -4907,59 +4902,75 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registrationcodes`
+-- Tabellstruktur for tabell `registrationcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `registrationcodes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `code` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `code` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `useroptions`
+-- Tabellstruktur for tabell `tasks`
+--
+
+CREATE TABLE IF NOT EXISTS `tasks` (
+`id` int(11) NOT NULL,
+  `object` blob NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `tasks`
+--
+
+INSERT INTO `tasks` (`id`, `object`) VALUES
+(1, 0x4f3a383a22546573745461736b223a303a7b7d);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `useroptions`
 --
 
 CREATE TABLE IF NOT EXISTS `useroptions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `hidePhone` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `hidePhone` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userpermissions`
+-- Tabellstruktur for tabell `userpermissions`
 --
 
 CREATE TABLE IF NOT EXISTS `userpermissions` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `permissionId` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `permissionId` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `userpermissions`
+-- Dataark for tabell `userpermissions`
 --
 
-INSERT INTO `userpermissions` (`id`, `userId`, `permissionId`) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(3, 3, 1);
+INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
+(2, 0, 2, 1),
+(12, 19, 1, 1),
+(13, 19, 3, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabellstruktur for tabell `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
   `username` varchar(32) NOT NULL,
@@ -4971,38 +4982,166 @@ CREATE TABLE IF NOT EXISTS `users` (
   `address` varchar(32) NOT NULL,
   `postalcode` int(4) NOT NULL,
   `nickname` varchar(32) NOT NULL,
-  `registereddate` datetime NOT NULL,
-  PRIMARY KEY (`id`),
-  FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`,`nickname`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+  `registereddate` datetime NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dataark for tabell `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `nickname`, `registereddate`) VALUES
-(1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', '71018ed33afadf79ec8e5d222c41031cc02ede969629c1340dedbfe8d31030cb', 'me@petterroea.com', '1998-03-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea', '2014-08-28 18:00:00'),
-(2, 'Halvor', 'Lyche Strandvoll', 'halvors', 'c38900668741dc4655253ee1fd0b6a700cbece969bb7af14b69c309d55b91e12', 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors', '2014-08-28 18:00:00'),
-(3, 'Fredrik', 'Warbo', 'warbo', 'b68878cc67def52956088d845724bbab804c68900e7e2f89a8a12d2ae4e54359', 'fredrik@warbo.org', '1988-04-10', 0, 99767745, 'Søndre vei 68', 1397, 'wrb', '2014-08-28 18:00:00'),
-(5, 'lois', 'williams', 'test1', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(6, 'lois', 'williams', 'test2', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(7, 'kylie', 'warren', 'test3', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(8, 'marc', 'morrison', 'test4', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(9, 'lucas', 'anderson', 'test5', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(10, 'william', 'walters', 'test6', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(11, 'riley', 'carroll', 'test7', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(12, 'brittany', 'davis', 'test8', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(13, 'terry', 'obrien', 'test9', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(14, 'nellie', 'oliver', 'test10', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(15, 'sherri', 'lowe', 'test11', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(16, 'anthony', 'riley', 'test12', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(17, 'danny', 'martin', 'test13', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(18, 'eileen', 'powell', 'test14', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(19, 'isaac', 'smith', 'test15', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(20, 'anthony', 'stephens', 'test16', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(21, 'wade', 'beck', 'test17', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(22, 'vickie', 'sanchez', 'test18', '9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08', 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00');
+(1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', 0x37313031386564333361666164663739656338653564323232633431303331636330326564653936393632396331333430646564626665386433313033306362, 'me@petterroea.com', '1998-03-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea', '2014-08-28 18:00:00'),
+(2, 'Halvor', 'Lyche Strandvoll', 'halvors', 0x63333839303036363837343164633436353532353365653166643062366137303063626563653936396262376166313462363963333039643535623931653132, 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors', '2014-08-28 18:00:00'),
+(3, 'Fredrik', 'Warbo', 'warbo', 0x62363838373863633637646566353239353630383864383435373234626261623830346336383930306537653266383961386131326432616534653534333539, 'fredrik@warbo.org', '1988-04-10', 0, 99767745, 'Søndre vei 68', 1397, 'wrb', '2014-08-28 18:00:00'),
+(5, 'lois', 'williams', 'test1', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(6, 'lois', 'williams', 'test2', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(7, 'kylie', 'warren', 'test3', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(8, 'marc', 'morrison', 'test4', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(9, 'lucas', 'anderson', 'test5', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(10, 'william', 'walters', 'test6', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(11, 'riley', 'carroll', 'test7', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(12, 'brittany', 'davis', 'test8', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(13, 'terry', 'obrien', 'test9', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(14, 'nellie', 'oliver', 'test10', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(15, 'sherri', 'lowe', 'test11', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(16, 'anthony', 'riley', 'test12', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(17, 'danny', 'martin', 'test13', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(18, 'eileen', 'powell', 'test14', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(19, 'isaac', 'smith', 'test15', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(20, 'anthony', 'stephens', 'test16', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(21, 'wade', 'beck', 'test17', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(22, 'vickie', 'sanchez', 'test18', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(23, 'Jonas', 'Moltumyr', 'NarreN', 0x31336235363762323332356137366361356333363030656234313932646363623830616333663264663133623134366464613032356239663536333066316336, 'jonas@moltumyr.no', '1992-08-05', 0, 48109998, 'Furukollen 22', 1900, 'NarreN', '2015-02-13 15:08:42');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `emergencycontacts`
+--
+ALTER TABLE `emergencycontacts`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`seatmapId`,`ticketTypeId`);
+
+--
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `passwordresetcodes`
+--
+ALTER TABLE `passwordresetcodes`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `postalcodes`
+--
+ALTER TABLE `postalcodes`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `registrationcodes`
+--
+ALTER TABLE `registrationcodes`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+
+--
+-- Indexes for table `tasks`
+--
+ALTER TABLE `tasks`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `useroptions`
+--
+ALTER TABLE `useroptions`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+
+--
+-- Indexes for table `userpermissions`
+--
+ALTER TABLE `userpermissions`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`eventId`,`userId`,`permissionId`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`username`,`email`,`phone`), ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`,`nickname`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `emergencycontacts`
+--
+ALTER TABLE `emergencycontacts`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `passwordresetcodes`
+--
+ALTER TABLE `passwordresetcodes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `postalcodes`
+--
+ALTER TABLE `postalcodes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4735;
+--
+-- AUTO_INCREMENT for table `registrationcodes`
+--
+ALTER TABLE `registrationcodes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tasks`
+--
+ALTER TABLE `tasks`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+--
+-- AUTO_INCREMENT for table `useroptions`
+--
+ALTER TABLE `useroptions`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `userpermissions`
+--
+ALTER TABLE `userpermissions`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
