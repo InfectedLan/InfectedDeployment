@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 07. Mai, 2015 09:26 AM
+-- Generation Time: 11. Mai, 2015 13:29 PM
 -- Server-versjon: 5.6.24-0ubuntu2
 -- PHP Version: 5.6.4-4ubuntu6
 
@@ -326,10 +326,13 @@ CREATE TABLE IF NOT EXISTS `compos` (
 `id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
+  `title` varchar(32) NOT NULL,
   `tag` varchar(32) NOT NULL,
   `desciption` text NOT NULL,
-  `startTime` int(11) NOT NULL,
-  `registrationDeadline` int(11) NOT NULL,
+  `mode` varchar(32) NOT NULL,
+  `price` int(11) NOT NULL,
+  `startTime` datetime NOT NULL,
+  `registrationDeadline` datetime NOT NULL,
   `teamSize` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
@@ -337,11 +340,11 @@ CREATE TABLE IF NOT EXISTS `compos` (
 -- Dataark for tabell `compos`
 --
 
-INSERT INTO `compos` (`id`, `eventId`, `name`, `tag`, `desciption`, `startTime`, `registrationDeadline`, `teamSize`) VALUES
-(1, 3, 'Counter-Strike: Global Offensive', 'CS:GO', '5on5', 1411754400, 1411754400, 5),
-(2, 3, 'League of Legends', 'LoL', '', 1411754400, 1411754400, 5),
-(3, 4, 'Counter:Strike Global offensive', 'CS:GO', 'Placeholder for registrering :)', 1423936800, 1423936800, 1),
-(4, 4, 'League of Legends', 'LoL', '', 1423936800, 1423936800, 5);
+INSERT INTO `compos` (`id`, `eventId`, `name`, `title`, `tag`, `desciption`, `mode`, `price`, `startTime`, `registrationDeadline`, `teamSize`) VALUES
+(1, 3, 'Counter-Strike: Global Offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '5on5', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
+(2, 3, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
+(3, 4, 'Counter:Strike Global offensive', 'Counter:Strike Global offensive', 'CS:GO', 'Placeholder for registrering :)', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
+(4, 4, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5);
 
 -- --------------------------------------------------------
 
