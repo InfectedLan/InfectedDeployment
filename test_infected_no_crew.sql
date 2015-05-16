@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 07. Mai, 2015 09:26 AM
+-- Generation Time: 17. Mai, 2015 01:50 AM
 -- Server-versjon: 5.6.24-0ubuntu2
 -- PHP Version: 5.6.4-4ubuntu6
 
@@ -31,13 +31,6 @@ CREATE TABLE IF NOT EXISTS `applicationqueue` (
   `applicationId` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---
--- Dataark for tabell `applicationqueue`
---
-
-INSERT INTO `applicationqueue` (`id`, `applicationId`) VALUES
-(1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -55,14 +48,7 @@ CREATE TABLE IF NOT EXISTS `applications` (
   `content` text NOT NULL,
   `updatedByUserId` int(11) NOT NULL,
   `comment` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dataark for tabell `applications`
---
-
-INSERT INTO `applications` (`id`, `eventId`, `groupId`, `userId`, `openedTime`, `closedTime`, `state`, `content`, `updatedByUserId`, `comment`) VALUES
-(1, 4, 1, 17, '2015-02-09 09:57:01', '2015-02-09 10:11:11', 1, 'trhtyh', 2, '');
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -76,13 +62,6 @@ CREATE TABLE IF NOT EXISTS `avatars` (
   `file` varchar(64) NOT NULL,
   `state` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dataark for tabell `avatars`
---
-
-INSERT INTO `avatars` (`id`, `userId`, `file`, `state`) VALUES
-(1, 17, 'feed8a35a78e2026db38cf8a6b3ebb7ftest13.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -106,15 +85,14 @@ CREATE TABLE IF NOT EXISTS `groups` (
 --
 
 INSERT INTO `groups` (`id`, `eventId`, `name`, `title`, `description`, `leaderId`, `coleaderId`, `queuing`) VALUES
-(1, 4, 'core', 'Core', 'Tar seg av administrative oppgaver samt oppgaver som ikke faller naturlig under noe annet crew.  Du må være glad i utfordringer, kunne jobbe selvstendig og i team, se løsninger, få med seg andre på fellesoppgaver og organisering. Eksempler her er: sponsor arbeid, booking, økonomi, problemløsning, forefallende oppgaver.', 3, 0, 0),
-(2, 4, 'security', 'Security', 'Sørger for sikkerheten under arrangementet.', 303, 0, 0),
-(3, 4, 'tech', 'Tech', 'Er de som planlegger, setter opp samt drifter nettverket og alle tjenester rundt nettverket på Infected. Her er oppgavene alt fra å konfiugerere switcher, routere, brannmurer og servere (applikasjoner) til kabling og testing av tjenester. Du bør ha gode kunnskaper om nettverk, servere (linux), koding eller være generelt interessert i IT. (Gamere teller ikke). ', 58, 0, 0),
-(4, 4, 'event', 'Event', 'Er ansvarlig for alle andre konkurranser og aktiviteter på Infected. Eksempler på dette er scenekonkurranser.', 0, 0, 0),
-(5, 4, 'game', 'Game', 'Planlegger og arrangerer alle spillkonkurranser på Infected. Du bør ha kunnskap og erfaring fra spillet i en konkurransesammenheng.', 247, 0, 0),
-(6, 4, 'kafe', 'Kafe', 'Planlegger innkjøp og drifter Radar Cafe under Infected. Dette innebærer salg, tilbredning og rydding i kafeområdet.', 188, 1161, 0),
-(7, 4, 'backstage', 'Backstage', 'Er det crewet som står for alle måltidene til crewet i sin helhet. Dette innebærer å tilbrede maten, servere og rydde opp.', 2, 0, 0),
-(8, 4, 'media', 'Media', 'Ansvarlig for bilder og film under arrangementet.', 3, 0, 0),
-(9, 5, 'hgjhgjjh', 'hgjhgjjh', 'ghjghj', 20, 20, 0);
+(1, 5, 'core', 'Core', 'Tar seg av administrative oppgaver samt oppgaver som ikke faller naturlig under noe annet crew.  Du må være glad i utfordringer, kunne jobbe selvstendig og i team, se løsninger, få med seg andre på fellesoppgaver og organisering. Eksempler her er: sponsor arbeid, booking, økonomi, problemløsning, forefallende oppgaver.', 3, 0, 0),
+(2, 5, 'security', 'Security', 'Sørger for sikkerheten under arrangementet.', 303, 0, 0),
+(3, 5, 'tech', 'Tech', 'Er de som planlegger, setter opp samt drifter nettverket og alle tjenester rundt nettverket på Infected. Her er oppgavene alt fra å konfiugerere switcher, routere, brannmurer og servere (applikasjoner) til kabling og testing av tjenester. Du bør ha gode kunnskaper om nettverk, servere (linux), koding eller være generelt interessert i IT. (Gamere teller ikke). ', 58, 0, 0),
+(4, 5, 'event', 'Event', 'Er ansvarlig for alle andre konkurranser og aktiviteter på Infected. Eksempler på dette er scenekonkurranser.', 0, 0, 0),
+(5, 5, 'game', 'Game', 'Planlegger og arrangerer alle spillkonkurranser på Infected. Du bør ha kunnskap og erfaring fra spillet i en konkurransesammenheng.', 247, 0, 0),
+(6, 5, 'kafe', 'Kafe', 'Planlegger innkjøp og drifter Radar Cafe under Infected. Dette innebærer salg, tilbredning og rydding i kafeområdet.', 188, 1161, 0),
+(7, 5, 'backstage', 'Backstage', 'Er det crewet som står for alle måltidene til crewet i sin helhet. Dette innebærer å tilbrede maten, servere og rydde opp.', 2, 0, 0),
+(8, 5, 'media', 'Media', 'Ansvarlig for bilder og film under arrangementet.', 3, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -135,9 +113,6 @@ CREATE TABLE IF NOT EXISTS `memberof` (
 --
 
 INSERT INTO `memberof` (`id`, `eventId`, `userId`, `groupId`, `teamId`) VALUES
-(55, 4, 1, 1, 3),
-(58, 4, 2, 3, 6),
-(59, 4, 3, 4, 0),
 (75, 5, 1, 1, 3),
 (76, 5, 2, 3, 6),
 (77, 5, 3, 4, 0);
@@ -157,15 +132,6 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `groupId` int(11) NOT NULL,
   `teamId` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Dataark for tabell `pages`
---
-
-INSERT INTO `pages` (`id`, `eventId`, `name`, `title`, `content`, `groupId`, `teamId`) VALUES
-(1, 4, 'vaktliste', 'Vaktliste', 'hyhy', 3, 0),
-(2, 4, 'vaktliste', 'Vaktliste', 'hyhy', 6, 0),
-(3, 4, 'gfhfgh', 'gfhfgh', '<p>gfhgfhfh</p>\r\n', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -207,9 +173,7 @@ INSERT INTO `teams` (`id`, `eventId`, `groupId`, `name`, `title`, `description`,
 (18, 4, 8, 'web', 'web', 'web', 0),
 (19, 4, 7, 'lag-1', 'Lag 1', 'Lag 1', 393),
 (20, 4, 7, 'lag-2', 'Lag 2', 'Lag 2', 392),
-(21, 4, 7, 'lag-3', 'Lag 3', 'Lag 3', 365),
-(22, 5, 3, 'dsfdsfsf', 'dsfdsfsf', 'sdfdsf', 0),
-(23, 5, 3, 'dsfdsfsfsf', 'dsfdsfsfsf', 'dsfsdf', 0);
+(21, 4, 7, 'lag-3', 'Lag 3', 'Lag 3', 365);
 
 --
 -- Indexes for dumped tables
@@ -270,7 +234,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `avatars`
 --

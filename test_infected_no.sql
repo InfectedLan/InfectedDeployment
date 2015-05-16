@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 07. Mai, 2015 09:26 AM
+-- Generation Time: 17. Mai, 2015 01:49 AM
 -- Server-versjon: 5.6.24-0ubuntu2
 -- PHP Version: 5.6.4-4ubuntu6
 
@@ -4922,13 +4922,6 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `object` blob NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
---
--- Dataark for tabell `tasks`
---
-
-INSERT INTO `tasks` (`id`, `object`) VALUES
-(1, 0x4f3a383a22546573745461736b223a303a7b7d);
-
 -- --------------------------------------------------------
 
 --
@@ -4959,9 +4952,8 @@ CREATE TABLE IF NOT EXISTS `userpermissions` (
 --
 
 INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
-(2, 0, 2, 1),
-(12, 19, 1, 1),
-(13, 19, 3, 1);
+(1, 0, 1, 1),
+(2, 0, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -5010,8 +5002,7 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `ema
 (19, 'isaac', 'smith', 'test15', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
 (20, 'anthony', 'stephens', 'test16', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
 (21, 'wade', 'beck', 'test17', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(22, 'vickie', 'sanchez', 'test18', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(23, 'Jonas', 'Moltumyr', 'NarreN', 0x31336235363762323332356137366361356333363030656234313932646363623830616333663264663133623134366464613032356239663536333066316336, 'jonas@moltumyr.no', '1992-08-05', 0, 48109998, 'Furukollen 22', 1900, 'NarreN', '2015-02-13 15:08:42');
+(22, 'vickie', 'sanchez', 'test18', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00');
 
 --
 -- Indexes for dumped tables
