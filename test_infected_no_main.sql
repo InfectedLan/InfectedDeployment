@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 07. Mai, 2015 09:26 AM
+-- Generation Time: 19. Mai, 2015 22:11 PM
 -- Server-versjon: 5.6.24-0ubuntu2
 -- PHP Version: 5.6.4-4ubuntu6
 
@@ -35,32 +35,6 @@ CREATE TABLE IF NOT EXISTS `agenda` (
   `startTime` datetime NOT NULL,
   `published` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Tabellstruktur for tabell `games`
---
-
-CREATE TABLE IF NOT EXISTS `games` (
-`id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL,
-  `title` varchar(32) NOT NULL,
-  `price` int(11) NOT NULL,
-  `mode` varchar(16) NOT NULL,
-  `description` text NOT NULL,
-  `startTime` datetime NOT NULL,
-  `endTime` datetime NOT NULL,
-  `published` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dataark for tabell `games`
---
-
-INSERT INTO `games` (`id`, `name`, `title`, `price`, `mode`, `description`, `startTime`, `endTime`, `published`) VALUES
-(1, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 5000, '5on5', '2.plass 2500,-', '2015-01-20 18:00:00', '2015-02-13 21:00:00', 1),
-(2, 'league-of-legends', 'League of Legends', 5000, '5on5', '2.plass 2500,-', '2015-01-20 18:00:00', '2015-02-13 21:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -101,12 +75,6 @@ ALTER TABLE `agenda`
  ADD PRIMARY KEY (`id`), ADD KEY `index` (`eventId`);
 
 --
--- Indexes for table `games`
---
-ALTER TABLE `games`
- ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `pages`
 --
 ALTER TABLE `pages`
@@ -121,11 +89,6 @@ ALTER TABLE `pages`
 --
 ALTER TABLE `agenda`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `games`
---
-ALTER TABLE `games`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `pages`
 --
