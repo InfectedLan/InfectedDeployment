@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 17. Mai, 2015 01:49 AM
+-- Generation Time: 19. Mai, 2015 17:49 PM
 -- Server-versjon: 5.6.24-0ubuntu2
 -- PHP Version: 5.6.4-4ubuntu6
 
@@ -131,8 +131,7 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (15, 'compo.*', 'Gir tilgang til alt under compo.'),
 (16, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.'),
 (17, 'developer.*', 'Gir tilgang til alt under developer.'),
-(18, 'developer.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
-(19, 'developer.console', 'Gir deg tilgang til vedlikeholdskonsollen brukt av utviklere med over gjennomsnittlig forståelse for systemet.'),
+(18, 'developer.switch.user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
 (20, 'event.*', 'Gir tilgang til alt under event.'),
 (21, 'event.agenda', 'Endre agendaen, denne vises på hovedsiden og infoskjermen under arrangementet.'),
 (22, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
@@ -4975,7 +4974,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `postalcode` int(4) NOT NULL,
   `nickname` varchar(32) NOT NULL,
   `registereddate` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dataark for tabell `users`
@@ -5002,7 +5001,9 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `ema
 (19, 'isaac', 'smith', 'test15', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
 (20, 'anthony', 'stephens', 'test16', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
 (21, 'wade', 'beck', 'test17', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(22, 'vickie', 'sanchez', 'test18', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00');
+(22, 'vickie', 'sanchez', 'test18', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
+(24, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, 12345678, 'Test address', 1337, 'AssertNick', '2015-05-19 09:10:54'),
+(25, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, 12345678, 'Test address', 1337, 'AssertGirl', '2015-05-19 09:10:54');
 
 --
 -- Indexes for dumped tables
@@ -5132,7 +5133,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
