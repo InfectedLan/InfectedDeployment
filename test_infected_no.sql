@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 19. Mai, 2015 17:49 PM
+-- Generation Time: 19. Mai, 2015 23:52 PM
 -- Server-versjon: 5.6.24-0ubuntu2
 -- PHP Version: 5.6.4-4ubuntu6
 
@@ -132,12 +132,12 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (16, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.'),
 (17, 'developer.*', 'Gir tilgang til alt under developer.'),
 (18, 'developer.switch.user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
-(20, 'event.*', 'Gir tilgang til alt under event.'),
+(19, 'event.*', 'Gir tilgang til alt under event.'),
 (21, 'event.agenda', 'Endre agendaen, denne vises på hovedsiden og infoskjermen under arrangementet.'),
 (22, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
 (23, 'event.compo', 'Lar deg administrere compoer'),
 (24, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.'),
-(25, 'event.print-ticket-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
+(25, 'event.table.labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
 (26, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
 (27, 'event.seatmap', 'Se seatmappet'),
 (28, 'search.*', 'Gir tilgang til alt under search.'),
