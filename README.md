@@ -8,3 +8,5 @@ IMPORTANT: When deploying out solutions be sure to change the database settings 
 You also have to configure an alias in apache, which links /json to the json-folder in the api, like f.ex this:
 
 Alias /json /home/infected/public_html/api/json
+
+The package `php5-intl` is also required.
