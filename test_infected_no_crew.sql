@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `applications` (
 CREATE TABLE IF NOT EXISTS `avatars` (
 `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `file` varchar(64) NOT NULL,
+  `fileName` varchar(64) NOT NULL,
   `state` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
