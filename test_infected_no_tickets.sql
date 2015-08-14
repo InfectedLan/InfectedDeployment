@@ -1043,16 +1043,17 @@ CREATE TABLE IF NOT EXISTS `tickettypes` (
 `id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `title` varchar(32) NOT NULL,
-  `price` int(11) NOT NULL
+  `price` int(11) NOT NULL,
+  `refundable` tinyint(1) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dataark for tabell `tickettypes`
 --
 
-INSERT INTO `tickettypes` (`id`, `name`, `title`, `price`) VALUES
-(1, 'participant', 'Deltaker', 350),
-(2, 'free', 'Gratis', 0);
+INSERT INTO `tickettypes` (`id`, `name`, `title`, `price`, `refundable`) VALUES
+(1, 'participant', 'Deltaker', 350, 1),
+(2, 'free', 'Gratisbillett', 0, 0);
 
 --
 -- Indexes for dumped tables
