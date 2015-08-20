@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 11. Mai, 2015 13:29 PM
--- Server-versjon: 5.6.24-0ubuntu2
--- PHP Version: 5.6.4-4ubuntu6
+-- Generation Time: Aug 20, 2015 at 11:54 PM
+-- Server version: 5.6.25-0ubuntu0.15.04.1
+-- PHP Version: 5.6.4-4ubuntu6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `chatmessages`
+-- Table structure for table `chatmessages`
 --
 
 CREATE TABLE IF NOT EXISTS `chatmessages` (
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `chatmessages` (
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `chatmessages`
+-- Dumping data for table `chatmessages`
 --
 
 INSERT INTO `chatmessages` (`id`, `userId`, `chatId`, `time`, `message`) VALUES
@@ -120,7 +120,7 @@ INSERT INTO `chatmessages` (`id`, `userId`, `chatId`, `time`, `message`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `chats`
+-- Table structure for table `chats`
 --
 
 CREATE TABLE IF NOT EXISTS `chats` (
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `chats` (
 ) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `chats`
+-- Dumping data for table `chats`
 --
 
 INSERT INTO `chats` (`id`, `name`, `title`) VALUES
@@ -277,49 +277,50 @@ INSERT INTO `chats` (`id`, `name`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `clans`
+-- Table structure for table `clans`
 --
 
 CREATE TABLE IF NOT EXISTS `clans` (
 `id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `title` varchar(32) NOT NULL,
   `tag` varchar(32) NOT NULL,
   `chiefId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `clans`
+-- Dumping data for table `clans`
 --
 
-INSERT INTO `clans` (`id`, `eventId`, `name`, `title`, `tag`, `chiefId`) VALUES
-(2, 4, 'dadad', 'dadad', 'dadada', 1),
-(3, 4, 'Test 1 team', 'Test 1 team', 'TEST1', 5),
-(4, 4, 'test 2', 'test 2', 'test2', 6),
-(5, 4, 'test 3', 'test 3', 'test3', 7),
-(6, 4, 'test4', 'test4', 'test 4', 8),
-(7, 4, 'Test', 'Test', 'Test', 2),
-(8, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
-(9, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
-(10, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
-(11, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
-(12, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
-(13, 4, 'Walkover 2', 'Walkover 2', 'W2', 1),
-(14, 4, 'Walkover 3', 'Walkover 3', 'W3', 1),
-(15, 4, 'Walkover 4', 'Walkover 4', 'W4', 1),
-(16, 4, 'Walkover 5', 'Walkover 5', 'W5', 1),
-(17, 4, 'Walkover 6', 'Walkover 6', 'W6', 1),
-(18, 4, 'Walkover 7', 'Walkover 7', 'W7', 1),
-(19, 4, 'Walkover 8', 'Walkover 8', 'W8', 1),
-(20, 4, 'Walkover 9', 'Walkover 9', 'W9', 1),
-(21, 4, 'Walkover 10', 'Walkover 10', 'W10', 1),
-(22, 4, 'warbo', 'warbo', 'wrb', 3);
+INSERT INTO `clans` (`id`, `eventId`, `name`, `tag`, `chiefId`) VALUES
+(2, 4, 'dadad', 'dadada', 1),
+(3, 4, 'Test 1 team', 'TEST1', 5),
+(4, 4, 'test 2', 'test2', 6),
+(5, 4, 'test 3', 'test3', 7),
+(6, 4, 'test4', 'test 4', 8),
+(7, 4, 'Test', 'Test', 2),
+(8, 4, 'Walkover 1', 'W1', 1),
+(9, 4, 'Walkover 1', 'W1', 1),
+(10, 4, 'Walkover 1', 'W1', 1),
+(11, 4, 'Walkover 1', 'W1', 1),
+(12, 4, 'Walkover 1', 'W1', 1),
+(13, 4, 'Walkover 2', 'W2', 1),
+(14, 4, 'Walkover 3', 'W3', 1),
+(15, 4, 'Walkover 4', 'W4', 1),
+(16, 4, 'Walkover 5', 'W5', 1),
+(17, 4, 'Walkover 6', 'W6', 1),
+(18, 4, 'Walkover 7', 'W7', 1),
+(19, 4, 'Walkover 8', 'W8', 1),
+(20, 4, 'Walkover 9', 'W9', 1),
+(21, 4, 'Walkover 10', 'W10', 1),
+(22, 4, 'warbo', 'wrb', 3),
+(23, 5, 'Test clan', 'CLAN', 1),
+(24, 5, 'the yolos', 'yolo', 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `compos`
+-- Table structure for table `compos`
 --
 
 CREATE TABLE IF NOT EXISTS `compos` (
@@ -328,28 +329,32 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
   `tag` varchar(32) NOT NULL,
-  `desciption` text NOT NULL,
+  `description` text NOT NULL,
   `mode` varchar(32) NOT NULL,
   `price` int(11) NOT NULL,
   `startTime` datetime NOT NULL,
-  `registrationDeadline` datetime NOT NULL,
-  `teamSize` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `registrationEndTime` datetime NOT NULL,
+  `teamSize` int(11) NOT NULL,
+  `participantLimit` int(11) NOT NULL,
+  `chat` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `compos`
+-- Dumping data for table `compos`
 --
 
-INSERT INTO `compos` (`id`, `eventId`, `name`, `title`, `tag`, `desciption`, `mode`, `price`, `startTime`, `registrationDeadline`, `teamSize`) VALUES
-(1, 3, 'Counter-Strike: Global Offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '5on5', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
-(2, 3, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
-(3, 4, 'Counter:Strike Global offensive', 'Counter:Strike Global offensive', 'CS:GO', 'Placeholder for registrering :)', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(4, 4, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5);
+INSERT INTO `compos` (`id`, `eventId`, `name`, `title`, `tag`, `description`, `mode`, `price`, `startTime`, `registrationEndTime`, `teamSize`, `participantLimit`, `chat`) VALUES
+(1, 3, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '', '5on5', 0, '2014-09-26 18:00:00', '2014-09-26 18:00:00', 5, 0, 0),
+(2, 3, 'league-of-legends', 'League of Legends', 'LoL', '', '', 0, '2014-09-26 18:00:00', '2014-09-26 18:00:00', 5, 0, 0),
+(3, 4, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '', '5on5', 0, '2015-02-14 18:00:00', '2015-02-14 18:00:00', 5, 0, 0),
+(4, 4, 'league-of-legends', 'League of Legends', 'LoL', '', '', 0, '2015-02-14 18:00:00', '2015-02-14 18:00:00', 5, 0, 0),
+(5, 5, 'counter-strike:-global-offensive', 'Counter Strike: Global Offensive', 'CS:GO', '', '5on5', 0, '2015-09-25 00:00:00', '2015-09-25 02:00:00', 5, 16, 0),
+(6, 5, 'league-of-legends', 'League of Legends', 'LoL', '', '', 0, '2015-09-25 02:00:00', '2015-09-25 00:00:00', 5, 16, 0);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `invites`
+-- Table structure for table `invites`
 --
 
 CREATE TABLE IF NOT EXISTS `invites` (
@@ -362,7 +367,7 @@ CREATE TABLE IF NOT EXISTS `invites` (
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `matches`
+-- Table structure for table `matches`
 --
 
 CREATE TABLE IF NOT EXISTS `matches` (
@@ -378,7 +383,7 @@ CREATE TABLE IF NOT EXISTS `matches` (
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `matches`
+-- Dumping data for table `matches`
 --
 
 INSERT INTO `matches` (`id`, `scheduledTime`, `connectDetails`, `state`, `winnerId`, `compoId`, `bracketOffset`, `chatId`, `bracket`) VALUES
@@ -417,7 +422,7 @@ INSERT INTO `matches` (`id`, `scheduledTime`, `connectDetails`, `state`, `winner
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `matchrelationships`
+-- Table structure for table `matchrelationships`
 --
 
 CREATE TABLE IF NOT EXISTS `matchrelationships` (
@@ -427,7 +432,7 @@ CREATE TABLE IF NOT EXISTS `matchrelationships` (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `matchrelationships`
+-- Dumping data for table `matchrelationships`
 --
 
 INSERT INTO `matchrelationships` (`id`, `fromCompoId`, `toCompoId`) VALUES
@@ -465,7 +470,7 @@ INSERT INTO `matchrelationships` (`id`, `fromCompoId`, `toCompoId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `memberof`
+-- Table structure for table `memberof`
 --
 
 CREATE TABLE IF NOT EXISTS `memberof` (
@@ -473,10 +478,10 @@ CREATE TABLE IF NOT EXISTS `memberof` (
   `userId` int(11) NOT NULL,
   `clanId` int(11) NOT NULL,
   `stepinId` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `memberof`
+-- Dumping data for table `memberof`
 --
 
 INSERT INTO `memberof` (`id`, `userId`, `clanId`, `stepinId`) VALUES
@@ -491,9 +496,12 @@ INSERT INTO `memberof` (`id`, `userId`, `clanId`, `stepinId`) VALUES
 (15, 1, 19, 0),
 (16, 1, 20, 0),
 (17, 1, 21, 0),
+(19, 1, 23, 0),
+(20, 1, 24, 0),
 (7, 2, 7, 0),
 (18, 3, 22, 0),
 (3, 5, 3, 0),
+(21, 5, 24, 0),
 (4, 6, 4, 0),
 (5, 7, 5, 0),
 (6, 8, 6, 0);
@@ -501,17 +509,17 @@ INSERT INTO `memberof` (`id`, `userId`, `clanId`, `stepinId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `memberofchat`
+-- Table structure for table `memberofchat`
 --
 
 CREATE TABLE IF NOT EXISTS `memberofchat` (
 `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `chatId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `memberofchat`
+-- Dumping data for table `memberofchat`
 --
 
 INSERT INTO `memberofchat` (`id`, `userId`, `chatId`) VALUES
@@ -525,6 +533,8 @@ INSERT INTO `memberofchat` (`id`, `userId`, `chatId`) VALUES
 (38, 1, 1),
 (39, 1, 1),
 (40, 1, 1),
+(94, 1, 1),
+(95, 1, 1),
 (4, 1, 6),
 (9, 1, 15),
 (18, 1, 25),
@@ -612,17 +622,17 @@ INSERT INTO `memberofchat` (`id`, `userId`, `chatId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `participantof`
+-- Table structure for table `participantof`
 --
 
 CREATE TABLE IF NOT EXISTS `participantof` (
 `id` int(11) NOT NULL,
   `clanId` int(11) NOT NULL,
   `compoId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `participantof`
+-- Dumping data for table `participantof`
 --
 
 INSERT INTO `participantof` (`id`, `clanId`, `compoId`) VALUES
@@ -642,12 +652,14 @@ INSERT INTO `participantof` (`id`, `clanId`, `compoId`) VALUES
 (15, 19, 3),
 (16, 20, 3),
 (17, 21, 3),
-(18, 22, 3);
+(18, 22, 3),
+(19, 23, 5),
+(20, 24, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `participantofmatch`
+-- Table structure for table `participantofmatch`
 --
 
 CREATE TABLE IF NOT EXISTS `participantofmatch` (
@@ -658,7 +670,7 @@ CREATE TABLE IF NOT EXISTS `participantofmatch` (
 ) ENGINE=InnoDB AUTO_INCREMENT=271 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `participantofmatch`
+-- Dumping data for table `participantofmatch`
 --
 
 INSERT INTO `participantofmatch` (`id`, `type`, `participantId`, `matchId`) VALUES
@@ -728,7 +740,7 @@ INSERT INTO `participantofmatch` (`id`, `type`, `participantId`, `matchId`) VALU
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `readyhandlers`
+-- Table structure for table `readyhandlers`
 --
 
 CREATE TABLE IF NOT EXISTS `readyhandlers` (
@@ -739,7 +751,7 @@ CREATE TABLE IF NOT EXISTS `readyhandlers` (
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `readyusers`
+-- Table structure for table `readyusers`
 --
 
 CREATE TABLE IF NOT EXISTS `readyusers` (
@@ -749,7 +761,7 @@ CREATE TABLE IF NOT EXISTS `readyusers` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `readyusers`
+-- Dumping data for table `readyusers`
 --
 
 INSERT INTO `readyusers` (`id`, `userId`, `matchId`) VALUES
@@ -759,7 +771,7 @@ INSERT INTO `readyusers` (`id`, `userId`, `matchId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `voteoptions`
+-- Table structure for table `voteoptions`
 --
 
 CREATE TABLE IF NOT EXISTS `voteoptions` (
@@ -770,7 +782,7 @@ CREATE TABLE IF NOT EXISTS `voteoptions` (
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `voteoptions`
+-- Dumping data for table `voteoptions`
 --
 
 INSERT INTO `voteoptions` (`id`, `compoId`, `thumbnailUrl`, `name`) VALUES
@@ -785,7 +797,7 @@ INSERT INTO `voteoptions` (`id`, `compoId`, `thumbnailUrl`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `votes`
+-- Table structure for table `votes`
 --
 
 CREATE TABLE IF NOT EXISTS `votes` (
@@ -795,7 +807,7 @@ CREATE TABLE IF NOT EXISTS `votes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `votes`
+-- Dumping data for table `votes`
 --
 
 INSERT INTO `votes` (`id`, `consumerId`, `voteOptionId`) VALUES
@@ -844,7 +856,7 @@ ALTER TABLE `invites`
 -- Indexes for table `matches`
 --
 ALTER TABLE `matches`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`compoId`,`chatId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`winnerId`,`compoId`,`chatId`);
 
 --
 -- Indexes for table `matchrelationships`
@@ -918,12 +930,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=140;
 -- AUTO_INCREMENT for table `clans`
 --
 ALTER TABLE `clans`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `compos`
 --
 ALTER TABLE `compos`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `invites`
 --
@@ -943,17 +955,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 -- AUTO_INCREMENT for table `memberof`
 --
 ALTER TABLE `memberof`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `memberofchat`
 --
 ALTER TABLE `memberofchat`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=94;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=96;
 --
 -- AUTO_INCREMENT for table `participantof`
 --
 ALTER TABLE `participantof`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `participantofmatch`
 --

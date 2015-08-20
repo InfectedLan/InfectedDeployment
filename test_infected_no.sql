@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 19. Mai, 2015 23:52 PM
--- Server-versjon: 5.6.24-0ubuntu2
--- PHP Version: 5.6.4-4ubuntu6
+-- Generation Time: Aug 20, 2015 at 11:53 PM
+-- Server version: 5.6.25-0ubuntu0.15.04.1
+-- PHP Version: 5.6.4-4ubuntu6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,19 +23,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `emergencycontacts`
+-- Table structure for table `emergencycontacts`
 --
 
 CREATE TABLE IF NOT EXISTS `emergencycontacts` (
 `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `phone` int(8) NOT NULL
+  `phone` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `events`
+-- Table structure for table `events`
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `events` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `events`
+-- Dumping data for table `events`
 --
 
 INSERT INTO `events` (`id`, `theme`, `locationId`, `participants`, `bookingTime`, `startTime`, `endTime`, `seatmapId`, `ticketTypeId`) VALUES
@@ -69,7 +69,7 @@ INSERT INTO `events` (`id`, `theme`, `locationId`, `participants`, `bookingTime`
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `locations`
+-- Table structure for table `locations`
 --
 
 CREATE TABLE IF NOT EXISTS `locations` (
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `locations`
+-- Dumping data for table `locations`
 --
 
 INSERT INTO `locations` (`id`, `name`, `title`) VALUES
@@ -88,7 +88,7 @@ INSERT INTO `locations` (`id`, `name`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `passwordresetcodes`
+-- Table structure for table `passwordresetcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
@@ -100,17 +100,17 @@ CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `permissions`
+-- Table structure for table `permissions`
 --
 
 CREATE TABLE IF NOT EXISTS `permissions` (
 `id` int(11) NOT NULL,
   `value` varchar(32) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `permissions`
+-- Dumping data for table `permissions`
 --
 
 INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
@@ -131,23 +131,23 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (15, 'compo.*', 'Gir tilgang til alt under compo.'),
 (16, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.'),
 (17, 'developer.*', 'Gir tilgang til alt under developer.'),
-(18, 'developer.switch.user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
+(18, 'developer.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
 (19, 'event.*', 'Gir tilgang til alt under event.'),
-(21, 'event.agenda', 'Endre agendaen, denne vises på hovedsiden og infoskjermen under arrangementet.'),
-(22, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
-(23, 'event.compo', 'Lar deg administrere compoer'),
-(24, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.'),
-(25, 'event.table.labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
-(26, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
-(27, 'event.seatmap', 'Se seatmappet'),
-(28, 'search.*', 'Gir tilgang til alt under search.'),
-(29, 'search.users', 'Søk etter brukere i databasen.'),
-(30, 'event.tickets', 'Lar deg se en brukers billett, og detaljer om den.');
+(20, 'event.agenda', 'Endre agendaen, denne vises på hovedsiden og infoskjermen under arrangementet.'),
+(21, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
+(22, 'event.compo', 'Lar deg administrere compoer'),
+(23, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.'),
+(24, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
+(25, 'event.seatmap', 'Se seatmappet'),
+(26, 'event.table-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
+(27, 'search.*', 'Gir tilgang til alt under search.'),
+(28, 'search.users', 'Søk etter brukere i databasen.'),
+(29, 'event.tickets', 'Lar deg se en brukers billett, og detaljer om den.');
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `postalcodes`
+-- Table structure for table `postalcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `postalcodes` (
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `postalcodes` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4735 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `postalcodes`
+-- Dumping data for table `postalcodes`
 --
 
 INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
@@ -4901,7 +4901,7 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `registrationcodes`
+-- Table structure for table `registrationcodes`
 --
 
 CREATE TABLE IF NOT EXISTS `registrationcodes` (
@@ -4913,30 +4913,31 @@ CREATE TABLE IF NOT EXISTS `registrationcodes` (
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `tasks`
+-- Table structure for table `tasks`
 --
 
 CREATE TABLE IF NOT EXISTS `tasks` (
 `id` int(11) NOT NULL,
   `object` blob NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Tabellstruktur for tabell `useroptions`
---
-
-CREATE TABLE IF NOT EXISTS `useroptions` (
-`id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `hidePhone` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `userpermissions`
+-- Table structure for table `useroptions`
+--
+
+CREATE TABLE IF NOT EXISTS `useroptions` (
+`id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `hidePhone` tinyint(1) NOT NULL,
+  `reserveFromNotifications` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userpermissions`
 --
 
 CREATE TABLE IF NOT EXISTS `userpermissions` (
@@ -4944,20 +4945,21 @@ CREATE TABLE IF NOT EXISTS `userpermissions` (
   `eventId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `permissionId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `userpermissions`
+-- Dumping data for table `userpermissions`
 --
 
 INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
 (1, 0, 1, 1),
-(2, 0, 2, 1);
+(2, 0, 2, 1),
+(3, 0, 3, 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
@@ -4974,10 +4976,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `postalcode` int(4) NOT NULL,
   `nickname` varchar(32) NOT NULL,
   `registereddate` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `nickname`, `registereddate`) VALUES
@@ -5003,7 +5005,9 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `ema
 (21, 'wade', 'beck', 'test17', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
 (22, 'vickie', 'sanchez', 'test18', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
 (24, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, 12345678, 'Test address', 1337, 'AssertNick', '2015-05-19 09:10:54'),
-(25, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, 12345678, 'Test address', 1337, 'AssertGirl', '2015-05-19 09:10:54');
+(25, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, 12345678, 'Test address', 1337, 'AssertGirl', '2015-05-19 09:10:54'),
+(26, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, 12345678, 'Test address', 1337, 'AssertNick', '2015-05-25 12:47:11'),
+(27, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, 12345678, 'Test address', 1337, 'AssertGirl', '2015-05-25 12:47:11');
 
 --
 -- Indexes for dumped tables
@@ -5019,7 +5023,7 @@ ALTER TABLE `emergencycontacts`
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`seatmapId`,`ticketTypeId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`locationId`,`seatmapId`,`ticketTypeId`);
 
 --
 -- Indexes for table `locations`
@@ -5031,25 +5035,25 @@ ALTER TABLE `locations`
 -- Indexes for table `passwordresetcodes`
 --
 ALTER TABLE `passwordresetcodes`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`code`);
 
 --
 -- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
- ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`value`);
 
 --
 -- Indexes for table `postalcodes`
 --
 ALTER TABLE `postalcodes`
- ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`code`);
 
 --
 -- Indexes for table `registrationcodes`
 --
 ALTER TABLE `registrationcodes`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`code`);
 
 --
 -- Indexes for table `tasks`
@@ -5103,7 +5107,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `postalcodes`
 --
@@ -5118,7 +5122,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `useroptions`
 --
@@ -5128,12 +5132,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `userpermissions`
 --
 ALTER TABLE `userpermissions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

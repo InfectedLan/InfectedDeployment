@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 19. Mai, 2015 22:11 PM
--- Server-versjon: 5.6.24-0ubuntu2
--- PHP Version: 5.6.4-4ubuntu6
+-- Generation Time: Aug 20, 2015 at 11:54 PM
+-- Server version: 5.6.25-0ubuntu0.15.04.1
+-- PHP Version: 5.6.4-4ubuntu6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `agenda`
+-- Table structure for table `agenda`
 --
 
 CREATE TABLE IF NOT EXISTS `agenda` (
@@ -34,12 +34,12 @@ CREATE TABLE IF NOT EXISTS `agenda` (
   `description` text NOT NULL,
   `startTime` datetime NOT NULL,
   `published` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `pages`
+-- Table structure for table `pages`
 --
 
 CREATE TABLE IF NOT EXISTS `pages` (
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `pages`
+-- Dumping data for table `pages`
 --
 
 INSERT INTO `pages` (`id`, `name`, `title`, `content`) VALUES
@@ -72,7 +72,7 @@ INSERT INTO `pages` (`id`, `name`, `title`, `content`) VALUES
 -- Indexes for table `agenda`
 --
 ALTER TABLE `agenda`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`eventId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`eventId`,`published`);
 
 --
 -- Indexes for table `pages`
@@ -88,7 +88,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `agenda`
 --
 ALTER TABLE `agenda`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `pages`
 --
