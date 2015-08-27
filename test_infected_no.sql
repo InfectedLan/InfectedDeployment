@@ -127,7 +127,7 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (11, 'chief.groups', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
 (12, 'chief.my-crew', 'Endre sider under "My Crew".'),
 (13, 'chief.teams', 'Administrer lagene for ditt crew, hvem som er medlem av hvilke lag og lederene i lagene.'),
-(14, 'chief.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere'),
+(14, 'admin.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere'),
 (15, 'compo.*', 'Gir tilgang til alt under compo.'),
 (16, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.'),
 (17, 'developer.*', 'Gir tilgang til alt under developer.'),
