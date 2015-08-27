@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 20, 2015 at 11:54 PM
+-- Generation Time: Aug 27, 2015 at 10:39 PM
 -- Server version: 5.6.25-0ubuntu0.15.04.1
 -- PHP Version: 5.6.4-4ubuntu6.2
 
@@ -284,6 +284,7 @@ CREATE TABLE IF NOT EXISTS `clans` (
 `id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
+  `title` varchar(32) NOT NULL,
   `tag` varchar(32) NOT NULL,
   `chiefId` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
@@ -292,30 +293,30 @@ CREATE TABLE IF NOT EXISTS `clans` (
 -- Dumping data for table `clans`
 --
 
-INSERT INTO `clans` (`id`, `eventId`, `name`, `tag`, `chiefId`) VALUES
-(2, 4, 'dadad', 'dadada', 1),
-(3, 4, 'Test 1 team', 'TEST1', 5),
-(4, 4, 'test 2', 'test2', 6),
-(5, 4, 'test 3', 'test3', 7),
-(6, 4, 'test4', 'test 4', 8),
-(7, 4, 'Test', 'Test', 2),
-(8, 4, 'Walkover 1', 'W1', 1),
-(9, 4, 'Walkover 1', 'W1', 1),
-(10, 4, 'Walkover 1', 'W1', 1),
-(11, 4, 'Walkover 1', 'W1', 1),
-(12, 4, 'Walkover 1', 'W1', 1),
-(13, 4, 'Walkover 2', 'W2', 1),
-(14, 4, 'Walkover 3', 'W3', 1),
-(15, 4, 'Walkover 4', 'W4', 1),
-(16, 4, 'Walkover 5', 'W5', 1),
-(17, 4, 'Walkover 6', 'W6', 1),
-(18, 4, 'Walkover 7', 'W7', 1),
-(19, 4, 'Walkover 8', 'W8', 1),
-(20, 4, 'Walkover 9', 'W9', 1),
-(21, 4, 'Walkover 10', 'W10', 1),
-(22, 4, 'warbo', 'wrb', 3),
-(23, 5, 'Test clan', 'CLAN', 1),
-(24, 5, 'the yolos', 'yolo', 1);
+INSERT INTO `clans` (`id`, `eventId`, `name`, `title`, `tag`, `chiefId`) VALUES
+(2, 4, 'dadad', 'dadad', 'dadada', 1),
+(3, 4, 'Test 1 team', 'Test 1 team', 'TEST1', 5),
+(4, 4, 'test 2', 'test 2', 'test2', 6),
+(5, 4, 'test 3', 'test 3', 'test3', 7),
+(6, 4, 'test4', 'test4', 'test 4', 8),
+(7, 4, 'Test', 'Test', 'Test', 2),
+(8, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
+(9, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
+(10, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
+(11, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
+(12, 4, 'Walkover 1', 'Walkover 1', 'W1', 1),
+(13, 4, 'Walkover 2', 'Walkover 2', 'W2', 1),
+(14, 4, 'Walkover 3', 'Walkover 3', 'W3', 1),
+(15, 4, 'Walkover 4', 'Walkover 4', 'W4', 1),
+(16, 4, 'Walkover 5', 'Walkover 5', 'W5', 1),
+(17, 4, 'Walkover 6', 'Walkover 6', 'W6', 1),
+(18, 4, 'Walkover 7', 'Walkover 7', 'W7', 1),
+(19, 4, 'Walkover 8', 'Walkover 8', 'W8', 1),
+(20, 4, 'Walkover 9', 'Walkover 9', 'W9', 1),
+(21, 4, 'Walkover 10', 'Walkover 10', 'W10', 1),
+(22, 4, 'warbo', 'warbo', 'wrb', 3),
+(23, 5, 'Test clan', '', 'CLAN', 1),
+(24, 5, 'the yolos', '', 'yolo', 1);
 
 -- --------------------------------------------------------
 
@@ -329,27 +330,24 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
   `tag` varchar(32) NOT NULL,
-  `description` text NOT NULL,
+  `desciption` text NOT NULL,
   `mode` varchar(32) NOT NULL,
   `price` int(11) NOT NULL,
   `startTime` datetime NOT NULL,
-  `registrationEndTime` datetime NOT NULL,
-  `teamSize` int(11) NOT NULL,
-  `participantLimit` int(11) NOT NULL,
-  `chat` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `registrationDeadline` datetime NOT NULL,
+  `teamSize` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `compos`
 --
 
-INSERT INTO `compos` (`id`, `eventId`, `name`, `title`, `tag`, `description`, `mode`, `price`, `startTime`, `registrationEndTime`, `teamSize`, `participantLimit`, `chat`) VALUES
-(1, 3, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '', '5on5', 0, '2014-09-26 18:00:00', '2014-09-26 18:00:00', 5, 0, 0),
-(2, 3, 'league-of-legends', 'League of Legends', 'LoL', '', '', 0, '2014-09-26 18:00:00', '2014-09-26 18:00:00', 5, 0, 0),
-(3, 4, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '', '5on5', 0, '2015-02-14 18:00:00', '2015-02-14 18:00:00', 5, 0, 0),
-(4, 4, 'league-of-legends', 'League of Legends', 'LoL', '', '', 0, '2015-02-14 18:00:00', '2015-02-14 18:00:00', 5, 0, 0),
-(5, 5, 'counter-strike:-global-offensive', 'Counter Strike: Global Offensive', 'CS:GO', '', '5on5', 0, '2015-09-25 00:00:00', '2015-09-25 02:00:00', 5, 16, 0),
-(6, 5, 'league-of-legends', 'League of Legends', 'LoL', '', '', 0, '2015-09-25 02:00:00', '2015-09-25 00:00:00', 5, 16, 0);
+INSERT INTO `compos` (`id`, `eventId`, `name`, `title`, `tag`, `desciption`, `mode`, `price`, `startTime`, `registrationDeadline`, `teamSize`) VALUES
+(1, 3, 'Counter-Strike: Global Offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '5on5', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
+(2, 3, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
+(3, 4, 'Counter:Strike Global offensive', 'Counter:Strike Global offensive', 'CS:GO', 'Placeholder for registrering :)', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
+(4, 4, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
+(5, 5, 'Test compo', '', 'COMPO', 'This is a test compo', '1v1', 1337, '2015-08-26 12:39:28', '2015-08-26 12:39:23', 5);
 
 -- --------------------------------------------------------
 
@@ -362,7 +360,7 @@ CREATE TABLE IF NOT EXISTS `invites` (
   `eventId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `clanId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -740,6 +738,19 @@ INSERT INTO `participantofmatch` (`id`, `type`, `participantId`, `matchId`) VALU
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `qualificationQueue`
+--
+
+CREATE TABLE IF NOT EXISTS `qualificationQueue` (
+`id` int(11) NOT NULL,
+  `clan` int(11) NOT NULL,
+  `compo` int(11) NOT NULL,
+  `time` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `readyhandlers`
 --
 
@@ -856,7 +867,7 @@ ALTER TABLE `invites`
 -- Indexes for table `matches`
 --
 ALTER TABLE `matches`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`winnerId`,`compoId`,`chatId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`compoId`,`chatId`);
 
 --
 -- Indexes for table `matchrelationships`
@@ -887,6 +898,12 @@ ALTER TABLE `participantof`
 --
 ALTER TABLE `participantofmatch`
  ADD PRIMARY KEY (`id`), ADD KEY `index` (`participantId`,`matchId`);
+
+--
+-- Indexes for table `qualificationQueue`
+--
+ALTER TABLE `qualificationQueue`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `readyhandlers`
@@ -935,12 +952,12 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 -- AUTO_INCREMENT for table `compos`
 --
 ALTER TABLE `compos`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `invites`
 --
 ALTER TABLE `invites`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `matches`
 --
@@ -971,6 +988,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 ALTER TABLE `participantofmatch`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=271;
+--
+-- AUTO_INCREMENT for table `qualificationQueue`
+--
+ALTER TABLE `qualificationQueue`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `readyhandlers`
 --
