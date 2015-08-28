@@ -626,7 +626,8 @@ INSERT INTO `memberofchat` (`id`, `userId`, `chatId`) VALUES
 CREATE TABLE IF NOT EXISTS `participantof` (
 `id` int(11) NOT NULL,
   `clanId` int(11) NOT NULL,
-  `compoId` int(11) NOT NULL
+  `compoId` int(11) NOT NULL,
+  `qualified` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
