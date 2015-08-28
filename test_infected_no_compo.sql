@@ -335,7 +335,9 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `price` int(11) NOT NULL,
   `startTime` datetime NOT NULL,
   `registrationDeadline` datetime NOT NULL,
-  `teamSize` int(11) NOT NULL
+  `teamSize` int(11) NOT NULL,
+  `participantLimit` int(11) NOT NULL,
+  `chatId` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
