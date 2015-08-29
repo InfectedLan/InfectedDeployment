@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 20, 2015 at 11:53 PM
+-- Generation Time: Aug 29, 2015 at 06:54 PM
 -- Server version: 5.6.25-0ubuntu0.15.04.1
 -- PHP Version: 5.6.4-4ubuntu6.2
 
@@ -23,13 +23,76 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `countries`
+--
+
+CREATE TABLE IF NOT EXISTS `countries` (
+`id` int(11) NOT NULL,
+  `name` varchar(16) NOT NULL,
+  `title` varchar(16) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `name`, `title`) VALUES
+(1, 'albania', 'Albania'),
+(2, 'andorra', 'Andorra'),
+(3, 'belgium', 'Belgia'),
+(4, 'bosnia-and-herze', 'Bosnia-Hercegovi'),
+(5, 'bulgaria', 'Bulgaria'),
+(6, 'denmark', 'Danmark'),
+(7, 'estonia', 'Estland'),
+(8, 'finland', 'Finland'),
+(9, 'france', 'Frankrike'),
+(10, 'greece', 'Hellas'),
+(11, 'belarus', 'Hviterussland'),
+(12, 'ireland', 'Irland'),
+(13, 'iceland', 'Island'),
+(14, 'italy', 'Italia'),
+(15, 'kosovo', 'Kosovo'),
+(16, 'croatia', 'Kroatia'),
+(17, 'latvia', 'Latvia'),
+(18, 'liechtenstein', 'Liechtenstein'),
+(19, 'lithuania', 'Litauen'),
+(20, 'luxembourg', 'Luxembourg'),
+(21, 'malta', 'Malta'),
+(22, 'moldova', 'Moldova'),
+(23, 'monaco', 'Monaco'),
+(24, 'montenegro', 'Montenegro'),
+(25, 'netherlands', 'Nederland'),
+(26, 'norway', 'Norge'),
+(27, 'poland', 'Polen'),
+(28, 'portugal', 'Portugal'),
+(29, 'macedonia', 'Makedonia'),
+(30, 'romania', 'Romania'),
+(31, 'russia', 'Russland'),
+(32, 'san marino', 'San Marino'),
+(33, 'serbia', 'Serbia'),
+(34, 'slovakia', 'Slovakia'),
+(35, 'slovenia', 'Slovenia'),
+(36, 'spain', 'Spania'),
+(37, 'united-kingdom', 'Storbritannia'),
+(38, 'switzerland', 'Sveits'),
+(39, 'sweden', 'Sverige'),
+(40, 'czech-republic', 'Tsjekkia'),
+(41, 'germany', 'Tyskland'),
+(42, 'ukraine', 'Ukraina'),
+(43, 'hungary', 'Ungarn'),
+(44, 'vatican-city', 'Vatikanstaten'),
+(45, 'austria', '?sterrike');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `emergencycontacts`
 --
 
 CREATE TABLE IF NOT EXISTS `emergencycontacts` (
 `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `phone` int(11) NOT NULL
+  `phone` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -65,6 +128,30 @@ INSERT INTO `events` (`id`, `theme`, `locationId`, `participants`, `bookingTime`
 (8, '', 1, 368, '2017-01-17 18:00:00', '2017-02-17 18:00:00', '2017-02-19 12:00:00', 8, 1),
 (9, '', 1, 368, '2017-08-29 18:00:00', '2017-09-29 18:00:00', '2017-10-01 12:00:00', 9, 1),
 (10, '', 1, 368, '2018-01-16 18:00:00', '2018-02-16 18:00:00', '2018-02-18 12:00:00', 10, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `friends`
+--
+
+CREATE TABLE IF NOT EXISTS `friends` (
+`id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `friendId` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `friends`
+--
+
+INSERT INTO `friends` (`id`, `userId`, `friendId`) VALUES
+(1, 1, 2),
+(3, 1, 3),
+(2, 2, 1),
+(5, 2, 3),
+(4, 3, 1),
+(6, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -107,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 `id` int(11) NOT NULL,
   `value` varchar(32) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `permissions`
@@ -124,25 +211,30 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (8, 'chief.applications', 'Godta eller avvis crew-søknader.'),
 (9, 'chief.avatars', 'Administrer profilbilder, alle nye profilbilder vil dukke opp her og du kan godjkenne dem eller avise.'),
 (10, 'chief.email', 'Send e-post til noen eller alle medlemmer.'),
-(11, 'chief.groups', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
+(11, 'chief.group', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
 (12, 'chief.my-crew', 'Endre sider under "My Crew".'),
-(13, 'chief.teams', 'Administrer lagene for ditt crew, hvem som er medlem av hvilke lag og lederene i lagene.'),
+(13, 'chief.team', 'Administrer lagene for ditt crew, hvem som er medlem av hvilke lag og lederene i lagene.'),
 (14, 'admin.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere'),
-(15, 'compo.*', 'Gir tilgang til alt under compo.'),
+(15, 'chief.checklist', ''),
 (16, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.'),
-(17, 'developer.*', 'Gir tilgang til alt under developer.'),
 (18, 'developer.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
 (19, 'event.*', 'Gir tilgang til alt under event.'),
 (20, 'event.agenda', 'Endre agendaen, denne vises på hovedsiden og infoskjermen under arrangementet.'),
 (21, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
-(22, 'event.compo', 'Lar deg administrere compoer'),
+(22, 'compo.management', 'Lar deg administrere compoer'),
 (23, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.'),
 (24, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
 (25, 'event.seatmap', 'Se seatmappet'),
 (26, 'event.table-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
-(27, 'search.*', 'Gir tilgang til alt under search.'),
-(28, 'search.users', 'Søk etter brukere i databasen.'),
-(29, 'event.tickets', 'Lar deg se en brukers billett, og detaljer om den.');
+(27, 'user.*', 'Gir tilgang til alt relatert til en bruker.'),
+(28, 'user.search', 'Søk etter brukere i databasen.'),
+(29, 'user.edit', ''),
+(30, 'user.history', ''),
+(31, 'user.activate', 'Lar deg aktivere en annen bruker, dersom du selv er logget inn.'),
+(32, 'user.ticket', 'Lar deg se en brukers billett, og detaljer om den.'),
+(33, 'user.relocate', ''),
+(48, 'tickets.byPassBookingTime', 'Lar deg bestille billetter og teste kjøp av billetter før billetsalget har åpnet.'),
+(49, 'compo.bracketmanagement', 'Lar deg redigere brackets');
 
 -- --------------------------------------------------------
 
@@ -4919,7 +5011,7 @@ CREATE TABLE IF NOT EXISTS `registrationcodes` (
 CREATE TABLE IF NOT EXISTS `tasks` (
 `id` int(11) NOT NULL,
   `object` blob NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -4930,8 +5022,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 CREATE TABLE IF NOT EXISTS `useroptions` (
 `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `hidePhone` tinyint(1) NOT NULL,
-  `reserveFromNotifications` tinyint(1) NOT NULL
+  `hidePhone` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -4945,7 +5036,7 @@ CREATE TABLE IF NOT EXISTS `userpermissions` (
   `eventId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `permissionId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `userpermissions`
@@ -4954,7 +5045,7 @@ CREATE TABLE IF NOT EXISTS `userpermissions` (
 INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
 (1, 0, 1, 1),
 (2, 0, 2, 1),
-(3, 0, 3, 1);
+(14, 5, 3, 15);
 
 -- --------------------------------------------------------
 
@@ -4971,9 +5062,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(64) NOT NULL,
   `birthdate` date NOT NULL,
   `gender` tinyint(1) NOT NULL,
-  `phone` int(8) NOT NULL,
+  `phone` varchar(16) NOT NULL,
   `address` varchar(32) NOT NULL,
   `postalcode` int(4) NOT NULL,
+  `countryId` int(11) NOT NULL,
   `nickname` varchar(32) NOT NULL,
   `registereddate` datetime NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
@@ -4982,36 +5074,42 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `nickname`, `registereddate`) VALUES
-(1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', 0x37313031386564333361666164663739656338653564323232633431303331636330326564653936393632396331333430646564626665386433313033306362, 'me@petterroea.com', '1998-03-27', 0, 94132789, 'Otto valstads vei 8e', 1395, 'petterroea', '2014-08-28 18:00:00'),
-(2, 'Halvor', 'Lyche Strandvoll', 'halvors', 0x63333839303036363837343164633436353532353365653166643062366137303063626563653936396262376166313462363963333039643535623931653132, 'halvors@halvors.org', '1995-01-17', 0, 97114646, 'Fiolveien 20', 1395, 'halvors', '2014-08-28 18:00:00'),
-(3, 'Fredrik', 'Warbo', 'warbo', 0x62363838373863633637646566353239353630383864383435373234626261623830346336383930306537653266383961386131326432616534653534333539, 'fredrik@warbo.org', '1988-04-10', 0, 99767745, 'Søndre vei 68', 1397, 'wrb', '2014-08-28 18:00:00'),
-(5, 'lois', 'williams', 'test1', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(6, 'lois', 'williams', 'test2', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(7, 'kylie', 'warren', 'test3', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(8, 'marc', 'morrison', 'test4', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(9, 'lucas', 'anderson', 'test5', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(10, 'william', 'walters', 'test6', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(11, 'riley', 'carroll', 'test7', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(12, 'brittany', 'davis', 'test8', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(13, 'terry', 'obrien', 'test9', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(14, 'nellie', 'oliver', 'test10', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(15, 'sherri', 'lowe', 'test11', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(16, 'anthony', 'riley', 'test12', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(17, 'danny', 'martin', 'test13', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(18, 'eileen', 'powell', 'test14', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(19, 'isaac', 'smith', 'test15', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(20, 'anthony', 'stephens', 'test16', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(21, 'wade', 'beck', 'test17', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(22, 'vickie', 'sanchez', 'test18', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, 999999999, 'Gokkistan', 1345, 'testuser', '2015-01-28 00:00:00'),
-(24, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, 12345678, 'Test address', 1337, 'AssertNick', '2015-05-19 09:10:54'),
-(25, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, 12345678, 'Test address', 1337, 'AssertGirl', '2015-05-19 09:10:54'),
-(26, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, 12345678, 'Test address', 1337, 'AssertNick', '2015-05-25 12:47:11'),
-(27, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, 12345678, 'Test address', 1337, 'AssertGirl', '2015-05-25 12:47:11');
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `countryId`, `nickname`, `registereddate`) VALUES
+(1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', 0x37313031386564333361666164663739656338653564323232633431303331636330326564653936393632396331333430646564626665386433313033306362, 'me@petterroea.com', '1998-03-27', 0, '94132789', 'Otto valstads vei 8e', 1395, 0, 'petterroea', '2014-08-28 18:00:00'),
+(2, 'Halvor', 'Lyche Strandvoll', 'halvors', 0x63333839303036363837343164633436353532353365653166643062366137303063626563653936396262376166313462363963333039643535623931653132, 'halvors@halvors.org', '1995-01-17', 0, '97114646', 'Fiolveien 20', 1395, 0, 'halvors', '2014-08-28 18:00:00'),
+(3, 'Fredrik', 'Warbo', 'warbo', 0x62363838373863633637646566353239353630383864383435373234626261623830346336383930306537653266383961386131326432616534653534333539, 'fredrik@warbo.org', '1988-04-10', 0, '99767745', 'Søndre vei 68', 1397, 0, 'wrb', '2014-08-28 18:00:00'),
+(5, 'lois', 'williams', 'test1', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(6, 'lois', 'williams', 'test2', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(7, 'kylie', 'warren', 'test3', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(8, 'marc', 'morrison', 'test4', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(9, 'lucas', 'anderson', 'test5', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(10, 'william', 'walters', 'test6', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(11, 'riley', 'carroll', 'test7', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(12, 'brittany', 'davis', 'test8', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(13, 'terry', 'obrien', 'test9', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(14, 'nellie', 'oliver', 'test10', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(15, 'sherri', 'lowe', 'test11', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(16, 'anthony', 'riley', 'test12', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(17, 'danny', 'martin', 'test13', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(18, 'eileen', 'powell', 'test14', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(19, 'isaac', 'smith', 'test15', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(20, 'anthony', 'stephens', 'test16', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(21, 'wade', 'beck', 'test17', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(22, 'vickie', 'sanchez', 'test18', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
+(24, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, '12345678', 'Test address', 1337, 0, 'AssertNick', '2015-05-19 09:10:54'),
+(25, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, '12345678', 'Test address', 1337, 0, 'AssertGirl', '2015-05-19 09:10:54'),
+(26, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, '12345678', 'Test address', 1337, 0, 'AssertNick', '2015-08-26 12:39:18'),
+(27, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, '12345678', 'Test address', 1337, 0, 'AssertGirl', '2015-08-26 12:39:18');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `emergencycontacts`
@@ -5023,7 +5121,13 @@ ALTER TABLE `emergencycontacts`
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`locationId`,`seatmapId`,`ticketTypeId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`seatmapId`,`ticketTypeId`);
+
+--
+-- Indexes for table `friends`
+--
+ALTER TABLE `friends`
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`friendId`);
 
 --
 -- Indexes for table `locations`
@@ -5035,7 +5139,7 @@ ALTER TABLE `locations`
 -- Indexes for table `passwordresetcodes`
 --
 ALTER TABLE `passwordresetcodes`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`code`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
 
 --
 -- Indexes for table `permissions`
@@ -5047,13 +5151,13 @@ ALTER TABLE `permissions`
 -- Indexes for table `postalcodes`
 --
 ALTER TABLE `postalcodes`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`code`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `registrationcodes`
 --
 ALTER TABLE `registrationcodes`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`code`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
 
 --
 -- Indexes for table `tasks`
@@ -5077,12 +5181,17 @@ ALTER TABLE `userpermissions`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`username`,`email`,`phone`), ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`,`nickname`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`username`,`email`,`birthdate`,`gender`,`phone`,`postalcode`,`countryId`,`registereddate`), ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`,`nickname`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `emergencycontacts`
 --
@@ -5093,6 +5202,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `events`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `friends`
+--
+ALTER TABLE `friends`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `locations`
 --
@@ -5107,7 +5221,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=30;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `postalcodes`
 --
@@ -5122,7 +5236,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `useroptions`
 --
@@ -5132,7 +5246,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `userpermissions`
 --
 ALTER TABLE `userpermissions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `users`
 --
