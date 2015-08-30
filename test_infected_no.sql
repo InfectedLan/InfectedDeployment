@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 29, 2015 at 06:54 PM
+-- Generation Time: Aug 30, 2015 at 04:25 PM
 -- Server version: 5.6.25-0ubuntu0.15.04.1
 -- PHP Version: 5.6.4-4ubuntu6.2
 
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 `id` int(11) NOT NULL,
   `value` varchar(32) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `permissions`
@@ -234,7 +234,9 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (32, 'user.ticket', 'Lar deg se en brukers billett, og detaljer om den.'),
 (33, 'user.relocate', ''),
 (48, 'tickets.byPassBookingTime', 'Lar deg bestille billetter og teste kjøp av billetter før billetsalget har åpnet.'),
-(49, 'compo.bracketmanagement', 'Lar deg redigere brackets');
+(49, 'compo.bracketmanagement', 'Lar deg redigere brackets'),
+(50, 'compo.edit', 'Lar deg redigere compoer'),
+(51, 'compo.*', 'Lar deg gjøre alt compomessig');
 
 -- --------------------------------------------------------
 
@@ -5221,7 +5223,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=50;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `postalcodes`
 --
