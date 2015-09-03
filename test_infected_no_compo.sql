@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 27, 2015 at 10:39 PM
+-- Generation Time: Sep 04, 2015 at 12:01 AM
 -- Server version: 5.6.25-0ubuntu0.15.04.1
 -- PHP Version: 5.6.4-4ubuntu6.2
 
@@ -287,7 +287,7 @@ CREATE TABLE IF NOT EXISTS `clans` (
   `title` varchar(32) NOT NULL,
   `tag` varchar(32) NOT NULL,
   `chiefId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `clans`
@@ -316,7 +316,8 @@ INSERT INTO `clans` (`id`, `eventId`, `name`, `title`, `tag`, `chiefId`) VALUES
 (21, 4, 'Walkover 10', 'Walkover 10', 'W10', 1),
 (22, 4, 'warbo', 'warbo', 'wrb', 3),
 (23, 5, 'Test clan', '', 'CLAN', 1),
-(24, 5, 'the yolos', '', 'yolo', 1);
+(24, 5, 'the yolos', '', 'yolo', 1),
+(25, 5, 'Dank testers', '', 'DANK', 7);
 
 -- --------------------------------------------------------
 
@@ -330,7 +331,7 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL,
   `tag` varchar(32) NOT NULL,
-  `desciption` text NOT NULL,
+  `description` text NOT NULL,
   `mode` varchar(32) NOT NULL,
   `price` int(11) NOT NULL,
   `startTime` datetime NOT NULL,
@@ -338,18 +339,19 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `teamSize` int(11) NOT NULL,
   `participantLimit` int(11) NOT NULL,
   `chatId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `compos`
 --
 
-INSERT INTO `compos` (`id`, `eventId`, `name`, `title`, `tag`, `desciption`, `mode`, `price`, `startTime`, `registrationDeadline`, `teamSize`) VALUES
-(1, 3, 'Counter-Strike: Global Offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '5on5', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
-(2, 3, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
-(3, 4, 'Counter:Strike Global offensive', 'Counter:Strike Global offensive', 'CS:GO', 'Placeholder for registrering :)', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
-(4, 4, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5),
-(5, 5, 'Test compo', '', 'COMPO', 'This is a test compo', '1v1', 1337, '2015-08-26 12:39:28', '2015-08-26 12:39:23', 5);
+INSERT INTO `compos` (`id`, `eventId`, `name`, `title`, `tag`, `description`, `mode`, `price`, `startTime`, `registrationDeadline`, `teamSize`, `participantLimit`, `chatId`) VALUES
+(1, 3, 'Counter-Strike: Global Offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '5on5', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 0, 0),
+(2, 3, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 0, 0),
+(3, 4, 'Counter:Strike Global offensive', 'Counter:Strike Global offensive', 'CS:GO', 'Placeholder for registrering :)', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 0, 0),
+(4, 4, 'League of Legends', 'League of Legends', 'LoL', '', '5on5', 1000, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 5, 0, 0),
+(5, 5, 'Test compo', 'TEST', 'le xd', 'This is a test compo', '1v1', 1337, '2015-08-26 12:39:28', '2015-08-26 12:39:23', 2, 1, 0),
+(6, 5, 'Leauge of Lel', 'Leauge of legends', 'lel', 'top kek', '5on5', 1000, '2015-09-25 00:00:00', '2015-09-24 00:00:00', 5, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -362,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `invites` (
   `eventId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `clanId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -478,7 +480,7 @@ CREATE TABLE IF NOT EXISTS `memberof` (
   `userId` int(11) NOT NULL,
   `clanId` int(11) NOT NULL,
   `stepinId` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `memberof`
@@ -503,8 +505,11 @@ INSERT INTO `memberof` (`id`, `userId`, `clanId`, `stepinId`) VALUES
 (3, 5, 3, 0),
 (21, 5, 24, 0),
 (4, 6, 4, 0),
+(22, 6, 23, 0),
 (5, 7, 5, 0),
-(6, 8, 6, 0);
+(23, 7, 25, 0),
+(6, 8, 6, 0),
+(24, 8, 25, 0);
 
 -- --------------------------------------------------------
 
@@ -516,7 +521,7 @@ CREATE TABLE IF NOT EXISTS `memberofchat` (
 `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `chatId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `memberofchat`
@@ -602,6 +607,7 @@ INSERT INTO `memberofchat` (`id`, `userId`, `chatId`) VALUES
 (53, 6, 56),
 (68, 6, 84),
 (83, 6, 113),
+(96, 7, 1),
 (6, 7, 7),
 (12, 7, 16),
 (14, 7, 23),
@@ -630,32 +636,33 @@ CREATE TABLE IF NOT EXISTS `participantof` (
   `clanId` int(11) NOT NULL,
   `compoId` int(11) NOT NULL,
   `qualified` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `participantof`
 --
 
-INSERT INTO `participantof` (`id`, `clanId`, `compoId`) VALUES
-(2, 2, 3),
-(3, 3, 3),
-(4, 4, 3),
-(5, 5, 3),
-(6, 6, 3),
-(7, 7, 3),
-(8, 12, 3),
-(9, 13, 3),
-(10, 14, 3),
-(11, 15, 3),
-(12, 16, 3),
-(13, 17, 3),
-(14, 18, 3),
-(15, 19, 3),
-(16, 20, 3),
-(17, 21, 3),
-(18, 22, 3),
-(19, 23, 5),
-(20, 24, 1);
+INSERT INTO `participantof` (`id`, `clanId`, `compoId`, `qualified`) VALUES
+(2, 2, 3, 0),
+(3, 3, 3, 0),
+(4, 4, 3, 0),
+(5, 5, 3, 0),
+(6, 6, 3, 0),
+(7, 7, 3, 0),
+(8, 12, 3, 0),
+(9, 13, 3, 0),
+(10, 14, 3, 0),
+(11, 15, 3, 0),
+(12, 16, 3, 0),
+(13, 17, 3, 0),
+(14, 18, 3, 0),
+(15, 19, 3, 0),
+(16, 20, 3, 0),
+(17, 21, 3, 0),
+(18, 22, 3, 0),
+(19, 23, 5, 1),
+(20, 24, 1, 0),
+(21, 25, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -749,7 +756,14 @@ CREATE TABLE IF NOT EXISTS `qualificationQueue` (
   `clan` int(11) NOT NULL,
   `compo` int(11) NOT NULL,
   `time` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `qualificationQueue`
+--
+
+INSERT INTO `qualificationQueue` (`id`, `clan`, `compo`, `time`) VALUES
+(1, 25, 5, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -950,17 +964,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=140;
 -- AUTO_INCREMENT for table `clans`
 --
 ALTER TABLE `clans`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `compos`
 --
 ALTER TABLE `compos`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `invites`
 --
 ALTER TABLE `invites`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `matches`
 --
@@ -975,17 +989,17 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 -- AUTO_INCREMENT for table `memberof`
 --
 ALTER TABLE `memberof`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `memberofchat`
 --
 ALTER TABLE `memberofchat`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=96;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=97;
 --
 -- AUTO_INCREMENT for table `participantof`
 --
 ALTER TABLE `participantof`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `participantofmatch`
 --
@@ -995,7 +1009,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=271;
 -- AUTO_INCREMENT for table `qualificationQueue`
 --
 ALTER TABLE `qualificationQueue`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `readyhandlers`
 --
