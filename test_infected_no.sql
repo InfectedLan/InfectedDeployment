@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.12deb2
+-- version 4.4.13.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 30, 2015 at 04:25 PM
--- Server version: 5.6.25-0ubuntu0.15.04.1
--- PHP Version: 5.6.4-4ubuntu6.2
+-- Generation Time: Jan 07, 2016 at 11:54 PM
+-- Server version: 5.6.27-0ubuntu1
+-- PHP Version: 5.6.11-1ubuntu3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `test_infected_no`
@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `countries` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(16) NOT NULL,
   `title` varchar(16) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
@@ -90,7 +90,7 @@ INSERT INTO `countries` (`id`, `name`, `title`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `emergencycontacts` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `phone` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `emergencycontacts` (
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `theme` varchar(16) NOT NULL,
   `locationId` int(11) NOT NULL,
   `participants` int(11) NOT NULL,
@@ -136,7 +136,7 @@ INSERT INTO `events` (`id`, `theme`, `locationId`, `participants`, `bookingTime`
 --
 
 CREATE TABLE IF NOT EXISTS `friends` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `friendId` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
@@ -160,7 +160,7 @@ INSERT INTO `friends` (`id`, `userId`, `friendId`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `locations` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -179,7 +179,7 @@ INSERT INTO `locations` (`id`, `name`, `title`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `code` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -191,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
 --
 
 CREATE TABLE IF NOT EXISTS `permissions` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `value` varchar(32) NOT NULL,
   `description` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
@@ -245,7 +245,7 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `postalcodes` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `code` int(4) NOT NULL,
   `city` varchar(64) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=4735 DEFAULT CHARSET=latin1;
@@ -2521,8 +2521,7 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 (2264, 4463, 'Ualand'),
 (2265, 4465, 'Moi'),
 (2266, 4473, 'Kvinlog'),
-(2267, 4480, 'Kvinesdal');
-INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
+(2267, 4480, 'Kvinesdal'),
 (2268, 4484, 'Øyestranda'),
 (2269, 4485, 'Feda'),
 (2270, 4490, 'Kvinesdal'),
@@ -2539,7 +2538,8 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 (2281, 4514, 'Mandal'),
 (2282, 4515, 'Mandal'),
 (2283, 4516, 'Mandal'),
-(2284, 4517, 'Mandal'),
+(2284, 4517, 'Mandal');
+INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 (2285, 4519, 'Holum'),
 (2286, 4520, 'Lindesnes'),
 (2287, 4521, 'Lindesnes'),
@@ -4598,8 +4598,7 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 (4340, 8802, 'Sandnessjøen'),
 (4341, 8803, 'Sandnessjøen'),
 (4342, 8804, 'Sandnessjøen'),
-(4343, 8805, 'Sandnessjøen');
-INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
+(4343, 8805, 'Sandnessjøen'),
 (4344, 8809, 'Sandnessjøen'),
 (4345, 8813, 'Kopardal'),
 (4346, 8820, 'Dønna'),
@@ -4642,7 +4641,8 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 (4383, 8985, 'Ylvingen'),
 (4384, 9006, 'Tromsø'),
 (4385, 9007, 'Tromsø'),
-(4386, 9008, 'Tromsø'),
+(4386, 9008, 'Tromsø');
+INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 (4387, 9009, 'Tromsø'),
 (4388, 9010, 'Tromsø'),
 (4389, 9011, 'Tromsø'),
@@ -4999,9 +4999,25 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `registrationcodes` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `code` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `syslogs`
+--
+
+CREATE TABLE IF NOT EXISTS `syslogs` (
+  `id` int(12) NOT NULL,
+  `source` varchar(32) NOT NULL,
+  `message` varchar(64) NOT NULL,
+  `severity` int(12) NOT NULL,
+  `metadata` varchar(1024) NOT NULL,
+  `date` date NOT NULL,
+  `userId` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -5011,9 +5027,9 @@ CREATE TABLE IF NOT EXISTS `registrationcodes` (
 --
 
 CREATE TABLE IF NOT EXISTS `tasks` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `object` blob NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -5022,7 +5038,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 --
 
 CREATE TABLE IF NOT EXISTS `useroptions` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `hidePhone` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -5034,11 +5050,11 @@ CREATE TABLE IF NOT EXISTS `useroptions` (
 --
 
 CREATE TABLE IF NOT EXISTS `userpermissions` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `permissionId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `userpermissions`
@@ -5047,7 +5063,8 @@ CREATE TABLE IF NOT EXISTS `userpermissions` (
 INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
 (1, 0, 1, 1),
 (2, 0, 2, 1),
-(14, 5, 3, 15);
+(14, 5, 3, 15),
+(15, 6, 3, 15);
 
 -- --------------------------------------------------------
 
@@ -5056,7 +5073,7 @@ INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
   `username` varchar(32) NOT NULL,
@@ -5111,79 +5128,95 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `ema
 -- Indexes for table `countries`
 --
 ALTER TABLE `countries`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `emergencycontacts`
 --
 ALTER TABLE `emergencycontacts`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`userId`);
 
 --
 -- Indexes for table `events`
 --
 ALTER TABLE `events`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`seatmapId`,`ticketTypeId`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`seatmapId`,`ticketTypeId`);
 
 --
 -- Indexes for table `friends`
 --
 ALTER TABLE `friends`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`friendId`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`userId`,`friendId`);
 
 --
 -- Indexes for table `locations`
 --
 ALTER TABLE `locations`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `passwordresetcodes`
 --
 ALTER TABLE `passwordresetcodes`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`userId`);
 
 --
 -- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`value`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`value`);
 
 --
 -- Indexes for table `postalcodes`
 --
 ALTER TABLE `postalcodes`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `registrationcodes`
 --
 ALTER TABLE `registrationcodes`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`userId`);
+
+--
+-- Indexes for table `syslogs`
+--
+ALTER TABLE `syslogs`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tasks`
 --
 ALTER TABLE `tasks`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `useroptions`
 --
 ALTER TABLE `useroptions`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`userId`);
 
 --
 -- Indexes for table `userpermissions`
 --
 ALTER TABLE `userpermissions`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`eventId`,`userId`,`permissionId`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`eventId`,`userId`,`permissionId`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`id`), ADD KEY `index` (`username`,`email`,`birthdate`,`gender`,`phone`,`postalcode`,`countryId`,`registereddate`), ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`,`nickname`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`username`,`email`,`birthdate`,`gender`,`phone`,`postalcode`,`countryId`,`registereddate`),
+  ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`,`nickname`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -5193,67 +5226,72 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `emergencycontacts`
 --
 ALTER TABLE `emergencycontacts`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `passwordresetcodes`
 --
 ALTER TABLE `passwordresetcodes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `postalcodes`
 --
 ALTER TABLE `postalcodes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4735;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4735;
 --
 -- AUTO_INCREMENT for table `registrationcodes`
 --
 ALTER TABLE `registrationcodes`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `syslogs`
+--
+ALTER TABLE `syslogs`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `useroptions`
 --
 ALTER TABLE `useroptions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `userpermissions`
 --
 ALTER TABLE `userpermissions`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
