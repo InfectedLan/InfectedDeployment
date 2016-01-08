@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 07, 2016 at 11:54 PM
+-- Generation Time: Jan 08, 2016 at 04:38 PM
 -- Server version: 5.6.27-0ubuntu1
 -- PHP Version: 5.6.11-1ubuntu3.1
 
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `permissions` (
   `id` int(11) NOT NULL,
   `value` varchar(32) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `permissions`
@@ -236,7 +236,8 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (48, 'tickets.byPassBookingTime', 'Lar deg bestille billetter og teste kjøp av billetter før billetsalget har åpnet.'),
 (49, 'compo.bracketmanagement', 'Lar deg redigere brackets'),
 (50, 'compo.edit', 'Lar deg redigere compoer'),
-(51, 'compo.*', 'Lar deg gjøre alt compomessig');
+(51, 'compo.*', 'Lar deg gjøre alt compomessig'),
+(52, 'developer.syslog', 'Lar deg se på systemloggen');
 
 -- --------------------------------------------------------
 
@@ -5018,7 +5019,14 @@ CREATE TABLE IF NOT EXISTS `syslogs` (
   `metadata` varchar(1024) NOT NULL,
   `date` date NOT NULL,
   `userId` int(12) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `syslogs`
+--
+
+INSERT INTO `syslogs` (`id`, `source`, `message`, `severity`, `metadata`, `date`, `userId`) VALUES
+(1, 'loginUser', 'User logged in', 1, '[]', '2016-01-08', 1);
 
 -- --------------------------------------------------------
 
@@ -5256,7 +5264,7 @@ ALTER TABLE `passwordresetcodes`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
 --
 -- AUTO_INCREMENT for table `postalcodes`
 --
@@ -5271,7 +5279,7 @@ ALTER TABLE `registrationcodes`
 -- AUTO_INCREMENT for table `syslogs`
 --
 ALTER TABLE `syslogs`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tasks`
 --
