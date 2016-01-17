@@ -5016,17 +5016,14 @@ CREATE TABLE IF NOT EXISTS `syslogs` (
   `source` varchar(32) NOT NULL,
   `message` varchar(64) NOT NULL,
   `severity` int(12) NOT NULL,
-  `metadata` varchar(1024) NOT NULL,
-  `date` date NOT NULL,
+  `metadata` varchar(2048) NOT NULL,
+  `date` datetime NOT NULL,
   `userId` int(12) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `syslogs`
 --
-
-INSERT INTO `syslogs` (`id`, `source`, `message`, `severity`, `metadata`, `date`, `userId`) VALUES
-(1, 'loginUser', 'User logged in', 1, '[]', '2016-01-08', 1);
 
 -- --------------------------------------------------------
 
