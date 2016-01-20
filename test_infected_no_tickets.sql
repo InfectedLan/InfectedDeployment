@@ -99,7 +99,8 @@ CREATE TABLE IF NOT EXISTS `rows` (
   `entranceId` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `x` int(11) NOT NULL,
-  `y` int(11) NOT NULL
+  `y` int(11) NOT NULL,
+  `isHorizontal` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 --
