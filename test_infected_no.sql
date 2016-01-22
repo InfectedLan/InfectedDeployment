@@ -5016,7 +5016,7 @@ CREATE TABLE IF NOT EXISTS `syslogs` (
   `source` varchar(32) NOT NULL,
   `message` varchar(64) NOT NULL,
   `severity` int(12) NOT NULL,
-  `metadata` varchar(2048) NOT NULL,
+  `metadata` text NOT NULL,
   `date` datetime NOT NULL,
   `userId` int(12) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
