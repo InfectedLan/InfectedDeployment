@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 26. Jan, 2016 10:14 AM
+-- Generation Time: 26. Jan, 2016 10:32 AM
 -- Server-versjon: 5.6.27-0ubuntu1
 -- PHP Version: 5.6.11-1ubuntu3.1
 
@@ -145,6 +145,7 @@ INSERT INTO `memberof` (`id`, `eventId`, `userId`, `groupId`, `teamId`) VALUES
 CREATE TABLE IF NOT EXISTS `notes` (
   `id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
+  `creatorId` int(11) NOT NULL,
   `groupId` int(11) NOT NULL,
   `teamId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
@@ -161,10 +162,10 @@ CREATE TABLE IF NOT EXISTS `notes` (
 -- Dataark for tabell `notes`
 --
 
-INSERT INTO `notes` (`id`, `eventId`, `groupId`, `teamId`, `userId`, `title`, `content`, `secondsOffset`, `time`, `notified`, `done`, `inProgress`) VALUES
-(1, 6, 11, 0, 0, 'lol', 'lol', 172800, '14:58:00', 0, 0, 1),
-(2, 6, 11, 0, 0, 'kikiuk', 'iukiuk', 172800, '10:07:00', 0, 1, 0),
-(3, 6, 11, 0, 0, 'uikiu', 'kiukiuk', 172800, '10:07:00', 0, 1, 0);
+INSERT INTO `notes` (`id`, `eventId`, `creatorId`, `groupId`, `teamId`, `userId`, `title`, `content`, `secondsOffset`, `time`, `notified`, `done`, `inProgress`) VALUES
+(1, 6, 0, 11, 0, 0, 'lol', 'lol', 172800, '14:58:00', 0, 0, 1),
+(2, 6, 0, 11, 0, 0, 'kikiuk', 'iukiuk', 172800, '10:07:00', 0, 1, 0),
+(3, 6, 0, 11, 0, 0, 'uikiu', 'kiukiuk', 172800, '10:07:00', 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -345,7 +346,7 @@ ALTER TABLE `memberof`
 --
 ALTER TABLE `notes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`id`,`eventId`,`groupId`,`teamId`,`userId`,`secondsOffset`,`time`,`notified`,`done`,`inProgress`) USING BTREE;
+  ADD KEY `index` (`id`,`eventId`,`creatorId`,`groupId`,`teamId`,`userId`,`secondsOffset`,`time`,`notified`,`done`,`inProgress`) USING BTREE;
 
 --
 -- Indexes for table `notewatches`
