@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `title` varchar(32) NOT NULL,
   `tag` varchar(32) NOT NULL,
   `description` text NOT NULL,
-  `mode` varchar(32) NOT NULL,
+  `pluginName` varchar(32) NOT NULL,
   `price` int(11) NOT NULL,
   `startTime` datetime NOT NULL,
   `registrationEndTime` datetime NOT NULL,
