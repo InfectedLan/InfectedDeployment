@@ -118,6 +118,20 @@ CREATE TABLE IF NOT EXISTS `invites` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `servers`
+-- generated for hand, lol
+--
+
+CREATE TABLE IF NOT EXISTS `servers` (
+`id` int(11) NOT NULL,
+  `serverId` int(11) NOT NULL,
+  `humanName` text NOT NULL,
+  `connectionData` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `matches`
 --
 
@@ -377,6 +391,12 @@ ALTER TABLE `votes`
  ADD PRIMARY KEY (`id`), ADD KEY `index` (`consumerId`,`voteOptionId`);
 
 --
+-- Indexes for table `servers`
+--
+ALTER TABLE `servers`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -394,6 +414,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT for table `clans`
 --
 ALTER TABLE `clans`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `servers`
+--
+ALTER TABLE `servers`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `compos`
