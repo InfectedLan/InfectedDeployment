@@ -86,7 +86,8 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `registrationEndTime` datetime NOT NULL,
   `teamSize` int(11) NOT NULL,
   `participantLimit` int(11) NOT NULL,
-  `chatId` int(11) NOT NULL
+  `chatId` int(11) NOT NULL,
+  `connectionType` int(11) NOT NULL,
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
@@ -123,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `invites` (
 CREATE TABLE IF NOT EXISTS `matches` (
 `id` int(11) NOT NULL,
   `scheduledTime` datetime NOT NULL,
-  `connectDetails` varchar(64) NOT NULL,
+  `connectDetails` text NOT NULL,
   `state` int(11) NOT NULL,
   `winnerId` int(11) NOT NULL,
   `compoId` int(11) NOT NULL,
