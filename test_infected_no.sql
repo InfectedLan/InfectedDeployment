@@ -237,7 +237,8 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (49, 'compo.bracketmanagement', 'Lar deg redigere brackets'),
 (50, 'compo.edit', 'Lar deg redigere compoer'),
 (51, 'compo.*', 'Lar deg gjøre alt compomessig'),
-(52, 'developer.syslog', 'Lar deg se på systemloggen');
+(52, 'developer.syslog', 'Lar deg se på systemloggen'),
+;
 
 -- --------------------------------------------------------
 
@@ -5122,8 +5123,7 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `ema
 (22, 'vickie', 'sanchez', 'test18', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
 (24, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, '12345678', 'Test address', 1337, 0, 'AssertNick', '2015-05-19 09:10:54'),
 (25, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, '12345678', 'Test address', 1337, 0, 'AssertGirl', '2015-05-19 09:10:54'),
-(26, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, '12345678', 'Test address', 1337, 0, 'AssertNick', '2015-08-26 12:39:18'),
-(27, 'assertionGirlFirst', 'assertionGirlLast', 'assertGirl', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertGirl@infected.no', '1998-03-27', 1, '12345678', 'Test address', 1337, 0, 'AssertGirl', '2015-08-26 12:39:18');
+(26, 'assertionFirstname', 'assertionLastname', 'assertUser', 0x33326364623631393139363230303035306162306166353831613130666238336366633633623161323066353864346261666236333133643535613366306539, 'assertUser@infected.no', '1998-03-27', 0, '12345678', 'Test address', 1337, 0, 'AssertNick', '2015-08-26 12:39:18');
 
 --
 -- Indexes for dumped tables
