@@ -107,6 +107,8 @@ CREATE TABLE IF NOT EXISTS `events` (
   `locationId` int(11) NOT NULL,
   `participants` int(11) NOT NULL,
   `bookingTime` datetime NOT NULL,
+  `prioritySeatingTime` datetime NOT NULL,
+  `seatingTime` datetime NOT NULL,
   `startTime` datetime NOT NULL,
   `endTime` datetime NOT NULL,
   `seatmapId` int(11) NOT NULL,
