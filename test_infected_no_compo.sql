@@ -121,7 +121,8 @@ CREATE TABLE IF NOT EXISTS `compos` (
   `teamSize` int(11) NOT NULL,
   `participantLimit` int(11) NOT NULL,
   `chatId` int(11) NOT NULL,
-  `connectionType` int(11) NOT NULL
+  `connectionType` int(11) NOT NULL,
+  `requiresSteamId` tinyint(1) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
@@ -409,6 +410,13 @@ ALTER TABLE `compos`
   ADD KEY `index` (`eventId`);
 
 --
+-- Indexes for table `steamids`
+--
+
+ALTER TABLE `steamids`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `invites`
 --
 ALTER TABLE `invites`
@@ -527,6 +535,12 @@ ALTER TABLE `clans`
 --
 ALTER TABLE `compos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `steamids`
+--
+ALTER TABLE `steamids`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `invites`
 --
