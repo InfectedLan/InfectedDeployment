@@ -55,7 +55,7 @@ INSERT INTO `chatmessages` (`id`, `userId`, `chatId`, `time`, `message`) VALUES
 CREATE TABLE IF NOT EXISTS `steamids` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `steamid` text NOT NULL
+  `steamId` text NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
