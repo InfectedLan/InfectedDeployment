@@ -5219,7 +5219,7 @@ ALTER TABLE `userpermissions`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `index` (`username`,`email`,`birthdate`,`gender`,`phone`,`postalcode`,`countryId`,`registereddate`),
-  ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`email`,`nickname`);
+  ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`nickname`);
 
 --
 -- AUTO_INCREMENT for dumped tables
