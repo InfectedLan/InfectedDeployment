@@ -137,7 +137,9 @@ INSERT INTO `compos` (`id`, `eventId`, `name`, `title`, `tag`, `description`, `p
 (5, 5, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '1.plass 7500,- 2.plass 2500,- maks 16 lag', '5on5', 0, '2015-09-25 21:45:00', '2015-09-25 20:00:00', 5, 16, 0, 0),
 (6, 5, 'league-of-legends', 'League of Legends', 'LoL', '1.plass 7500,- 2.plass 2500,- maks 16 lag', '5on5', 0, '2015-09-25 21:00:00', '2015-09-25 19:30:00', 5, 16, 0, 0),
 (7, 6, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '1.plass 7500,- 2.plass 2500,- maks 16 lag', 'csgo', 0, '2015-09-25 21:45:00', '2015-09-25 20:00:00', 5, 16, 7, 0),
-(8, 6, 'league-of-legends', 'League of Legends', 'LoL', '1.plass 7500,- 2.plass 2500,- maks 16 lag', '5on5', 0, '2015-09-25 21:00:00', '2015-09-25 19:30:00', 5, 16, 8, 0);
+(8, 6, 'league-of-legends', 'League of Legends', 'LoL', '1.plass 7500,- 2.plass 2500,- maks 16 lag', '5on5', 0, '2015-09-25 21:00:00', '2015-09-25 19:30:00', 5, 16, 8, 0),
+(9, 7, 'counter-strike:-global-offensive', 'Counter-Strike: Global Offensive', 'CS:GO', '1.plass 7500,- 2.plass 2500,- maks 16 lag', 'csgo', 0, '2015-09-25 21:45:00', '2015-09-25 20:00:00', 5, 16, 7, 0),
+(10, 7, 'league-of-legends', 'League of Legends', 'LoL', '1.plass 7500,- 2.plass 2500,- maks 16 lag', '5on5', 0, '2015-09-25 21:00:00', '2015-09-25 19:30:00', 5, 16, 8, 0);
 
 -- --------------------------------------------------------
 

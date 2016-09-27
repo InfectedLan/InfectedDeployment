@@ -5044,10 +5044,13 @@ CREATE TABLE IF NOT EXISTS `tasks` (
 -- Table structure for table `useroptions`
 --
 
-CREATE TABLE IF NOT EXISTS `useroptions` (
+CREATE TABLE `useroptions` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `hidePhone` tinyint(1) NOT NULL
+  `privatePhone` tinyint(1) NOT NULL,
+  `reserveFromNotifications` tinyint(1) NOT NULL,
+  `easterEgg` tinyint(1) NOT NULL,
+  `swimming` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -5204,7 +5207,7 @@ ALTER TABLE `tasks`
 --
 ALTER TABLE `useroptions`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`userId`);
+  ADD KEY `index` (`userId`,`privatePhone`,`reserveFromNotifications`);
 
 --
 -- Indexes for table `userpermissions`
