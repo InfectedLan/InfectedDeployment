@@ -11,7 +11,8 @@ $api_url = "https://crew.infected.no/api";
 $api_key = "";
 $compo_id = 9;
 
-$mysqli = new mysqli($db_host, $db_username, $db_password, $db_database);
+mysql_connect($db_host, $db_username, $db_password);
+mysql_select_db($db_database);
 if($mysqli->connect_errno) {
     echo "Error connecting to sql\n";
     die();
@@ -24,7 +25,7 @@ if(!$mysqli->set_charset('utf8')) {
 // Load shit
 echo "Sql connected. Reading data\n";
 
-$server_result = $mysqli->query('SELECT * FROM `servers`;');
+$server_result = mysql_query('SELECT * FROM `servers`;');
 
 $servers = [];
 
@@ -35,7 +36,7 @@ while($row = $server_result->fetch_array()) {
 
 echo "Read " . count($servers) . " servers.\n";
 
-$match_result = $mysqli->query('SELECT * FROM `matchs`;');
+$match_result = mysql_query('SELECT * FROM `matchs` WHERE `status` != 0;');
 
 $matches = [];
 
