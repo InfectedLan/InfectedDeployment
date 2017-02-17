@@ -239,7 +239,8 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 (49, 'compo.bracketmanagement', 'Lar deg redigere brackets'),
 (50, 'compo.edit', 'Lar deg redigere compoer'),
 (51, 'compo.*', 'Lar deg gjøre alt compomessig'),
-(52, 'developer.syslog', 'Lar deg se på systemloggen');
+(52, 'developer.syslog', 'Lar deg se på systemloggen'),
+(53, 'developer.phpinfo', 'Lar deg se på phpinfo');
 
 -- --------------------------------------------------------
 
