@@ -24,7 +24,7 @@ if(!$mysqli->set_charset('utf8')) {
 // Load shit
 echo "Sql connected. Reading data\n";
 
-$server_result = $mysqli->query('SELECT * FROM `game_server`;');
+$server_result = $mysqli->query('SELECT * FROM `servers`;');
 
 $servers = [];
 
@@ -35,7 +35,7 @@ while($row = $server_result->fetch_array()) {
 
 echo "Read " . count($servers) . " servers.\n";
 
-$match_result = $mysqli->query('SELECT * FROM `match`;');
+$match_result = $mysqli->query('SELECT * FROM `matchs`;');
 
 $matches = [];
 
@@ -73,10 +73,11 @@ echo "Got " . count($relevantMatches) . " relevant matches.\n";
 foreach($relevantMatches as $match) {
     $jsonPushable = [];
     //Add properties
-    $jsonPushable["toornamentId"] = $match["toornament_match_id"];
-    $jsonPushable["ip"] = getServer($match["game_server_id"])["hostname"];
+    $jsonPushable["toornamentId"] = explode(".", $match["identifier_id"])[0];
+    $jsonServer = getServer($match["game_server_id"]);
+    $jsonPushable["ip"] = $jsonServer["ip"];
     $jsonPushable["password"] = $match["password"];
-    $jsonPushable["participants"] = [$match["attendee1_name"], $match["attendee2_name"]];
+    $jsonPushable["participants"] = [$match["team_a_name"], $match["team_b_name"]];
 
     $jsonObj[] = $jsonPushable;
 }
