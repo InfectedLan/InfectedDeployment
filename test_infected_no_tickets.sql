@@ -71,8 +71,8 @@ CREATE TABLE IF NOT EXISTS `payments` (
 `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `ticketTypeId` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `totalPrice` int(11) NOT NULL,
   `transactionId` varchar(64) NOT NULL,
   `datetime` datetime NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `payments` (
 -- Dumping data for table `payments`
 --
 
-INSERT INTO `payments` (`id`, `userId`, `ticketTypeId`, `price`, `totalPrice`, `transactionId`, `datetime`) VALUES
+INSERT INTO `payments` (`id`, `userId`, `ticketTypeId`, `amount`, `price`, `transactionId`, `datetime`) VALUES
 (1, 1, 1, 1, 350, '2FR0683745560705K', '2015-02-03 23:24:35'),
 (2, 1, 1, 1, 350, '1JB27503MS155754P', '2015-02-04 19:14:14'),
 (3, 1, 1, 1, 350, '3CT78292D2684950H', '2015-02-04 19:16:28'),
