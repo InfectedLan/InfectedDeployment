@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `applications` (
 CREATE TABLE IF NOT EXISTS `avatars` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `file` varchar(64) NOT NULL,
+  `fileName` varchar(64) NOT NULL,
   `state` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `avatars` (
 -- Dataark for tabell `avatars`
 --
 
-INSERT INTO `avatars` (`id`, `userId`, `file`, `state`) VALUES
+INSERT INTO `avatars` (`id`, `userId`, `fileName`, `state`) VALUES
 (1, 2, '6f836b0f77d06ef59bf7a19be2b17110halvors.jpg', 2);
 
 -- --------------------------------------------------------
