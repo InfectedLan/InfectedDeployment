@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.13.1deb1
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 08, 2016 at 04:38 PM
--- Server version: 5.6.27-0ubuntu1
--- PHP Version: 5.6.11-1ubuntu3.1
+-- Generation Time: Nov 13, 2017 at 10:25 PM
+-- Server version: 5.7.20-0ubuntu0.16.04.1
+-- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,11 +26,11 @@ SET time_zone = "+00:00";
 -- Table structure for table `countries`
 --
 
-CREATE TABLE IF NOT EXISTS `countries` (
+CREATE TABLE `countries` (
   `id` int(11) NOT NULL,
   `name` varchar(16) NOT NULL,
   `title` varchar(16) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `countries`
@@ -89,7 +89,7 @@ INSERT INTO `countries` (`id`, `name`, `title`) VALUES
 -- Table structure for table `emergencycontacts`
 --
 
-CREATE TABLE IF NOT EXISTS `emergencycontacts` (
+CREATE TABLE `emergencycontacts` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `phone` int(8) NOT NULL
@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `emergencycontacts` (
 -- Table structure for table `events`
 --
 
-CREATE TABLE IF NOT EXISTS `events` (
+CREATE TABLE `events` (
   `id` int(11) NOT NULL,
   `theme` varchar(16) NOT NULL,
   `locationId` int(11) NOT NULL,
@@ -113,23 +113,23 @@ CREATE TABLE IF NOT EXISTS `events` (
   `endTime` datetime NOT NULL,
   `seatmapId` int(11) NOT NULL,
   `ticketTypeId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `events`
 --
 
-INSERT INTO `events` (`id`, `theme`, `locationId`, `participants`, `bookingTime`, `startTime`, `endTime`, `seatmapId`, `ticketTypeId`) VALUES
-(1, 'Arcade', 1, 322, '2013-08-27 18:00:00', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 1),
-(2, '', 1, 335, '2014-01-14 18:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 2, 1),
-(3, '', 1, 370, '2014-08-28 18:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 3, 1),
-(4, '', 1, 368, '2015-01-14 18:00:00', '2015-02-13 18:00:00', '2015-02-15 12:00:00', 4, 1),
-(5, '', 1, 368, '2015-09-25 18:00:00', '2015-09-27 18:00:00', '2015-09-27 12:00:00', 5, 1),
-(6, '', 1, 368, '2016-01-19 18:00:00', '2016-02-19 18:00:00', '2016-02-21 12:00:00', 6, 1),
-(7, '', 1, 368, '2016-08-30 18:00:00', '2016-09-30 18:00:00', '2016-10-02 12:00:00', 7, 1),
-(8, '', 1, 368, '2017-01-17 18:00:00', '2017-02-17 18:00:00', '2017-02-19 12:00:00', 8, 1),
-(9, '', 1, 368, '2017-08-29 18:00:00', '2017-09-29 18:00:00', '2017-10-01 12:00:00', 9, 1),
-(10, '', 1, 368, '2018-01-16 18:00:00', '2018-02-16 18:00:00', '2018-02-18 12:00:00', 10, 1);
+INSERT INTO `events` (`id`, `theme`, `locationId`, `participants`, `bookingTime`, `prioritySeatingTime`, `seatingTime`, `startTime`, `endTime`, `seatmapId`, `ticketTypeId`) VALUES
+(1, 'Arcade', 1, 322, '2013-08-27 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 1),
+(2, '', 1, 335, '2014-01-14 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 2, 1),
+(3, '', 1, 370, '2014-08-28 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 3, 1),
+(4, '', 1, 368, '2015-01-14 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2015-02-13 18:00:00', '2015-02-15 12:00:00', 4, 1),
+(5, '', 1, 368, '2015-09-25 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2015-09-27 18:00:00', '2015-09-27 12:00:00', 5, 1),
+(6, '', 1, 368, '2016-01-19 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2016-02-19 18:00:00', '2016-02-21 12:00:00', 6, 1),
+(7, '', 1, 368, '2016-08-30 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2016-09-30 18:00:00', '2016-10-02 12:00:00', 7, 1),
+(8, '', 1, 368, '2017-01-17 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2017-02-17 18:00:00', '2017-02-19 12:00:00', 8, 1),
+(9, '', 1, 368, '2017-08-29 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2017-09-29 18:00:00', '2017-10-01 12:00:00', 9, 1),
+(10, '', 1, 368, '2018-01-16 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2018-02-16 18:00:00', '2018-02-18 12:00:00', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -137,11 +137,11 @@ INSERT INTO `events` (`id`, `theme`, `locationId`, `participants`, `bookingTime`
 -- Table structure for table `friends`
 --
 
-CREATE TABLE IF NOT EXISTS `friends` (
+CREATE TABLE `friends` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `friendId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `friends`
@@ -161,11 +161,11 @@ INSERT INTO `friends` (`id`, `userId`, `friendId`) VALUES
 -- Table structure for table `locations`
 --
 
-CREATE TABLE IF NOT EXISTS `locations` (
+CREATE TABLE `locations` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `locations`
@@ -177,10 +177,50 @@ INSERT INTO `locations` (`id`, `name`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nfccards`
+--
+
+CREATE TABLE `nfccards` (
+  `id` int(11) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `eventid` int(11) NOT NULL,
+  `nfcid` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nfcgates`
+--
+
+CREATE TABLE `nfcgates` (
+  `id` int(11) NOT NULL,
+  `eventid` int(11) NOT NULL,
+  `pcbid` varchar(32) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nfclog`
+--
+
+CREATE TABLE `nfclog` (
+  `id` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL,
+  `gateid` int(11) NOT NULL,
+  `nfcid` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `passwordresetcodes`
 --
 
-CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
+CREATE TABLE `passwordresetcodes` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `code` varchar(64) NOT NULL
@@ -192,11 +232,11 @@ CREATE TABLE IF NOT EXISTS `passwordresetcodes` (
 -- Table structure for table `permissions`
 --
 
-CREATE TABLE IF NOT EXISTS `permissions` (
+CREATE TABLE `permissions` (
   `id` int(11) NOT NULL,
   `value` varchar(32) NOT NULL,
   `description` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `permissions`
@@ -248,11 +288,11 @@ INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
 -- Table structure for table `postalcodes`
 --
 
-CREATE TABLE IF NOT EXISTS `postalcodes` (
+CREATE TABLE `postalcodes` (
   `id` int(11) NOT NULL,
   `code` int(4) NOT NULL,
   `city` varchar(64) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4735 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `postalcodes`
@@ -5002,7 +5042,7 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 -- Table structure for table `registrationcodes`
 --
 
-CREATE TABLE IF NOT EXISTS `registrationcodes` (
+CREATE TABLE `registrationcodes` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `code` varchar(64) NOT NULL
@@ -5014,7 +5054,7 @@ CREATE TABLE IF NOT EXISTS `registrationcodes` (
 -- Table structure for table `syslogs`
 --
 
-CREATE TABLE IF NOT EXISTS `syslogs` (
+CREATE TABLE `syslogs` (
   `id` int(12) NOT NULL,
   `source` varchar(32) NOT NULL,
   `message` varchar(64) NOT NULL,
@@ -5022,11 +5062,7 @@ CREATE TABLE IF NOT EXISTS `syslogs` (
   `metadata` text NOT NULL,
   `date` datetime NOT NULL,
   `userId` int(12) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `syslogs`
---
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -5034,7 +5070,7 @@ CREATE TABLE IF NOT EXISTS `syslogs` (
 -- Table structure for table `tasks`
 --
 
-CREATE TABLE IF NOT EXISTS `tasks` (
+CREATE TABLE `tasks` (
   `id` int(11) NOT NULL,
   `object` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -5060,12 +5096,12 @@ CREATE TABLE `useroptions` (
 -- Table structure for table `userpermissions`
 --
 
-CREATE TABLE IF NOT EXISTS `userpermissions` (
+CREATE TABLE `userpermissions` (
   `id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `permissionId` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `userpermissions`
@@ -5083,7 +5119,7 @@ INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
@@ -5098,7 +5134,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `countryId` int(11) NOT NULL,
   `nickname` varchar(32) NOT NULL,
   `registereddate` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -5165,6 +5201,24 @@ ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nfccards`
+--
+ALTER TABLE `nfccards`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nfcgates`
+--
+ALTER TABLE `nfcgates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nfclog`
+--
+ALTER TABLE `nfclog`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `passwordresetcodes`
 --
 ALTER TABLE `passwordresetcodes`
@@ -5222,8 +5276,8 @@ ALTER TABLE `userpermissions`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`username`,`email`,`birthdate`,`gender`,`phone`,`postalcode`,`countryId`,`registereddate`),
-  ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`nickname`);
+  ADD KEY `index` (`username`,`email`,`birthdate`,`gender`,`phone`,`postalcode`,`countryId`,`registereddate`);
+ALTER TABLE `users` ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`nickname`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -5233,7 +5287,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT for table `emergencycontacts`
 --
@@ -5243,17 +5297,32 @@ ALTER TABLE `emergencycontacts`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `nfccards`
+--
+ALTER TABLE `nfccards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `nfcgates`
+--
+ALTER TABLE `nfcgates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `nfclog`
+--
+ALTER TABLE `nfclog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `passwordresetcodes`
 --
@@ -5263,12 +5332,12 @@ ALTER TABLE `passwordresetcodes`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 --
 -- AUTO_INCREMENT for table `postalcodes`
 --
 ALTER TABLE `postalcodes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4735;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4735;
 --
 -- AUTO_INCREMENT for table `registrationcodes`
 --
@@ -5278,7 +5347,7 @@ ALTER TABLE `registrationcodes`
 -- AUTO_INCREMENT for table `syslogs`
 --
 ALTER TABLE `syslogs`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tasks`
 --
@@ -5293,12 +5362,12 @@ ALTER TABLE `useroptions`
 -- AUTO_INCREMENT for table `userpermissions`
 --
 ALTER TABLE `userpermissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
