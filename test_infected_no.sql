@@ -182,9 +182,9 @@ INSERT INTO `locations` (`id`, `name`, `title`) VALUES
 
 CREATE TABLE `nfccards` (
   `id` int(11) NOT NULL,
-  `userid` int(11) NOT NULL,
-  `eventid` int(11) NOT NULL,
-  `nfcid` varchar(32) NOT NULL
+  `userId` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL,
+  `nfcId` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -195,8 +195,8 @@ CREATE TABLE `nfccards` (
 
 CREATE TABLE `nfcgates` (
   `id` int(11) NOT NULL,
-  `eventid` int(11) NOT NULL,
-  `pcbid` varchar(32) NOT NULL,
+  `eventId` int(11) NOT NULL,
+  `pcbId` varchar(32) NOT NULL,
   `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -210,8 +210,8 @@ CREATE TABLE `nfcgates` (
 CREATE TABLE `nfclog` (
   `id` int(11) NOT NULL,
   `timestamp` datetime NOT NULL,
-  `gateid` int(11) NOT NULL,
-  `nfcid` int(11) NOT NULL
+  `gateId` int(11) NOT NULL,
+  `nfcId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
