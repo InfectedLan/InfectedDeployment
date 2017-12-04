@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.7.6
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2017 at 10:25 PM
--- Server version: 5.7.20-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Generation Time: 05. Des, 2017 00:34 AM
+-- Server-versjon: 5.7.20-0ubuntu0.16.04.1
+-- PHP Version: 7.2.0-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,82 +25,283 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `countries`
+-- Tabellstruktur for tabell `countries`
 --
 
 CREATE TABLE `countries` (
   `id` int(11) NOT NULL,
-  `name` varchar(16) NOT NULL,
-  `title` varchar(16) NOT NULL
+  `code` varchar(16) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `title` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `countries`
+-- Dataark for tabell `countries`
 --
 
-INSERT INTO `countries` (`id`, `name`, `title`) VALUES
-(1, 'albania', 'Albania'),
-(2, 'andorra', 'Andorra'),
-(3, 'belgium', 'Belgia'),
-(4, 'bosnia-and-herze', 'Bosnia-Hercegovi'),
-(5, 'bulgaria', 'Bulgaria'),
-(6, 'denmark', 'Danmark'),
-(7, 'estonia', 'Estland'),
-(8, 'finland', 'Finland'),
-(9, 'france', 'Frankrike'),
-(10, 'greece', 'Hellas'),
-(11, 'belarus', 'Hviterussland'),
-(12, 'ireland', 'Irland'),
-(13, 'iceland', 'Island'),
-(14, 'italy', 'Italia'),
-(15, 'kosovo', 'Kosovo'),
-(16, 'croatia', 'Kroatia'),
-(17, 'latvia', 'Latvia'),
-(18, 'liechtenstein', 'Liechtenstein'),
-(19, 'lithuania', 'Litauen'),
-(20, 'luxembourg', 'Luxembourg'),
-(21, 'malta', 'Malta'),
-(22, 'moldova', 'Moldova'),
-(23, 'monaco', 'Monaco'),
-(24, 'montenegro', 'Montenegro'),
-(25, 'netherlands', 'Nederland'),
-(26, 'norway', 'Norge'),
-(27, 'poland', 'Polen'),
-(28, 'portugal', 'Portugal'),
-(29, 'macedonia', 'Makedonia'),
-(30, 'romania', 'Romania'),
-(31, 'russia', 'Russland'),
-(32, 'san marino', 'San Marino'),
-(33, 'serbia', 'Serbia'),
-(34, 'slovakia', 'Slovakia'),
-(35, 'slovenia', 'Slovenia'),
-(36, 'spain', 'Spania'),
-(37, 'united-kingdom', 'Storbritannia'),
-(38, 'switzerland', 'Sveits'),
-(39, 'sweden', 'Sverige'),
-(40, 'czech-republic', 'Tsjekkia'),
-(41, 'germany', 'Tyskland'),
-(42, 'ukraine', 'Ukraina'),
-(43, 'hungary', 'Ungarn'),
-(44, 'vatican-city', 'Vatikanstaten'),
-(45, 'austria', '?sterrike');
+INSERT INTO `countries` (`id`, `code`, `name`, `title`) VALUES
+(1, 'AF', 'afghanistan', 'Afghanistan'),
+(2, 'AL', 'albania', 'Albania'),
+(3, 'DZ', 'algeria', 'Algerie'),
+(4, 'DS', 'american_samoa', 'Amerikansk Samoa'),
+(5, 'AD', 'andorra', 'Andorra'),
+(6, 'AO', 'angola', 'Angola'),
+(7, 'AI', 'anguilla', 'Anguilla'),
+(8, 'AQ', 'antarctica', 'Antarktis'),
+(9, 'AG', 'antigua_and_barbuda', 'Antigua og Barbuda'),
+(10, 'AR', 'argentina', 'Argentina'),
+(11, 'AM', 'armenia', 'Armenia'),
+(12, 'AW', 'aruba', 'Aruba'),
+(13, 'AU', 'australia', 'Australia'),
+(14, 'AT', 'austria', 'Østerrike'),
+(15, 'AZ', 'azerbaijan', 'Aserbajdsjan'),
+(16, 'BS', 'bahamas', 'Bahamas'),
+(17, 'BH', 'bahrain', 'Bahrain'),
+(18, 'BD', 'bangladesh', 'Bangladesh'),
+(19, 'BB', 'barbados', 'Barbados'),
+(20, 'BY', 'belarus', 'Hviterussland'),
+(21, 'BE', 'belgium', 'Belgia'),
+(22, 'BZ', 'belize', 'Belize'),
+(23, 'BJ', 'benin', 'Benin'),
+(24, 'BM', 'bermuda', 'Bermuda'),
+(25, 'BT', 'bhutan', 'Bhutan'),
+(26, 'BO', 'bolivia', 'Bolivia'),
+(27, 'BA', 'bosnia_and_herzegovina', 'Bosnia-Hercegovina'),
+(28, 'BW', 'botswana', 'Botswana'),
+(29, 'BV', 'bouvet_island', 'Bouvetøya'),
+(30, 'BR', 'brazil', 'Brasil'),
+(31, 'IO', 'british_indian_ocean_territory', 'Det britiske territoriet i Indiahavet'),
+(32, 'BN', 'brunei', 'Brunei'),
+(33, 'BG', 'bulgaria', 'Bulgaria'),
+(34, 'BF', 'burkina_faso', 'Burkina Faso'),
+(35, 'BI', 'burundi', 'Burundi'),
+(36, 'KH', 'cambodia', 'Kambodsja'),
+(37, 'CM', 'cameroon', 'Kamerun'),
+(38, 'CA', 'canada', 'Canada'),
+(39, 'CV', 'cape_verde', 'Kapp Verde'),
+(40, 'KY', 'cayman_islands', 'Caymanøyene'),
+(41, 'CF', 'central_african_republic', 'Den sentralafrikanske republikk'),
+(42, 'TD', 'chad', 'Tsjad'),
+(43, 'CL', 'chile', 'Chile'),
+(44, 'CN', 'china', 'Kina'),
+(45, 'CX', 'christmas_island', 'Christmasøya'),
+(46, 'CC', 'cocos_islands', 'Kokosøyene'),
+(47, 'CO', 'colombia', 'Colombia'),
+(48, 'KM', 'comoros', 'Komorene'),
+(49, 'CD', 'congo', 'Kongo'),
+(50, 'CK', 'cook_islands', 'Cookøyene'),
+(51, 'CR', 'costa_rica', 'Costa Rica'),
+(52, 'HR', 'croatia', 'Kroatia'),
+(53, 'CU', 'cuba', 'Cuba'),
+(54, 'CY', 'cyprus', 'Kypros'),
+(55, 'CZ', 'czech_republic', 'Tsjekkia'),
+(56, 'DK', 'denmark', 'Danmark'),
+(57, 'DJ', 'djibouti', 'Djibouti'),
+(58, 'DM', 'dominica', 'Dominica'),
+(59, 'DO', 'dominican_republic', 'Den dominikanske republikk'),
+(60, 'TP', 'East Timor', 'East Timor'),
+(61, 'EC', 'ecuador', 'Ecuador'),
+(62, 'EG', 'egypt', 'Egypt'),
+(63, 'SV', 'El Salvador', 'El Salvador'),
+(64, 'GQ', 'equatorial_guinea', 'Ekvatorial-Guinea'),
+(65, 'ER', 'eritrea', 'Eritrea'),
+(66, 'EE', 'estonia', 'Estland'),
+(67, 'ET', 'ethiopia', 'Ethiopia'),
+(68, 'FK', 'falkland_islands', 'Falklandsøyene'),
+(69, 'FO', 'faroe_islands', 'Færøyene'),
+(70, 'FJ', 'fiji', 'Fiji'),
+(71, 'FI', 'finland', 'Finland'),
+(72, 'FR', 'france', 'Frankrike'),
+(74, 'GF', 'french_guiana', 'Fransk Guyana'),
+(75, 'PF', 'French Polynesia', 'French Polynesia'),
+(76, 'TF', 'French Southern Territories', 'French Southern '),
+(77, 'GA', 'gabon', 'Gabon'),
+(78, 'GM', 'gambia', 'Gambia'),
+(79, 'GE', 'georgia', 'Georgia'),
+(80, 'DE', 'germany', 'Tyskland'),
+(81, 'GH', 'ghana', 'Ghana'),
+(82, 'GI', 'gibraltar', 'Gibraltar'),
+(83, 'GG', 'guernsey', 'Guernsey'),
+(84, 'GR', 'greece', 'Hellas'),
+(85, 'GL', 'greenland', 'Grønland'),
+(86, 'GD', 'grenada', 'Grenada'),
+(87, 'GP', 'guadeloupe', 'Guadeloupe'),
+(88, 'GU', 'guam', 'Guam'),
+(89, 'GT', 'guatemala', 'Guatemala'),
+(90, 'GN', 'guinea', 'Guinea'),
+(91, 'GW', 'guinea-bissau', 'Guinea-Bissau'),
+(92, 'GY', 'guyana', 'Guyana'),
+(93, 'HT', 'haiti', 'Haiti'),
+(94, 'HM', 'heard_and_mc_donald_islands', 'Heard- og McDonald-øyene'),
+(95, 'HN', 'honduras', 'Honduras'),
+(96, 'HK', 'hong_kong', 'Hong Kong'),
+(97, 'HU', 'hungary', 'Ungarn'),
+(98, 'IS', 'iceland', 'Island'),
+(99, 'IN', 'india', 'India'),
+(100, 'IM', 'isle_of_man', 'Man'),
+(101, 'ID', 'indonesia', 'Indonesia'),
+(102, 'IR', 'iran', 'Iran'),
+(103, 'IQ', 'iraq', 'Irak'),
+(104, 'IE', 'ireland', 'Irland'),
+(105, 'IL', 'israel', 'Israel'),
+(106, 'IT', 'italy', 'Italia'),
+(107, 'CI', 'ivory_coast', 'Elfenbenskysten'),
+(108, 'JE', 'jersey', 'Jersey'),
+(109, 'JM', 'jamaica', 'Jamaica'),
+(110, 'JP', 'japan', 'Japan'),
+(111, 'JO', 'jordan', 'Jordan'),
+(112, 'KZ', 'kazakhstan', 'Kasakhstan'),
+(113, 'KE', 'kenya', 'Kenya'),
+(114, 'KI', 'kiribati', 'Kiribati'),
+(115, 'KP', 'korea_democratic_peoples_republic_of', 'Nord-Korea'),
+(116, 'KR', 'korea_republic_of', 'Sør-Korea'),
+(117, 'XK', 'Kosovo', 'Kosovo'),
+(118, 'KW', 'kuwait', 'Kuwait'),
+(119, 'KG', 'kyrgyzstan', 'Kirgisistan'),
+(120, 'LA', 'lao_peoples_democratic_republic', 'Laos'),
+(121, 'LV', 'latvia', 'Latvia'),
+(122, 'LB', 'lebanon', 'Libanon'),
+(123, 'LS', 'lesotho', 'Lesotho'),
+(124, 'LR', 'liberia', 'Liberia'),
+(125, 'LY', 'libyan_arab_jamahiriya', 'Libya'),
+(126, 'LI', 'liechtenstein', 'Liechtenstein'),
+(127, 'LT', 'lithuania', 'Litauen'),
+(128, 'LU', 'luxembourg', 'Luxembourg'),
+(129, 'MO', 'Macau', 'Macau'),
+(130, 'MK', 'macedonia', 'Makedonia'),
+(131, 'MG', 'madagascar', 'Madagaskar'),
+(132, 'MW', 'Malawi', 'Malawi'),
+(133, 'MY', 'Malaysia', 'Malaysia'),
+(134, 'MV', 'Maldives', 'Maldives'),
+(135, 'ML', 'mali', 'Mali'),
+(136, 'MT', 'Malta', 'Malta'),
+(137, 'MH', 'marshall_islands', 'Marshalløyene'),
+(138, 'MQ', 'Martinique', 'Martinique'),
+(139, 'MR', 'Mauritania', 'Mauritania'),
+(140, 'MU', 'Mauritius', 'Mauritius'),
+(141, 'TY', 'Mayotte', 'Mayotte'),
+(142, 'MX', 'Mexico', 'Mexico'),
+(143, 'FM', 'micronesia_federated_states_of', 'Mikronesiaføderasjonen'),
+(144, 'MD', 'moldova_republic_of', 'Moldova'),
+(145, 'MC', 'monaco', 'Monaco'),
+(146, 'MN', 'Mongolia', 'Mongolia'),
+(147, 'ME', 'montenegro', 'Montenegro'),
+(148, 'MS', 'Montserrat', 'Montserrat'),
+(149, 'MA', 'morocco', 'Marokko'),
+(150, 'MZ', 'Mozambique', 'Mozambique'),
+(151, 'MM', 'Myanmar', 'Myanmar'),
+(152, 'NA', 'Namibia', 'Namibia'),
+(153, 'NR', 'Nauru', 'Nauru'),
+(154, 'NP', 'Nepal', 'Nepal'),
+(155, 'NL', 'Netherlands', 'Netherlands'),
+(156, 'AN', 'netherlands_antilles', 'De nederlandske antiller'),
+(157, 'NC', 'New Caledonia', 'New Caledonia'),
+(158, 'NZ', 'New Zealand', 'New Zealand'),
+(159, 'NI', 'Nicaragua', 'Nicaragua'),
+(160, 'NE', 'Niger', 'Niger'),
+(161, 'NG', 'Nigeria', 'Nigeria'),
+(162, 'NU', 'Niue', 'Niue'),
+(163, 'NF', 'Norfolk Island', 'Norfolk Island'),
+(164, 'MP', 'Northern Mariana Islands', 'Northern Mariana'),
+(165, 'NO', 'Norway', 'Norway'),
+(166, 'OM', 'Oman', 'Oman'),
+(167, 'PK', 'Pakistan', 'Pakistan'),
+(168, 'PW', 'Palau', 'Palau'),
+(169, 'PS', 'Palestine', 'Palestine'),
+(170, 'PA', 'Panama', 'Panama'),
+(171, 'PG', 'Papua New Guinea', 'Papua New Guinea'),
+(172, 'PY', 'Paraguay', 'Paraguay'),
+(173, 'PE', 'Peru', 'Peru'),
+(174, 'PH', 'Philippines', 'Philippines'),
+(175, 'PN', 'Pitcairn', 'Pitcairn'),
+(176, 'PL', 'Poland', 'Poland'),
+(177, 'PT', 'Portugal', 'Portugal'),
+(178, 'PR', 'Puerto Rico', 'Puerto Rico'),
+(179, 'QA', 'Qatar', 'Qatar'),
+(180, 'RE', 'Reunion', 'Reunion'),
+(181, 'RO', 'Romania', 'Romania'),
+(182, 'RU', 'Russian Federation', 'Russian Federati'),
+(183, 'RW', 'Rwanda', 'Rwanda'),
+(184, 'KN', 'saint_kitts_and_nevis', 'Saint Kitts og Nevis'),
+(185, 'LC', 'saint_lucia', 'Saint Lucia'),
+(186, 'VC', 'Saint Vincent and the Grenadines', 'Saint Vincent an'),
+(187, 'WS', 'Samoa', 'Samoa'),
+(188, 'SM', 'San Marino', 'San Marino'),
+(189, 'ST', 'Sao Tome and Principe', 'Sao Tome and Pri'),
+(190, 'SA', 'Saudi Arabia', 'Saudi Arabia'),
+(191, 'SN', 'Senegal', 'Senegal'),
+(192, 'RS', 'Serbia', 'Serbia'),
+(193, 'SC', 'Seychelles', 'Seychelles'),
+(194, 'SL', 'Sierra Leone', 'Sierra Leone'),
+(195, 'SG', 'Singapore', 'Singapore'),
+(196, 'SK', 'Slovakia', 'Slovakia'),
+(197, 'SI', 'Slovenia', 'Slovenia'),
+(198, 'SB', 'Solomon Islands', 'Solomon Islands'),
+(199, 'SO', 'Somalia', 'Somalia'),
+(200, 'ZA', 'South Africa', 'South Africa'),
+(201, 'GS', 'south_georgia_and_the_south_sandwich_islands', 'Sør-Georgia og de søre Sandwichøyene'),
+(202, 'ES', 'spain', 'Spania'),
+(203, 'LK', 'sri_lanka', 'Sri Lanka'),
+(204, 'SH', 'St. Helena', 'St. Helena'),
+(205, 'PM', 'St. Pierre and Miquelon', 'St. Pierre and M'),
+(206, 'SD', 'Sudan', 'Sudan'),
+(207, 'SR', 'Suriname', 'Suriname'),
+(208, 'SJ', 'Svalbard and Jan Mayen Islands', 'Svalbard and Jan'),
+(209, 'SZ', 'Swaziland', 'Swaziland'),
+(210, 'SE', 'Sweden', 'Sweden'),
+(211, 'CH', 'switzerland', 'Sveits'),
+(212, 'SY', 'Syrian Arab Republic', 'Syrian Arab Repu'),
+(213, 'TW', 'Taiwan', 'Taiwan'),
+(214, 'TJ', 'Tajikistan', 'Tajikistan'),
+(215, 'TZ', 'Tanzania, United Republic of', 'Tanzania, United'),
+(216, 'TH', 'Thailand', 'Thailand'),
+(217, 'TG', 'Togo', 'Togo'),
+(218, 'TK', 'Tokelau', 'Tokelau'),
+(219, 'TO', 'Tonga', 'Tonga'),
+(220, 'TT', 'Trinidad and Tobago', 'Trinidad and Tob'),
+(221, 'TN', 'Tunisia', 'Tunisia'),
+(222, 'TR', 'Turkey', 'Turkey'),
+(223, 'TM', 'Turkmenistan', 'Turkmenistan'),
+(224, 'TC', 'Turks and Caicos Islands', 'Turks and Caicos'),
+(225, 'TV', 'Tuvalu', 'Tuvalu'),
+(226, 'UG', 'Uganda', 'Uganda'),
+(227, 'UA', 'Ukraine', 'Ukraine'),
+(228, 'AE', 'united_arab_emirates', 'De forente arabiske emirater'),
+(229, 'GB', 'united_kingdom', 'Storbritannia'),
+(230, 'US', 'United States', 'United States'),
+(231, 'UM', 'United States minor outlying isl', 'United States mi'),
+(232, 'UY', 'Uruguay', 'Uruguay'),
+(233, 'UZ', 'Uzbekistan', 'Uzbekistan'),
+(234, 'VU', 'Vanuatu', 'Vanuatu'),
+(235, 'VA', 'Vatican City State', 'Vatican City Sta'),
+(236, 'VE', 'Venezuela', 'Venezuela'),
+(237, 'VN', 'Vietnam', 'Vietnam'),
+(238, 'VG', 'Virgin Islands (British)', 'Virgin Islands ('),
+(239, 'VI', 'Virgin Islands (U.S.)', 'Virgin Islands ('),
+(240, 'WF', 'Wallis and Futuna Islands', 'Wallis and Futun'),
+(241, 'EH', 'western_sahara', 'Vest-Sahara'),
+(242, 'YE', 'Yemen', 'Yemen'),
+(243, 'YU', 'Yugoslavia', 'Yugoslavia'),
+(244, 'ZR', 'Zaire', 'Zaire'),
+(245, 'ZM', 'Zambia', 'Zambia'),
+(246, 'ZW', 'Zimbabwe', 'Zimbabwe');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `emergencycontacts`
+-- Tabellstruktur for tabell `emergencycontacts`
 --
 
 CREATE TABLE `emergencycontacts` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `phone` int(8) NOT NULL
+  `phone` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `events`
+-- Tabellstruktur for tabell `events`
 --
 
 CREATE TABLE `events` (
@@ -116,49 +319,26 @@ CREATE TABLE `events` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `events`
+-- Dataark for tabell `events`
 --
 
 INSERT INTO `events` (`id`, `theme`, `locationId`, `participants`, `bookingTime`, `prioritySeatingTime`, `seatingTime`, `startTime`, `endTime`, `seatmapId`, `ticketTypeId`) VALUES
-(1, 'Arcade', 1, 322, '2013-08-27 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 1),
-(2, '', 1, 335, '2014-01-14 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 2, 1),
-(3, '', 1, 370, '2014-08-28 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 3, 1),
-(4, '', 1, 368, '2015-01-14 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2015-02-13 18:00:00', '2015-02-15 12:00:00', 4, 1),
-(5, '', 1, 368, '2015-09-25 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2015-09-27 18:00:00', '2015-09-27 12:00:00', 5, 1),
-(6, '', 1, 368, '2016-01-19 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2016-02-19 18:00:00', '2016-02-21 12:00:00', 6, 1),
-(7, '', 1, 368, '2016-08-30 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2016-09-30 18:00:00', '2016-10-02 12:00:00', 7, 1),
-(8, '', 1, 368, '2017-01-17 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2017-02-17 18:00:00', '2017-02-19 12:00:00', 8, 1),
-(9, '', 1, 368, '2017-08-29 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2017-09-29 18:00:00', '2017-10-01 12:00:00', 9, 1),
-(10, '', 1, 368, '2018-01-16 18:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '2018-02-16 18:00:00', '2018-02-18 12:00:00', 10, 1);
+(1, 'Arcade', 1, 322, '2013-08-27 18:00:00', '2013-08-27 18:00:00', '2013-08-27 18:00:00', '2013-09-27 18:00:00', '2013-09-29 12:00:00', 1, 1),
+(2, '', 1, 335, '2014-01-14 18:00:00', '2014-01-14 18:00:00', '2014-01-14 18:00:00', '2014-02-14 18:00:00', '2014-02-16 12:00:00', 2, 1),
+(3, '', 1, 370, '2014-08-28 18:00:00', '2014-08-28 18:00:00', '2014-08-28 18:00:00', '2014-09-26 18:00:00', '2014-09-28 12:00:00', 3, 1),
+(4, '', 1, 368, '2015-01-14 18:00:00', '2015-01-14 18:00:00', '2015-01-14 18:00:00', '2015-02-13 18:00:00', '2015-02-15 12:00:00', 4, 1),
+(5, '', 1, 386, '2015-08-25 18:00:00', '2015-08-25 18:00:00', '2015-08-25 18:00:00', '2015-09-25 18:00:00', '2015-09-27 12:00:00', 5, 1),
+(6, '', 1, 402, '2016-01-20 18:00:00', '2016-01-20 18:00:00', '2016-01-20 18:00:00', '2016-02-19 18:00:00', '2016-02-21 12:00:00', 6, 1),
+(7, '', 1, 400, '2016-08-30 16:00:00', '2016-08-30 16:30:00', '2016-08-30 17:00:00', '2016-09-30 18:00:00', '2016-10-02 12:00:00', 7, 1),
+(8, '', 1, 400, '2017-01-17 18:00:00', '2017-01-17 18:30:00', '2017-01-17 19:00:00', '2017-02-17 18:00:00', '2017-02-19 12:00:00', 8, 1),
+(9, '', 1, 400, '2017-08-25 18:00:00', '2017-08-25 18:30:00', '2017-08-25 19:00:00', '2017-09-29 18:00:00', '2017-10-01 12:00:00', 9, 1),
+(10, '', 1, 400, '2018-01-16 18:00:00', '2018-01-16 18:30:00', '2018-01-16 19:00:00', '2018-02-16 18:00:00', '2018-02-18 12:00:00', 10, 1),
+(11, '', 1, 400, '2018-09-05 18:00:00', '2018-09-05 18:30:00', '2018-09-05 19:00:00', '2018-10-05 18:00:00', '2018-10-07 12:00:00', 11, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `friends`
---
-
-CREATE TABLE `friends` (
-  `id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `friendId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `friends`
---
-
-INSERT INTO `friends` (`id`, `userId`, `friendId`) VALUES
-(1, 1, 2),
-(3, 1, 3),
-(2, 2, 1),
-(5, 2, 3),
-(4, 3, 1),
-(6, 3, 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `locations`
+-- Tabellstruktur for tabell `locations`
 --
 
 CREATE TABLE `locations` (
@@ -168,7 +348,7 @@ CREATE TABLE `locations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `locations`
+-- Dataark for tabell `locations`
 --
 
 INSERT INTO `locations` (`id`, `name`, `title`) VALUES
@@ -177,26 +357,26 @@ INSERT INTO `locations` (`id`, `name`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nfccards`
+-- Tabellstruktur for tabell `nfccards`
 --
 
 CREATE TABLE `nfccards` (
   `id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `eventId` int(11) NOT NULL,
-  `nfcId` varchar(32) NOT NULL
+  `userid` int(11) NOT NULL,
+  `eventid` int(11) NOT NULL,
+  `nfcid` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nfcgates`
+-- Tabellstruktur for tabell `nfcgates`
 --
 
 CREATE TABLE `nfcgates` (
   `id` int(11) NOT NULL,
-  `eventId` int(11) NOT NULL,
-  `pcbId` varchar(32) NOT NULL,
+  `eventid` int(11) NOT NULL,
+  `pcbid` varchar(32) NOT NULL,
   `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -204,20 +384,20 @@ CREATE TABLE `nfcgates` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nfclog`
+-- Tabellstruktur for tabell `nfclog`
 --
 
 CREATE TABLE `nfclog` (
   `id` int(11) NOT NULL,
   `timestamp` datetime NOT NULL,
-  `gateId` int(11) NOT NULL,
-  `nfcId` int(11) NOT NULL
+  `gateid` int(11) NOT NULL,
+  `nfcid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `passwordresetcodes`
+-- Tabellstruktur for tabell `passwordresetcodes`
 --
 
 CREATE TABLE `passwordresetcodes` (
@@ -229,63 +409,7 @@ CREATE TABLE `passwordresetcodes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `permissions`
---
-
-CREATE TABLE `permissions` (
-  `id` int(11) NOT NULL,
-  `value` varchar(32) NOT NULL,
-  `description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `permissions`
---
-
-INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
-(1, '*', 'Gir tilgang til absolutt alt, du er nå en udødelig administrator.'),
-(2, 'admin.*', 'Gir tilgang til alt under admin.'),
-(3, 'admin.events', 'Administrer arrangementer, informasjon er blir automatisk endret på hovedsiden og ticketsiden.'),
-(4, 'admin.permissions', 'Velg hvilke bruker som skal ha tilgang til hva, dette er et tilgangsystem, men husk at brukere har standard tilganger utenom dette, ettersom de er medlem av crewet eller ikke.'),
-(5, 'admin.seatmap', 'Endre seatmappet, her kan du flytte, legg til, og fjerne seter og rader.'),
-(6, 'admin.website', 'Endre innholdet på nettsiden.'),
-(7, 'chief.*', 'Gir tilgang til alt under chief.'),
-(8, 'chief.applications', 'Godta eller avvis crew-søknader.'),
-(9, 'chief.avatars', 'Administrer profilbilder, alle nye profilbilder vil dukke opp her og du kan godjkenne dem eller avise.'),
-(10, 'chief.email', 'Send e-post til noen eller alle medlemmer.'),
-(11, 'chief.group', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
-(12, 'chief.my-crew', 'Endre sider under "My Crew".'),
-(13, 'chief.team', 'Administrer lagene for ditt crew, hvem som er medlem av hvilke lag og lederene i lagene.'),
-(14, 'admin.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere'),
-(15, 'chief.checklist', ''),
-(16, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.'),
-(18, 'developer.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
-(19, 'event.*', 'Gir tilgang til alt under event.'),
-(20, 'event.agenda', 'Endre agendaen, denne vises på hovedsiden og infoskjermen under arrangementet.'),
-(21, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
-(22, 'compo.management', 'Lar deg administrere compoer'),
-(23, 'event.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.'),
-(24, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
-(25, 'event.seatmap', 'Se seatmappet'),
-(26, 'event.table-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
-(27, 'user.*', 'Gir tilgang til alt relatert til en bruker.'),
-(28, 'user.search', 'Søk etter brukere i databasen.'),
-(29, 'user.edit', ''),
-(30, 'user.history', ''),
-(31, 'user.activate', 'Lar deg aktivere en annen bruker, dersom du selv er logget inn.'),
-(32, 'user.ticket', 'Lar deg se en brukers billett, og detaljer om den.'),
-(33, 'user.relocate', ''),
-(48, 'tickets.byPassBookingTime', 'Lar deg bestille billetter og teste kjøp av billetter før billetsalget har åpnet.'),
-(49, 'compo.bracketmanagement', 'Lar deg redigere brackets'),
-(50, 'compo.edit', 'Lar deg redigere compoer'),
-(51, 'compo.*', 'Lar deg gjøre alt compomessig'),
-(52, 'developer.syslog', 'Lar deg se på systemloggen'),
-(53, 'developer.phpinfo', 'Lar deg se på phpinfo');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `postalcodes`
+-- Tabellstruktur for tabell `postalcodes`
 --
 
 CREATE TABLE `postalcodes` (
@@ -295,7 +419,7 @@ CREATE TABLE `postalcodes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `postalcodes`
+-- Dataark for tabell `postalcodes`
 --
 
 INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
@@ -5039,7 +5163,7 @@ INSERT INTO `postalcodes` (`id`, `code`, `city`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registrationcodes`
+-- Tabellstruktur for tabell `registrationcodes`
 --
 
 CREATE TABLE `registrationcodes` (
@@ -5051,7 +5175,7 @@ CREATE TABLE `registrationcodes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `syslogs`
+-- Tabellstruktur for tabell `syslogs`
 --
 
 CREATE TABLE `syslogs` (
@@ -5067,7 +5191,7 @@ CREATE TABLE `syslogs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tasks`
+-- Tabellstruktur for tabell `tasks`
 --
 
 CREATE TABLE `tasks` (
@@ -5078,7 +5202,32 @@ CREATE TABLE `tasks` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `useroptions`
+-- Tabellstruktur for tabell `userfriends`
+--
+
+CREATE TABLE `userfriends` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `friendId` int(11) NOT NULL,
+  `accepted` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `userfriends`
+--
+
+INSERT INTO `userfriends` (`id`, `userId`, `friendId`, `accepted`) VALUES
+(1, 1, 2, 0),
+(2, 2, 1, 0),
+(3, 1, 3, 0),
+(4, 3, 1, 0),
+(5, 2, 3, 0),
+(6, 3, 2, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `useroptions`
 --
 
 CREATE TABLE `useroptions` (
@@ -5086,14 +5235,13 @@ CREATE TABLE `useroptions` (
   `userId` int(11) NOT NULL,
   `privatePhone` tinyint(1) NOT NULL,
   `reserveFromNotifications` tinyint(1) NOT NULL,
-  `easterEgg` tinyint(1) NOT NULL,
-  `swimming` tinyint(1) NOT NULL
+  `easterEgg` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userpermissions`
+-- Tabellstruktur for tabell `userpermissions`
 --
 
 CREATE TABLE `userpermissions` (
@@ -5104,19 +5252,17 @@ CREATE TABLE `userpermissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `userpermissions`
+-- Dataark for tabell `userpermissions`
 --
 
 INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
 (1, 0, 1, 1),
-(2, 0, 2, 1),
-(14, 5, 3, 15),
-(15, 6, 3, 15);
+(2, 0, 2, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabellstruktur for tabell `users`
 --
 
 CREATE TABLE `users` (
@@ -5137,7 +5283,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dataark for tabell `users`
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `countryId`, `nickname`, `registereddate`) VALUES
@@ -5185,14 +5331,7 @@ ALTER TABLE `emergencycontacts`
 --
 ALTER TABLE `events`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`seatmapId`,`ticketTypeId`);
-
---
--- Indexes for table `friends`
---
-ALTER TABLE `friends`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`userId`,`friendId`);
+  ADD KEY `index` (`locationId`,`seatmapId`,`ticketTypeId`);
 
 --
 -- Indexes for table `locations`
@@ -5223,14 +5362,7 @@ ALTER TABLE `nfclog`
 --
 ALTER TABLE `passwordresetcodes`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`userId`);
-
---
--- Indexes for table `permissions`
---
-ALTER TABLE `permissions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`value`);
+  ADD KEY `index` (`userId`,`code`);
 
 --
 -- Indexes for table `postalcodes`
@@ -5256,6 +5388,13 @@ ALTER TABLE `syslogs`
 --
 ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `userfriends`
+--
+ALTER TABLE `userfriends`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`userId`,`friendId`);
 
 --
 -- Indexes for table `useroptions`
@@ -5287,87 +5426,99 @@ ALTER TABLE `users` ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+
 --
 -- AUTO_INCREMENT for table `emergencycontacts`
 --
 ALTER TABLE `emergencycontacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `friends`
---
-ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `nfccards`
 --
 ALTER TABLE `nfccards`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `nfcgates`
 --
 ALTER TABLE `nfcgates`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `nfclog`
 --
 ALTER TABLE `nfclog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `passwordresetcodes`
 --
 ALTER TABLE `passwordresetcodes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `permissions`
---
-ALTER TABLE `permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
 --
 -- AUTO_INCREMENT for table `postalcodes`
 --
 ALTER TABLE `postalcodes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4735;
+
 --
 -- AUTO_INCREMENT for table `registrationcodes`
 --
 ALTER TABLE `registrationcodes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `syslogs`
 --
 ALTER TABLE `syslogs`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `userfriends`
+--
+ALTER TABLE `userfriends`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `useroptions`
 --
 ALTER TABLE `useroptions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `userpermissions`
 --
 ALTER TABLE `userpermissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
