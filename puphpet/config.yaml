@@ -456,6 +456,9 @@ mysql:
         mysqlnd_8l3m10bbctax:
             name: test_infected_no_main
             sql: /var/www/deployment/test_infected_no_main.sql
+        mysqlnd_v67o5465464v:
+            name: test_infected_no_tech
+            sql: /var/www/deployment/test_infected_no_tech.sql
         mysqlnd_m78og6dgul4v:
             name: test_infected_no_tickets
             sql: /var/www/deployment/test_infected_no_tickets.sql
@@ -485,6 +488,11 @@ mysql:
             table: 'test_infected_no_main.*'
             privileges:
                 - ALL
+        mysqlnd_v6435545464v:
+          user: test.infected.no
+          table: 'test_infected_no_tech.*'
+          privileges:
+              - ALL
         mysqlng_70qrsf9lmr1a:
             user: test.infected.no
             table: 'test_infected_no_tickets.*'
@@ -555,4 +563,3 @@ solr:
     settings:
         version: 5.5.2
         port: '8984'
-
