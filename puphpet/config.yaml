@@ -19,14 +19,14 @@ vagrantfile:
                         check_guest_tools: 0
                         update_guest_tools: 0
                 machines:
-                    vflm_pki5lce36vle:
-                        id: infected_machine
+                    vflm_702rovbprtjm:
+                        id: infected
                         hostname: infected.puphpet
                         network:
                             private_network: 192.168.56.101
                             forwarded_port:
-                                vflmnfp_88f8c6k1spia:
-                                    host: '9703'
+                                vflmnfp_gmkdnzt4iuwh:
+                                    host: '6616'
                                     guest: '22'
                         memory: '512'
                         cpus: '1'
@@ -40,29 +40,7 @@ vagrantfile:
                     - '--verbose'
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
         synced_folder:
-            vflsf_bacgowj0vrm2:
-                owner: www-data
-                group: www-data
-                source: ../InfectedAPI
-                target: /var/www/api
-                sync_type: default
-                smb:
-                    smb_host: ''
-                    smb_username: ''
-                    smb_password: ''
-                    mount_options:
-                        dir_mode: '0775'
-                        file_mode: '0664'
-                rsync:
-                    args:
-                        - '--verbose'
-                        - '--archive'
-                        - '-z'
-                    exclude:
-                        - .vagrant/
-                        - .git/
-                    auto: 'true'
-            vflsf_39e8wiocboz7:
+            vflsf_1tdtzoy0q3u8:
                 owner: www-data
                 group: www-data
                 source: ../InfectedCrew
@@ -84,7 +62,29 @@ vagrantfile:
                         - .vagrant/
                         - .git/
                     auto: 'true'
-            vflsf_tj7w8rb4wp0v:
+            vflsf_6dz8bgip287w:
+                owner: www-data
+                group: www-data
+                source: ../InfectedAPI
+                target: /var/www/api
+                sync_type: default
+                smb:
+                    smb_host: ''
+                    smb_username: ''
+                    smb_password: ''
+                    mount_options:
+                        dir_mode: '0775'
+                        file_mode: '0664'
+                rsync:
+                    args:
+                        - '--verbose'
+                        - '--archive'
+                        - '-z'
+                    exclude:
+                        - .vagrant/
+                        - .git/
+                    auto: 'true'
+            vflsf_yyu2yzo8xca7:
                 owner: www-data
                 group: www-data
                 source: ../InfectedDeployment
@@ -139,6 +139,7 @@ users_groups:
     groups: {  }
     users:
         - infected.no
+        - test.infected.no
 locale:
     install: '1'
     settings:
@@ -173,17 +174,20 @@ nginx:
         names_hash_bucket_size: 128
     upstreams: {  }
     vhosts:
-        nxv_7xz2duppv5a5:
-            server_name: awesome.dev
-            server_aliases:
-                - www.awesome.dev
-            www_root: /var/www/awesome
+        nxv_fjrau4ogexby:
+            server_name: crew.infected.dev
+            www_root: /var/www/crew
             listen_port: '80'
             client_max_body_size: 1m
-            ssl: '0'
+            ssl: '1'
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_port: '443'
+            rewrite_to_https: '1'
+            spdy: '1'
             locations:
-                nxvl_pq7mm6feohu6:
-                    www_root: /var/www/awesome/web
+                nxvl_s294an4ba4v1:
+                    www_root: /var/www/crew
                     location: /
                     autoindex: 'off'
                     internal: 'false'
@@ -201,7 +205,7 @@ nginx:
                     fastcgi_split_path: ''
                     proxy: ''
                     proxy_redirect: ''
-                nxvl_r0dksxuz8ooe:
+                nxvl_ls3s7b3fw52c:
                     www_root: /var/www/awesome/web
                     location: '~ ^/(app_dev|config)\.php(/|$)'
                     autoindex: 'off'
@@ -220,7 +224,7 @@ nginx:
                         - '$path_info $fastcgi_path_info'
                     proxy: ''
                     proxy_redirect: ''
-                nxvl_io32dqmhxro1:
+                nxvl_ugtw9rilz4pi:
                     www_root: /var/www/awesome/web
                     location: '~ ^/index\.php(/|$)'
                     autoindex: 'off'
@@ -234,25 +238,6 @@ nginx:
                     fastcgi_split_path: '^(.+\.php)(/.*)$'
                     fast_cgi_params_extra:
                         - 'SCRIPT_FILENAME $document_root$fastcgi_script_name'
-                    set:
-                        - '$path_info $fastcgi_path_info'
-                    proxy: ''
-                    proxy_redirect: ''
-                nxvl_to0sr2q4b3vf:
-                    www_root: /var/www/awesome/web
-                    location: '~ ^/app\.php(/|$)'
-                    autoindex: 'off'
-                    internal: 'false'
-                    try_files:
-                        - $uri
-                        - $uri/
-                        - /app.php$is_args$args
-                    fastcgi: '127.0.0.1:9000'
-                    fastcgi_index: app.php
-                    fastcgi_split_path: '^(.+\.php)(/.*)$'
-                    fast_cgi_params_extra:
-                        - 'SCRIPT_FILENAME $document_root$fastcgi_script_name'
-                        - 'APP_ENV prod'
                     set:
                         - '$path_info $fastcgi_path_info'
                     proxy: ''
@@ -272,10 +257,8 @@ apache:
         - proxy_fcgi
         - rewrite
     vhosts:
-        av_hs3x2ctbiyls:
+        av_nj4y14b59o3u:
             servername: crew.infected.dev
-            serveraliases:
-                - crew.infected.dev
             docroot: /var/www/crew
             port: '80'
             setenvif:
@@ -289,9 +272,9 @@ apache:
             ssl_protocol: ''
             ssl_cipher: ''
             directories:
-                avd_oyjs1zloryad:
-                    path: /var/www/crew/
-                    directoryindex: 'index.php app.dev'
+                avd_0jug3n11tzub:
+                    path: /var/www/crew
+                    directoryindex: index.php
                     options:
                         - Indexes
                         - FollowSymlinks
@@ -303,21 +286,21 @@ apache:
                     custom_fragment: ''
                     provider: directory
             files_match:
-                avfm_lokkmk3fa1wd:
-                    path: '(app_dev|config)\*.php$'
+                avfm_r06sy0l8i6kn:
+                    path: (app_dev|config)\.php$
                     sethandler: 'proxy:fcgi://127.0.0.1:9000'
                     setenv:
                         - 'APP_ENV dev'
                     custom_fragment: ''
                     provider: filesmatch
-                avfm_77al68x7lwf8:
+                avfm_n59fsuix8wq3:
                     path: app\.php$
                     sethandler: 'proxy:fcgi://127.0.0.1:9000'
                     setenv:
                         - 'APP_ENV prod'
                     custom_fragment: ''
                     provider: filesmatch
-                avfm_46v51vfqg1lv:
+                avfm_jrs45i3es0z8:
                     path: \.php$
                     sethandler: 'proxy:fcgi://127.0.0.1:9000'
                     custom_fragment: ''
@@ -344,13 +327,10 @@ php:
         error_reporting: '-1'
         session.save_path: /var/lib/php/session
         date.timezone: UTC
-        include_path: /var/www/api
-        upload_max_filesize: '33554432'
-        session.cookie_domain: .infected.dev
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
-        phpfp_c0sluxpixpuk:
+        phpfp_2s86oh5tzcdq:
             ini:
                 prefix: www
                 listen: '127.0.0.1:9000'
@@ -393,7 +373,7 @@ drush:
 ruby:
     install: '1'
     versions:
-        rv_c7cbfn4vrqk3:
+        rv_9l7tbas8gwk6:
             default: '1'
             bundler: '1'
             version: 2.3.1
@@ -417,15 +397,15 @@ mariadb:
         root_password: '123'
         override_options: {  }
     users:
-        mariadbnu_n7xjhwzoi8ze:
+        mariadbnu_ehiurwi49wai:
             name: dbuser
             password: '123'
     databases:
-        mariadbnd_28yjj9yu29yk:
+        mariadbnd_uhfhetawc046:
             name: dbname
             sql: ''
     grants:
-        mariadbng_smb5ibdji9t7:
+        mariadbng_262a3lkg5ohi:
             user: dbuser
             table: '*.*'
             privileges:
@@ -437,57 +417,35 @@ mysql:
         root_password: '123'
         override_options: {  }
     users:
-        mysqlnu_s0xp3j4so8ra:
+        mysqlnu_h0qdccy23stc:
             name: test.infected.no
             password: '123'
     databases:
-        mysqlnd_ddswo1scr4h9:
+        mysqlnd_m4fx2q6z4xgb:
             name: test_infected_no
             sql: /var/www/deployment/test_infected_no.sql
-        mysqlnd_ld7c76xjq8no:
+        mysqlnd_4nszja15dkll:
             name: test_infected_no_compo
             sql: /var/www/deployment/test_infected_no_compo.sql
-        mysqlnd_p8s9ibzfoj0y:
+        mysqlnd_3sdrh0oykohg:
             name: test_infected_no_crew
             sql: /var/www/deployment/test_infected_no_crew.sql
-        mysqlnd_e617d8lzszoo:
+        mysqlnd_d3hzrwlsjtxb:
             name: test_infected_no_info
             sql: /var/www/deployment/test_infected_no_info.sql
-        mysqlnd_kwkwtwik81ht:
+        mysqlnd_bqsos24gfeh4:
             name: test_infected_no_main
             sql: /var/www/deployment/test_infected_no_main.sql
-        mysqlnd_snzuchdbhlla:
+        mysqlnd_x8xuhs00si89:
+            name: test_infected_no_tech
+            sql: /var/www/deployment/test_infected_no_tech.sql
+        mysqlnd_c7lc9m2gnn8a:
             name: test_infected_no_tickets
             sql: /var/www/deployment/test_infected_no_tickets.sql
     grants:
-        mysqlng_ttgvfem9tl8l:
+        mysqlng_aw7ymzgdjmng:
             user: test.infected.no
-            table: 'test_infected_no.*'
-            privileges:
-                - ALL
-        mysqlng_4ppbg5bwrh49:
-            user: test.infected.no
-            table: 'test_infected_no_compo.*'
-            privileges:
-                - ALL
-        mysqlng_wih0r60qu318:
-            user: test.infected.no
-            table: 'test_infected_no_crew.*'
-            privileges:
-                - ALL
-        mysqlng_19sebodk3f9z:
-            user: test.infected.no
-            table: 'test_infected_no_info.*'
-            privileges:
-                - ALL
-        mysqlng_78wfkesczk6h:
-            user: test.infected.no
-            table: 'test_infected_no_main.*'
-            privileges:
-                - ALL
-        mysqlng_9jc595y53j3j:
-            user: test.infected.no
-            table: 'test_infected_no_tickets.*'
+            table: '*.*'
             privileges:
                 - ALL
 postgresql:
@@ -548,10 +506,11 @@ elastic_search:
         version: 2.3.1
         java_install: true
     instances:
-        esi_0arssg4rxext:
+        esi_l89bcv0x29kd:
             name: es-01
 solr:
     install: '0'
     settings:
         version: 5.5.2
         port: '8984'
+
