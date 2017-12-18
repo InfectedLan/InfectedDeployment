@@ -19,13 +19,13 @@ vagrantfile:
                         check_guest_tools: 0
                         update_guest_tools: 0
                 machines:
-                    vflm_ymm68jm311dn:
+                    vflm_o64mw2gae1x2:
                         id: infected
                         hostname: infected.puphpet
                         network:
                             private_network: 192.168.56.101
                             forwarded_port:
-                                vflmnfp_kcgewgncjwy3:
+                                vflmnfp_g9tfwo48298e:
                                     host: '6616'
                                     guest: '22'
                         memory: '512'
@@ -40,7 +40,7 @@ vagrantfile:
                     - '--verbose'
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
         synced_folder:
-            vflsf_b4ulpk0323n7:
+            vflsf_6pqbe2h6xr5f:
                 owner: www-data
                 group: www-data
                 source: ../InfectedCrew
@@ -62,7 +62,7 @@ vagrantfile:
                         - .vagrant/
                         - .git/
                     auto: 'true'
-            vflsf_nzd8wjemvlbh:
+            vflsf_lz8tfq42f0u4:
                 owner: www-data
                 group: www-data
                 source: ../InfectedAPI
@@ -84,11 +84,55 @@ vagrantfile:
                         - .vagrant/
                         - .git/
                     auto: 'true'
-            vflsf_vif9vzyfr5ei:
+            vflsf_7hu6pxv1e7fd:
                 owner: www-data
                 group: www-data
                 source: ../InfectedDeployment
                 target: /var/www/deployment
+                sync_type: default
+                smb:
+                    smb_host: ''
+                    smb_username: ''
+                    smb_password: ''
+                    mount_options:
+                        dir_mode: '0775'
+                        file_mode: '0664'
+                rsync:
+                    args:
+                        - '--verbose'
+                        - '--archive'
+                        - '-z'
+                    exclude:
+                        - .vagrant/
+                        - .git/
+                    auto: 'true'
+            vflsf_ht77e130sbmn:
+                owner: www-data
+                group: www-data
+                source: ../InfectedMain
+                target: /var/www/main
+                sync_type: default
+                smb:
+                    smb_host: ''
+                    smb_username: ''
+                    smb_password: ''
+                    mount_options:
+                        dir_mode: '0775'
+                        file_mode: '0664'
+                rsync:
+                    args:
+                        - '--verbose'
+                        - '--archive'
+                        - '-z'
+                    exclude:
+                        - .vagrant/
+                        - .git/
+                    auto: 'true'
+            vflsf_vq3xq53vwjn4:
+                owner: www-data
+                group: www-data
+                source: ../InfectedTickets
+                target: /var/www/tickets
                 sync_type: default
                 smb:
                     smb_host: ''
@@ -174,7 +218,7 @@ nginx:
         names_hash_bucket_size: 128
     upstreams: {  }
     vhosts:
-        nxv_fvui60njflkl:
+        nxv_fme9uiyqxmq6:
             server_name: crew.infected.dev
             www_root: /var/www/crew
             listen_port: '80'
@@ -186,7 +230,7 @@ nginx:
             rewrite_to_https: '1'
             spdy: '1'
             locations:
-                nxvl_qzmut0dzgdas:
+                nxvl_i15g0jqsmdyy:
                     www_root: /var/www/crew
                     location: /
                     autoindex: 'off'
@@ -205,7 +249,7 @@ nginx:
                     fastcgi_split_path: ''
                     proxy: ''
                     proxy_redirect: ''
-                nxvl_wjbnx8zphyao:
+                nxvl_faun2bng8sy7:
                     www_root: /var/www/awesome/web
                     location: '~ ^/(app_dev|config)\.php(/|$)'
                     autoindex: 'off'
@@ -224,7 +268,7 @@ nginx:
                         - '$path_info $fastcgi_path_info'
                     proxy: ''
                     proxy_redirect: ''
-                nxvl_2xi8oql7avlh:
+                nxvl_ehyqg8vj8azm:
                     www_root: /var/www/awesome/web
                     location: '~ ^/index\.php(/|$)'
                     autoindex: 'off'
@@ -257,7 +301,7 @@ apache:
         - proxy_fcgi
         - rewrite
     vhosts:
-        av_zdknajrjtgxa:
+        av_31jfop8yks29:
             servername: crew.infected.dev
             docroot: /var/www/crew
             port: '443'
@@ -272,7 +316,7 @@ apache:
             ssl_protocol: ''
             ssl_cipher: ''
             directories:
-                avd_85jsso4dle7o:
+                avd_4hq6baq2qhau:
                     path: /var/www/crew
                     directoryindex: index.php
                     options:
@@ -286,21 +330,117 @@ apache:
                     custom_fragment: ''
                     provider: directory
             files_match:
-                avfm_8uf3x9srppbz:
+                avfm_ishl35xxf7d8:
                     path: (app_dev|config)\.php$
                     sethandler: 'proxy:fcgi://127.0.0.1:9000'
                     setenv:
                         - 'APP_ENV dev'
                     custom_fragment: ''
                     provider: filesmatch
-                avfm_9ux06bq2lma5:
+                avfm_tifbtkdgcqlj:
                     path: app\.php$
                     sethandler: 'proxy:fcgi://127.0.0.1:9000'
                     setenv:
                         - 'APP_ENV prod'
                     custom_fragment: ''
                     provider: filesmatch
-                avfm_q7zy9r7h67ms:
+                avfm_4em806w8orxu:
+                    path: \.php$
+                    sethandler: 'proxy:fcgi://127.0.0.1:9000'
+                    custom_fragment: ''
+                    provider: filesmatch
+        av_pjczqhhigg4z:
+            servername: infected.dev
+            docroot: /var/www/main
+            port: '443'
+            setenvif:
+                - 'Authorization "(.*)" HTTP_AUTHORIZATION=$1'
+            custom_fragment: /var/www/deployment/vhost_alias_template
+            ssl: '1'
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+            ssl_protocol: ''
+            ssl_cipher: ''
+            directories:
+                avd_4lphxhg0lcco:
+                    path: /var/www/main
+                    directoryindex: index.php
+                    options:
+                        - Indexes
+                        - FollowSymlinks
+                        - MultiViews
+                    allow_override:
+                        - All
+                    require:
+                        - 'all granted'
+                    custom_fragment: ''
+                    provider: directory
+            files_match:
+                avfa_ighl35xxf7d8:
+                    path: (app_dev|config)\.php$
+                    sethandler: 'proxy:fcgi://127.0.0.1:9000'
+                    setenv:
+                        - 'APP_ENV dev'
+                    custom_fragment: ''
+                    provider: filesmatch
+                avfa_tifbtkagcqlj:
+                    path: app\.php$
+                    sethandler: 'proxy:fcgi://127.0.0.1:9000'
+                    setenv:
+                        - 'APP_ENV prod'
+                    custom_fragment: ''
+                    provider: filesmatch
+                avfa_4ee806w8orxu:
+                    path: \.php$
+                    sethandler: 'proxy:fcgi://127.0.0.1:9000'
+                    custom_fragment: ''
+                    provider: filesmatch
+        av_u12x856wsgs6:
+            servername: tickets.infected.dev
+            docroot: /var/www/tickets
+            port: '443'
+            setenvif:
+                - 'Authorization "(.*)" HTTP_AUTHORIZATION=$1'
+            custom_fragment: /var/www/deployment/vhost_alias_template
+            ssl: '1'
+            ssl_cert: ''
+            ssl_key: ''
+            ssl_chain: ''
+            ssl_certs_dir: ''
+            ssl_protocol: ''
+            ssl_cipher: ''
+            directories:
+                avd_bkidjhlb98ml:
+                    path: /var/www/tickets
+                    directoryindex: index.php
+                    options:
+                        - Indexes
+                        - FollowSymlinks
+                        - MultiViews
+                    allow_override:
+                        - All
+                    require:
+                        - 'all granted'
+                    custom_fragment: ''
+                    provider: directory
+            files_match:
+                bvfa_ighl35xkf7d8:
+                    path: (app_dev|config)\.php$
+                    sethandler: 'proxy:fcgi://127.0.0.1:9000'
+                    setenv:
+                        - 'APP_ENV dev'
+                    custom_fragment: ''
+                    provider: filesmatch
+                bvfa_tifbtkagcqrj:
+                    path: app\.php$
+                    sethandler: 'proxy:fcgi://127.0.0.1:9000'
+                    setenv:
+                        - 'APP_ENV prod'
+                    custom_fragment: ''
+                    provider: filesmatch
+                bvfa_4ee806w8arxu:
                     path: \.php$
                     sethandler: 'proxy:fcgi://127.0.0.1:9000'
                     custom_fragment: ''
@@ -331,7 +471,7 @@ php:
     fpm_ini:
         error_log: /var/log/php-fpm.log
     fpm_pools:
-        phpfp_gij4x4cm34m5:
+        phpfp_elziin1jc1uz:
             ini:
                 prefix: www
                 listen: '127.0.0.1:9000'
@@ -374,7 +514,7 @@ drush:
 ruby:
     install: '1'
     versions:
-        rv_re9cdq8s997i:
+        rv_9h0vz8k55adf:
             default: '1'
             bundler: '1'
             version: 2.3.1
@@ -398,15 +538,15 @@ mariadb:
         root_password: '123'
         override_options: {  }
     users:
-        mariadbnu_jcocgsxk5epu:
+        mariadbnu_2vd7qfy50ia3:
             name: dbuser
             password: '123'
     databases:
-        mariadbnd_kbhqyq15o0f6:
+        mariadbnd_3pnluarr6pbz:
             name: dbname
             sql: ''
     grants:
-        mariadbng_xpqzy2psn0m4:
+        mariadbng_m3624szj3sht:
             user: dbuser
             table: '*.*'
             privileges:
@@ -418,33 +558,33 @@ mysql:
         root_password: '123'
         override_options: {  }
     users:
-        mysqlnu_7w2h3ze3rms7:
+        mysqlnu_hieyz9dptmdd:
             name: test.infected.no
             password: '123'
     databases:
-        mysqlnd_rwui705xip4e:
+        mysqlnd_p0v83aheglgc:
             name: test_infected_no
             sql: /var/www/deployment/test_infected_no.sql
-        mysqlnd_9094or3rmha8:
+        mysqlnd_afbwl3kpwedh:
             name: test_infected_no_compo
             sql: /var/www/deployment/test_infected_no_compo.sql
-        mysqlnd_6yf9oapmieua:
+        mysqlnd_w4xu5jgv2jw4:
             name: test_infected_no_crew
             sql: /var/www/deployment/test_infected_no_crew.sql
-        mysqlnd_ujlx83n3u161:
+        mysqlnd_fcj3hb3s8t9u:
             name: test_infected_no_info
             sql: /var/www/deployment/test_infected_no_info.sql
-        mysqlnd_fqwhircrtz94:
+        mysqlnd_eq5zojr4riri:
             name: test_infected_no_main
             sql: /var/www/deployment/test_infected_no_main.sql
-        mysqlnd_oxrrsa2gx7k4:
+        mysqlnd_kyzcxl1wxc1j:
             name: test_infected_no_tech
             sql: /var/www/deployment/test_infected_no_tech.sql
-        mysqlnd_nzayq2agex3c:
+        mysqlnd_hx1ne0oldaju:
             name: test_infected_no_tickets
             sql: /var/www/deployment/test_infected_no_tickets.sql
     grants:
-        mysqlng_x208dhhsmmqg:
+        mysqlng_is93x5u2zguy:
             user: test.infected.no
             table: '*.*'
             privileges:
@@ -507,7 +647,7 @@ elastic_search:
         version: 2.3.1
         java_install: true
     instances:
-        esi_louie2q6frra:
+        esi_d8lz6jwh3pma:
             name: es-01
 solr:
     install: '0'
