@@ -48,6 +48,8 @@ The server can be started by typing *vagrant up* in the command line from the ro
  * test_infected_no_tickets -> test_infected_no_tickets.sql
  * test_infected_no_tech -> test_infected_no_tech.sql
 
+ * The reccomended way of editing the database is using **MySQL Workbench**. The reccomended way of connecting to the virtual mysql server is using a `Standard TCP/IP over SSH` connection. See [Here](https://blog.slewsystems.com/2014/01/01/connecting-to-a-puphpet-vagrant-ftp-and-mysql-servers/) for more info.
+
 ## Good to know
 
 ![http://puu.sh/g0n1G/b068bbc9e4.png](http://puu.sh/g0n1G/b068bbc9e4.png)
