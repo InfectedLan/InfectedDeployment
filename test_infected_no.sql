@@ -5259,6 +5259,93 @@ INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
 (1, 0, 1, 1),
 (2, 0, 2, 1);
 
+
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `id` int(11) NOT NULL,
+  `value` varchar(32) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `value`, `description`) VALUES
+(1, '*', 'Gir tilgang til absolutt alt, du er nå en udødelig administrator.'),
+(2, 'admin.*', 'Gir tilgang til alt under admin.'),
+(3, 'admin.events', 'Administrer arrangementer, informasjon er blir automatisk endret på hovedsiden og ticketsiden.'),
+(4, 'admin.permissions', 'Velg hvilke bruker som skal ha tilgang til hva, dette er et tilgangsystem, men husk at brukere har standard tilganger utenom dette, ettersom de er medlem av crewet eller ikke.'),
+(5, 'admin.seatmap', 'Endre seatmappet, her kan du flytte, legg til, og fjerne seter og rader.'),
+(6, 'admin.website', 'Endre innholdet på nettsiden.'),
+(7, 'chief.*', 'Gir tilgang til alt under chief.'),
+(8, 'chief.applications', 'Godta eller avvis crew-søknader.'),
+(9, 'chief.avatars', 'Administrer profilbilder, alle nye profilbilder vil dukke opp her og du kan godjkenne dem eller avise.'),
+(10, 'chief.email', 'Send e-post til noen eller alle medlemmer.'),
+(11, 'chief.group', 'Administrer crewene, medlemmene i dem og hvem som er ledere.'),
+(12, 'chief.my-crew', 'Endre sider under \"My Crew\".'),
+(13, 'chief.team', 'Administrer lagene for ditt crew, hvem som er medlem av hvilke lag og lederene i lagene.'),
+(14, 'event.checklist', 'Gir tilgang til bruk av sjekklisten.'),
+(15, 'event.checklist.delegate', 'Lar deg delegere punkter i sjekklisten til bruker utenfor ditt crew.'),
+(16, 'compo.chat', 'Lar deg chatte i alle chatter på compo siden.'),
+(18, 'developer.change-user', 'Lar deg logge inn som hvilken som helst annen bruker, kun beregnet for bruk ved feilsøking.'),
+(19, 'event.*', 'Gir tilgang til alt under event.'),
+(20, 'event.agenda', 'Endre agendaen, denne vises på hovedsiden og infoskjermen under arrangementet.'),
+(21, 'event.checkin', 'Lar brukeren sjekke inn billetter'),
+(23, 'admin.memberlist', 'Du kan hente ut medlemslister over alle medlemmene som var på Infected det året.'),
+(24, 'event.screen', 'Post informasjon på infoskjermen som vil vises under arrangementet.'),
+(25, 'event.seatmap', 'Se seatmappet'),
+(26, 'event.table-labels', 'Gir deg tilgang til å printe lappene som legges på bord under infected.'),
+(27, 'user.*', 'Gir tilgang til alt relatert til en bruker.'),
+(28, 'user.search', 'Søk etter brukere i databasen.'),
+(29, 'user.edit', 'Du kan endre andre brukere.'),
+(30, 'user.history', 'Viser historikken til en bruker.'),
+(31, 'user.activate', 'Lar deg aktivere en annen bruker, dersom du selv er logget inn.'),
+(32, 'user.ticket', 'Se en brukers billett, og detaljer om den.'),
+(33, 'user.relocate', 'Du kan omplassere en bruker på setekartet.'),
+(34, 'user.note', 'Legg til eller fjern notater på en bruker.'),
+(40, 'compo.*', 'Lar deg gjøre alle compo-greiene'),
+(41, 'compo.bracketmanagement', 'Lar deg redigere brackets'),
+(42, 'compo.edit', 'Lar deg redigere eksisterende compoer, og lar deg lage nye compoer'),
+(43, 'compo.management', 'Lar deg administrere compoer'),
+(48, 'tickets.byPassBookingTime', 'Du kan bestille billetter og teste kjøp av billetter før billetsalget har åpnet.'),
+(49, 'event.checklist.list', 'Lar deg se alle gjøremål for hele crewet.'),
+(50, 'event.checklist.*', 'Gir tilgang til alt relatert til sjekklisten.'),
+(56, 'admin.tickets', 'Gjøre ting relatert til tickets-siden, slik som flytting av brukere'),
+(57, 'event.checklist.watchlist', 'Lar deg legge til eller fjerne tilskuere for punkter i sjekklisten.'),
+(58, 'developer.syslog', 'Lar deg se på systemloggen'),
+(59, 'compo.casting', 'Gir deg tilgang til casting-verktøyet.'),
+(60, 'stats.*', 'Gir deg tilgang til all statistikk.'),
+(61, 'stats.age', 'Gir deg tilgang til alders statistikk.'),
+(62, 'stats.gender', 'Gir deg tilgang til kjønns statistikk.'),
+(63, 'stats.ticketsale', 'Gir deg tilgang til billetsalgs statistikk.');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`value`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+COMMIT;
+
 -- --------------------------------------------------------
 
 --
