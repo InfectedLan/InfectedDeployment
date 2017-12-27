@@ -76,6 +76,47 @@ INSERT INTO `networks` (`id`, `name`, `title`, `description`, `vlanId`) VALUES
 (8, 'servers', 'Servers', 'Servernett, i dette nettet står alle våre servere.', 248),
 (9, 'management', 'Management', 'Management nett, dette bruker vi for å nå utstyr, ingen internett-tilgang, det skal ikke stå klienter i dette.', 1024);
 
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `nfccards`
+--
+
+CREATE TABLE `nfccards` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL,
+  `nfcId` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `nfcgates`
+--
+
+CREATE TABLE `nfcgates` (
+  `id` int(11) NOT NULL,
+  `eventId` int(11) NOT NULL,
+  `pcbId` varchar(32) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `type` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `nfclog`
+--
+
+CREATE TABLE `nfclog` (
+  `id` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL,
+  `gateId` int(11) NOT NULL,
+  `nfcId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +163,24 @@ ALTER TABLE `networktypes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nfccards`
+--
+ALTER TABLE `nfccards`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nfcgates`
+--
+ALTER TABLE `nfcgates`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nfclog`
+--
+ALTER TABLE `nfclog`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -142,7 +201,28 @@ ALTER TABLE `networks`
 --
 ALTER TABLE `networktypes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `nfccards`
+--
+ALTER TABLE `nfccards`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nfcgates`
+--
+ALTER TABLE `nfcgates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nfclog`
+--
+ALTER TABLE `nfclog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
