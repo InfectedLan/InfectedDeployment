@@ -50,6 +50,19 @@ The server can be started by typing *vagrant up* in the command line from the ro
 
  * The reccomended way of editing the database is using **MySQL Workbench**. The reccomended way of connecting to the virtual mysql server is using a `Standard TCP/IP over SSH` connection. See [Here](https://blog.slewsystems.com/2014/01/01/connecting-to-a-puphpet-vagrant-ftp-and-mysql-servers/) for more info.
 
+## Vagrant commands
+
+ * `vagrant up` - Fire up vagrant server(Will set it up if it doesn't exist)
+ * `vagrant destroy` - Destroy the VM
+ * `vagrant halt` - Shutdown the VM
+ * `vagrant ssh` - Start an ssh connection to the server as the user `vagrant`
+
+## Testing
+
+ * The database needs to be sterile/non-modified before running a test. The script `sterilizeDb.sh` in deployment will do this for you. Run it from `/var/www/deployment`
+ * Phpunit is installed. Please maintain it to the same version as travis.
+ * Run it from `/var/www/api`, with the command `~/.config/composer/vendor/bin/phpunit tests/tests`
+
 ## Good to know
 
 ![http://puu.sh/g0n1G/b068bbc9e4.png](http://puu.sh/g0n1G/b068bbc9e4.png)

@@ -178,6 +178,8 @@ server:
         - vim
         - htop
         - emacs
+        - unzip
+        - zip
 users_groups:
     install: '1'
     groups: {  }
@@ -231,7 +233,7 @@ nginx:
             spdy: '1'
             locations:
                 nxvl_i15g0jqsmdyy:
-                    www_root: /var/www/crew
+                    www_root: ''
                     location: /
                     autoindex: 'off'
                     internal: 'false'
@@ -250,8 +252,8 @@ nginx:
                     proxy: ''
                     proxy_redirect: ''
                 nxvl_faun2bng8sy7:
-                    www_root: /var/www/awesome/web
-                    location: '~ ^/(app_dev|config)\.php(/|$)'
+                    www_root: ''
+                    location: '~ \.php$'
                     autoindex: 'off'
                     internal: 'false'
                     try_files:
@@ -259,7 +261,7 @@ nginx:
                         - $uri/
                         - /app_dev.php$is_args$args
                     fastcgi: '127.0.0.1:9000'
-                    fastcgi_index: app_dev.php
+                    fastcgi_index: index.php
                     fastcgi_split_path: '^(.+\.php)(/.*)$'
                     fast_cgi_params_extra:
                         - 'SCRIPT_FILENAME $document_root$fastcgi_script_name'
@@ -460,6 +462,7 @@ php:
             - cli
             - intl
             - xml
+            - mbstring
         pear: {  }
         pecl: {  }
     ini:
