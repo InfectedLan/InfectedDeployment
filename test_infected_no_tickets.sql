@@ -1,22 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.6
--- https://www.phpmyadmin.net/
+-- version 4.2.12deb2
+-- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 05. Des, 2017 00:35 AM
--- Server-versjon: 5.7.20-0ubuntu0.16.04.1
--- PHP Version: 7.2.0-1+ubuntu16.04.1+deb.sury.org+1
+-- Generation Time: Aug 20, 2015 at 11:56 PM
+-- Server version: 5.6.25-0ubuntu0.15.04.1
+-- PHP Version: 5.6.4-4ubuntu6.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `test_infected_no_tickets`
@@ -25,17 +23,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `checkedintickets`
+-- Table structure for table `checkedintickets`
 --
 
-CREATE TABLE `checkedintickets` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `checkedintickets` (
+`id` int(11) NOT NULL,
   `ticketId` int(11) NOT NULL,
   `userId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `checkedintickets`
+-- Dumping data for table `checkedintickets`
 --
 
 INSERT INTO `checkedintickets` (`id`, `ticketId`, `userId`) VALUES
@@ -46,17 +44,17 @@ INSERT INTO `checkedintickets` (`id`, `ticketId`, `userId`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `entrances`
+-- Table structure for table `entrances`
 --
 
-CREATE TABLE `entrances` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `entrances` (
+`id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
   `title` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `entrances`
+-- Dumping data for table `entrances`
 --
 
 INSERT INTO `entrances` (`id`, `name`, `title`) VALUES
@@ -66,24 +64,24 @@ INSERT INTO `entrances` (`id`, `name`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `payments`
+-- Table structure for table `payments`
 --
 
-CREATE TABLE `payments` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `payments` (
+`id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `ticketTypeId` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `totalPrice` int(11) NOT NULL,
   `transactionId` varchar(64) NOT NULL,
   `datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `payments`
+-- Dumping data for table `payments`
 --
 
-INSERT INTO `payments` (`id`, `userId`, `ticketTypeId`, `price`, `totalPrice`, `transactionId`, `datetime`) VALUES
+INSERT INTO `payments` (`id`, `userId`, `ticketTypeId`, `amount`, `price`, `transactionId`, `datetime`) VALUES
 (1, 1, 1, 1, 350, '2FR0683745560705K', '2015-02-03 23:24:35'),
 (2, 1, 1, 1, 350, '1JB27503MS155754P', '2015-02-04 19:14:14'),
 (3, 1, 1, 1, 350, '3CT78292D2684950H', '2015-02-04 19:16:28'),
@@ -92,118 +90,100 @@ INSERT INTO `payments` (`id`, `userId`, `ticketTypeId`, `price`, `totalPrice`, `
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `rows`
+-- Table structure for table `rows`
 --
 
-CREATE TABLE `rows` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `rows` (
+`id` int(11) NOT NULL,
+  `seatmapId` int(11) NOT NULL,
+  `entranceId` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `x` int(11) NOT NULL,
   `y` int(11) NOT NULL,
-  `entranceId` int(11) NOT NULL,
-  `seatmapId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `isHorizontal` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `rows`
+-- Dumping data for table `rows`
 --
 
-INSERT INTO `rows` (`id`, `number`, `x`, `y`, `entranceId`, `seatmapId`) VALUES
-(1, 1, 5, 641, 1, 3),
-(2, 2, 42, 641, 1, 3),
-(3, 3, 87, 641, 1, 3),
-(4, 4, 124, 641, 1, 3),
-(5, 5, 169, 641, 1, 3),
-(6, 6, 206, 641, 1, 3),
-(7, 7, 251, 641, 1, 3),
-(8, 8, 288, 641, 1, 3),
-(9, 9, 423, 670, 2, 3),
-(10, 10, 460, 670, 2, 3),
-(11, 11, 505, 670, 2, 3),
-(12, 12, 542, 670, 2, 3),
-(13, 13, 618, 50, 2, 3),
-(14, 14, 655, 50, 2, 3),
-(15, 15, 700, 50, 2, 3),
-(16, 16, 737, 50, 2, 3),
-(17, 17, 618, 1054, 1, 3),
-(18, 18, 655, 1054, 1, 3),
-(19, 19, 700, 1054, 1, 3),
-(20, 20, 737, 1054, 1, 3),
-(21, 1, 5, 641, 1, 4),
-(22, 2, 42, 641, 1, 4),
-(23, 3, 87, 641, 1, 4),
-(24, 4, 124, 641, 1, 4),
-(25, 5, 169, 641, 1, 4),
-(26, 6, 206, 641, 1, 4),
-(27, 7, 251, 641, 1, 4),
-(28, 8, 288, 641, 1, 4),
-(29, 9, 423, 670, 2, 4),
-(30, 10, 460, 670, 2, 4),
-(31, 11, 505, 670, 2, 4),
-(32, 12, 542, 670, 2, 4),
-(33, 13, 618, 50, 2, 4),
-(34, 14, 655, 50, 2, 4),
-(35, 15, 700, 50, 2, 4),
-(36, 16, 737, 50, 2, 4),
-(37, 17, 618, 1054, 1, 4),
-(38, 18, 655, 1054, 1, 4),
-(39, 19, 700, 1054, 1, 4),
-(40, 20, 737, 1054, 1, 4),
-(41, 1, 5, 641, 1, 5),
-(42, 2, 42, 641, 1, 5),
-(43, 3, 87, 641, 1, 5),
-(44, 4, 124, 641, 1, 5),
-(45, 5, 169, 641, 1, 5),
-(46, 6, 206, 641, 1, 5),
-(47, 7, 251, 641, 1, 5),
-(48, 8, 288, 641, 1, 5),
-(49, 9, 423, 670, 2, 5),
-(50, 10, 460, 670, 2, 5),
-(51, 11, 505, 670, 2, 5),
-(52, 12, 542, 670, 2, 5),
-(53, 13, 618, 50, 2, 5),
-(54, 14, 655, 50, 2, 5),
-(55, 15, 700, 50, 2, 5),
-(56, 16, 737, 50, 2, 5),
-(57, 17, 618, 1054, 1, 5),
-(58, 18, 655, 1054, 1, 5),
-(59, 19, 700, 1054, 1, 5),
-(60, 20, 737, 1054, 1, 5),
-(81, 1, 5, 641, 2, 6),
-(82, 2, 42, 641, 2, 6),
-(83, 3, 87, 641, 2, 6),
-(84, 4, 124, 641, 2, 6),
-(85, 5, 169, 641, 2, 6),
-(86, 6, 206, 641, 2, 6),
-(87, 7, 251, 641, 2, 6),
-(88, 8, 288, 641, 2, 6),
-(89, 9, 423, 670, 2, 6),
-(90, 10, 460, 670, 2, 6),
-(91, 11, 505, 670, 2, 6),
-(92, 12, 542, 670, 2, 6),
-(93, 13, 618, 50, 2, 6),
-(94, 14, 655, 50, 2, 6),
-(95, 15, 700, 50, 2, 6),
-(96, 16, 737, 50, 2, 6),
-(97, 17, 618, 1054, 2, 6),
-(98, 18, 655, 1054, 2, 6),
-(99, 19, 700, 1054, 2, 6),
-(100, 20, 737, 1054, 2, 6);
+INSERT INTO `rows` (`id`, `seatmapId`, `entranceId`, `number`, `x`, `y`) VALUES
+(1, 3, 1, 1, 5, 641),
+(2, 3, 1, 2, 42, 641),
+(3, 3, 1, 3, 87, 641),
+(4, 3, 1, 4, 124, 641),
+(5, 3, 1, 5, 169, 641),
+(6, 3, 1, 6, 206, 641),
+(7, 3, 1, 7, 251, 641),
+(8, 3, 1, 8, 288, 641),
+(17, 3, 1, 17, 618, 1054),
+(18, 3, 1, 18, 655, 1054),
+(19, 3, 1, 19, 700, 1054),
+(20, 3, 1, 20, 737, 1054),
+(9, 3, 2, 9, 423, 670),
+(10, 3, 2, 10, 460, 670),
+(11, 3, 2, 11, 505, 670),
+(12, 3, 2, 12, 542, 670),
+(13, 3, 2, 13, 618, 50),
+(14, 3, 2, 14, 655, 50),
+(15, 3, 2, 15, 700, 50),
+(16, 3, 2, 16, 737, 50),
+(21, 4, 1, 1, 5, 641),
+(22, 4, 1, 2, 42, 641),
+(23, 4, 1, 3, 87, 641),
+(24, 4, 1, 4, 124, 641),
+(25, 4, 1, 5, 169, 641),
+(26, 4, 1, 6, 206, 641),
+(27, 4, 1, 7, 251, 641),
+(28, 4, 1, 8, 288, 641),
+(37, 4, 1, 17, 618, 1054),
+(38, 4, 1, 18, 655, 1054),
+(39, 4, 1, 19, 700, 1054),
+(40, 4, 1, 20, 737, 1054),
+(29, 4, 2, 9, 423, 670),
+(30, 4, 2, 10, 460, 670),
+(31, 4, 2, 11, 505, 670),
+(32, 4, 2, 12, 542, 670),
+(33, 4, 2, 13, 618, 50),
+(34, 4, 2, 14, 655, 50),
+(35, 4, 2, 15, 700, 50),
+(36, 4, 2, 16, 737, 50),
+(41, 5, 1, 1, 5, 641),
+(42, 5, 1, 2, 42, 641),
+(64, 5, 1, 2, 805, 69),
+(43, 5, 1, 3, 87, 641),
+(44, 5, 1, 4, 124, 641),
+(45, 5, 1, 5, 169, 641),
+(46, 5, 1, 6, 206, 641),
+(47, 5, 1, 7, 251, 641),
+(48, 5, 1, 8, 288, 641),
+(57, 5, 1, 17, 618, 1054),
+(58, 5, 1, 18, 655, 1054),
+(59, 5, 1, 19, 700, 1054),
+(60, 5, 1, 20, 737, 1054),
+(49, 5, 2, 9, 423, 670),
+(50, 5, 2, 10, 460, 670),
+(51, 5, 2, 11, 505, 670),
+(52, 5, 2, 12, 542, 670),
+(53, 5, 2, 13, 618, 50),
+(54, 5, 2, 14, 655, 50),
+(55, 5, 2, 15, 700, 50),
+(56, 5, 2, 16, 747, 54);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `seatmaps`
+-- Table structure for table `seatmaps`
 --
 
-CREATE TABLE `seatmaps` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `seatmaps` (
+`id` int(11) NOT NULL,
   `humanName` varchar(64) NOT NULL,
   `backgroundImage` varchar(64) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `seatmaps`
+-- Dumping data for table `seatmaps`
 --
 
 INSERT INTO `seatmaps` (`id`, `humanName`, `backgroundImage`) VALUES
@@ -221,17 +201,17 @@ INSERT INTO `seatmaps` (`id`, `humanName`, `backgroundImage`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `seats`
+-- Table structure for table `seats`
 --
 
-CREATE TABLE `seats` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `seats` (
+`id` int(11) NOT NULL,
   `rowId` int(11) NOT NULL,
   `number` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1114 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `seats`
+-- Dumping data for table `seats`
 --
 
 INSERT INTO `seats` (`id`, `rowId`, `number`) VALUES
@@ -971,393 +951,400 @@ INSERT INTO `seats` (`id`, `rowId`, `number`) VALUES
 (734, 40, 6),
 (735, 40, 7),
 (736, 40, 8),
-(737, 81, 1),
-(738, 81, 2),
-(739, 81, 3),
-(740, 81, 4),
-(741, 81, 5),
-(742, 81, 6),
-(743, 81, 7),
-(744, 81, 8),
-(745, 81, 9),
-(746, 81, 10),
-(747, 81, 11),
-(748, 81, 12),
-(749, 81, 13),
-(750, 81, 14),
-(751, 81, 15),
-(752, 81, 16),
-(753, 81, 17),
-(754, 81, 18),
-(755, 82, 1),
-(756, 82, 2),
-(757, 82, 3),
-(758, 82, 4),
-(759, 82, 5),
-(760, 82, 6),
-(761, 82, 7),
-(762, 82, 8),
-(763, 82, 9),
-(764, 82, 10),
-(765, 82, 11),
-(766, 82, 12),
-(767, 82, 13),
-(768, 82, 14),
-(769, 82, 15),
-(770, 82, 16),
-(771, 82, 17),
-(772, 82, 18),
-(773, 83, 1),
-(774, 83, 2),
-(775, 83, 3),
-(776, 83, 4),
-(777, 83, 5),
-(778, 83, 6),
-(779, 83, 7),
-(780, 83, 8),
-(781, 83, 9),
-(782, 83, 10),
-(783, 83, 11),
-(784, 83, 12),
-(785, 83, 13),
-(786, 83, 14),
-(787, 83, 15),
-(788, 83, 16),
-(789, 83, 17),
-(790, 83, 18),
-(791, 84, 1),
-(792, 84, 2),
-(793, 84, 3),
-(794, 84, 4),
-(795, 84, 5),
-(796, 84, 6),
-(797, 84, 7),
-(798, 84, 8),
-(799, 84, 9),
-(800, 84, 10),
-(801, 84, 11),
-(802, 84, 12),
-(803, 84, 13),
-(804, 84, 14),
-(805, 84, 15),
-(806, 84, 16),
-(807, 84, 17),
-(808, 84, 18),
-(809, 85, 1),
-(810, 85, 2),
-(811, 85, 3),
-(812, 85, 4),
-(813, 85, 5),
-(814, 85, 6),
-(815, 85, 7),
-(816, 85, 8),
-(817, 85, 9),
-(818, 85, 10),
-(819, 85, 11),
-(820, 85, 12),
-(821, 85, 13),
-(822, 85, 14),
-(823, 85, 15),
-(824, 85, 16),
-(825, 85, 17),
-(826, 85, 18),
-(827, 86, 1),
-(828, 86, 2),
-(829, 86, 3),
-(830, 86, 4),
-(831, 86, 5),
-(832, 86, 6),
-(833, 86, 7),
-(834, 86, 8),
-(835, 86, 9),
-(836, 86, 10),
-(837, 86, 11),
-(838, 86, 12),
-(839, 86, 13),
-(840, 86, 14),
-(841, 86, 15),
-(842, 86, 16),
-(843, 86, 17),
-(844, 86, 18),
-(845, 87, 1),
-(846, 87, 2),
-(847, 87, 3),
-(848, 87, 4),
-(849, 87, 5),
-(850, 87, 6),
-(851, 87, 7),
-(852, 87, 8),
-(853, 87, 9),
-(854, 87, 10),
-(855, 87, 11),
-(856, 87, 12),
-(857, 87, 13),
-(858, 87, 14),
-(859, 87, 15),
-(860, 87, 16),
-(861, 87, 17),
-(862, 87, 18),
-(863, 88, 1),
-(864, 88, 2),
-(865, 88, 3),
-(866, 88, 4),
-(867, 88, 5),
-(868, 88, 6),
-(869, 88, 7),
-(870, 88, 8),
-(871, 88, 9),
-(872, 88, 10),
-(873, 88, 11),
-(874, 88, 12),
-(875, 88, 13),
-(876, 88, 14),
-(877, 88, 15),
-(878, 88, 16),
-(879, 88, 17),
-(880, 88, 18),
-(881, 89, 1),
-(882, 89, 2),
-(883, 89, 3),
-(884, 89, 4),
-(885, 89, 5),
-(886, 89, 6),
-(887, 89, 7),
-(888, 89, 8),
-(889, 89, 9),
-(890, 89, 10),
-(891, 89, 11),
-(892, 89, 12),
-(893, 89, 13),
-(894, 89, 14),
-(895, 89, 15),
-(896, 89, 16),
-(897, 89, 17),
-(898, 89, 18),
-(899, 89, 19),
-(900, 89, 20),
-(901, 90, 1),
-(902, 90, 2),
-(903, 90, 3),
-(904, 90, 4),
-(905, 90, 5),
-(906, 90, 6),
-(907, 90, 7),
-(908, 90, 8),
-(909, 90, 9),
-(910, 90, 10),
-(911, 90, 11),
-(912, 90, 12),
-(913, 90, 13),
-(914, 90, 14),
-(915, 90, 15),
-(916, 90, 16),
-(917, 90, 17),
-(918, 90, 18),
-(919, 90, 19),
-(920, 90, 20),
-(921, 91, 1),
-(922, 91, 2),
-(923, 91, 3),
-(924, 91, 4),
-(925, 91, 5),
-(926, 91, 6),
-(927, 91, 7),
-(928, 91, 8),
-(929, 91, 9),
-(930, 91, 10),
-(931, 91, 11),
-(932, 91, 12),
-(933, 91, 13),
-(934, 91, 14),
-(935, 91, 15),
-(936, 91, 16),
-(937, 91, 17),
-(938, 91, 18),
-(939, 91, 19),
-(940, 91, 20),
-(941, 92, 1),
-(942, 92, 2),
-(943, 92, 3),
-(944, 92, 4),
-(945, 92, 5),
-(946, 92, 6),
-(947, 92, 7),
-(948, 92, 8),
-(949, 92, 9),
-(950, 92, 10),
-(951, 92, 11),
-(952, 92, 12),
-(953, 92, 13),
-(954, 92, 14),
-(955, 92, 15),
-(956, 92, 16),
-(957, 92, 17),
-(958, 92, 18),
-(959, 92, 19),
-(960, 92, 20),
-(961, 93, 1),
-(962, 93, 2),
-(963, 93, 3),
-(964, 93, 4),
-(965, 93, 5),
-(966, 93, 6),
-(967, 93, 7),
-(968, 93, 8),
-(969, 93, 9),
-(970, 93, 10),
-(971, 93, 11),
-(972, 93, 12),
-(973, 93, 13),
-(974, 93, 14),
-(975, 93, 15),
-(976, 93, 16),
-(977, 93, 17),
-(978, 93, 18),
-(979, 93, 19),
-(980, 93, 20),
-(981, 93, 21),
-(982, 93, 22),
-(983, 93, 23),
-(984, 93, 24),
-(985, 93, 25),
-(986, 93, 26),
-(987, 93, 27),
-(988, 93, 28),
-(989, 94, 1),
-(990, 94, 2),
-(991, 94, 3),
-(992, 94, 4),
-(993, 94, 5),
-(994, 94, 6),
-(995, 94, 7),
-(996, 94, 8),
-(997, 94, 9),
-(998, 94, 10),
-(999, 94, 11),
-(1000, 94, 12),
-(1001, 94, 13),
-(1002, 94, 14),
-(1003, 94, 15),
-(1004, 94, 16),
-(1005, 94, 17),
-(1006, 94, 18),
-(1007, 94, 19),
-(1008, 94, 20),
-(1009, 94, 21),
-(1010, 94, 22),
-(1011, 94, 23),
-(1012, 94, 24),
-(1013, 94, 25),
-(1014, 94, 26),
-(1015, 94, 27),
-(1016, 94, 28),
-(1017, 95, 1),
-(1018, 95, 2),
-(1019, 95, 3),
-(1020, 95, 4),
-(1021, 95, 5),
-(1022, 95, 6),
-(1023, 95, 7),
-(1024, 95, 8),
-(1025, 95, 9),
-(1026, 95, 10),
-(1027, 95, 11),
-(1028, 95, 12),
-(1029, 95, 13),
-(1030, 95, 14),
-(1031, 95, 15),
-(1032, 95, 16),
-(1033, 95, 17),
-(1034, 95, 18),
-(1035, 95, 19),
-(1036, 95, 20),
-(1037, 95, 21),
-(1038, 95, 22),
-(1039, 95, 23),
-(1040, 95, 24),
-(1041, 95, 25),
-(1042, 95, 26),
-(1043, 95, 27),
-(1044, 95, 28),
-(1045, 96, 1),
-(1046, 96, 2),
-(1047, 96, 3),
-(1048, 96, 4),
-(1049, 96, 5),
-(1050, 96, 6),
-(1051, 96, 7),
-(1052, 96, 8),
-(1053, 96, 9),
-(1054, 96, 10),
-(1055, 96, 11),
-(1056, 96, 12),
-(1057, 96, 13),
-(1058, 96, 14),
-(1059, 96, 15),
-(1060, 96, 16),
-(1061, 96, 17),
-(1062, 96, 18),
-(1063, 96, 19),
-(1064, 96, 20),
-(1065, 96, 21),
-(1066, 96, 22),
-(1067, 96, 23),
-(1068, 96, 24),
-(1069, 96, 25),
-(1070, 96, 26),
-(1071, 96, 27),
-(1072, 96, 28),
-(1073, 97, 1),
-(1074, 97, 2),
-(1075, 97, 3),
-(1076, 97, 4),
-(1077, 97, 5),
-(1078, 97, 6),
-(1079, 97, 7),
-(1080, 97, 8),
-(1081, 98, 1),
-(1082, 98, 2),
-(1083, 98, 3),
-(1084, 98, 4),
-(1085, 98, 5),
-(1086, 98, 6),
-(1087, 98, 7),
-(1088, 98, 8),
-(1089, 99, 1),
-(1090, 99, 2),
-(1091, 99, 3),
-(1092, 99, 4),
-(1093, 99, 5),
-(1094, 99, 6),
-(1095, 99, 7),
-(1096, 99, 8),
-(1097, 100, 1),
-(1098, 100, 2),
-(1099, 100, 3),
-(1100, 100, 4),
-(1101, 100, 5),
-(1102, 100, 6),
-(1103, 100, 7),
-(1104, 100, 8);
+(737, 41, 1),
+(738, 41, 2),
+(739, 41, 3),
+(740, 41, 4),
+(741, 41, 5),
+(742, 41, 6),
+(743, 41, 7),
+(744, 41, 8),
+(745, 41, 9),
+(746, 41, 10),
+(747, 41, 11),
+(748, 41, 12),
+(749, 41, 13),
+(750, 41, 14),
+(751, 41, 15),
+(752, 41, 16),
+(753, 41, 17),
+(754, 41, 18),
+(755, 42, 1),
+(756, 42, 2),
+(757, 42, 3),
+(758, 42, 4),
+(759, 42, 5),
+(760, 42, 6),
+(761, 42, 7),
+(762, 42, 8),
+(763, 42, 9),
+(764, 42, 10),
+(765, 42, 11),
+(766, 42, 12),
+(767, 42, 13),
+(768, 42, 14),
+(769, 42, 15),
+(770, 42, 16),
+(771, 42, 17),
+(772, 42, 18),
+(773, 43, 1),
+(774, 43, 2),
+(775, 43, 3),
+(776, 43, 4),
+(777, 43, 5),
+(778, 43, 6),
+(779, 43, 7),
+(780, 43, 8),
+(781, 43, 9),
+(782, 43, 10),
+(783, 43, 11),
+(784, 43, 12),
+(785, 43, 13),
+(786, 43, 14),
+(787, 43, 15),
+(788, 43, 16),
+(789, 43, 17),
+(790, 43, 18),
+(791, 44, 1),
+(792, 44, 2),
+(793, 44, 3),
+(794, 44, 4),
+(795, 44, 5),
+(796, 44, 6),
+(797, 44, 7),
+(798, 44, 8),
+(799, 44, 9),
+(800, 44, 10),
+(801, 44, 11),
+(802, 44, 12),
+(803, 44, 13),
+(804, 44, 14),
+(805, 44, 15),
+(806, 44, 16),
+(807, 44, 17),
+(808, 44, 18),
+(809, 45, 1),
+(810, 45, 2),
+(811, 45, 3),
+(812, 45, 4),
+(813, 45, 5),
+(814, 45, 6),
+(815, 45, 7),
+(816, 45, 8),
+(817, 45, 9),
+(818, 45, 10),
+(819, 45, 11),
+(820, 45, 12),
+(821, 45, 13),
+(822, 45, 14),
+(823, 45, 15),
+(824, 45, 16),
+(825, 45, 17),
+(826, 45, 18),
+(827, 46, 1),
+(828, 46, 2),
+(829, 46, 3),
+(830, 46, 4),
+(831, 46, 5),
+(832, 46, 6),
+(833, 46, 7),
+(834, 46, 8),
+(835, 46, 9),
+(836, 46, 10),
+(837, 46, 11),
+(838, 46, 12),
+(839, 46, 13),
+(840, 46, 14),
+(841, 46, 15),
+(842, 46, 16),
+(843, 46, 17),
+(844, 46, 18),
+(845, 47, 1),
+(846, 47, 2),
+(847, 47, 3),
+(848, 47, 4),
+(849, 47, 5),
+(850, 47, 6),
+(851, 47, 7),
+(852, 47, 8),
+(853, 47, 9),
+(854, 47, 10),
+(855, 47, 11),
+(856, 47, 12),
+(857, 47, 13),
+(858, 47, 14),
+(859, 47, 15),
+(860, 47, 16),
+(861, 47, 17),
+(862, 47, 18),
+(863, 48, 1),
+(864, 48, 2),
+(865, 48, 3),
+(866, 48, 4),
+(867, 48, 5),
+(868, 48, 6),
+(869, 48, 7),
+(870, 48, 8),
+(871, 48, 9),
+(872, 48, 10),
+(873, 48, 11),
+(874, 48, 12),
+(875, 48, 13),
+(876, 48, 14),
+(877, 48, 15),
+(878, 48, 16),
+(879, 48, 17),
+(880, 48, 18),
+(881, 49, 1),
+(882, 49, 2),
+(883, 49, 3),
+(884, 49, 4),
+(885, 49, 5),
+(886, 49, 6),
+(887, 49, 7),
+(888, 49, 8),
+(889, 49, 9),
+(890, 49, 10),
+(891, 49, 11),
+(892, 49, 12),
+(893, 49, 13),
+(894, 49, 14),
+(895, 49, 15),
+(896, 49, 16),
+(897, 49, 17),
+(898, 49, 18),
+(899, 49, 19),
+(900, 49, 20),
+(901, 50, 1),
+(902, 50, 2),
+(903, 50, 3),
+(904, 50, 4),
+(905, 50, 5),
+(906, 50, 6),
+(907, 50, 7),
+(908, 50, 8),
+(909, 50, 9),
+(910, 50, 10),
+(911, 50, 11),
+(912, 50, 12),
+(913, 50, 13),
+(914, 50, 14),
+(915, 50, 15),
+(916, 50, 16),
+(917, 50, 17),
+(918, 50, 18),
+(919, 50, 19),
+(920, 50, 20),
+(921, 51, 1),
+(922, 51, 2),
+(923, 51, 3),
+(924, 51, 4),
+(925, 51, 5),
+(926, 51, 6),
+(927, 51, 7),
+(928, 51, 8),
+(929, 51, 9),
+(930, 51, 10),
+(931, 51, 11),
+(932, 51, 12),
+(933, 51, 13),
+(934, 51, 14),
+(935, 51, 15),
+(936, 51, 16),
+(937, 51, 17),
+(938, 51, 18),
+(939, 51, 19),
+(940, 51, 20),
+(941, 52, 1),
+(942, 52, 2),
+(943, 52, 3),
+(944, 52, 4),
+(945, 52, 5),
+(946, 52, 6),
+(947, 52, 7),
+(948, 52, 8),
+(949, 52, 9),
+(950, 52, 10),
+(951, 52, 11),
+(952, 52, 12),
+(953, 52, 13),
+(954, 52, 14),
+(955, 52, 15),
+(956, 52, 16),
+(957, 52, 17),
+(958, 52, 18),
+(959, 52, 19),
+(960, 52, 20),
+(961, 53, 1),
+(962, 53, 2),
+(963, 53, 3),
+(964, 53, 4),
+(965, 53, 5),
+(966, 53, 6),
+(967, 53, 7),
+(968, 53, 8),
+(969, 53, 9),
+(970, 53, 10),
+(971, 53, 11),
+(972, 53, 12),
+(973, 53, 13),
+(974, 53, 14),
+(975, 53, 15),
+(976, 53, 16),
+(977, 53, 17),
+(978, 53, 18),
+(979, 53, 19),
+(980, 53, 20),
+(981, 53, 41),
+(982, 53, 42),
+(983, 53, 43),
+(984, 53, 44),
+(985, 53, 45),
+(986, 53, 46),
+(987, 53, 47),
+(988, 53, 48),
+(989, 54, 1),
+(990, 54, 2),
+(991, 54, 3),
+(992, 54, 4),
+(993, 54, 5),
+(994, 54, 6),
+(995, 54, 7),
+(996, 54, 8),
+(997, 54, 9),
+(998, 54, 10),
+(999, 54, 11),
+(1000, 54, 12),
+(1001, 54, 13),
+(1002, 54, 14),
+(1003, 54, 15),
+(1004, 54, 16),
+(1005, 54, 17),
+(1006, 54, 18),
+(1007, 54, 19),
+(1008, 54, 20),
+(1009, 54, 41),
+(1010, 54, 42),
+(1011, 54, 43),
+(1012, 54, 44),
+(1013, 54, 45),
+(1014, 54, 46),
+(1015, 54, 47),
+(1016, 54, 48),
+(1017, 55, 1),
+(1018, 55, 2),
+(1019, 55, 3),
+(1020, 55, 4),
+(1021, 55, 5),
+(1022, 55, 6),
+(1023, 55, 7),
+(1024, 55, 8),
+(1025, 55, 9),
+(1026, 55, 10),
+(1027, 55, 11),
+(1028, 55, 12),
+(1029, 55, 13),
+(1030, 55, 14),
+(1031, 55, 15),
+(1032, 55, 16),
+(1033, 55, 17),
+(1034, 55, 18),
+(1035, 55, 19),
+(1036, 55, 20),
+(1037, 55, 41),
+(1038, 55, 42),
+(1039, 55, 43),
+(1040, 55, 44),
+(1041, 55, 45),
+(1042, 55, 46),
+(1043, 55, 47),
+(1044, 55, 48),
+(1045, 56, 1),
+(1046, 56, 2),
+(1047, 56, 3),
+(1048, 56, 4),
+(1049, 56, 5),
+(1050, 56, 6),
+(1051, 56, 7),
+(1052, 56, 8),
+(1053, 56, 9),
+(1054, 56, 10),
+(1055, 56, 11),
+(1056, 56, 12),
+(1057, 56, 13),
+(1058, 56, 14),
+(1059, 56, 15),
+(1060, 56, 16),
+(1061, 56, 17),
+(1062, 56, 18),
+(1063, 56, 19),
+(1064, 56, 20),
+(1065, 56, 41),
+(1066, 56, 42),
+(1067, 56, 43),
+(1068, 56, 44),
+(1069, 56, 45),
+(1070, 56, 46),
+(1071, 56, 47),
+(1072, 56, 48),
+(1073, 57, 1),
+(1074, 57, 2),
+(1075, 57, 3),
+(1076, 57, 4),
+(1077, 57, 5),
+(1078, 57, 6),
+(1079, 57, 7),
+(1080, 57, 8),
+(1081, 58, 1),
+(1082, 58, 2),
+(1083, 58, 3),
+(1084, 58, 4),
+(1085, 58, 5),
+(1086, 58, 6),
+(1087, 58, 7),
+(1088, 58, 8),
+(1089, 59, 1),
+(1090, 59, 2),
+(1091, 59, 3),
+(1092, 59, 4),
+(1093, 59, 5),
+(1094, 59, 6),
+(1095, 59, 7),
+(1096, 59, 8),
+(1097, 60, 1),
+(1098, 60, 2),
+(1099, 60, 3),
+(1100, 60, 4),
+(1101, 60, 5),
+(1102, 60, 6),
+(1103, 60, 7),
+(1104, 60, 8),
+(1106, 64, 1),
+(1107, 64, 2),
+(1108, 64, 3),
+(1109, 64, 4),
+(1110, 64, 5),
+(1111, 64, 6),
+(1112, 64, 7);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `storesessions`
+-- Table structure for table `storesessions`
 --
 
-CREATE TABLE `storesessions` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `storesessions` (
+`id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `ticketTypeId` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
   `code` varchar(64) NOT NULL,
   `price` int(11) NOT NULL,
   `datetime` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `storesessions`
+-- Dumping data for table `storesessions`
 --
 
 INSERT INTO `storesessions` (`id`, `userId`, `ticketTypeId`, `amount`, `code`, `price`, `datetime`) VALUES
@@ -1367,58 +1354,53 @@ INSERT INTO `storesessions` (`id`, `userId`, `ticketTypeId`, `amount`, `code`, `
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `tickets`
+-- Table structure for table `tickets`
 --
 
-CREATE TABLE `tickets` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tickets` (
+`id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
-  `paymentId` int(11) NOT NULL,
   `typeId` int(11) NOT NULL,
   `buyerId` int(11) NOT NULL,
+  `paymentId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `seatId` int(11) NOT NULL,
-  `seaterId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `seaterId` int(11) NOT NULL,
+  `seatId` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=1338 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `tickets`
+-- Dumping data for table `tickets`
 --
 
-INSERT INTO `tickets` (`id`, `eventId`, `paymentId`, `typeId`, `buyerId`, `userId`, `seatId`, `seaterId`) VALUES
-(3, 5, 0, 1, 0, 2, 0, 0),
-(4, 5, 0, 1, 2, 2, 0, 0),
-(5, 5, 0, 1, 2, 2, 0, 0),
-(1337, 5, 0, 1, 2, 2, 2, 2),
-(6, 5, 0, 1, 3, 3, 0, 0),
-(7, 5, 0, 1, 4, 4, 0, 0),
-(8, 5, 0, 1, 5, 5, 0, 0),
-(9, 5, 0, 1, 6, 6, 0, 0),
-(10, 5, 0, 1, 7, 7, 0, 0),
-(11, 5, 0, 1, 8, 8, 0, 0),
-(12, 5, 0, 1, 9, 9, 0, 0),
-(13, 5, 0, 1, 10, 10, 0, 0),
-(14, 5, 0, 1, 11, 11, 0, 0),
-(15, 5, 0, 1, 12, 12, 0, 0),
-(16, 5, 0, 1, 13, 13, 0, 0),
-(17, 5, 0, 1, 14, 14, 0, 0),
-(18, 5, 0, 1, 15, 15, 0, 0),
-(19, 5, 0, 1, 16, 16, 0, 0),
-(1338, 5, 0, 1, 19, 19, 0, 0),
-(1339, 5, 0, 1, 20, 20, 0, 0),
-(2, 5, 0, 2, 3, 2, 3, 3),
-(20, 5, 1, 3, 1, 1, 0, 0),
-(21, 5, 4, 1, 1, 1, 0, 0),
-(1340, 9, 0, 2, 0, 302, 0, 0);
+INSERT INTO `tickets` (`id`, `eventId`, `typeId`, `buyerId`, `paymentId`, `userId`, `seaterId`, `seatId`) VALUES
+(3, 5, 1, 0, 0, 2, 0, 0),
+(4, 5, 1, 2, 0, 2, 0, 0),
+(5, 5, 1, 2, 0, 2, 0, 0),
+(6, 5, 1, 3, 0, 3, 0, 0),
+(7, 5, 1, 4, 0, 4, 0, 0),
+(8, 5, 1, 5, 0, 5, 0, 0),
+(9, 5, 1, 6, 0, 6, 0, 0),
+(10, 5, 1, 7, 0, 7, 0, 0),
+(11, 5, 1, 8, 0, 8, 0, 0),
+(12, 5, 1, 9, 0, 9, 0, 0),
+(13, 5, 1, 10, 0, 10, 0, 0),
+(14, 5, 1, 11, 0, 11, 0, 0),
+(15, 5, 1, 12, 0, 12, 0, 0),
+(16, 5, 1, 13, 0, 13, 0, 0),
+(17, 5, 1, 14, 0, 14, 0, 0),
+(18, 5, 1, 15, 0, 15, 0, 0),
+(19, 5, 1, 16, 0, 16, 0, 0),
+(20, 5, 2, 1, 1, 1, 0, 0),
+(2, 5, 2, 3, 0, 2, 3, 3);
 
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `tickettransfers`
+-- Table structure for table `tickettransfers`
 --
 
-CREATE TABLE `tickettransfers` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tickettransfers` (
+`id` int(11) NOT NULL,
   `ticketId` int(11) NOT NULL,
   `fromId` int(11) NOT NULL,
   `toId` int(11) NOT NULL,
@@ -1429,23 +1411,24 @@ CREATE TABLE `tickettransfers` (
 -- --------------------------------------------------------
 
 --
--- Tabellstruktur for tabell `tickettypes`
+-- Table structure for table `tickettypes`
 --
 
-CREATE TABLE `tickettypes` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `tickettypes` (
+`id` int(11) NOT NULL,
   `name` varchar(64) NOT NULL,
   `title` varchar(32) NOT NULL,
-  `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `price` int(11) NOT NULL,
+  `refundable` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dataark for tabell `tickettypes`
+-- Dumping data for table `tickettypes`
 --
 
-INSERT INTO `tickettypes` (`id`, `name`, `title`, `price`) VALUES
-(1, 'participant', 'Deltaker', 350),
-(2, 'free', 'Gratis', 0);
+INSERT INTO `tickettypes` (`id`, `name`, `title`, `price`, `refundable`) VALUES
+(1, 'participant', 'Deltaker', 350, 1),
+(2, 'free', 'Gratis', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -1455,68 +1438,61 @@ INSERT INTO `tickettypes` (`id`, `name`, `title`, `price`) VALUES
 -- Indexes for table `checkedintickets`
 --
 ALTER TABLE `checkedintickets`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`ticketId`,`userId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`ticketId`,`userId`);
 
 --
 -- Indexes for table `entrances`
 --
 ALTER TABLE `entrances`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `payments`
 --
 ALTER TABLE `payments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`userId`,`ticketTypeId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`ticketTypeId`,`transactionId`);
 
 --
 -- Indexes for table `rows`
 --
 ALTER TABLE `rows`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`entranceId`,`seatmapId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`seatmapId`,`entranceId`,`number`,`x`,`y`);
 
 --
 -- Indexes for table `seatmaps`
 --
 ALTER TABLE `seatmaps`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `seats`
 --
 ALTER TABLE `seats`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`rowId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`rowId`,`number`);
 
 --
 -- Indexes for table `storesessions`
 --
 ALTER TABLE `storesessions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`userId`,`ticketTypeId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`userId`,`ticketTypeId`,`code`);
 
 --
 -- Indexes for table `tickets`
 --
 ALTER TABLE `tickets`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`eventId`,`paymentId`,`typeId`,`buyerId`,`userId`,`seatId`,`seaterId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`eventId`,`typeId`,`buyerId`,`paymentId`,`userId`,`seaterId`,`seatId`);
 
 --
 -- Indexes for table `tickettransfers`
 --
 ALTER TABLE `tickettransfers`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`ticketId`,`fromId`,`toId`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`ticketId`,`fromId`,`toId`,`revertable`);
 
 --
 -- Indexes for table `tickettypes`
 --
 ALTER TABLE `tickettypes`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`), ADD KEY `index` (`refundable`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1526,63 +1502,52 @@ ALTER TABLE `tickettypes`
 -- AUTO_INCREMENT for table `checkedintickets`
 --
 ALTER TABLE `checkedintickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `entrances`
 --
 ALTER TABLE `entrances`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `rows`
 --
 ALTER TABLE `rows`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT for table `seatmaps`
 --
 ALTER TABLE `seatmaps`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `seats`
 --
 ALTER TABLE `seats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1105;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1114;
 --
 -- AUTO_INCREMENT for table `storesessions`
 --
 ALTER TABLE `storesessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tickets`
 --
 ALTER TABLE `tickets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1341;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1338;
 --
 -- AUTO_INCREMENT for table `tickettransfers`
 --
 ALTER TABLE `tickettransfers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tickettypes`
 --
 ALTER TABLE `tickettypes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
