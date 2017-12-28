@@ -4951,6 +4951,63 @@ INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
 (1, 0, 1, 1),
 (2, 0, 2, 1);
 
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `bongTypes`
+--
+
+CREATE TABLE `bongTypes` (
+  `id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `networktypes`
+--
+
+INSERT INTO `bongTypes` (`id`, `name`, `description`) VALUES
+(1, 'Brus', 'Fanta eller cola'),
+(2, 'Pølse', ''),
+(3, 'Vaffel', '');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `bongEntitlements`
+--
+
+CREATE TABLE `bongEntitlements` (
+  `id` int(11) NOT NULL,
+  `bongId` int(11) NOT NULL,
+  `entitlementArg` int(11) NOT NULL,
+  `entitlementType` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `bongEntitlements`
+--
+
+INSERT INTO `bongEntitlements` (`id`, `bongId`, `entitlementArg`, `entitlementType`) VALUES
+(1, 1, 0, 1),
+(2, 2, 0, 1),
+(3, 3, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `bongTypes`
+--
+
+CREATE TABLE `bongTransactions` (
+  `id` int(11) NOT NULL,
+  `bongId` int(32) NOT NULL,
+  `amt` int(11) NOT NULL,
+  `transactionHandler` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -5085,6 +5142,26 @@ ALTER TABLE `users`
   ADD KEY `index` (`username`,`email`,`birthdate`,`gender`,`phone`,`postalcode`,`countryId`,`registerdate`);
 ALTER TABLE `users` ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`nickname`);
 
+
+--
+-- Indexes for table `bongTypes`
+--
+ALTER TABLE `bongTypes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bongTransactions`
+--
+ALTER TABLE `bongTransactions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bongTransactions`
+--
+ALTER TABLE `bongEntitlements`
+  ADD PRIMARY KEY (`id`);
+
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
@@ -5160,6 +5237,26 @@ ALTER TABLE `userpermissions`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+
+--
+-- AUTO_INCREMENT for table `bongTypes`
+--
+ALTER TABLE `bongTypes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `bongTypes`
+--
+ALTER TABLE `bongEntitlements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `bongTransactions`
+--
+ALTER TABLE `bongTransactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
