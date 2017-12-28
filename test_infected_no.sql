@@ -5006,12 +5006,6 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `ema
 --
 
 --
--- Indexes for table `countries`
---
-ALTER TABLE `countries`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `emergencycontacts`
 --
 ALTER TABLE `emergencycontacts`
