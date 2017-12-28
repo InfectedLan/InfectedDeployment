@@ -162,6 +162,17 @@ INSERT INTO `userfriends` (`id`, `userId`, `friendId`, `accepted`) VALUES
 (1, 1, 2, 0),
 (2, 2, 1, 0);
 
+--
+-- Tabellstruktur for tabell `usernotes`
+--
+
+CREATE TABLE `usernotes` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
 -- --------------------------------------------------------
 
 --
@@ -304,6 +315,14 @@ ALTER TABLE `userfriends`
   ADD KEY `index` (`userId`,`friendId`);
 
 --
+-- Indexes for table `usernotes`
+--
+ALTER TABLE `usernotes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index` (`userId`);
+
+
+--
 -- Indexes for table `useroptions`
 --
 ALTER TABLE `useroptions`
@@ -376,6 +395,13 @@ ALTER TABLE `tasks`
 --
 ALTER TABLE `userfriends`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `usernotes`
+--
+ALTER TABLE `usernotes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `useroptions`
