@@ -4981,7 +4981,6 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `email`, `birthdate`, `gender`, `phone`, `address`, `postalcode`, `countryId`, `nickname`, `registerdate`) VALUES
 (1, 'Liam', 'Svanåsbakken Crouch', 'petterroea', 0x37313031386564333361666164663739656338653564323232633431303331636330326564653936393632396331333430646564626665386433313033306362, 'me@petterroea.com', '1998-03-27', 0, '94132789', 'Otto valstads vei 8e', 1395, 0, 'petterroea', '2014-08-28 18:00:00'),
 (2, 'Halvor', 'Lyche Strandvoll', 'halvors', 0x63333839303036363837343164633436353532353365653166643062366137303063626563653936396262376166313462363963333039643535623931653132, 'halvors@halvors.org', '1995-01-17', 0, '97114646', 'Fiolveien 20', 1395, 0, 'halvors', '2014-08-28 18:00:00'),
-(3, 'Fredrik', 'Warbo', 'warbo', 0x62363838373863633637646566353239353630383864383435373234626261623830346336383930306537653266383961386131326432616534653534333539, 'fredrik@warbo.org', '1988-04-10', 0, '99767745', 'Søndre vei 68', 1397, 0, 'wrb', '2014-08-28 18:00:00'),
 (5, 'lois', 'williams', 'test1', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
 (6, 'lois', 'williams', 'test2', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
 (7, 'kylie', 'warren', 'test3', 0x39663836643038313838346337643635396132666561613063353561643031356133626634663162326230623832326364313564366331356230663030613038, 'spam@petterroea.com', '1990-01-01', 0, '999999999', 'Gokkistan', 1345, 0, 'testuser', '2015-01-28 00:00:00'),
@@ -5083,7 +5082,7 @@ ALTER TABLE `userpermissions`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`username`,`email`,`birthdate`,`gender`,`phone`,`postalcode`,`countryId`,`registereddate`);
+  ADD KEY `index` (`username`,`email`,`birthdate`,`gender`,`phone`,`postalcode`,`countryId`,`registerdate`);
 ALTER TABLE `users` ADD FULLTEXT KEY `search` (`firstname`,`lastname`,`username`,`nickname`);
 
 --
@@ -5100,13 +5099,13 @@ ALTER TABLE `emergencycontacts`
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `passwordresetcodes`
@@ -5118,7 +5117,7 @@ ALTER TABLE `passwordresetcodes`
 -- AUTO_INCREMENT for table `postalcodes`
 --
 ALTER TABLE `postalcodes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4735;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `registrationcodes`
@@ -5142,7 +5141,7 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `userfriends`
 --
 ALTER TABLE `userfriends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `useroptions`
@@ -5154,13 +5153,13 @@ ALTER TABLE `useroptions`
 -- AUTO_INCREMENT for table `userpermissions`
 --
 ALTER TABLE `userpermissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
