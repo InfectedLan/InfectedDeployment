@@ -4914,7 +4914,7 @@ CREATE TABLE `userfriends` (
 
 INSERT INTO `userfriends` (`id`, `userId`, `friendId`, `accepted`) VALUES
 (1, 1, 2, 0),
-(2, 2, 1, 0),
+(2, 2, 1, 0);
 
 -- --------------------------------------------------------
 
