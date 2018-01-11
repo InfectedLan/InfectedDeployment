@@ -250,10 +250,10 @@ CREATE TABLE `bongEntitlements` (
 -- Dataark for tabell `bongEntitlements`
 --
 
-INSERT INTO `bongEntitlements` (`id`, `bongId`, `entitlementArg`, `entitlementType`) VALUES
-(1, 1, 0, 1),
-(2, 2, 0, 1),
-(3, 3, 0, 1);
+INSERT INTO `bongEntitlements` (`id`, `bongTypeId`, `entitlementType`, `entitlementArg`, `entitlementAmt`, `appendType`) VALUES
+(1, 1, 1, 0, 6, 1),
+(2, 2, 1, 0, 2, 1),
+(3, 3, 1, 0, 2, 1);
 
 -- --------------------------------------------------------
 
