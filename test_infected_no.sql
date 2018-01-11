@@ -239,9 +239,11 @@ INSERT INTO `bongTypes` (`id`, `name`, `description`, `eventId`) VALUES
 
 CREATE TABLE `bongEntitlements` (
   `id` int(11) NOT NULL,
-  `bongId` int(11) NOT NULL,
+  `bongTypeId` int(11) NOT NULL,
+  `entitlementType` int(11) NOT NULL,
   `entitlementArg` int(11) NOT NULL,
-  `entitlementType` int(11) NOT NULL
+  `entitlementAmt` int(11) NOT NULL,
+  `appendType` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
