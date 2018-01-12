@@ -149,18 +149,19 @@ CREATE TABLE `tasks` (
 
 CREATE TABLE `userfriends` (
   `id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `friendId` int(11) NOT NULL,
-  `accepted` tinyint(1) NOT NULL
+  `toId` int(11) NOT NULL,
+  `fromId` int(11) NOT NULL,
+  `datetime` datetime NOT NULL,
+  `state` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dataark for tabell `userfriends`
 --
 
-INSERT INTO `userfriends` (`id`, `userId`, `friendId`, `accepted`) VALUES
-(1, 1, 2, 0),
-(2, 2, 1, 0);
+INSERT INTO `userfriends` (`id`, `toId`, `fromId`, `datetime`, `state`) VALUES
+(1, 1, 2, '0000-00-00 00:00:00', 1),
+(2, 2, 4, '0000-00-00 00:00:00', 0);
 
 --
 -- Tabellstruktur for tabell `usernotes`
@@ -369,7 +370,7 @@ ALTER TABLE `tasks`
 --
 ALTER TABLE `userfriends`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `index` (`userId`,`friendId`);
+  ADD KEY `index` (`toId`,`fromId`);
 
 --
 -- Indexes for table `usernotes`
@@ -430,49 +431,56 @@ ALTER TABLE `bongEntitlements`
 --
 ALTER TABLE `emergencycontacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `locations`
 --
 ALTER TABLE `locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `passwordresetcodes`
 --
 ALTER TABLE `passwordresetcodes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `registrationcodes`
 --
 ALTER TABLE `registrationcodes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `syslogs`
 --
 ALTER TABLE `syslogs`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `userfriends`
 --
 ALTER TABLE `userfriends`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+COMMIT;
 --
 -- AUTO_INCREMENT for table `usernotes`
 --
@@ -485,38 +493,41 @@ COMMIT;
 --
 ALTER TABLE `useroptions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `userpermissions`
 --
 ALTER TABLE `userpermissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `bongTypes`
 --
 ALTER TABLE `bongTypes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `bongTypes`
 --
 ALTER TABLE `bongEntitlements`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
 
 --
 -- AUTO_INCREMENT for table `bongTransactions`
 --
 ALTER TABLE `bongTransactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
