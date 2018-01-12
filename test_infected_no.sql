@@ -219,17 +219,18 @@ INSERT INTO `userpermissions` (`id`, `eventId`, `userId`, `permissionId`) VALUES
 CREATE TABLE `bongTypes` (
   `id` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `eventId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dataark for tabell `networktypes`
 --
 
-INSERT INTO `bongTypes` (`id`, `name`, `description`) VALUES
-(1, 'Brus', 'Fanta eller cola'),
-(2, 'Pølse', ''),
-(3, 'Vaffel', '');
+INSERT INTO `bongTypes` (`id`, `name`, `description`, `eventId`) VALUES
+(1, 'Brus', 'Fanta eller cola', 10),
+(2, 'Pølse', '', 10),
+(3, 'Vaffel', '', 10);
 
 -- --------------------------------------------------------
 
@@ -239,19 +240,21 @@ INSERT INTO `bongTypes` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE `bongEntitlements` (
   `id` int(11) NOT NULL,
-  `bongId` int(11) NOT NULL,
+  `bongTypeId` int(11) NOT NULL,
+  `entitlementType` int(11) NOT NULL,
   `entitlementArg` int(11) NOT NULL,
-  `entitlementType` int(11) NOT NULL
+  `entitlementAmt` int(11) NOT NULL,
+  `appendType` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dataark for tabell `bongEntitlements`
 --
 
-INSERT INTO `bongEntitlements` (`id`, `bongId`, `entitlementArg`, `entitlementType`) VALUES
-(1, 1, 0, 1),
-(2, 2, 0, 1),
-(3, 3, 0, 1);
+INSERT INTO `bongEntitlements` (`id`, `bongTypeId`, `entitlementType`, `entitlementArg`, `entitlementAmt`, `appendType`) VALUES
+(1, 1, 1, 0, 6, 1),
+(2, 2, 1, 0, 2, 1),
+(3, 3, 1, 0, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -261,9 +264,10 @@ INSERT INTO `bongEntitlements` (`id`, `bongId`, `entitlementArg`, `entitlementTy
 
 CREATE TABLE `bongTransactions` (
   `id` int(11) NOT NULL,
-  `bongId` int(32) NOT NULL,
+  `bongType` int(32) NOT NULL,
   `amt` int(11) NOT NULL,
-  `transactionHandler` int(11) NOT NULL
+  `transactionHandler` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

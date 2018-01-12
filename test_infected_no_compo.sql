@@ -280,6 +280,18 @@ CREATE TABLE `votes` (
   `voteOptionId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `votes`
+--
+
+CREATE TABLE `steamids` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `steamId` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indexes for dumped tables
 --
@@ -407,6 +419,12 @@ ALTER TABLE `votes`
   ADD KEY `index` (`consumerId`,`voteOptionId`);
 
 --
+-- Indexes for table `servers`
+--
+ALTER TABLE `steamids`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -517,6 +535,13 @@ ALTER TABLE `voteoptions`
 --
 ALTER TABLE `votes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `voteoptions`
+--
+ALTER TABLE `steamids`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

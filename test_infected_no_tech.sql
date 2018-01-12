@@ -130,6 +130,8 @@ CREATE TABLE `networktypes` (
   `portType` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
 -- Dataark for tabell `networktypes`
 --
@@ -137,6 +139,16 @@ CREATE TABLE `networktypes` (
 INSERT INTO `networktypes` (`id`, `name`, `title`, `portType`) VALUES
 (1, 'ethernet', 'Ethernet', 'Ethernet'),
 (2, 'wireless', 'Wireless', 'Wireless-802.11');
+
+--
+-- Tabellstruktur for tabell `discordMessageQueue`
+--
+
+CREATE TABLE `discordMessageQueue` (
+  `id` int(11) NOT NULL,
+  `entryId` int(11) NOT NULL,
+  `read` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 --
@@ -182,6 +194,12 @@ ALTER TABLE `nfclog`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `discordMessageQueue`
+--
+ALTER TABLE `discordMessageQueue`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -219,6 +237,12 @@ ALTER TABLE `nfcgates`
 -- AUTO_INCREMENT for table `nfclog`
 --
 ALTER TABLE `nfclog`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `discordMessageQueue`
+--
+ALTER TABLE `discordMessageQueue`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 
