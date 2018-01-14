@@ -267,7 +267,8 @@ CREATE TABLE `bongTransactions` (
   `bongType` int(32) NOT NULL,
   `amt` int(11) NOT NULL,
   `transactionHandler` int(11) NOT NULL,
-  `timestamp` datetime NOT NULL
+  `timestamp` datetime NOT NULL,
+  `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
