@@ -107,6 +107,48 @@ CREATE TABLE `nfcgates` (
 -- --------------------------------------------------------
 
 --
+-- Tabellstruktur for tabell `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL,
+  `name` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `networktypes`
+--
+
+INSERT INTO `rooms` (`id`, `name`) VALUES
+(1, 'Crewomeråde'),
+(2, 'Crewsoverom'),
+(3, 'Deltageromeråde'),
+(4, 'Deltagersoverom');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellstruktur for tabell `roomPermissions`
+--
+
+CREATE TABLE `roomPermissions` (
+  `id` int(11) NOT NULL,
+  `roomId` int(11) NOT NULL,
+  `permissionType` int(11) NOT NULL,
+  `permissionArg` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `bongEntitlements`
+--
+
+INSERT INTO `roomPermissions` (`id`, `roomId`, `permissionType`, `permissionArg`) VALUES
+(1, 1, 0, 0),
+(2, 2, 0, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Tabellstruktur for tabell `nfclog`
 --
 
