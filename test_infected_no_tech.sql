@@ -173,7 +173,7 @@ CREATE TABLE `nfclog` (
   `timestamp` datetime NOT NULL,
   `unitId` int(11) NOT NULL,
   `cardId` int(11) NOT NULL,
-  `legalPass` int(1) NOT NULL
+  `legalPass` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
