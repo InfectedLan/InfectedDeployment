@@ -115,7 +115,8 @@ CREATE TABLE `nfcunits` (
 
 INSERT INTO `nfcunits` (`id`, `eventId`, `pcbId`, `name`, `type`, `fromRoom`, `toRoom`) VALUES
 (1, 10, 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', 'Test ticketsale', 1, NULL, NULL),
-(2, 10, 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA', 'Test gate', 0, 3, 1),
+(2, 10, 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA', 'Test gate to crew area', 0, 3, 1),
+(4, 10, 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA', 'Test from crew area', 0, 1, 3),
 (3, 10, 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0', 'Test POS', 2, NULL, NULL);
 
 -- --------------------------------------------------------
