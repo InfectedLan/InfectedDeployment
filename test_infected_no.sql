@@ -185,7 +185,8 @@ CREATE TABLE `useroptions` (
   `userId` int(11) NOT NULL,
   `privatePhone` tinyint(1) NOT NULL,
   `reserveFromNotifications` tinyint(1) NOT NULL,
-  `easterEgg` tinyint(1) NOT NULL
+  `easterEgg` tinyint(1) NOT NULL,
+  `bypassCurfew` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
