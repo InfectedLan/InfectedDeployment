@@ -56,16 +56,16 @@ CREATE TABLE `events` (
 
 
 --
--- Tabellstruktur for tabell `customTitles`
+-- Tabellstruktur for tabell `customUserTitles`
 --
 
-CREATE TABLE `customTitles` (
+CREATE TABLE `customUserTitles` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `title` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `customTitles`(`userId`, `title`) VALUES (1, 'Supreme leader');
+INSERT INTO `customUserTitles`(`userId`, `title`) VALUES (1, 'Supreme leader');
 
 --
 -- Dataark for tabell `events`
@@ -441,9 +441,9 @@ ALTER TABLE `bongEntitlements`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `customTitles`
+-- Indexes for table `customUserTitles`
 --
-ALTER TABLE `customTitles`
+ALTER TABLE `customUserTitles`
   ADD PRIMARY KEY (`id`);
 
 
@@ -556,9 +556,9 @@ ALTER TABLE `bongTransactions`
 COMMIT;
 
 --
--- AUTO_INCREMENT for table `customTitles`
+-- AUTO_INCREMENT for table `customUserTitles`
 --
-ALTER TABLE `customTitles`
+ALTER TABLE `customUserTitles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
