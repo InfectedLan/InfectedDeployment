@@ -90,19 +90,34 @@ CREATE TABLE `nfccards` (
   `nfcId` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `nfccards` (`id`, `userId`, `eventId`, `nfcId`) VALUES
+(1, 1, 10, 'E004000000000000');
+
 -- --------------------------------------------------------
 
 --
 -- Tabellstruktur for tabell `nfcgates`
 --
 
-CREATE TABLE `nfcgates` (
+CREATE TABLE `nfcunits` (
   `id` int(11) NOT NULL,
   `eventId` int(11) NOT NULL,
   `pcbId` varchar(32) NOT NULL,
   `name` varchar(64) NOT NULL,
-  `type` int(11) NOT NULL
+  `type` int(11) NOT NULL,
+  `fromRoom` int(11),
+  `toRoom` int(11)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `nfcunits`
+--
+
+INSERT INTO `nfcunits` (`id`, `eventId`, `pcbId`, `name`, `type`, `fromRoom`, `toRoom`) VALUES
+(1, 10, 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF', 'Test ticketsale', 1, NULL, NULL),
+(2, 10, 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA', 'Test gate to crew area', 0, 3, 1),
+(4, 10, 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFA', 'Test from crew area', 0, 1, 3),
+(3, 10, 'FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0', 'Test POS', 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -112,18 +127,20 @@ CREATE TABLE `nfcgates` (
 
 CREATE TABLE `rooms` (
   `id` int(11) NOT NULL,
-  `name` varchar(32) NOT NULL
+  `name` varchar(32) NOT NULL,
+  `timeLimited` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dataark for tabell `networktypes`
 --
 
-INSERT INTO `rooms` (`id`, `name`) VALUES
-(1, 'Crewomeråde'),
-(2, 'Crewsoverom'),
-(3, 'Deltageromeråde'),
-(4, 'Deltagersoverom');
+INSERT INTO `rooms` (`id`, `name`, `timeLimited`) VALUES
+(1, 'Crewomeråde', 0),
+(2, 'Crewsoverom', 0),
+(3, 'Deltageromeråde', 0),
+(4, 'Deltagersoverom', 0),
+(5, 'Ute', 1);
 
 -- --------------------------------------------------------
 
@@ -143,8 +160,8 @@ CREATE TABLE `roomPermissions` (
 --
 
 INSERT INTO `roomPermissions` (`id`, `roomId`, `permissionType`, `permissionArg`) VALUES
-(1, 1, 0, 0),
-(2, 2, 0, 0);
+(1, 1, 1, 0),
+(2, 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -155,8 +172,9 @@ INSERT INTO `roomPermissions` (`id`, `roomId`, `permissionType`, `permissionArg`
 CREATE TABLE `nfclog` (
   `id` int(11) NOT NULL,
   `timestamp` datetime NOT NULL,
-  `gateId` int(11) NOT NULL,
-  `nfcId` int(11) NOT NULL
+  `unitId` int(11) NOT NULL,
+  `cardId` int(11) NOT NULL,
+  `legalPass` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -226,13 +244,25 @@ ALTER TABLE `nfccards`
 --
 -- Indexes for table `nfcgates`
 --
-ALTER TABLE `nfcgates`
+ALTER TABLE `nfcunits`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `nfclog`
 --
 ALTER TABLE `nfclog`
+  ADD PRIMARY KEY (`id`);
+
+  --
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+  --
+-- Indexes for table `roomPermissions`
+--
+ALTER TABLE `roomPermissions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -272,7 +302,19 @@ ALTER TABLE `nfccards`
 --
 -- AUTO_INCREMENT for table `nfcgates`
 --
-ALTER TABLE `nfcgates`
+ALTER TABLE `nfcunits`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+  --
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `roomPermissions`
+--
+ALTER TABLE `roomPermissions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
