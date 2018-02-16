@@ -24,6 +24,20 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+
+--
+-- Tabellstruktur for tabell `customUserTitles`
+--
+
+CREATE TABLE `customUserTitles` (
+  `id` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `title` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `customUserTitles`(`userId`, `title`) VALUES (1, 'Supreme leader');
+
+
 --
 -- Tabellstruktur for tabell `applicationqueue`
 --
@@ -218,6 +232,13 @@ INSERT INTO `teams` (`id`, `groupId`, `name`, `title`, `description`, `active`) 
 -- Indexes for dumped tables
 --
 
+
+--
+-- Indexes for table `customUserTitles`
+--
+ALTER TABLE `customUserTitles`
+  ADD PRIMARY KEY (`id`);
+
 --
 -- Indexes for table `applicationqueue`
 --
@@ -349,6 +370,13 @@ ALTER TABLE `pages`
 --
 ALTER TABLE `teams`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+
+--
+-- AUTO_INCREMENT for table `customUserTitles`
+--
+ALTER TABLE `customUserTitles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

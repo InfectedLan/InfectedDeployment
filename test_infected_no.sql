@@ -54,19 +54,6 @@ CREATE TABLE `events` (
   `ticketTypeId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
---
--- Tabellstruktur for tabell `customUserTitles`
---
-
-CREATE TABLE `customUserTitles` (
-  `id` int(11) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `title` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `customUserTitles`(`userId`, `title`) VALUES (1, 'Supreme leader');
-
 --
 -- Dataark for tabell `events`
 --
@@ -440,12 +427,6 @@ ALTER TABLE `bongTransactions`
 ALTER TABLE `bongEntitlements`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `customUserTitles`
---
-ALTER TABLE `customUserTitles`
-  ADD PRIMARY KEY (`id`);
-
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -555,12 +536,6 @@ ALTER TABLE `bongTransactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
---
--- AUTO_INCREMENT for table `customUserTitles`
---
-ALTER TABLE `customUserTitles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
