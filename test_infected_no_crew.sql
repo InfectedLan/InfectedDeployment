@@ -75,16 +75,9 @@ CREATE TABLE `applications` (
 CREATE TABLE `avatars` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
-  `file` varchar(64) NOT NULL,
+  `fileName` varchar(64) NOT NULL,
   `state` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dataark for tabell `avatars`
---
-
-INSERT INTO `avatars` (`id`, `userId`, `file`, `state`) VALUES
-(1, 2, '6f836b0f77d06ef59bf7a19be2b17110halvors.jpg', 2);
 
 -- --------------------------------------------------------
 
