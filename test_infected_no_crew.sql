@@ -59,7 +59,7 @@ CREATE TABLE `applications` (
   `groupId` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
   `openedTime` datetime NOT NULL,
-  `closedTime` datetime NOT NULL,
+  `closedTime` datetime DEFAULT NULL,
   `state` tinyint(11) NOT NULL,
   `content` text NOT NULL,
   `updatedByUserId` int(11) NOT NULL,
